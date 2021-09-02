@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Plk.Blazor.DragDrop;
+
 namespace RulesEngineEditorServer
 {
     public class Startup
@@ -29,6 +31,9 @@ namespace RulesEngineEditorServer
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            services.AddBlazorDragDrop();
+            services.AddSingleton(new RulesEngineEditor.Services.WorkflowState());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.9" />
+    <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
+    <PackageReference Include="RulesEngine" Version="3.3.0" />
   </ItemGroup>
 
 </Project>
