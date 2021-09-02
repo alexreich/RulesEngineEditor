@@ -1,0 +1,35 @@
+﻿@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+
+@if (scopedParams != null)
+{
+<sp_grid_kvp>
+    <div>Scoped Param Name</div>
+    <div>Expression</div>
+</sp_grid_kvp>
+    <Dropzone Items="scopedParams">
+        <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
+    </Dropzone>
+}
+@code {
+    [Parameter]
+    public List<ScopedParamData> scopedParams { get; set; }
+
+    [Parameter]
+    public EventCallback<List<ScopedParamData>> ScopedParamsChanged { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+    }
+
+    private void UpdateScopedParam()
+    {
+        //ScopedParamsChanged.InvokeAsync(scopedParams);
+    }
+    private void DeleteScopedParam(ScopedParamData sp)
+    {
+        scopedParams.Remove(sp);
+        ScopedParamsChanged.InvokeAsync(scopedParams);
+    }
+}

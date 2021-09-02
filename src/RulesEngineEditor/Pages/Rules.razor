@@ -1,0 +1,31 @@
+﻿@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+
+@if (rules != null)
+{
+    <Dropzone Items="rules"> @*Class="rules">*@
+        <RuleEditor rule="@context" RuleDelete="DeleteRule" />
+    </Dropzone>
+}
+@code {
+    [Parameter]
+    public List<RuleData> rules { get; set; }
+
+    [Parameter]
+    public EventCallback<List<RuleData>> RulesChanged { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+    }
+
+    private void UpdateScopedParam()
+    {
+        //ScopedParamsChanged.InvokeAsync(scopedParams);
+    }
+    private void DeleteRule(RuleData sp)
+    {
+        rules.RemoveAll(w => w.RuleName == sp.RuleName);
+        RulesChanged.InvokeAsync(rules);
+    }
+}

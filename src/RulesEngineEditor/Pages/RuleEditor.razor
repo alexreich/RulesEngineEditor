@@ -1,0 +1,91 @@
+﻿@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+
+<div class="rules">
+    <sp_grid_rules>
+        <div>Rule Name</div>
+        <div>Operator</div>
+        <div>Success Event</div>
+        <div>Error Message</div>
+        @*<div>Rule Expression Type</div>*@
+        <div>Expression</div>
+        <div>Enabled</div>
+        <div>Delete</div>
+    </sp_grid_rules>
+    <EditForm EditContext="@EditContext">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <sp_grid_rules>
+            <div>
+                <InputText class="form-control" @bind-Value="@rule.RuleName" />
+                @*<br />*@
+                @if (@rule.ExceptionMessage != "")
+                {
+                    <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>
+                }
+            </div>
+            <div>
+                <InputSelect @bind-Value="@rule.Operator" class="form-control">
+                    <option value="And">And</option>
+                    <option value="AndAlso">AndAlso</option>
+                    <option value="Or">Or</option>
+                    <option value="OrElse">OrElse</option>
+                </InputSelect>
+            </div>
+            <div>
+                <InputText class="form-control" @bind-Value="@rule.SuccessEvent" />
+            </div>
+            <div>
+                <InputText class="form-control" @bind-Value="@rule.ErrorMessage" />
+            </div>
+            <div>
+                <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" />
+            </div>
+            <div>
+                <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
+            </div>
+            <div>
+                <button @onclick="@(e => RuleDelete.InvokeAsync(rule))" class="btn btn-secondary">
+                    <span class="oi oi-trash"></span>
+                </button>
+            </div>
+        </sp_grid_rules>
+        <h5>Local Params</h5>
+        <div>
+            <a @onclick="(e => { rule.LocalParams.Insert(0, new ScopedParamData()); StateHasChanged();})">New</a>
+        </div>
+        <ScopedParams scopedParams=rule.LocalParams ScopedParamsChanged="WorkflowState.Update" />
+    </EditForm>
+</div>
+@code {
+    [Parameter]
+    public RuleData rule { get; set; }
+
+    [Parameter]
+    public EventCallback<RuleData> RuleDelete { get; set; }
+
+    private EditContext EditContext;
+
+    string RuleStyle(RuleData rule)
+    {
+        if (rule.IsSuccess == null)
+            return "";
+        else if ((bool)rule.IsSuccess)
+            return "redditor_rules_success";
+        else
+            return "redditor_rules_error";
+    }
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(rule);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowState.Update();
+    }
+}

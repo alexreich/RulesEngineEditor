@@ -1,0 +1,114 @@
+.reeditor_dragdrop {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+sp_grid_scopedparam {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 30% 60% 10%;
+    border: 3px dotted gray;
+    width: 100%;
+}
+
+/*sp_grid_inputparameter {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 30% 60% 10%;
+    width: 100%;
+}*/
+
+sp_grid_rules {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 20% 10% 10% 10% 35% 5% 10%;
+    /*border: 2px dotted gray;*/
+    width: 100%;
+}
+
+sp_grid_rule {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 20% 5% 10% 10% 40% 5% 10%;
+    width: 100%;
+}
+
+.rules {
+    border: 2px dashed gray;
+    padding: 2px;
+}
+
+/* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
+reeditor_blockquote {
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+}
+
+    reeditor_blockquote:before {
+        color: #ccc;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+
+    reeditor_blockquote p {
+        display: inline;
+    }
+
+.redditor_rules_error {
+    background: salmon;
+}
+
+.redditor_rules_success {
+    background: lightgreen;
+}
+
+sp_grid_kvp {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+}
+
+sp_grid_workflow {
+    grid-column: auto;
+    display: inline-grid;
+    border: none;
+    padding: 2px;
+    /*grid-template-columns: 90% 10%;*/
+    width: 100%;
+}
+
+.reeditor_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+    cursor: pointer;
+    position: relative;
+    width: 120px;
+    height: 30px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+}
+
+    .reeditor_button:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+
+    .reeditor_button input[type=file] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+.jsonTextArea {
+    width: 100%;
+}

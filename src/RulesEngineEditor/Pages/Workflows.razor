@@ -1,0 +1,46 @@
+﻿@page "/"
+@using RulesEngineEditor.Models
+@inject NavigationManager NavigationManager
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+@implements IDisposable
+
+<button title="New Workflow" class="reeditor_button" @onclick="NewWorkflow">New</button><span>&nbsp;</span><a class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
+<div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@OnSubmit" />Import</div>
+<h2>Workflows</h2>
+<button class="reeditor_button" @onclick="AddWorkflow">Add</button>
+@if (WorkflowState.Workflows.Count > 0)
+{
+    <Dropzone Items="WorkflowState.Workflows" Class="reeditor_dragdrop">
+        <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
+        <h5>Rules</h5>
+        <div>
+            <a @onclick="(() => NewRule(context))">New</a>
+        </div>
+        <Rules rules=context.Rules RulesChanged="Update" />
+        <h5>Global Params</h5>
+        <div>
+            <a @onclick="(e => { context.GlobalParams.Insert(0, new ScopedParamData()); StateHasChanged();})">New</a>
+        </div>
+        <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="Update" />
+    </Dropzone>
+
+    <hr />
+    <div>
+        <textarea cols="2" class="jsonTextArea" rows="10">@workflowJSON</textarea>
+    </div>
+
+    <h2>Inputs</h2>
+    <button title="New Input" class="reeditor_button" @onclick="NewInput">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
+    <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
+
+    @if (WorkflowState.Inputs.Count > 0)
+    {
+        <Dropzone Items="WorkflowState.Inputs" Class="reeditor_dragdrop">
+            <InputEditor Input=@context InputDeleted="DeleteInput" />
+        </Dropzone>
+    }
+    <div>
+        <textarea cols="2" class="jsonTextArea" rows="10" @bind="inputJSON" @oninput="InputJSONnChange" />
+        <a title="Refresh Input Json" class="reeditor_button" @onclick="InputJSONUpdate">Refresh</a>
+    </div>
+}

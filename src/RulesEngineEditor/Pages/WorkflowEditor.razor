@@ -1,0 +1,40 @@
+﻿@using RulesEngineEditor.Models
+
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <sp_grid_workflow>
+        <div>
+            <InputText placeholder="Workflow Name" title="Workflow Name" class="form-control" @bind-Value="@workFlow.WorkflowName" />
+        </div>
+    </sp_grid_workflow>
+</EditForm>
+@code {
+    [Parameter]
+    public WorkflowData workFlow { get; set; }
+
+    [Parameter]
+    public EventCallback<WorkflowData> WorkflowChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<WorkflowData> WorkflowDelete { get; set; }
+
+    [Parameter]
+    public EventCallback<WorkflowData> WorkflowCancel { get; set; }
+
+    private EditContext EditContext;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(workFlow);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    // Note: The OnFieldChanged event is raised for each field in the model
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowChanged.InvokeAsync(workFlow);
+    }
+}

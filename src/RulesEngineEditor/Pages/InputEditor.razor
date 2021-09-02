@@ -1,0 +1,68 @@
+﻿@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+
+@if (Input != null)
+{
+    <sp_grid_kvp>
+        <div>Input Name</div>
+    </sp_grid_kvp>
+    <EditForm EditContext="@EditContext">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <sp_grid_workflow>
+            <div>
+                <InputText title="Name" class="form-control" @bind-Value="@Input.InputName" />
+            </div>
+        </sp_grid_workflow>
+        <h5>Parameters<a title="New Input Parameter" @onclick="(() => Input.Parameter.Insert(0, new InputParam()))">+</a></h5>
+        <sp_grid_kvp>
+            <div>Input Param Name</div>
+            <div>Value</div>
+        </sp_grid_kvp>
+    </EditForm>
+    <Dropzone Items="Input.Parameter">
+        <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
+    </Dropzone>
+}
+@code {
+    [Parameter]
+    public Input Input { get; set; }
+
+    @*    [Parameter]
+        public EventCallback<Input> InputChanged { get; set; }
+    *@
+    [Parameter]
+    public EventCallback<Input> InputDeleted { get; set; }
+
+    private EditContext EditContext;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(Input);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+    }
+
+    // Note: The OnFieldChanged event is raised for each field in the model
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowState.Update();
+        //InputChanged.InvokeAsync(Input);
+    }
+
+    private void UpdateInputParam()
+    {
+        //InputParamsChanged.InvokeAsync(InputParams);
+    }
+    private void DeleteInputParam(InputParam inputParameter)
+    {
+        Input.Parameter.Remove(inputParameter);
+        WorkflowState.Update();
+    }
+}

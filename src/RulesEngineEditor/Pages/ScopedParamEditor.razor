@@ -1,0 +1,43 @@
+﻿@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <sp_grid_scopedparam>
+        <div>
+            <InputText title="Parameter Name" class="form-control" @bind-Value="@scopedParam.Name" />
+        </div>
+        <div>
+            <InputTextArea title="Expression" rows="5" form="Expression" class="form-control" @bind-Value="@scopedParam.Expression" />
+        </div>
+        <div>
+            @*<input type="button" class="btn btn-danger" @onclick="@(e => ScopedParamDelete.InvokeAsync(scopedParam))" value="Delete" />*@
+            <button @onclick="@(e => ScopedParamDelete.InvokeAsync(scopedParam))" class="btn btn-secondary m-1">
+                <span class="oi oi-trash"></span>
+            </button>
+        </div>
+    </sp_grid_scopedparam>
+</EditForm>
+@code {
+    [Parameter]
+    public ScopedParamData scopedParam { get; set; }
+
+    [Parameter]
+    public EventCallback<ScopedParamData> ScopedParamDelete { get; set; }
+
+    private EditContext EditContext;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(scopedParam);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowState.Update();
+    }
+}
