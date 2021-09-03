@@ -227,7 +227,6 @@ namespace RulesEngineEditor.Pages
         }
         private async void ImportInputs(InputFileChangeEventArgs files)
         {
-
             var selectedFile = files.File;
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
             inputJSON = await sr.ReadToEndAsync();
@@ -241,11 +240,37 @@ namespace RulesEngineEditor.Pages
                 var inputs = JsonConvert.DeserializeObject<dynamic>(inputJSON);
 
                 var converter = new ExpandoObjectConverter();
+                WorkflowState.Inputs = new List<Input>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var i in inputs)
                 {
-                    ruleParameters.Add(new RuleParameter(Convert.ToString(i.InputName), JsonConvert.DeserializeObject<ExpandoObject>(Convert.ToString(i.Parameter), converter)));
+                    var key = Convert.ToString(i.InputName);
+                    var value = Convert.ToString(i.Parameter);
+
+                    Input input = new Input();
+                    input.InputName = key;
+                    input.Parameter = new List<InputParam>();
+
+                    var values = JsonConvert.DeserializeObject<ExpandoObject>(value, converter);
+
+                    foreach (KeyValuePair<string, object> v in values)
+                    {
+                        InputParam param = new InputParam();
+                        param.Name = v.Key;
+                        if (v.Value is string)
+                        {
+                            param.Value = @"""" + v.Value.ToString() + @"""";
+                        }
+                        else
+                        {
+                            param.Value = v.Value.ToString();
+                        }
+
+                        input.Parameter.Add(param);
+                    }
+                    WorkflowState.Inputs.Add(input);
+                    ruleParameters.Add(new RuleParameter(key, values));
                 }
                 WorkflowState.RuleParameters = ruleParameters.ToArray();
 
@@ -258,7 +283,7 @@ namespace RulesEngineEditor.Pages
             this.StateHasChanged();
         }
 
-        private void InputJSONnChange(ChangeEventArgs args)
+        private void InputJSONChange(ChangeEventArgs args)
         {
             InputJSONUpdate();
         }
