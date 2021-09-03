@@ -117,9 +117,28 @@ namespace RulesEngineEditor.Pages
         private void Update()
         {
             DownloadFile();
+            UpdateInputs();
             DownloadInputs();
             RunRE();
             StateHasChanged();
+        }
+
+        private void UpdateInputs()
+        {
+            List<NewInput> newInputs = new List<NewInput>();
+            WorkflowState.Inputs.ForEach(i =>
+            {
+                NewInput newInput = new NewInput();
+                newInput.InputName = i.InputName;
+                newInput.Parameter = new Dictionary<string, object>();
+                foreach (var p in i.Parameter)
+                {
+                    newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
+                }
+                newInputs.Add(newInput);
+            });
+
+            inputJSON = System.Text.Json.JsonSerializer.Serialize(newInputs, jsonOptions);
         }
 
         private void RunRE()
