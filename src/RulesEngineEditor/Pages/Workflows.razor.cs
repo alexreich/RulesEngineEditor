@@ -26,6 +26,7 @@ namespace RulesEngineEditor.Pages
     //TODO: Bug where success or error deselected and error msg appears
     partial class Workflows : ComponentBase
     {
+        private bool ShowWorkflows { get; set; } = true;
         //[Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> DownloadAttributes { get; set; }
         public Dictionary<string, object> DownloadInputAttributes { get; set; }
