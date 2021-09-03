@@ -72,6 +72,7 @@ sp_grid_tabs {
     grid-template-columns: 50% 50%;
     width: 100%;
 }
+
 sp_grid_menu {
     grid-column: auto;
     display: inline-grid;
@@ -110,6 +111,10 @@ sp_grid_workflow {
     text-decoration: none;
 }
 
+.reeditor_menubutton_depressed {
+    background-color: #008CBA;
+    color: white;
+}
 
 .reeditor_button {
     display: inline-flex;
@@ -127,11 +132,6 @@ sp_grid_workflow {
 }
 
     .reeditor_button:hover {
-        background-color: #008CBA;
-        color: white;
-    }
-
-    .reeditor_button_depressed {
         background-color: #008CBA;
         color: white;
     }
