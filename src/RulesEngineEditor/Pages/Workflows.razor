@@ -29,23 +29,26 @@
 {
     @if (ShowWorkflows)
     {
-        <Dropzone Items="WorkflowState.Workflows" Class="reeditor_dragdrop">
-            <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
-            <h5>Rules</h5>
+        <div class="sp_grid_main">
             <div>
-                <a @onclick="(() => NewRule(context))">New</a>
-            </div>
-            <Rules rules=context.Rules RulesChanged="Update" />
-            <h5>Global Params</h5>
-            <div>
-                <a @onclick="(e => { context.GlobalParams.Insert(0, new ScopedParamData()); StateHasChanged(); })">New</a>
-            </div>
-            <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="Update" />
-        </Dropzone>
+                <Dropzone Items="WorkflowState.Workflows" Class="reeditor_dragdrop">
+                    <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
+                    <h5>Rules</h5>
+                    <div>
+                        <a @onclick="(() => NewRule(context))">New</a>
+                    </div>
 
-        <hr />
-        <div>
-            <textarea cols="2" class="jsonTextArea" rows="10">@workflowJSON</textarea>
+                    <Rules rules=context.Rules RulesChanged="Update" />
+                    <h5>Global Params</h5>
+                    <div>
+                        <a @onclick="(e => { context.GlobalParams.Insert(0, new ScopedParamData()); StateHasChanged(); })">New</a>
+                    </div>
+                    <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="Update" />
+                </Dropzone>
+            </div>
+            <div>
+                <textarea class="jsonTextArea">@workflowJSON</textarea>
+            </div>
         </div>
     }
     else

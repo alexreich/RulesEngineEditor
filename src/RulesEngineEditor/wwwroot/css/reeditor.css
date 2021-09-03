@@ -26,10 +26,10 @@ sp_grid_rules {
     width: 100%;
 }
 
-sp_grid_rule {
+.sp_grid_main {
     grid-column: auto;
     display: inline-grid;
-    grid-template-columns: 20% 5% 10% 10% 40% 5% 10%;
+    grid-template-columns: 70% 30%;
     width: 100%;
 }
 
@@ -70,13 +70,6 @@ sp_grid_tabs {
     display: grid;
     text-align: center;
     grid-template-columns: 50% 50%;
-    width: 100%;
-}
-
-sp_grid_menu {
-    grid-column: auto;
-    display: inline-grid;
-    grid-template-columns: 33% 33% 33%;
     width: 100%;
 }
 
@@ -145,5 +138,8 @@ sp_grid_workflow {
     }
 
 .jsonTextArea {
+    height: 100%;
     width: 100%;
+    display: block;
+    max-width: 100%;
 }
