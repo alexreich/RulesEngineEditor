@@ -1,15 +1,19 @@
 ﻿@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowState WorkflowState
 
 <EditForm EditContext="@EditContext">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <sp_grid_workflow>
         <div>
-            <InputText placeholder="Workflow Name" title="Workflow Name" class="form-control" @bind-Value="@workFlow.WorkflowName" />
+            <InputText placeholder="Workflow Name" title="Workflow Name" class="form-control" @bind-Value="@Name" />
         </div>
     </sp_grid_workflow>
 </EditForm>
 @code {
+
+    private string Name {get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowState.Update(); } }
+
     [Parameter]
     public WorkflowData workFlow { get; set; }
 
