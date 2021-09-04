@@ -28,6 +28,7 @@ namespace RulesEngineEditor.Pages
     //TODO: allow more elements to be styled
     //TODO: show ef on server demo
     //TODO: update workflows on json update
+    //TODO: run engine on ALL workflows (not just first)
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
@@ -91,6 +92,7 @@ namespace RulesEngineEditor.Pages
         private void NewWorkflow()
         {
             WorkflowState.Workflows = new List<WorkflowData>();
+            //WorkflowState.Update();
             workflowJSON = "";
         }
 
@@ -100,13 +102,17 @@ namespace RulesEngineEditor.Pages
             workflow.GlobalParams = new List<ScopedParamData>();
             workflow.Rules = new List<RuleData>();
             WorkflowState.Workflows.Insert(0, workflow);
-            WorkflowState.Update();
+            StateHasChanged();
         }
 
         private void NewRule(WorkflowData workflow)
         {
             RuleData rule = new RuleData();
             rule.LocalParams = new List<ScopedParamData>();
+            if (workflow.Rules == null)
+            {
+                workflow.Rules = new List<RuleData>();
+            }
             workflow.Rules.Insert(0, rule);
             WorkflowState.Update();
         }
@@ -159,23 +165,24 @@ namespace RulesEngineEditor.Pages
                 //    ruleParameters.Add(new RuleParameter(i.InputName, i.Parameter));
                 //});
 
-
-                WorkflowData workflow = WorkflowState.Workflows.First();
-                List<RuleResultTree> resultList = bre.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowState.RuleParameters).Result;
-
-                for (int i = 0; i < resultList.Count; i++)
+                WorkflowState.Workflows.ForEach(workflow =>
                 {
-                    workflow.Rules[i].IsSuccess = resultList[i].IsSuccess;
-                    if (!(bool)workflow.Rules[i].IsSuccess)
-                    {
-                        workflow.Rules[i].ExceptionMessage = resultList[i].ExceptionMessage;
-                    }
-                    else
-                    {
-                        workflow.Rules[i].ExceptionMessage = "Rule was successful.";
-                    }
-                }
+                    List<RuleResultTree> resultList = bre.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowState.RuleParameters).Result;
 
+                    for (int i = 0; i < resultList.Count; i++)
+                    {
+                        workflow.Rules[i].IsSuccess = resultList[i].IsSuccess;
+                        if (!(bool)workflow.Rules[i].IsSuccess)
+                        {
+                            workflow.Rules[i].ExceptionMessage = resultList[i].ExceptionMessage;
+                        }
+                        else
+                        {
+                            workflow.Rules[i].ExceptionMessage = "Rule was successful.";
+                        }
+                    }
+
+                });
                 //    var jsonString = System.Text.Json.JsonSerializer.Serialize(resultList, jsonOptions);
 
                 //    resultsJSON = JsonNormalizer.Normalize(jsonString);
@@ -255,16 +262,24 @@ namespace RulesEngineEditor.Pages
 
         public void DownloadFile()
         {
+            workflowJSONErrors = "";
             var jsonString = System.Text.Json.JsonSerializer.Serialize(WorkflowState.Workflows, jsonOptions);
 
             workflowJSON = JsonNormalizer.Normalize(jsonString);
 
-            //TODO - move this out to demo
-            var re = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowJSON).ToArray());
+            try
+            {
+                //TODO - move this out to demo
+                var re = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowJSON).ToArray());
 
-            DownloadAttributes = new Dictionary<string, object>();
-            DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + workflowJSON);
-            DownloadAttributes.Add("download", "RulesEngine.json");
+                DownloadAttributes = new Dictionary<string, object>();
+                DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + workflowJSON);
+                DownloadAttributes.Add("download", "RulesEngine.json");
+            }
+            catch (Exception ex)
+            {
+                workflowJSONErrors = ex.Message;
+            }
         }
         private async void ImportInputs(InputFileChangeEventArgs files)
         {
