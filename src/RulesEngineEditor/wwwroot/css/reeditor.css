@@ -143,3 +143,8 @@ sp_grid_workflow {
     display: block;
     max-width: 100%;
 }
+
+.JSONErrors {
+    background-color: salmon;
+    width: 100%;
+}

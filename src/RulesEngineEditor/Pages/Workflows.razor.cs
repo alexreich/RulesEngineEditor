@@ -24,6 +24,10 @@ namespace RulesEngineEditor.Pages
     //TODO: bubble up rulesengine init to caller
     //TODO: Update fields on workflow json change
     //TODO: Bug where success or error deselected and error msg appears
+    //TODO: Cleanup Inputs buttons
+    //TODO: allow more elements to be styled
+    //TODO: show ef on server demo
+    //TODO: update workflows on json update
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
@@ -190,10 +194,14 @@ namespace RulesEngineEditor.Pages
             this.StateHasChanged();
         }
 
-        //List<WorkflowData> _workflow;
-        //List<WorkflowData> workflow { get { return _workflow; } set { _workflow = value; DownloadFile(); } }
-        string workflowJSON;
-        string inputJSON;
+        string workflowJSONErrors;
+        string _workflowJSON;
+        string workflowJSON { get { return _workflowJSON; } set { _workflowJSON = value; WorkflowJSONChange(); } }
+
+        string inputJSONErrors;
+        string _inputJSON;
+        string inputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONChange(); } }
+
         private async void OnSubmit(InputFileChangeEventArgs files)
         {
 
@@ -202,23 +210,36 @@ namespace RulesEngineEditor.Pages
             //await using MemoryStream ms = new MemoryStream();
 
             //StreamReader sr = new StreamReader(stream);
-            var foo = await sr.ReadToEndAsync();
+            workflowJSON = await sr.ReadToEndAsync();
+            WorkflowJSONChange();
+        }
+
+        //DateTime lastWorkflowJSONChange = DateTime.Now;
+        private void WorkflowJSONChange()
+        {
+            workflowJSONErrors = "";
             try
             {
+                //if (lastWorkflowJSONChange.AddSeconds(1) < DateTime.Now)
+                //{
+                //    return;
+                //}
+                //lastWorkflowJSONChange = DateTime.Now;
                 //JsonSerializerOptions options = new JsonSerializerOptions();
                 //options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.Always;
                 //options.IncludeFields = true;
                 //var bv = JsonSerializer.Deserialize<List<WorkflowRules>>(foo, null);
-                WorkflowState.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(foo);
-                WorkflowState.Update();
+                WorkflowState.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(workflowJSON);
+                //WorkflowState.Update();
                 //await Workflowservice.ImportWorkflowAsync(workflow);
             }
             catch (Exception ex)
             {
-                Console.Write(ex);
+                workflowJSONErrors = ex.Message;
             }
-            this.StateHasChanged();
+            StateHasChanged();
         }
+
         ////[HttpGet("/download")]
         //private IActionResult Download()
         //{
@@ -255,6 +276,7 @@ namespace RulesEngineEditor.Pages
 
         private void InputJSONUpdate()
         {
+            inputJSONErrors = "";
             try
             {
                 var inputs = JsonConvert.DeserializeObject<dynamic>(inputJSON);
@@ -294,16 +316,16 @@ namespace RulesEngineEditor.Pages
                 }
                 WorkflowState.RuleParameters = ruleParameters.ToArray();
 
-                WorkflowState.Update();
+                //WorkflowState.Update();
             }
             catch (Exception ex)
             {
-                inputJSON = ex.Message;
+                inputJSONErrors = ex.Message;
             }
             this.StateHasChanged();
         }
 
-        private void InputJSONChange(ChangeEventArgs args)
+        private void InputJSONChange()
         {
             InputJSONUpdate();
         }

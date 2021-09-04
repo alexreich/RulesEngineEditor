@@ -47,7 +47,8 @@
                 </Dropzone>
             </div>
             <div>
-                <textarea class="jsonTextArea">@workflowJSON</textarea>
+                <span readonly class="JSONErrors">@workflowJSONErrors</span>
+                <textarea @bind="workflowJSON" class="jsonTextArea" />
             </div>
         </div>
     }
@@ -56,15 +57,21 @@
         <button title="New Input" class="reeditor_button" @onclick="NewInput">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
         <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
 
-        @if (WorkflowState.Inputs.Count > 0)
-        {
-            <Dropzone Items="WorkflowState.Inputs" Class="reeditor_dragdrop">
-                <InputEditor Input=@context InputDeleted="DeleteInput" />
-            </Dropzone>
-        }
-        <div>
-            <textarea cols="2" class="jsonTextArea" rows="10" @bind="inputJSON" @oninput="InputJSONChange" />
-            <a title="Refresh Input Json" class="reeditor_button" @onclick="InputJSONUpdate">Refresh</a>
+        <div class="sp_grid_main">
+            <div>
+                @if (WorkflowState.Inputs.Count > 0)
+                {
+                    <Dropzone Items="WorkflowState.Inputs" Class="reeditor_dragdrop">
+                        <InputEditor Input=@context InputDeleted="DeleteInput" />
+                    </Dropzone>
+                }
+            </div>
+            <div>
+                <span class="JSONErrors">@inputJSONErrors</span>
+                @*<textarea @onchange="((ChangeEventArgs e) => InputJSONChange())" class="jsonTextArea">@inputJSON</textarea>*@
+                <textarea class="jsonTextArea" @bind="inputJSON" />
+                @*<a title="Refresh Input Json" class="reeditor_button" @onclick="InputJSONUpdate">Refresh</a>*@
+            </div>
         </div>
     }
 }
