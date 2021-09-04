@@ -28,7 +28,7 @@ namespace RulesEngineEditor.Pages
     //TODO: allow more elements to be styled
     //TODO: show ef on server demo
     //TODO: update workflows on json update
-    //TODO: run engine on ALL workflows (not just first)
+    ///TODO Bug on New workflow
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
@@ -287,6 +287,7 @@ namespace RulesEngineEditor.Pages
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
             inputJSON = await sr.ReadToEndAsync();
             InputJSONUpdate();
+            WorkflowState.Update();
         }
 
         private void InputJSONUpdate()
@@ -330,14 +331,12 @@ namespace RulesEngineEditor.Pages
                     ruleParameters.Add(new RuleParameter(key, values));
                 }
                 WorkflowState.RuleParameters = ruleParameters.ToArray();
-
-                //WorkflowState.Update();
             }
             catch (Exception ex)
             {
                 inputJSONErrors = ex.Message;
             }
-            this.StateHasChanged();
+            StateHasChanged();
         }
 
         private void InputJSONChange()
