@@ -154,6 +154,8 @@ namespace RulesEngineEditor.Pages
 
         private void RunRE()
         {
+            if (WorkflowState.RuleParameters.Length == 0) return;
+
             try
             {
                 //TODO - move this out to demo
@@ -171,14 +173,15 @@ namespace RulesEngineEditor.Pages
 
                     for (int i = 0; i < resultList.Count; i++)
                     {
-                        workflow.Rules[i].IsSuccess = resultList[i].IsSuccess;
-                        if (!(bool)workflow.Rules[i].IsSuccess)
+                        var rule = workflow.Rules.FirstOrDefault(r => r.RuleName == resultList[i].Rule.RuleName);
+                        rule.IsSuccess = resultList[i].IsSuccess;
+                        if (!(bool)rule.IsSuccess)
                         {
-                            workflow.Rules[i].ExceptionMessage = resultList[i].ExceptionMessage;
+                            rule.ExceptionMessage = resultList[i].ExceptionMessage;
                         }
                         else
                         {
-                            workflow.Rules[i].ExceptionMessage = "Rule was successful.";
+                            rule.ExceptionMessage = "Rule was successful.";
                         }
                     }
 

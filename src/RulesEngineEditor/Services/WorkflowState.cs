@@ -12,7 +12,7 @@ namespace RulesEngineEditor.Services
     {
         public List<Input> Inputs { get; set; } = new List<Input>();
 
-        public RuleParameter[] RuleParameters { get; set; }
+        public RuleParameter[] RuleParameters { get; set; } = new RuleParameter[0];
 
         public List<WorkflowData> Workflows { get; set; } = new List<WorkflowData>();
 
