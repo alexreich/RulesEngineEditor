@@ -22,7 +22,6 @@ using RulesEngineEditor.Services;
 namespace RulesEngineEditor.Pages
 {
     //TODO: bubble up rulesengine init to caller
-    //TODO: Cleanup Inputs buttons
     //TODO: allow more elements to be styled
     //TODO: show ef on server demo
     partial class Workflows : ComponentBase
@@ -33,6 +32,14 @@ namespace RulesEngineEditor.Pages
         public Dictionary<string, object> DownloadInputAttributes { get; set; }
 
         JsonSerializerOptions jsonOptions;
+
+        private RulesEngine.RulesEngine _rulesEngine = new RulesEngine.RulesEngine(null, null);
+        [Parameter]
+        public RulesEngine.RulesEngine EditorRulesEngine { get { return _rulesEngine; } set { _rulesEngine = value; } }
+
+        [Parameter]
+        public EventCallback<RulesEngine.RulesEngine> OnRulesEngineInitialize { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             jsonOptions = new JsonSerializerOptions
@@ -134,14 +141,14 @@ namespace RulesEngineEditor.Pages
                 {
                     //if (p.Name != null && p.Value != null)
                     //{
-                        try
-                        {
-                            newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
-                        }
-                        catch (Exception ex)
-                        {
-                            inputJSONErrors += ex.Message + " ";
-                        }
+                    try
+                    {
+                        newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
+                    }
+                    catch (Exception ex)
+                    {
+                        inputJSONErrors += ex.Message + " ";
+                    }
                     //}
                 }
                 newInputs.Add(newInput);
@@ -177,8 +184,9 @@ namespace RulesEngineEditor.Pages
 
                 var workflowViaTextJson = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON, serializationOptions);
 
-                var reSettings = new ReSettings { };
-                var bre = new RulesEngine.RulesEngine(workflowViaTextJson, reSettings: reSettings);
+                _rulesEngine.ClearWorkflows();
+                _rulesEngine.AddOrUpdateWorkflow(workflowViaTextJson);
+
 
                 //List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 //WorkflowState.Inputs.ForEach(i =>
@@ -188,7 +196,7 @@ namespace RulesEngineEditor.Pages
 
                 WorkflowState.Workflows.ForEach(workflow =>
                 {
-                    List<RuleResultTree> resultList = bre.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowState.RuleParameters).Result;
+                    List<RuleResultTree> resultList = _rulesEngine.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowState.RuleParameters).Result;
 
                     for (int i = 0; i < resultList.Count; i++)
                     {

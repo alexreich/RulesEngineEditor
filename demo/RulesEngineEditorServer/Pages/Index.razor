@@ -1,3 +1,23 @@
 ﻿@page "/"
+@using RulesEngine.Models
 
 <Workflows />
+@*<Workflows EditorRulesEngine="re" />*@
+
+@code{ 
+    private RulesEngine.RulesEngine re;
+
+    enum FooEnum
+    {
+        bar = 123
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var settings = new ReSettings
+        {
+            CustomTypes = new Type[] { typeof(FooEnum) }
+        };
+        re = new RulesEngine.RulesEngine(null, settings);
+    }
+}
