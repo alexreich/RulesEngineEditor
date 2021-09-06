@@ -39,13 +39,13 @@
                     <Rules rules=context.Rules RulesChanged="Update" />
                     <h5>Global Params</h5>
                     <div>
-                        <a @onclick="(e => { context.GlobalParams.Insert(0, new ScopedParamData()); StateHasChanged(); })">New</a>
+                        <button class="reeditor_button" @onclick="(e => { context.GlobalParams.Insert(0, new ScopedParamData()); StateHasChanged(); })">New</button>
                     </div>
                     <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="Update" />
                 </Dropzone>
             </div>
             <div>
-                <span readonly class="JSONErrors">@workflowJSONErrors</span>
+                <span class="JSONErrors">@workflowJSONErrors</span>
                 <textarea @bind="workflowJSON" class="jsonTextArea" />
             </div>
         </div>
@@ -54,22 +54,21 @@
     {
         <button title="New Input" class="reeditor_button" @onclick="NewInput">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
         <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
-
-        <div class="sp_grid_main">
-            <div>
-                @if (WorkflowState.Inputs.Count > 0)
-                {
+        @if (WorkflowState.Inputs.Count > 0)
+        {
+            <div class="sp_grid_main">
+                <div>
                     <Dropzone Items="WorkflowState.Inputs" Class="reeditor_dragdrop">
                         <InputEditor Input=@context InputDeleted="DeleteInput" />
                     </Dropzone>
-                }
+                </div>
+                <div>
+                    <span class="JSONErrors">@inputJSONErrors</span>
+                    @*<textarea @onchange="((ChangeEventArgs e) => InputJSONChange())" class="jsonTextArea">@inputJSON</textarea>*@
+                    <textarea @bind="inputJSON" class="jsonTextArea" />
+                    @*<a title="Refresh Input Json" class="reeditor_button" @onclick="InputJSONUpdate">Refresh</a>*@
+                </div>
             </div>
-            <div>
-                <span class="JSONErrors">@inputJSONErrors</span>
-                @*<textarea @onchange="((ChangeEventArgs e) => InputJSONChange())" class="jsonTextArea">@inputJSON</textarea>*@
-                <textarea class="jsonTextArea" @bind="inputJSON" />
-                @*<a title="Refresh Input Json" class="reeditor_button" @onclick="InputJSONUpdate">Refresh</a>*@
-            </div>
-        </div>
+        }
     }
 }

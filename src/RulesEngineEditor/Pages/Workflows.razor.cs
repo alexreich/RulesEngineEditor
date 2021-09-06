@@ -22,14 +22,9 @@ using RulesEngineEditor.Services;
 namespace RulesEngineEditor.Pages
 {
     //TODO: bubble up rulesengine init to caller
-    //TODO: Update fields on workflow json change
-    //TODO: Bug where success or error deselected and error msg appears
     //TODO: Cleanup Inputs buttons
     //TODO: allow more elements to be styled
     //TODO: show ef on server demo
-    //TODO: update workflows on json update
-    //TODO: Bug on New workflow
-    //TODO: Support nested rules (omit RuleExpressionType)
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
@@ -128,6 +123,7 @@ namespace RulesEngineEditor.Pages
 
         private void UpdateInputs()
         {
+            inputJSONErrors = "";
             List<NewInput> newInputs = new List<NewInput>();
             WorkflowState.Inputs.ForEach(i =>
             {
@@ -136,12 +132,25 @@ namespace RulesEngineEditor.Pages
                 newInput.Parameter = new Dictionary<string, object>();
                 foreach (var p in i.Parameter)
                 {
-                    newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
+                    //if (p.Name != null && p.Value != null)
+                    //{
+                        try
+                        {
+                            newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
+                        }
+                        catch (Exception ex)
+                        {
+                            inputJSONErrors += ex.Message + " ";
+                        }
+                    //}
                 }
                 newInputs.Add(newInput);
             });
 
-            inputJSON = System.Text.Json.JsonSerializer.Serialize(newInputs, jsonOptions);
+            if (inputJSONErrors == "")
+            {
+                inputJSON = System.Text.Json.JsonSerializer.Serialize(newInputs, jsonOptions);
+            }
         }
 
         private void RunRE()
@@ -221,7 +230,7 @@ namespace RulesEngineEditor.Pages
 
         string inputJSONErrors;
         string _inputJSON;
-        string inputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONChange(); } }
+        string inputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONUpdate(); } }
 
         private async void OnSubmit(InputFileChangeEventArgs files)
         {
@@ -356,11 +365,6 @@ namespace RulesEngineEditor.Pages
                 inputJSONErrors = ex.Message;
             }
             StateHasChanged();
-        }
-
-        private void InputJSONChange()
-        {
-            InputJSONUpdate();
         }
 
         public void DownloadInputs()

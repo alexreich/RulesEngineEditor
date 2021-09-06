@@ -14,7 +14,8 @@
                 <InputText title="Name" class="form-control" @bind-Value="@Input.InputName" />
             </div>
         </sp_grid_workflow>
-        <h5>Parameters<a title="New Input Parameter" @onclick="(() => Input.Parameter.Insert(0, new InputParam()))">+</a></h5>
+        <h5>Parameters</h5>
+        <button class="reeditor_button" title="Add Input Parameter" @onclick="(() => Input.Parameter.Insert(0, new InputParam()))">Add</button>
         <sp_grid_kvp>
             <div>Input Param Name</div>
             <div>Value</div>
