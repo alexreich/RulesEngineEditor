@@ -3,13 +3,19 @@
 
 @if (rules != null)
 {
-    <Dropzone Items="rules"> @*Class="rules">*@
+    <Dropzone Items="rules">
+        @*Class="rules">*@
         <RuleEditor rule="@context" RuleDelete="DeleteRule" />
     </Dropzone>
 }
 @code {
+    private List<RuleData> _rules;
     [Parameter]
-    public List<RuleData> rules { get; set; }
+    public List<RuleData> rules
+    {
+        get { return _rules; }
+        set { _rules = value; StateHasChanged(); }
+    }
 
     [Parameter]
     public EventCallback<List<RuleData>> RulesChanged { get; set; }
@@ -28,4 +34,4 @@
         rules.RemoveAll(w => w.RuleName == sp.RuleName);
         RulesChanged.InvokeAsync(rules);
     }
-}
+    }

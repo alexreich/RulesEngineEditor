@@ -22,5 +22,22 @@ namespace RulesEngineEditor.Services
         {
             OnWorkflowChange.Invoke();
         }
+
+        public void NewRule(dynamic ruleParent)
+        {
+            RuleData rule = new RuleData();
+            rule.LocalParams = new List<ScopedParamData>();
+            if (ruleParent.Rules == null)
+            {
+                ruleParent.Rules = new List<RuleData>();
+            }
+            if (ruleParent.GetType() == typeof(RuleData))
+            {
+                ruleParent.Operator = "And";
+                //ruleParent.RuleExpressionType = null;
+            }
+            ruleParent.Rules.Insert(0, rule);
+            Update();
+        }
     }
 }

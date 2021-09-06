@@ -34,9 +34,7 @@
                 <Dropzone Items="WorkflowState.Workflows" Class="reeditor_dragdrop">
                     <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
                     <h5>Rules</h5>
-                    <div>
-                        <a @onclick="(() => NewRule(context))">New</a>
-                    </div>
+                    <button class="reeditor_button" @onclick="(() => WorkflowState.NewRule(context))">New</button>
 
                     <Rules rules=context.Rules RulesChanged="Update" />
                     <h5>Global Params</h5>

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+//using Newtonsoft.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using RulesEngine.Models;
@@ -14,11 +15,6 @@ namespace RulesEngineEditor.Models
         public new List<ScopedParamData> GlobalParams { get; set; }
 
         public new string WorkflowName { get; set; }
-
-        public WorkflowData Copy()
-        {
-            return (WorkflowData)this.MemberwiseClone();
-        }
     }
     public class RuleData : Rule
     {
@@ -28,11 +24,12 @@ namespace RulesEngineEditor.Models
         public bool? IsSuccess { get; set; }
         [JsonIgnore]
         public string ExceptionMessage { get; set; }
-
-        public RuleData Copy()
-        {
-            return (RuleData)this.MemberwiseClone();
-        }
+        //[JsonIgnore(Condition= JsonIgnoreCondition.WhenWritingNull)]
+        //public new string Operator { get; set; }
+        //[JsonIgnore]
+        //public new RuleExpressionType? RuleExpressionType {get;set;}
+        //[JsonIgnore]
+        //public new ErrorType ErrorType { get; set; }
     }
     public class ScopedParamData : ScopedParam
     {

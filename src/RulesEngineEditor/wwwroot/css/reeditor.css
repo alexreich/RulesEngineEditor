@@ -142,6 +142,7 @@ sp_grid_workflow {
     width: 100%;
     display: block;
     max-width: 100%;
+    font-family: monospace;
 }
 
 .JSONErrors {

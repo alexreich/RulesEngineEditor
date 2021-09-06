@@ -24,7 +24,8 @@
                 }
             </div>
             <div>
-                <InputSelect @bind-Value="@rule.Operator" class="form-control">
+                <InputSelect ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control" ValueChanged="((string value) => OnValueChanged(value))">
+                    <option value="null"></option>
                     <option value="And">And</option>
                     <option value="AndAlso">AndAlso</option>
                     <option value="Or">Or</option>
@@ -52,6 +53,12 @@
         <h5>Local Params</h5>
         <div>
             <a @onclick="(e => { rule.LocalParams.Insert(0, new ScopedParamData()); StateHasChanged();})">New</a>
+        </div>
+        <h5>Rules</h5>
+        <button class="reeditor_button" @onclick="(() => WorkflowState.NewRule(rule))">New</button>
+
+        <div>
+            <Rules rules=rule.Rules RulesChanged="WorkflowState.Update" />
         </div>
         <ScopedParams scopedParams=rule.LocalParams ScopedParamsChanged="WorkflowState.Update" />
     </EditForm>
@@ -86,5 +93,14 @@
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
         WorkflowState.Update();
+    }
+    private Task OnValueChanged(string value)
+    {
+        if (value == "null")
+        {
+            value = null;
+        }
+        rule.Operator = value;
+        return Task.CompletedTask;
     }
 }

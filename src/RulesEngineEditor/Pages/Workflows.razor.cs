@@ -28,7 +28,8 @@ namespace RulesEngineEditor.Pages
     //TODO: allow more elements to be styled
     //TODO: show ef on server demo
     //TODO: update workflows on json update
-    ///TODO Bug on New workflow
+    //TODO: Bug on New workflow
+    //TODO: Support nested rules (omit RuleExpressionType)
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
@@ -45,7 +46,10 @@ namespace RulesEngineEditor.Pages
                 IncludeFields = true,
                 IgnoreReadOnlyFields = true,
                 WriteIndented = true,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                //Converters ={
+                //    new JsonStringEnumConverter()
+                //}
             };
 
             WorkflowState.OnWorkflowChange += Update;
@@ -105,17 +109,6 @@ namespace RulesEngineEditor.Pages
             StateHasChanged();
         }
 
-        private void NewRule(WorkflowData workflow)
-        {
-            RuleData rule = new RuleData();
-            rule.LocalParams = new List<ScopedParamData>();
-            if (workflow.Rules == null)
-            {
-                workflow.Rules = new List<RuleData>();
-            }
-            workflow.Rules.Insert(0, rule);
-            WorkflowState.Update();
-        }
         private void NewInput()
         {
             Input input = new Input();
@@ -158,8 +151,26 @@ namespace RulesEngineEditor.Pages
 
             try
             {
+
+                //var workflowStr = JsonConvert.SerializeObject(workflowJSON);
+
+                //var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
+
+                ////TODO - move this out to demo
+                //var bre = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowStr, serializationOptions).ToArray());
+
                 //TODO - move this out to demo
-                var bre = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowJSON).ToArray());
+                //var bre = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON).ToArray());
+
+                //var workflowStr = JsonConvert.SerializeObject(workflowJSON);
+
+                var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
+
+
+                var workflowViaTextJson = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON, serializationOptions);
+
+                var reSettings = new ReSettings { };
+                var bre = new RulesEngine.RulesEngine(workflowViaTextJson, reSettings: reSettings);
 
                 //List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 //WorkflowState.Inputs.ForEach(i =>
@@ -192,7 +203,8 @@ namespace RulesEngineEditor.Pages
             }
             catch (Exception ex)
             {
-                inputJSON = ex.Message;
+                workflowJSONErrors = ex.Message;
+                inputJSONErrors = ex.Message;
             }
             StateHasChanged();
         }
@@ -220,7 +232,8 @@ namespace RulesEngineEditor.Pages
             //await using MemoryStream ms = new MemoryStream();
 
             //StreamReader sr = new StreamReader(stream);
-            workflowJSON = await sr.ReadToEndAsync();
+            workflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
+
             WorkflowJSONChange();
         }
 
@@ -240,6 +253,7 @@ namespace RulesEngineEditor.Pages
                 //options.IncludeFields = true;
                 //var bv = JsonSerializer.Deserialize<List<WorkflowRules>>(foo, null);
                 WorkflowState.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(workflowJSON);
+                //WorkflowState.Workflows = System.Text.Json.JsonSerializer.Deserialize<List<WorkflowData>>(workflowJSON);
                 //WorkflowState.Update();
                 //await Workflowservice.ImportWorkflowAsync(workflow);
             }

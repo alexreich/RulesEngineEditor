@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RulesEngineEditor.Shared
 {
-    //from https://github.com/microsoft/PowerApps-Language-Tooling/blob/master/src/PAModel/Utility/JsonNormalizer.cs
+    //originally from https://github.com/microsoft/PowerApps-Language-Tooling/blob/master/src/PAModel/Utility/JsonNormalizer.cs
     internal class JsonNormalizer
     {
         public static string Normalize(string jsonStr)
@@ -74,6 +74,10 @@ namespace RulesEngineEditor.Shared
                             {
                                 continue;
                             }
+                        }
+                        if (jp.Name.Contains("RuleExpressionType"))
+                        {
+                            continue;
                         }
                         if (y == 0)
                         {
