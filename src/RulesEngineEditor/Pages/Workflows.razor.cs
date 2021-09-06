@@ -96,8 +96,7 @@ namespace RulesEngineEditor.Pages
         private void NewWorkflow()
         {
             WorkflowState.Workflows = new List<WorkflowData>();
-            //WorkflowState.Update();
-            workflowJSON = "";
+            WorkflowState.Update();
         }
 
         private void AddWorkflow()
@@ -281,7 +280,10 @@ namespace RulesEngineEditor.Pages
         {
             workflowJSONErrors = "";
             var jsonString = System.Text.Json.JsonSerializer.Serialize(WorkflowState.Workflows, jsonOptions);
-
+            if (jsonString == "[]")
+            {
+                return;
+            }
             workflowJSON = JsonNormalizer.Normalize(jsonString);
 
             try
