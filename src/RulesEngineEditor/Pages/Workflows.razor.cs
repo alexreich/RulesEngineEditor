@@ -21,7 +21,6 @@ using RulesEngineEditor.Services;
 
 namespace RulesEngineEditor.Pages
 {
-    //TODO: bubble up rulesengine init to caller
     //TODO: allow more elements to be styled
     //TODO: show ef on server demo
     partial class Workflows : ComponentBase
@@ -36,6 +35,12 @@ namespace RulesEngineEditor.Pages
         private RulesEngine.RulesEngine _rulesEngine = new RulesEngine.RulesEngine(null, null);
         [Parameter]
         public RulesEngine.RulesEngine EditorRulesEngine { get { return _rulesEngine; } set { _rulesEngine = value; } }
+
+        [Parameter]
+        public WorkflowRules[] Workflow { get; set; }
+
+        [Parameter]
+        public EventCallback<WorkflowRules[]> WorkflowChanged { get; set; }
 
         [Parameter]
         public EventCallback<RulesEngine.RulesEngine> OnRulesEngineInitialize { get; set; }
@@ -53,6 +58,12 @@ namespace RulesEngineEditor.Pages
                 //    new JsonStringEnumConverter()
                 //}
             };
+
+            if (Workflow!=null)
+            {
+                workflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflow, jsonOptions);
+                Update();
+            }
 
             WorkflowState.OnWorkflowChange += Update;
             //WFObj = await Task.Run(() => Workflowservice.GetAllWorkflowsAsync());
@@ -124,7 +135,7 @@ namespace RulesEngineEditor.Pages
             DownloadFile();
             UpdateInputs();
             DownloadInputs();
-            RunRE();
+            RunREAsync();
             StateHasChanged();
         }
 
@@ -160,10 +171,8 @@ namespace RulesEngineEditor.Pages
             }
         }
 
-        private void RunRE()
+        private async Task RunREAsync()
         {
-            if (WorkflowState.RuleParameters.Length == 0) return;
-
             try
             {
 
@@ -182,10 +191,13 @@ namespace RulesEngineEditor.Pages
                 var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
 
 
-                var workflowViaTextJson = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON, serializationOptions);
+                Workflow = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON, serializationOptions);
+                await WorkflowChanged.InvokeAsync(Workflow);
+
+                if (WorkflowState.RuleParameters.Length == 0) return;
 
                 _rulesEngine.ClearWorkflows();
-                _rulesEngine.AddOrUpdateWorkflow(workflowViaTextJson);
+                _rulesEngine.AddOrUpdateWorkflow(Workflow);
 
 
                 //List<RuleParameter> ruleParameters = new List<RuleParameter>();
