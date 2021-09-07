@@ -20,6 +20,10 @@ using RulesEngineEditor.Services;
 namespace RulesEngineEditor.Pages
 {
     //TODO: allow more elements to be styled
+    //TODO: Inputs through wokrlflow
+    //TODO: remove any hardcoded css styling
+    //TODO: remove trashcans (bootstrap)
+    //TODO: add Help
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
