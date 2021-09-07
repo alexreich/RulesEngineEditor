@@ -24,7 +24,7 @@ namespace RulesEngineEditor.Pages
     //TODO: remove any hardcoded css styling
     //TODO: remove trashcans (bootstrap)
     //TODO: add Help
-    partial class Workflows : ComponentBase
+    partial class RulesEngineEditorPage : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
         public Dictionary<string, object> DownloadAttributes { get; set; }
