@@ -257,6 +257,7 @@ namespace RulesEngineEditor.Pages
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
             inputJSON = await sr.ReadToEndAsync();
             InputJSONUpdate();
+            ShowWorkflows = true;
             WorkflowState.Update();
         }
 
