@@ -4,7 +4,6 @@
 @if (rules != null)
 {
     <Dropzone Items="rules">
-        @*Class="rules">*@
         <RuleEditor rule="@context" RuleDelete="DeleteRule" />
     </Dropzone>
 }
@@ -25,10 +24,6 @@
         await base.SetParametersAsync(parameters);
     }
 
-    private void UpdateScopedParam()
-    {
-        //ScopedParamsChanged.InvokeAsync(scopedParams);
-    }
     private void DeleteRule(RuleData sp)
     {
         rules.RemoveAll(w => w.RuleName == sp.RuleName);

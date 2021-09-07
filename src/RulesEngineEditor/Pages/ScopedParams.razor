@@ -23,10 +23,6 @@
         await base.SetParametersAsync(parameters);
     }
 
-    private void UpdateScopedParam()
-    {
-        //ScopedParamsChanged.InvokeAsync(scopedParams);
-    }
     private void DeleteScopedParam(ScopedParamData sp)
     {
         scopedParams.Remove(sp);

@@ -4,11 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace RulesEngineEditor.Shared
 {
-    //originally from https://github.com/microsoft/PowerApps-Language-Tooling/blob/master/src/PAModel/Utility/JsonNormalizer.cs
+    //based on https://github.com/microsoft/PowerApps-Language-Tooling/blob/master/src/PAModel/Utility/JsonNormalizer.cs
     internal class JsonNormalizer
     {
         public static string Normalize(string jsonStr)
@@ -16,7 +15,7 @@ namespace RulesEngineEditor.Shared
             using (JsonDocument doc = JsonDocument.Parse(jsonStr))
             {
                 return Normalize(doc.RootElement);
-            } // free up array pool rent
+            }
         }
 
         public static string Normalize(JsonElement je)
@@ -26,7 +25,6 @@ namespace RulesEngineEditor.Shared
             {
                 Indented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-                //Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
             using (var writer = new Utf8JsonWriter(ms, opts))
             {
@@ -57,6 +55,8 @@ namespace RulesEngineEditor.Shared
                     break;
                 case JsonValueKind.Object:
                     int y = 0;
+
+                    //organize property names
                     List<JsonProperty> lo = new List<JsonProperty>();
                     var namedProperties = property.EnumerateObject().Where(o => o.Name.Contains("Name"));
                     if (namedProperties.Count() > 0)
@@ -65,11 +65,11 @@ namespace RulesEngineEditor.Shared
                     if (paramsProperties.Count() > 0)
                         lo.Add(paramsProperties.First());
                     lo.AddRange(property.EnumerateObject().Except(namedProperties).Except(paramsProperties));
-                    //var eo = property.EnumerateObject().OrderBy(o => o.Name.Contains("Name"));
                     foreach (JsonProperty jp in lo)
                     {
                         if (jp.Value.ValueKind is JsonValueKind.Array)
                         {
+                            //drop empty arrays
                             if (jp.Value.EnumerateArray().Count() == 0)
                             {
                                 continue;
@@ -94,7 +94,6 @@ namespace RulesEngineEditor.Shared
                     break;
                 default:
                     property.WriteTo(writer);
-                    //writer.Flush();
                     break;
             }
         }

@@ -29,9 +29,6 @@
     [Parameter]
     public Input Input { get; set; }
 
-    @*    [Parameter]
-        public EventCallback<Input> InputChanged { get; set; }
-    *@
     [Parameter]
     public EventCallback<Input> InputDeleted { get; set; }
 
@@ -54,13 +51,8 @@
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
         WorkflowState.Update();
-        //InputChanged.InvokeAsync(Input);
     }
 
-    private void UpdateInputParam()
-    {
-        //InputParamsChanged.InvokeAsync(InputParams);
-    }
     private void DeleteInputParam(InputParam inputParameter)
     {
         Input.Parameter.Remove(inputParameter);

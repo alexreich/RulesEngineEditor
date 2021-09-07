@@ -17,7 +17,6 @@
         <sp_grid_rules>
             <div>
                 <InputText class="form-control" @bind-Value="@rule.RuleName" />
-                @*<br />*@
                 @if (@rule.ExceptionMessage != "")
                 {
                     <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>

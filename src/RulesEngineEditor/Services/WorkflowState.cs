@@ -2,9 +2,6 @@
 using RulesEngineEditor.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RulesEngineEditor.Services
 {
@@ -34,7 +31,6 @@ namespace RulesEngineEditor.Services
             if (ruleParent.GetType() == typeof(RuleData))
             {
                 ruleParent.Operator = "And";
-                //ruleParent.RuleExpressionType = null;
             }
             ruleParent.Rules.Insert(0, rule);
             Update();

@@ -63,9 +63,7 @@
                 </div>
                 <div>
                     <span class="JSONErrors">@inputJSONErrors</span>
-                    @*<textarea @onchange="((ChangeEventArgs e) => InputJSONChange())" class="jsonTextArea">@inputJSON</textarea>*@
                     <textarea @bind="inputJSON" class="jsonTextArea" />
-                    @*<a title="Refresh Input Json" class="reeditor_button" @onclick="InputJSONUpdate">Refresh</a>*@
                 </div>
             </div>
         }

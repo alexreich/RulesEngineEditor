@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-//using Newtonsoft.Json;
-using System.Text.Json;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using RulesEngine.Models;
 
 namespace RulesEngineEditor.Models
 {
+    /// <summary>
+    /// WorkflowData has convenience methods (e.g. Lists) for RE Workflows
+    /// </summary>
     public class WorkflowData : WorkflowRules
     {
         public new List<RuleData> Rules { get; set; }
@@ -24,12 +22,6 @@ namespace RulesEngineEditor.Models
         public bool? IsSuccess { get; set; }
         [JsonIgnore]
         public string ExceptionMessage { get; set; }
-        //[JsonIgnore(Condition= JsonIgnoreCondition.WhenWritingNull)]
-        //public new string Operator { get; set; }
-        //[JsonIgnore]
-        //public new RuleExpressionType? RuleExpressionType {get;set;}
-        //[JsonIgnore]
-        //public new ErrorType ErrorType { get; set; }
     }
     public class ScopedParamData : ScopedParam
     {

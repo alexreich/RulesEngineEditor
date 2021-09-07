@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Forms;
 using System.IO;
@@ -12,7 +11,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Web;
 using RulesEngineEditor.Shared;
 using RulesEngineEditor.Models;
 using System.Dynamic;
@@ -22,11 +20,9 @@ using RulesEngineEditor.Services;
 namespace RulesEngineEditor.Pages
 {
     //TODO: allow more elements to be styled
-    //TODO: show ef on server demo
     partial class Workflows : ComponentBase
     {
         private bool ShowWorkflows { get; set; } = true;
-        //[Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> DownloadAttributes { get; set; }
         public Dictionary<string, object> DownloadInputAttributes { get; set; }
 
@@ -54,32 +50,15 @@ namespace RulesEngineEditor.Pages
                 IgnoreReadOnlyFields = true,
                 WriteIndented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                //Converters ={
-                //    new JsonStringEnumConverter()
-                //}
             };
 
-            if (Workflow!=null)
+            if (Workflow != null)
             {
                 workflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflow, jsonOptions);
                 Update();
             }
 
             WorkflowState.OnWorkflowChange += Update;
-            //WFObj = await Task.Run(() => Workflowservice.GetAllWorkflowsAsync());
-
-            //var foo = WFObj.First();
-            //var bar = (WorkflowRules)foo;
-
-            //var workflow = JsonSerializer.Deserialize<List<WorkflowRules>>(fileData);
-
-            //RulesEngineDemoContext db = new RulesEngineDemoContext();
-            //if (db.Database.EnsureCreated())
-            //{
-            //    db
-            //    db.Workflows.AddRange(workflow);
-            //    db.SaveChanges();
-            //}
             await base.OnInitializedAsync();
         }
         public void Dispose()
@@ -96,11 +75,6 @@ namespace RulesEngineEditor.Pages
         {
             WorkflowState.Inputs.Remove(input);
             WorkflowState.Update();
-        }
-        void DeleteRule(Rule rule)
-        {
-            //WorkflowState.Workflow.Remove(rule);
-            //WorkflowState.Update();
         }
         void UpdateInputDelete(Input input)
         {
@@ -135,7 +109,7 @@ namespace RulesEngineEditor.Pages
             DownloadFile();
             UpdateInputs();
             DownloadInputs();
-            RunREAsync();
+            RunRE();
             StateHasChanged();
         }
 
@@ -150,8 +124,6 @@ namespace RulesEngineEditor.Pages
                 newInput.Parameter = new Dictionary<string, object>();
                 foreach (var p in i.Parameter)
                 {
-                    //if (p.Name != null && p.Value != null)
-                    //{
                     try
                     {
                         newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
@@ -160,7 +132,6 @@ namespace RulesEngineEditor.Pages
                     {
                         inputJSONErrors += ex.Message + " ";
                     }
-                    //}
                 }
                 newInputs.Add(newInput);
             });
@@ -171,40 +142,19 @@ namespace RulesEngineEditor.Pages
             }
         }
 
-        private async Task RunREAsync()
+        private void RunRE()
         {
             try
             {
-
-                //var workflowStr = JsonConvert.SerializeObject(workflowJSON);
-
-                //var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
-
-                ////TODO - move this out to demo
-                //var bre = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowStr, serializationOptions).ToArray());
-
-                //TODO - move this out to demo
-                //var bre = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON).ToArray());
-
-                //var workflowStr = JsonConvert.SerializeObject(workflowJSON);
-
                 var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
 
-
                 Workflow = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON, serializationOptions);
-                await WorkflowChanged.InvokeAsync(Workflow);
+                WorkflowChanged.InvokeAsync(Workflow);
 
                 if (WorkflowState.RuleParameters.Length == 0) return;
 
                 _rulesEngine.ClearWorkflows();
                 _rulesEngine.AddOrUpdateWorkflow(Workflow);
-
-
-                //List<RuleParameter> ruleParameters = new List<RuleParameter>();
-                //WorkflowState.Inputs.ForEach(i =>
-                //{
-                //    ruleParameters.Add(new RuleParameter(i.InputName, i.Parameter));
-                //});
 
                 WorkflowState.Workflows.ForEach(workflow =>
                 {
@@ -225,9 +175,6 @@ namespace RulesEngineEditor.Pages
                     }
 
                 });
-                //    var jsonString = System.Text.Json.JsonSerializer.Serialize(resultList, jsonOptions);
-
-                //    resultsJSON = JsonNormalizer.Normalize(jsonString);
             }
             catch (Exception ex)
             {
@@ -257,33 +204,17 @@ namespace RulesEngineEditor.Pages
 
             var selectedFile = files.File;
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
-            //await using MemoryStream ms = new MemoryStream();
-
-            //StreamReader sr = new StreamReader(stream);
             workflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
 
             WorkflowJSONChange();
         }
 
-        //DateTime lastWorkflowJSONChange = DateTime.Now;
         private void WorkflowJSONChange()
         {
             workflowJSONErrors = "";
             try
             {
-                //if (lastWorkflowJSONChange.AddSeconds(1) < DateTime.Now)
-                //{
-                //    return;
-                //}
-                //lastWorkflowJSONChange = DateTime.Now;
-                //JsonSerializerOptions options = new JsonSerializerOptions();
-                //options.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.Always;
-                //options.IncludeFields = true;
-                //var bv = JsonSerializer.Deserialize<List<WorkflowRules>>(foo, null);
                 WorkflowState.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(workflowJSON);
-                //WorkflowState.Workflows = System.Text.Json.JsonSerializer.Deserialize<List<WorkflowData>>(workflowJSON);
-                //WorkflowState.Update();
-                //await Workflowservice.ImportWorkflowAsync(workflow);
             }
             catch (Exception ex)
             {
@@ -292,14 +223,6 @@ namespace RulesEngineEditor.Pages
             StateHasChanged();
         }
 
-        ////[HttpGet("/download")]
-        //private IActionResult Download()
-        //{
-        //    return new FileContentResult(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(Workflowservice.GetAllWorkflowsAsync())), "application/force-download")
-        //    {
-        //        FileDownloadName = "RulesEngineWorkflow.json"
-        //    };
-        //}
         public void Download()
         {
             NavigationManager.NavigateTo($"/download", true);
@@ -317,7 +240,6 @@ namespace RulesEngineEditor.Pages
 
             try
             {
-                //TODO - move this out to demo
                 var re = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowJSON).ToArray());
 
                 DownloadAttributes = new Dictionary<string, object>();

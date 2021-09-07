@@ -12,7 +12,6 @@
             <InputTextArea title="Expression" rows="5" form="Expression" class="form-control" @bind-Value="@scopedParam.Expression" />
         </div>
         <div>
-            @*<input type="button" class="btn btn-danger" @onclick="@(e => ScopedParamDelete.InvokeAsync(scopedParam))" value="Delete" />*@
             <button @onclick="@(e => ScopedParamDelete.InvokeAsync(scopedParam))" class="btn btn-secondary m-1">
                 <span class="oi oi-trash"></span>
             </button>
