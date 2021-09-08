@@ -62,6 +62,11 @@ namespace RulesEngineEditor.Pages
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
 
+            WorkflowService.OnWorkflowChange += Update;
+            await base.OnInitializedAsync();
+        }
+        protected override void OnParametersSet()
+        {
             if (Workflows != null)
             {
                 WorkflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
@@ -71,10 +76,6 @@ namespace RulesEngineEditor.Pages
             {
                 InputJSONUpdate();
             }
-            Update();
-
-            WorkflowService.OnWorkflowChange += Update;
-            await base.OnInitializedAsync();
         }
 
         public void Dispose()
@@ -120,7 +121,7 @@ namespace RulesEngineEditor.Pages
             WorkflowService.Update();
         }
 
-        private void Update()
+        public void Update()
         {
             DownloadFile();
             UpdateInputs();
@@ -315,7 +316,7 @@ namespace RulesEngineEditor.Pages
             {
                 inputJSONErrors = ex.Message;
             }
-            StateHasChanged();
+            //StateHasChanged();
         }
 
         public void DownloadInputs()

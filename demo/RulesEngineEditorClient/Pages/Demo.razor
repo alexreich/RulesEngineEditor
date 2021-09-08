@@ -1,0 +1,44 @@
+﻿@page "/demo"
+@using Newtonsoft.Json
+@using RulesEngine.Models
+@using RulesEngineEditor.Models
+@inject HttpClient Http
+
+<RulesEngineEditorPage @ref="ree" EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
+
+@code {
+    private RulesEngine.RulesEngine re;
+    private RulesEngineEditorPage ree;
+
+    private WorkflowRules[] _workflows;
+    private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
+
+    private string Inputs;
+
+    enum FooEnum
+    {
+        bar = 123
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var settings = new ReSettings
+        {
+            CustomTypes = new Type[] { typeof(FooEnum) }
+        };
+        re = new RulesEngine.RulesEngine(null, settings);
+
+        var file = await Http.GetAsync("sample-data/discount.json");
+        var fileData = await file.Content.ReadAsStringAsync();
+        var workflow = JsonConvert.DeserializeObject<List<WorkflowRules>>(fileData);
+        Workflows = workflow.ToArray();
+
+        file = await Http.GetAsync("sample-data/discountinputs.json");
+        Inputs = await file.Content.ReadAsStringAsync();
+
+        //Below appears to not be needed in .NET 6
+        Task.Run(() =>
+            ree.Update()
+        ).Wait(0);
+    }
+}
