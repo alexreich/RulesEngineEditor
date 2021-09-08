@@ -34,6 +34,10 @@ sp_grid_rules {
     grid-gap: 5px;
 }
 
+rules > *:not(sp_grid_rules) {
+    margin-left: 1em;
+}
+
 .sp_grid_main {
     grid-column: auto;
     display: inline-grid;

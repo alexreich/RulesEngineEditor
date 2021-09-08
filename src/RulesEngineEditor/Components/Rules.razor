@@ -4,7 +4,9 @@
 @if (rules != null)
 {
     <Dropzone Items="rules">
-        <RuleEditor rule="@context" RuleDelete="DeleteRule" />
+        <rules>
+            <RuleEditor rule="@context" RuleDelete="DeleteRule" />
+        </rules>
     </Dropzone>
 }
 @code {
