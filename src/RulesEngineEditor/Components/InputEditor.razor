@@ -1,5 +1,5 @@
 ﻿@using RulesEngineEditor.Models
-@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 @if (Input != null)
 {
@@ -50,12 +50,12 @@
     // Note: The OnFieldChanged event is raised for each field in the model
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        WorkflowState.Update();
+        WorkflowService.Update();
     }
 
     private void DeleteInputParam(InputParam inputParameter)
     {
         Input.Parameter.Remove(inputParameter);
-        WorkflowState.Update();
+        WorkflowService.Update();
     }
 }

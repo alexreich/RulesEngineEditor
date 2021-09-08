@@ -37,13 +37,24 @@ namespace RulesEngineEditor.Pages
         public RulesEngine.RulesEngine EditorRulesEngine { get { return _rulesEngine; } set { _rulesEngine = value; } }
 
         [Parameter]
-        public WorkflowRules[] Workflow { get; set; }
+        public WorkflowRules[] Workflows { get; set; }
 
         [Parameter]
-        public EventCallback<WorkflowRules[]> WorkflowChanged { get; set; }
+        public EventCallback<WorkflowRules[]> WorkflowsChanged { get; set; }
 
         [Parameter]
         public EventCallback<RulesEngine.RulesEngine> OnRulesEngineInitialize { get; set; }
+
+
+        string workflowJSONErrors;
+        string _workflowJSON;
+        string WorkflowJSON { get { return _workflowJSON; } set { _workflowJSON = value; WorkflowJSONChange(); } }
+
+        string inputJSONErrors;
+        string _inputJSON;
+        [Parameter]
+        public string InputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONUpdate(); } }
+
 
         protected override async Task OnInitializedAsync()
         {
@@ -56,38 +67,44 @@ namespace RulesEngineEditor.Pages
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
 
-            if (Workflow != null)
+            if (Workflows != null)
             {
-                workflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflow, jsonOptions);
-                Update();
+                WorkflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
             }
 
-            WorkflowState.OnWorkflowChange += Update;
+            if (InputJSON != "[]")
+            {
+                InputJSONUpdate();
+            }
+            Update();
+
+            WorkflowService.OnWorkflowChange += Update;
             await base.OnInitializedAsync();
         }
+
         public void Dispose()
         {
-            WorkflowState.OnWorkflowChange -= Update;
+            WorkflowService.OnWorkflowChange -= Update;
         }
 
         void DeleteWorkflow(WorkflowData workflow)
         {
-            WorkflowState.Workflows.Remove(workflow);
-            WorkflowState.Update();
+            WorkflowService.Workflows.Remove(workflow);
+            WorkflowService.Update();
         }
         void DeleteInput(Input input)
         {
-            WorkflowState.Inputs.Remove(input);
-            WorkflowState.Update();
+            WorkflowService.Inputs.Remove(input);
+            WorkflowService.Update();
         }
         void UpdateInputDelete(Input input)
         {
-            WorkflowState.Inputs.Remove(input);
+            WorkflowService.Inputs.Remove(input);
         }
         private void NewWorkflow()
         {
-            WorkflowState.Workflows = new List<WorkflowData>();
-            WorkflowState.Update();
+            WorkflowService.Workflows = new List<WorkflowData>();
+            WorkflowService.Update();
         }
 
         private void AddWorkflow()
@@ -95,7 +112,7 @@ namespace RulesEngineEditor.Pages
             WorkflowData workflow = new WorkflowData();
             workflow.GlobalParams = new List<ScopedParamData>();
             workflow.Rules = new List<RuleData>();
-            WorkflowState.Workflows.Insert(0, workflow);
+            WorkflowService.Workflows.Insert(0, workflow);
             StateHasChanged();
         }
 
@@ -104,8 +121,8 @@ namespace RulesEngineEditor.Pages
             Input input = new Input();
             input.Parameter = new List<InputParam>();
             input.Parameter.Add(new InputParam());
-            WorkflowState.Inputs.Insert(0, input);
-            WorkflowState.Update();
+            WorkflowService.Inputs.Insert(0, input);
+            WorkflowService.Update();
         }
 
         private void Update()
@@ -120,10 +137,10 @@ namespace RulesEngineEditor.Pages
         private void UpdateInputs()
         {
             inputJSONErrors = "";
-            List<NewInput> newInputs = new List<NewInput>();
-            WorkflowState.Inputs.ForEach(i =>
+            List<InputDict> newInputs = new List<InputDict>();
+            WorkflowService.Inputs.ForEach(i =>
             {
-                NewInput newInput = new NewInput();
+                InputDict newInput = new InputDict();
                 newInput.InputName = i.InputName;
                 newInput.Parameter = new Dictionary<string, object>();
                 foreach (var p in i.Parameter)
@@ -142,7 +159,7 @@ namespace RulesEngineEditor.Pages
 
             if (inputJSONErrors == "")
             {
-                inputJSON = System.Text.Json.JsonSerializer.Serialize(newInputs, jsonOptions);
+                InputJSON = System.Text.Json.JsonSerializer.Serialize(newInputs, jsonOptions);
             }
         }
 
@@ -152,17 +169,17 @@ namespace RulesEngineEditor.Pages
             {
                 var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
 
-                Workflow = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(workflowJSON, serializationOptions);
-                WorkflowChanged.InvokeAsync(Workflow);
+                Workflows = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, serializationOptions);
+                WorkflowsChanged.InvokeAsync(Workflows);
 
-                if (WorkflowState.RuleParameters.Length == 0) return;
+                if (WorkflowService.RuleParameters.Length == 0) return;
 
                 _rulesEngine.ClearWorkflows();
-                _rulesEngine.AddOrUpdateWorkflow(Workflow);
+                _rulesEngine.AddOrUpdateWorkflow(Workflows);
 
-                WorkflowState.Workflows.ForEach(workflow =>
+                WorkflowService.Workflows.ForEach(workflow =>
                 {
-                    List<RuleResultTree> resultList = _rulesEngine.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowState.RuleParameters).Result;
+                    List<RuleResultTree> resultList = _rulesEngine.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowService.RuleParameters).Result;
 
                     for (int i = 0; i < resultList.Count; i++)
                     {
@@ -195,20 +212,12 @@ namespace RulesEngineEditor.Pages
             this.StateHasChanged();
         }
 
-        string workflowJSONErrors;
-        string _workflowJSON;
-        string workflowJSON { get { return _workflowJSON; } set { _workflowJSON = value; WorkflowJSONChange(); } }
-
-        string inputJSONErrors;
-        string _inputJSON;
-        string inputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONUpdate(); } }
-
         private async void OnSubmit(InputFileChangeEventArgs files)
         {
 
             var selectedFile = files.File;
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
-            workflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
+            WorkflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
 
             WorkflowJSONChange();
         }
@@ -218,7 +227,7 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                WorkflowState.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(workflowJSON);
+                WorkflowService.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(WorkflowJSON);
             }
             catch (Exception ex)
             {
@@ -235,19 +244,19 @@ namespace RulesEngineEditor.Pages
         public void DownloadFile()
         {
             workflowJSONErrors = "";
-            var jsonString = System.Text.Json.JsonSerializer.Serialize(WorkflowState.Workflows, jsonOptions);
+            var jsonString = System.Text.Json.JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
             if (jsonString == "[]")
             {
                 return;
             }
-            workflowJSON = JsonNormalizer.Normalize(jsonString);
+            WorkflowJSON = JsonNormalizer.Normalize(jsonString);
 
             try
             {
-                var re = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(workflowJSON).ToArray());
+                var re = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(WorkflowJSON).ToArray());
 
                 DownloadAttributes = new Dictionary<string, object>();
-                DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + workflowJSON);
+                DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowJSON);
                 DownloadAttributes.Add("download", "RulesEngine.json");
             }
             catch (Exception ex)
@@ -259,10 +268,10 @@ namespace RulesEngineEditor.Pages
         {
             var selectedFile = files.File;
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
-            inputJSON = await sr.ReadToEndAsync();
+            InputJSON = await sr.ReadToEndAsync();
             InputJSONUpdate();
             ShowWorkflows = true;
-            WorkflowState.Update();
+            WorkflowService.Update();
         }
 
         private void InputJSONUpdate()
@@ -270,10 +279,10 @@ namespace RulesEngineEditor.Pages
             inputJSONErrors = "";
             try
             {
-                var inputs = JsonConvert.DeserializeObject<dynamic>(inputJSON);
+                var inputs = JsonConvert.DeserializeObject<dynamic>(InputJSON);
 
                 var converter = new ExpandoObjectConverter();
-                WorkflowState.Inputs = new List<Input>();
+                WorkflowService.Inputs = new List<Input>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var i in inputs)
@@ -302,10 +311,10 @@ namespace RulesEngineEditor.Pages
 
                         input.Parameter.Add(param);
                     }
-                    WorkflowState.Inputs.Add(input);
+                    WorkflowService.Inputs.Add(input);
                     ruleParameters.Add(new RuleParameter(key, values));
                 }
-                WorkflowState.RuleParameters = ruleParameters.ToArray();
+                WorkflowService.RuleParameters = ruleParameters.ToArray();
             }
             catch (Exception ex)
             {
@@ -316,7 +325,7 @@ namespace RulesEngineEditor.Pages
 
         public void DownloadInputs()
         {
-            var jsonString = System.Text.Json.JsonSerializer.Serialize(inputJSON, jsonOptions);
+            var jsonString = System.Text.Json.JsonSerializer.Serialize(InputJSON, jsonOptions);
 
             DownloadInputAttributes = new Dictionary<string, object>();
             DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(jsonString));

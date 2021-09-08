@@ -1,5 +1,5 @@
 ﻿@using RulesEngineEditor.Models
-@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 <EditForm EditContext="@EditContext">
     <DataAnnotationsValidator />
@@ -12,7 +12,7 @@
 </EditForm>
 @code {
 
-    private string Name {get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowState.Update(); } }
+    private string Name {get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowService.Update(); } }
 
     [Parameter]
     public WorkflowData workFlow { get; set; }

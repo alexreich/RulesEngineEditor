@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace RulesEngineEditor.Services
 {
-    public class WorkflowState
+    public class WorkflowService
     {
         public List<Input> Inputs { get; set; } = new List<Input>();
 

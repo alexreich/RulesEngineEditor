@@ -1,14 +1,18 @@
 ﻿@page "/"
+@using Newtonsoft.Json
 @using RulesEngine.Models
+@using RulesEngineEditor.Models
+@using System.IO
 
-@*<Workflows />*@
-<Workflows EditorRulesEngine="re" @bind-Workflow="Workflows" />
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
 
-@code{
+@code {
     private RulesEngine.RulesEngine re;
 
     private WorkflowRules[] _workflows;
     private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
+
+    private string Inputs;
 
     enum FooEnum
     {
@@ -23,25 +27,42 @@
         };
         re = new RulesEngine.RulesEngine(null, settings);
 
-        List<WorkflowRules> workFlowRules = new List<WorkflowRules>();
-        WorkflowRules workflowRule = new WorkflowRules();
-        workflowRule.WorkflowName = "Test Workflow Rule 1";
+#if BasicDemo
+    List<WorkflowRules> workFlowRules = new List<WorkflowRules>();
+    WorkflowRules workflowRule = new WorkflowRules();
+    workflowRule.WorkflowName = "Test Workflow Rule 1";
 
-        List<Rule> rules = new List<Rule>();
+    List<Rule> rules = new List<Rule>();
 
-        Rule rule = new Rule();
-        rule.RuleName = "Test Rule";
-        rule.SuccessEvent = "Count is within tolerance.";
-        rule.ErrorMessage = "Over expected.";
-        rule.Expression = "count < 3";
-        rule.RuleExpressionType = RuleExpressionType.LambdaExpression;
+    Rule rule = new Rule();
+    rule.RuleName = "Test Rule";
+    rule.SuccessEvent = "Count is within tolerance.";
+    rule.ErrorMessage = "Over expected.";
+    rule.Expression = "count < 3";
+    rule.RuleExpressionType = RuleExpressionType.LambdaExpression;
 
-        rules.Add(rule);
+    rules.Add(rule);
 
-        workflowRule.Rules = rules;
+    workflowRule.Rules = rules;
 
-        workFlowRules.Add(workflowRule);
+    workFlowRules.Add(workflowRule);
 
-        Workflows = workFlowRules.ToArray();
+    Workflows = workFlowRules.ToArray();
+#endif
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
+        var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
+        if (files == null || files.Length == 0)
+            throw new Exception("Rules not found.");
+
+        var fileData = File.ReadAllText(files[0]);
+        var workflow = JsonConvert.DeserializeObject<List<WorkflowRules>>(fileData);
+
+        files = Directory.GetFiles(path, "DiscountInputs.json", SearchOption.AllDirectories);
+        if (files == null || files.Length == 0)
+            throw new Exception("Inputs not found.");
+
+        Workflows = workflow.ToArray();
+        Inputs = File.ReadAllText(files[0]);
     }
 }

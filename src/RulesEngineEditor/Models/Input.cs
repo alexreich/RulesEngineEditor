@@ -8,7 +8,7 @@ namespace RulesEngineEditor.Models
         public List<InputParam> Parameter { get; set; }
     }
 
-    public class NewInput
+    public class InputDict
     {
         public string InputName { get; set; }
         public Dictionary<string, object> Parameter { get; set; }

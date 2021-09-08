@@ -33,7 +33,7 @@ namespace RulesEngineEditorServer
             services.AddSingleton<WeatherForecastService>();
 
             services.AddBlazorDragDrop();
-            services.AddSingleton(new RulesEngineEditor.Services.WorkflowState());
+            services.AddSingleton(new RulesEngineEditor.Services.WorkflowService());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

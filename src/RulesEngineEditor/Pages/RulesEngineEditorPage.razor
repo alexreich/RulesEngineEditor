@@ -2,7 +2,7 @@
 @using RulesEngineEditor.Models
 @using RulesEngineEditor.Components 
 @inject NavigationManager NavigationManager
-@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
 @implements IDisposable
 
 <sp_grid_tabs>
@@ -25,16 +25,16 @@
 
     <button class="reeditor_button" @onclick="AddWorkflow">Add</button>
 </div>
-@if (WorkflowState.Workflows.Count > 0)
+@if (WorkflowService.Workflows.Count > 0)
 {
     @if (ShowWorkflows)
     {
         <div class="sp_grid_main">
             <div>
-                <Dropzone Items="WorkflowState.Workflows" Class="reeditor_dragdrop">
+                <Dropzone Items="WorkflowService.Workflows" Class="reeditor_dragdrop">
                     <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
                     <h5>Rules</h5>
-                    <button class="reeditor_button" @onclick="(() => WorkflowState.NewRule(context))">New</button>
+                    <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
 
                     <Rules rules=context.Rules RulesChanged="Update" />
                     <h5>Global Params</h5>
@@ -46,7 +46,7 @@
             </div>
             <div>
                 <span class="JSONErrors">@workflowJSONErrors</span>
-                <textarea @bind="workflowJSON" class="jsonTextArea" />
+                <textarea @bind="WorkflowJSON" class="jsonTextArea" />
             </div>
         </div>
     }
@@ -54,17 +54,17 @@
     {
         <button title="New Input" class="reeditor_button" @onclick="NewInput">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
         <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
-        @if (WorkflowState.Inputs.Count > 0)
+        @if (WorkflowService.Inputs.Count > 0)
         {
             <div class="sp_grid_main">
                 <div>
-                    <Dropzone Items="WorkflowState.Inputs" Class="reeditor_dragdrop">
+                    <Dropzone Items="WorkflowService.Inputs" Class="reeditor_dragdrop">
                         <InputEditor Input=@context InputDeleted="DeleteInput" />
                     </Dropzone>
                 </div>
                 <div>
                     <span class="JSONErrors">@inputJSONErrors</span>
-                    <textarea @bind="inputJSON" class="jsonTextArea" />
+                    <textarea @bind="InputJSON" class="jsonTextArea" />
                 </div>
             </div>
         }

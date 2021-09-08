@@ -1,5 +1,5 @@
 ﻿@using RulesEngineEditor.Models
-@inject RulesEngineEditor.Services.WorkflowState WorkflowState
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 <div class="rules">
     <sp_grid_rules>
@@ -52,12 +52,12 @@
         <h5>Local Params</h5>
         <div>
             <button class="reeditor_button" title="New Local Param" @onclick="NewLocalParam">Add</button>
-            <ScopedParams scopedParams=rule.LocalParams ScopedParamsChanged="WorkflowState.Update" />
+            <ScopedParams scopedParams=rule.LocalParams ScopedParamsChanged="WorkflowService.Update" />
         </div>
         <h5>Rules</h5>
         <div>
-            <button class="reeditor_button" title="New Rule" @onclick="(() => WorkflowState.NewRule(rule))">Add</button>
-            <Rules rules=rule.Rules RulesChanged="WorkflowState.Update" />
+            <button class="reeditor_button" title="New Rule" @onclick="(() => WorkflowService.NewRule(rule))">Add</button>
+            <Rules rules=rule.Rules RulesChanged="WorkflowService.Update" />
         </div>
     </EditForm>
 </div>
@@ -100,7 +100,7 @@
 
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        WorkflowState.Update();
+        WorkflowService.Update();
     }
     private Task OnValueChanged(string value)
     {
