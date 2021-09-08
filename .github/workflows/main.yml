@@ -22,7 +22,7 @@ jobs:
       run: dotnet publish demo/RulesEngineEditorClient/RulesEngineEditorClient.csproj -c Release -o release --nologo
       
     # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
+    - name: Change base-tag in index.html from / to RulesEngineEditor_WIP
       run: sed -i 's/<base href="\/" \/>/<base href="\/RulesEngineEditor_WIP\/" \/>/g' release/wwwroot/index.html
       
     # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)

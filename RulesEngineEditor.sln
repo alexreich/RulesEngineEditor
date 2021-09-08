@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditorServer", "demo\RulesEngineEditorServer\RulesEngineEditorServer.csproj", "{95A0E8B3-4F62-48B2-BDC8-C5EDCA513639}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F9C5D7A-25C3-423A-B1F2-0B62051B582A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{5A2BEF0B-F535-402B-878C-669A3E09406B}"
 	ProjectSection(SolutionItems) = preProject
