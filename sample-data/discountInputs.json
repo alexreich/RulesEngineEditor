@@ -1,0 +1,27 @@
+[
+  {
+    "InputName": "input1",
+    "Parameter": {
+      "name": "hello",
+      "email": "abcy@xyz.com",
+      "creditHistory": "good",
+      "country": "canada",
+      "loyalityFactor": 3,
+      "totalPurchasesToDate": 10000
+    }
+  },
+  {
+    "InputName": "input2",
+    "Parameter": {
+      "totalOrders": 5,
+      "recurringItems": 2
+    }
+  },
+  {
+    "InputName": "input3",
+    "Parameter": {
+      "noOfVisitsPerMonth": 10,
+      "percentageOfBuyingToVisit": 15
+    }
+  }
+]
