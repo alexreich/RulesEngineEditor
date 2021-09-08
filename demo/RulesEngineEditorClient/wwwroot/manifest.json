@@ -1,10 +1,11 @@
 {
-  "name": "RulesEngineEditorClient",
-  "short_name": "RulesEngineEditorClient",
+  "name": "Rules Engine Editor",
+  "short_name": "RulesEngineEditor",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#03173d",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icon-512.png",
