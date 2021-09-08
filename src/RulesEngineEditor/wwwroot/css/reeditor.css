@@ -1,6 +1,8 @@
 .reeditor_dragdrop {
     border: 1px solid black;
     padding: 2px;
+    padding: 5px;
+    grid-gap: 5px;
 }
 
 sp_grid_scopedparam {
@@ -9,6 +11,8 @@ sp_grid_scopedparam {
     grid-template-columns: 30% 60% 10%;
     border: 3px dotted gray;
     width: 100%;
+    padding: 5px;
+    grid-gap: 5px;
 }
 
 sp_grid_inputparameter {
@@ -16,6 +20,8 @@ sp_grid_inputparameter {
     display: inline-grid;
     grid-template-columns: 30% 60% 10%;
     width: 100%;
+    padding: 5px;
+    grid-gap: 5px;
 }
 
 sp_grid_rules {
@@ -24,6 +30,8 @@ sp_grid_rules {
     grid-template-columns: 20% 10% 10% 10% 35% 5% 10%;
     /*border: 2px dotted gray;*/
     width: 100%;
+    padding: 5px;
+    grid-gap: 5px;
 }
 
 .sp_grid_main {
@@ -31,11 +39,15 @@ sp_grid_rules {
     display: inline-grid;
     grid-template-columns: 70% 30%;
     width: 100%;
+    padding: 5px;
+    grid-gap: 5px;
 }
 
 .rules {
+    padding: 5px;
     border: 2px dashed gray;
     padding: 2px;
+    grid-gap: 5px;
 }
 
 /* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
