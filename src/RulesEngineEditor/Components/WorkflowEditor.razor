@@ -12,7 +12,7 @@
 </EditForm>
 @code {
 
-    private string Name {get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowService.Update(); } }
+    private string Name {get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowService.WorkflowUpdate(); } }
 
     [Parameter]
     public WorkflowData workFlow { get; set; }

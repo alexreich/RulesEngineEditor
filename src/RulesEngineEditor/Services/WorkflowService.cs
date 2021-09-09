@@ -8,14 +8,18 @@ namespace RulesEngineEditor.Services
     public class WorkflowService
     {
         public List<Input> Inputs { get; set; } = new List<Input>();
-
         public RuleParameter[] RuleParameters { get; set; } = new RuleParameter[0];
-
         public List<WorkflowData> Workflows { get; set; } = new List<WorkflowData>();
 
+        public event Action OnInputChange;
         public event Action OnWorkflowChange;
 
-        public void Update()
+        public void InputUpdate()
+        {
+            OnInputChange.Invoke();
+        }
+
+        public void WorkflowUpdate()
         {
             OnWorkflowChange.Invoke();
         }
@@ -33,7 +37,7 @@ namespace RulesEngineEditor.Services
                 ruleParent.Operator = "And";
             }
             ruleParent.Rules.Insert(0, rule);
-            Update();
+            WorkflowUpdate();
         }
     }
 }

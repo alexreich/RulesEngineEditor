@@ -50,12 +50,12 @@
     // Note: The OnFieldChanged event is raised for each field in the model
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        WorkflowService.Update();
+        WorkflowService.InputUpdate();
     }
 
     private void DeleteInputParam(InputParam inputParameter)
     {
         Input.Parameter.Remove(inputParameter);
-        WorkflowService.Update();
+        WorkflowService.WorkflowUpdate();
     }
 }

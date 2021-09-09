@@ -36,12 +36,12 @@
                     <h5>Rules</h5>
                     <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
 
-                    <Rules rules=context.Rules RulesChanged="Update" />
+                    <Rules rules=context.Rules RulesChanged="WorkflowUpdate" />
                     <h5>Global Params</h5>
                     <div>
                         <button class="reeditor_button" @onclick="(e => { context.GlobalParams.Insert(0, new ScopedParamData()); StateHasChanged(); })">New</button>
                     </div>
-                    <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="Update" />
+                    <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="WorkflowUpdate" />
                 </Dropzone>
             </div>
             <div>
