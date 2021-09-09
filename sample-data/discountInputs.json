@@ -6,7 +6,7 @@
       "email": "abcy@xyz.com",
       "creditHistory": "good",
       "country": "canada",
-      "loyalityFactor": 3,
+      "loyaltyFactor": 3,
       "totalPurchasesToDate": 10000
     }
   },

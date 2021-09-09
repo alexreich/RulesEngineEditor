@@ -69,11 +69,11 @@
       "url": "manifest.json"
     },
     {
-      "hash": "sha256-MrxedvKp5nxaF16AINhSzCQBMfCe34\/9ErXaAHR25yg=",
+      "hash": "sha256-N2Fn\/emh4DFjArpxITozmmvcqgH6srPjSW8hNKwgAOI=",
       "url": "sample-data\/discount.json"
     },
     {
-      "hash": "sha256-wBjPTMbI8lDBDNki2a\/\/yTI2JnoMduQuDlF0i3I9HpI=",
+      "hash": "sha256-80GunKBOvnoFKKlD2lfpiPVvCuJkSRvvQ9UoZOeOUW0=",
       "url": "sample-data\/discountInputs.json"
     },
     {
@@ -377,5 +377,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "oWiTYUaO"
+  "version": "uVKX4KZJ"
 };
