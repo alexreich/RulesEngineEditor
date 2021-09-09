@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Plk.Blazor.DragDrop;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using RulesEngineEditor.Services;
 
 namespace RulesEngineEditorWebAssembly
 {
@@ -21,7 +21,7 @@ namespace RulesEngineEditorWebAssembly
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             builder.Services.AddBlazorDragDrop();
-            builder.Services.AddSingleton(new RulesEngineEditor.Services.WorkflowService());
+            builder.Services.AddSingleton(new WorkflowService());
 
             await builder.Build().RunAsync();
         }

@@ -10,8 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-using Plk.Blazor.DragDrop;
+using RulesEngineEditor.Services;
 
 namespace RulesEngineEditorServer
 {
@@ -33,7 +32,7 @@ namespace RulesEngineEditorServer
             services.AddSingleton<WeatherForecastService>();
 
             services.AddBlazorDragDrop();
-            services.AddSingleton(new RulesEngineEditor.Services.WorkflowService());
+            services.AddSingleton(new WorkflowService());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
