@@ -85,7 +85,7 @@ namespace RulesEngineEditor.Pages
             WorkflowService.OnWorkflowChange -= WorkflowUpdate;
         }
 
-        void DeleteWorkflow(WorkflowData workflow)
+        private void DeleteWorkflow(WorkflowData workflow)
         {
             WorkflowService.Workflows.Remove(workflow);
             WorkflowService.WorkflowUpdate();
@@ -123,7 +123,7 @@ namespace RulesEngineEditor.Pages
             WorkflowService.WorkflowUpdate();
         }
 
-        public void WorkflowUpdate()
+        private void WorkflowUpdate()
         {
             DownloadFile();
             UpdateInputs();
@@ -132,7 +132,7 @@ namespace RulesEngineEditor.Pages
             StateHasChanged();
         }
 
-        public void InputUpdate()
+        private void InputUpdate()
         {
             UpdateInputs();
             DownloadInputs();
@@ -237,7 +237,7 @@ namespace RulesEngineEditor.Pages
             StateHasChanged();
         }
 
-        public void DownloadFile()
+        private void DownloadFile()
         {
             workflowJSONErrors = "";
             var jsonString = System.Text.Json.JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
@@ -318,7 +318,7 @@ namespace RulesEngineEditor.Pages
             }
         }
 
-        public void DownloadInputs()
+        private void DownloadInputs()
         {
             var jsonString = System.Text.Json.JsonSerializer.Serialize(InputJSON, jsonOptions);
 

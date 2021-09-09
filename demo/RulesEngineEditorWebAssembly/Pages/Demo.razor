@@ -35,10 +35,5 @@
 
         file = await Http.GetAsync("sample-data/discountInputs.json");
         Inputs = await file.Content.ReadAsStringAsync();
-
-        //Below appears to not be needed in .NET 6
-        Task.Run(() =>
-            ree.WorkflowUpdate()
-        ).Wait(0);
     }
 }
