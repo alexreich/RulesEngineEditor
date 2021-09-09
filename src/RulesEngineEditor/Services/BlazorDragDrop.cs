@@ -10,6 +10,11 @@ namespace RulesEngineEditor.Services
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddBlazorDragDrop(this IServiceCollection services) => Plk.Blazor.DragDrop.ServiceCollectionExtensions.AddBlazorDragDrop(services);
+        public static IServiceCollection AddRulesEngineEditor(this IServiceCollection services)
+        {
+            Plk.Blazor.DragDrop.ServiceCollectionExtensions.AddBlazorDragDrop(services);
+            services.AddSingleton(new WorkflowService());
+            return services;
+        }
     }
 }

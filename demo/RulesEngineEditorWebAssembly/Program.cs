@@ -20,8 +20,7 @@ namespace RulesEngineEditorWebAssembly
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddBlazorDragDrop();
-            builder.Services.AddSingleton(new WorkflowService());
+            builder.Services.AddRulesEngineEditor();
 
             await builder.Build().RunAsync();
         }
