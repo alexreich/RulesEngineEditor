@@ -4,11 +4,10 @@
 @using RulesEngineEditor.Models
 @inject HttpClient Http
 
-<RulesEngineEditorPage @ref="ree" EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
 
 @code {
     private RulesEngine.RulesEngine re;
-    private RulesEngineEditorPage ree;
 
     private WorkflowRules[] _workflows;
     private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
