@@ -11,7 +11,7 @@
         <ValidationSummary />
         <sp_grid_workflow>
             <div>
-                <InputText title="Name" class="form-control" @bind-Value="@Input.InputName" />
+                <InputText title="Name" class="form-control" @bind-Value="@Input.InputRule" />
             </div>
         </sp_grid_workflow>
         <h5>Parameters</h5>
@@ -27,10 +27,10 @@
 }
 @code {
     [Parameter]
-    public Input Input { get; set; }
+    public InputRuleParameter Input { get; set; }
 
     [Parameter]
-    public EventCallback<Input> InputDeleted { get; set; }
+    public EventCallback<InputRuleParameter> InputDeleted { get; set; }
 
     private EditContext EditContext;
 

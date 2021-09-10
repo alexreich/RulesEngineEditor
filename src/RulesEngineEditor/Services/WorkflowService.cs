@@ -7,7 +7,7 @@ namespace RulesEngineEditor.Services
 {
     public class WorkflowService
     {
-        public List<Input> Inputs { get; set; } = new List<Input>();
+        public List<InputRuleParameter> Inputs { get; set; } = new List<InputRuleParameter>();
         public RuleParameter[] RuleParameters { get; set; } = new RuleParameter[0];
         public List<WorkflowData> Workflows { get; set; } = new List<WorkflowData>();
 

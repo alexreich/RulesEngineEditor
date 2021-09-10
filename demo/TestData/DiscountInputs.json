@@ -1,6 +1,6 @@
 [
   {
-    "InputName": "input1",
+    "InputRule": "input1",
     "Parameter": {
       "name": "hello",
       "email": "abcy@xyz.com",
@@ -11,14 +11,14 @@
     }
   },
   {
-    "InputName": "input2",
+    "InputRule": "input2",
     "Parameter": {
       "totalOrders": 5,
       "recurringItems": 2
     }
   },
   {
-    "InputName": "input3",
+    "InputRule": "input3",
     "Parameter": {
       "noOfVisitsPerMonth": 10,
       "percentageOfBuyingToVisit": 15

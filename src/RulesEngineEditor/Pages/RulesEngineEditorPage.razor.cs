@@ -90,12 +90,12 @@ namespace RulesEngineEditor.Pages
             WorkflowService.Workflows.Remove(workflow);
             WorkflowService.WorkflowUpdate();
         }
-        void DeleteInput(Input input)
+        void DeleteInput(InputRuleParameter input)
         {
             WorkflowService.Inputs.Remove(input);
             WorkflowService.WorkflowUpdate();
         }
-        void UpdateInputDelete(Input input)
+        void UpdateInputDelete(InputRuleParameter input)
         {
             WorkflowService.Inputs.Remove(input);
         }
@@ -116,7 +116,7 @@ namespace RulesEngineEditor.Pages
 
         private void NewInput()
         {
-            Input input = new Input();
+            InputRuleParameter input = new InputRuleParameter();
             input.Parameter = new List<InputParam>();
             input.Parameter.Add(new InputParam());
             WorkflowService.Inputs.Insert(0, input);
@@ -143,11 +143,11 @@ namespace RulesEngineEditor.Pages
         private void UpdateInputs()
         {
             inputJSONErrors = "";
-            List<InputDict> newInputs = new List<InputDict>();
+            List<InputRuleParameterDictionary> newInputs = new List<InputRuleParameterDictionary>();
             WorkflowService.Inputs.ForEach(i =>
             {
-                InputDict newInput = new InputDict();
-                newInput.InputName = i.InputName;
+                InputRuleParameterDictionary newInput = new InputRuleParameterDictionary();
+                newInput.InputRule = i.InputRule;
                 newInput.Parameter = new Dictionary<string, object>();
                 foreach (var p in i.Parameter)
                 {
@@ -278,16 +278,16 @@ namespace RulesEngineEditor.Pages
                 var inputs = JsonConvert.DeserializeObject<dynamic>(InputJSON);
 
                 var converter = new ExpandoObjectConverter();
-                WorkflowService.Inputs = new List<Input>();
+                WorkflowService.Inputs = new List<InputRuleParameter>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var i in inputs)
                 {
-                    var key = Convert.ToString(i.InputName);
+                    var key = Convert.ToString(i.InputRule);
                     var value = Convert.ToString(i.Parameter);
 
-                    Input input = new Input();
-                    input.InputName = key;
+                    InputRuleParameter input = new InputRuleParameter();
+                    input.InputRule = key;
                     input.Parameter = new List<InputParam>();
 
                     var values = JsonConvert.DeserializeObject<ExpandoObject>(value, converter);

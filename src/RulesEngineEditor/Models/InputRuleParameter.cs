@@ -2,15 +2,15 @@
 
 namespace RulesEngineEditor.Models
 {
-    public class Input
+    public class InputRuleParameter
     {
-        public string InputName { get; set; }
+        public string InputRule { get; set; }
         public List<InputParam> Parameter { get; set; }
     }
 
-    public class InputDict
+    public class InputRuleParameterDictionary
     {
-        public string InputName { get; set; }
+        public string InputRule { get; set; }
         public Dictionary<string, object> Parameter { get; set; }
     }
 }
