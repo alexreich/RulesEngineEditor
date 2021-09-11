@@ -1,9 +1,9 @@
 # RulesEngineEditor
-![RulesEngineEditor](content\RulesEngineEditor.svg)
+![RulesEngineEditor](content/RulesEngineEditor.svg)
 Editor for Microsoft RulesEngine - Blazor UI library intended for integration in Web or Desktop  
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
-![Animation of Rules Engine Editor Demo](content\RulesEngineEditor.gif)
+![Animation of Rules Engine Editor Demo](content/RulesEngineEditor.gif)
 
 #### Demo
 
@@ -40,7 +40,7 @@ Complex:
 
 #### Install
 
-[![NuGet](content\nuget-RulesEngineEditor-blue.svg)](https://www.nuget.org/packages/RulesEngineEditor/)
+[![NuGet](content/nuget-RulesEngineEditor-blue.svg)](https://www.nuget.org/packages/RulesEngineEditor/)
 
 #### Blazor WebAssembly / Client-side Blazor
 
