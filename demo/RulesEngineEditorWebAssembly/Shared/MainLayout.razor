@@ -5,14 +5,12 @@
         <NavMenu />
     </div>
     <div class="main">
-        <div class="top-row navbar-light bg-light">
+        <div class="top-row navbar navbar-light bg-light">
             <div class="container-fluid">
+                <button class="navbar-toggler" hidden="@(!collapseNavMenu)" @onclick="ToggleNavMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <a class="navbar-brand" href="">RulesEngineEditor</a>
-                <div class="float-left">
-                    <button class="navbar-toggler" hidden="@(!collapseNavMenu)" @onclick="ToggleNavMenu">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
                 <div class="float-right">
                     <a href="/demo">Demo (sample data)</a>
                     &nbsp;
