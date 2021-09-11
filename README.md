@@ -26,6 +26,7 @@ https://alexreich.github.io/RulesEngineEditor/demo
   * Pass pre-constructed instance of Rules Engine
   * Supports 2-way binding of Workflows
   * "Starter" Input Rule Parameter JSON
+* Allows for non-supported types in JSON
 
 #### Usage:
 Simple:  
@@ -75,6 +76,11 @@ Either add the css included to your `site.css` or inside the `<head>` element of
 <link href="_content/RulesEngineEditor/css/reeditor.css" rel="stylesheet" />
 <link href="_content/RulesEngineEditor/css/dragdrop.css" rel="stylesheet" />
 ```
+
+#### What's Next
+* Support for more types (ActionInfo, RuleActions, etc.)
+* Synchronization with next release of Microsoft Rules Engine
+* Support for .NET 6
 ***
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
