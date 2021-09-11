@@ -1,0 +1,41 @@
+﻿@layout EmptyLayout
+@page "/Standalone"
+@using Newtonsoft.Json
+@using RulesEngine.Models
+@using RulesEngineEditor.Models
+@using System.IO
+
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" />
+
+@code {
+    private RulesEngine.RulesEngine re;
+
+    private WorkflowRules[] _workflows;
+    private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
+
+    private string Inputs;
+
+    enum FooEnum
+    {
+        bar = 123
+    }
+
+    protected override void OnInitialized()
+    {
+        var settings = new ReSettings
+        {
+            CustomTypes = new Type[] { typeof(FooEnum) }
+        };
+        re = new RulesEngine.RulesEngine(null, settings);
+
+        var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
+        var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
+        if (files == null || files.Length == 0)
+            throw new Exception("Rules not found.");
+
+        var fileData = File.ReadAllText(files[0]);
+        var workflow = JsonConvert.DeserializeObject<List<WorkflowRules>>(fileData);
+
+        Workflows = workflow.ToArray();
+    }
+}
