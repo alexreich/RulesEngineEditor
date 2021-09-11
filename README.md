@@ -1,6 +1,6 @@
-# RulesEngineEditor
+# Rules Engine Editor
 ![RulesEngineEditor](content/RulesEngineEditor.svg)
-Editor for Microsoft RulesEngine - Blazor UI library intended for integration in Web or Desktop  
+Editor for Microsoft Rules Engine - Blazor UI library intended for integration in Web or Desktop  
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
 ![Animation of Rules Engine Editor Demo](content/RulesEngineEditor.gif)
