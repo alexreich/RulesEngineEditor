@@ -1,14 +1,14 @@
 name: Deploy to GitHub Pages
-# Run workflow on every push to the master branch
+# Run workflow on every push to the main branch
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
     steps:
-     # uses GitHub's checkout action to checkout code form the master branch
+     # uses GitHub's checkout action to checkout code form the main branch
     - uses: actions/checkout@v2
     
      # sets up .NET Core SDK 3.1
