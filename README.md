@@ -1,9 +1,9 @@
 # RulesEngineEditor
-![RulesEngineEditor](RulesEngineEditor.svg)
+![RulesEngineEditor](content\RulesEngineEditor.svg)
 Editor for Microsoft RulesEngine - Blazor UI library intended for integration in Web or Desktop  
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
-![Animation of Rules Engine Editor Demo](RulesEngineEditor.gif)
+![Animation of Rules Engine Editor Demo](content\RulesEngineEditor.gif)
 
 #### Demo
 
@@ -23,7 +23,7 @@ https://alexreich.github.io/RulesEngineEditor/demo
 * Import, Download [compliant Workflow json](https://github.com/microsoft/RulesEngine/blob/main/schema/workflowRules-schema.json)
 * Import, Download [Input Rule Parameters](https://github.com/microsoft/RulesEngine/wiki/Getting-Started#ruleparameter)
 * Design Time Support:
-  * Inject pre-constructed instance of Rules Engine
+  * Pass pre-constructed instance of Rules Engine
   * Supports 2-way binding of Workflows
   * "Starter" Input Rule Parameter JSON
 
@@ -39,7 +39,7 @@ Complex:
 
 #### Install
 
-[![NuGet](nuget-RulesEngineEditor-blue.svg)](https://www.nuget.org/packages/RulesEngineEditor/)
+[![NuGet](content\nuget-RulesEngineEditor-blue.svg)](https://www.nuget.org/packages/RulesEngineEditor/)
 
 #### Blazor WebAssembly / Client-side Blazor
 
