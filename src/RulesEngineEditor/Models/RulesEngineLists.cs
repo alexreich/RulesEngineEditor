@@ -23,6 +23,9 @@ namespace RulesEngineEditor.Models
         [JsonIgnore]
         public string ExceptionMessage { get; set; }
     }
+    /// <summary>
+    /// ScopedParamData - inherited class so continue naming convention / future functionality
+    /// </summary>
     public class ScopedParamData : ScopedParam
     {
 

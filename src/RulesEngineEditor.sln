@@ -1,26 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31613.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditor", "src\RulesEngineEditor\RulesEngineEditor.csproj", "{9005B47C-DDEC-4CD4-AAED-686F55421657}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditor", "RulesEngineEditor\RulesEngineEditor.csproj", "{9005B47C-DDEC-4CD4-AAED-686F55421657}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditorServer", "demo\RulesEngineEditorServer\RulesEngineEditorServer.csproj", "{95A0E8B3-4F62-48B2-BDC8-C5EDCA513639}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditorServer", "..\demo\RulesEngineEditorServer\RulesEngineEditorServer.csproj", "{95A0E8B3-4F62-48B2-BDC8-C5EDCA513639}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F9C5D7A-25C3-423A-B1F2-0B62051B582A}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
-		.github\workflows\main.yml = .github\workflows\main.yml
-		README.md = README.md
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{5A2BEF0B-F535-402B-878C-669A3E09406B}"
-	ProjectSection(SolutionItems) = preProject
-		demo\TestData\Discount.json = demo\TestData\Discount.json
-		demo\TestData\DiscountInputs.json = demo\TestData\DiscountInputs.json
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditorWebAssembly", "demo\RulesEngineEditorWebAssembly\RulesEngineEditorWebAssembly.csproj", "{F886D783-7358-47FE-9AE3-FE545440CE46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RulesEngineEditorWebAssembly", "..\demo\RulesEngineEditorWebAssembly\RulesEngineEditorWebAssembly.csproj", "{F886D783-7358-47FE-9AE3-FE545440CE46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,9 +36,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5A2BEF0B-F535-402B-878C-669A3E09406B} = {0F9C5D7A-25C3-423A-B1F2-0B62051B582A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {496AC40F-DB40-4BB1-A467-83F3F4303233}

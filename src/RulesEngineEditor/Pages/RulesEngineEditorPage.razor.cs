@@ -72,11 +72,6 @@ namespace RulesEngineEditor.Pages
             {
                 WorkflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
             }
-
-            //if (InputJSON != "[]")
-            //{
-            //    InputJSONUpdate();
-            //}
         }
 
         public void Dispose()
@@ -117,8 +112,8 @@ namespace RulesEngineEditor.Pages
         private void NewInput()
         {
             InputRuleParameter input = new InputRuleParameter();
-            input.Parameter = new List<InputParam>();
-            input.Parameter.Add(new InputParam());
+            input.Parameter = new List<InputParameter>();
+            input.Parameter.Add(new InputParameter());
             WorkflowService.Inputs.Insert(0, input);
             WorkflowService.WorkflowUpdate();
         }
@@ -208,7 +203,6 @@ namespace RulesEngineEditor.Pages
             catch (Exception ex)
             {
                 workflowJSONErrors = ex.Message;
-                //inputJSONErrors = ex.Message;
             }
             StateHasChanged();
         }
@@ -288,13 +282,13 @@ namespace RulesEngineEditor.Pages
 
                     InputRuleParameter input = new InputRuleParameter();
                     input.InputRule = key;
-                    input.Parameter = new List<InputParam>();
+                    input.Parameter = new List<InputParameter>();
 
                     var values = JsonConvert.DeserializeObject<ExpandoObject>(value, converter);
 
                     foreach (KeyValuePair<string, object> v in values)
                     {
-                        InputParam param = new InputParam();
+                        InputParameter param = new InputParameter();
                         param.Name = v.Key;
                         if (v.Value is string)
                         {

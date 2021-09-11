@@ -2,12 +2,18 @@
 
 namespace RulesEngineEditor.Models
 {
+    /// <summary>
+    /// InputRuleParameter - Collection of InputParameters used in UI
+    /// </summary>
     public class InputRuleParameter
     {
         public string InputRule { get; set; }
-        public List<InputParam> Parameter { get; set; }
+        public List<InputParameter> Parameter { get; set; }
     }
 
+    /// <summary>
+    /// InputRuleParameterDictionary - Used for Rules Engine as strings are evaled as primatives
+    /// </summary>
     public class InputRuleParameterDictionary
     {
         public string InputRule { get; set; }

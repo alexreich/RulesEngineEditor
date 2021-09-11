@@ -15,7 +15,7 @@
             </div>
         </sp_grid_workflow>
         <h5>Parameters</h5>
-        <button class="reeditor_button" title="Add Input Parameter" @onclick="(() => Input.Parameter.Insert(0, new InputParam()))">Add</button>
+        <button class="reeditor_button" title="Add Input Parameter" @onclick="(() => Input.Parameter.Insert(0, new InputParameter()))">Add</button>
         <sp_grid_kvp>
             <div>Input Param Name</div>
             <div>Value</div>
@@ -53,7 +53,7 @@
         WorkflowService.InputUpdate();
     }
 
-    private void DeleteInputParam(InputParam inputParameter)
+    private void DeleteInputParam(InputParameter inputParameter)
     {
         Input.Parameter.Remove(inputParameter);
         WorkflowService.WorkflowUpdate();
