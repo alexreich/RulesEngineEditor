@@ -5,6 +5,14 @@
       "url": "404.html"
     },
     {
+      "hash": "sha256-j0MrLBg0l012jzBDiaMQIkJ53gMdoYPgzL1EbGfxc9c=",
+      "url": "content\/nuget-RulesEngineEditor-blue.svg"
+    },
+    {
+      "hash": "sha256-GZ489j6RR7Et1U+nTiXKSc8lXjcpTDmYbaX8sjxKjrg=",
+      "url": "content\/RulesEngineEditor.svg"
+    },
+    {
       "hash": "sha256-SO\/fuIIWUxoIu1OABrOpK5n\/AvzxJcg+0H3PT1eutAE=",
       "url": "css\/app.css"
     },
@@ -73,7 +81,7 @@
       "url": "sample-data\/discount.json"
     },
     {
-      "hash": "sha256-80GunKBOvnoFKKlD2lfpiPVvCuJkSRvvQ9UoZOeOUW0=",
+      "hash": "sha256-opSeykE1kF6zGBlwAj5q81S7UYRSSRoDu6xT8f5znr4=",
       "url": "sample-data\/discountInputs.json"
     },
     {
@@ -221,7 +229,7 @@
       "url": "_framework\/RulesEngineEditor.dll"
     },
     {
-      "hash": "sha256-\/nD4nrNvJsnoK3jquEDH9fXRMcmfM7IWrDYGLBByom8=",
+      "hash": "sha256-m9Mz2BQNfq4sSuKGKpIDeeXSkkjjVdKwwO173LKt8BI=",
       "url": "_framework\/RulesEngineEditorWebAssembly.dll"
     },
     {
@@ -373,7 +381,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-47L35Znmg2t23IcX7m9XjcDzBgKstUlN81MmrPQxKEY=",
+      "hash": "sha256-Imv0YG+YmKHVZuu7Z69kkEZZzHKHcy68t5WGwU8yUgI=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -381,5 +389,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "cu8COp8D"
+  "version": "BfUPDt6E"
 };
