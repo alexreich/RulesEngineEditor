@@ -1,17 +1,34 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    @*<div class="sidebar">
+    <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
         <NavMenu />
-    </div>*@
-
+    </div>
     <div class="main">
-        @*<div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+        <div class="top-row navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">RulesEngineEditor</a>
+                <div class="float-left">
+                    <button class="navbar-toggler" hidden="@(!collapseNavMenu)" @onclick="ToggleNavMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <a class="float-right" href="https://github.com/alexreich/RulesEngineEditor" target="_blank">About</a>
+            </div>
         </div>
-
-        <div class="content px-4">*@
+        <div class="content px-4">
             @Body
-        @*</div>*@
+        </div>
     </div>
 </div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : "sidebar";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
