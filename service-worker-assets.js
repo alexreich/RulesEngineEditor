@@ -229,7 +229,7 @@
       "url": "_framework\/RulesEngineEditor.dll"
     },
     {
-      "hash": "sha256-dFwVBVzBVFwRgBrVG39V1C2VDqxdR9eHW9KV4yo0984=",
+      "hash": "sha256-vauPuNLnBWCb477XE5L8lbYnYV382AojsjwTwsD\/iFM=",
       "url": "_framework\/RulesEngineEditorWebAssembly.dll"
     },
     {
@@ -381,7 +381,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-6IlRHVB+VGhJyHcsuDuxXNtux5DaAhdjF7r5a8P4B6E=",
+      "hash": "sha256-yZwxx57UNzh5o6a77f580OqVoedCkkxncofrUuweSAg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -389,5 +389,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "1bougo\/J"
+  "version": "rMAKn6rc"
 };
