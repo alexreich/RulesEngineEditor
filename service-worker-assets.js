@@ -77,6 +77,10 @@
       "url": "sample-data\/discountInputs.json"
     },
     {
+      "hash": "sha256-4Yh4OTT5TEAPNyXEzOG+n5l2HPK294WFItz4SIelj88=",
+      "url": "sample-data\/weather.json"
+    },
+    {
       "hash": "sha256-L2vkcKzmXJtf+J7db5TbDMBckrgqJ5qc0ZzVIdRlm0I=",
       "url": "_framework\/dotnet.timezones.blat"
     },
@@ -105,7 +109,7 @@
       "url": "_framework\/dotnet.5.0.9.js"
     },
     {
-      "hash": "sha256-hAgJQZwZnNSSfGRpcwASC5MlF2KMql5pnIYtsRPFmyo=",
+      "hash": "sha256-LJokq3W3qV3nnH9JSYhd5w566nlKekHoKXesAneYpmU=",
       "url": "RulesEngineEditorWebAssembly.styles.css"
     },
     {
@@ -113,7 +117,7 @@
       "url": "_content\/RulesEngineEditor\/css\/dragdrop.css"
     },
     {
-      "hash": "sha256-U0tnlBoVHXe0fVOLpqPYQqbZOXQJ0E8rNuoYdGm1c6Y=",
+      "hash": "sha256-NuI9b1qxz0ANGA\/DkZP7f1YsjIIYb\/Ee0KGJOqroL9k=",
       "url": "_content\/RulesEngineEditor\/css\/reeditor.css"
     },
     {
@@ -217,7 +221,7 @@
       "url": "_framework\/RulesEngineEditor.dll"
     },
     {
-      "hash": "sha256-1JmA2zsDmCS2pypI3yDUXSnHJxZILDG3fAKrLg6AIWg=",
+      "hash": "sha256-XZ8srmLNCLvOaDeg7eBMxuTMW4ACPao8gNU7nRyjwuQ=",
       "url": "_framework\/RulesEngineEditorWebAssembly.dll"
     },
     {
@@ -369,7 +373,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-IIz+PrS6TiOMjvOw5gxRddWLjKc1WAknODbCS56Jt7w=",
+      "hash": "sha256-klgCrsZ3\/UxmzUk8YN5zsYDaQHAzt9UORuMWYmeioMc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -377,5 +381,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "hwdGsb90"
+  "version": "GkFOze3i"
 };

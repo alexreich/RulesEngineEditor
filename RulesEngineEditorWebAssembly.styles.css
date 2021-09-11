@@ -13,6 +13,18 @@
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
+.navbar-toggler[b-s8170o80s4] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.collapse[b-s8170o80s4] {
+    display: none;
+}
+.top-row[b-s8170o80s4] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
 .top-row[b-s8170o80s4] {
     background-color: #f7f7f7;
     border-bottom: 1px solid #d6d5d5;
@@ -46,7 +58,7 @@
     }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 768px) {
     .page[b-s8170o80s4] {
         flex-direction: row;
     }
@@ -70,15 +82,6 @@
     }
 }
 /* /Shared/NavMenu.razor.rz.scp.css */
-.navbar-toggler[b-opnkphmv3a] {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.top-row[b-opnkphmv3a] {
-    height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
 .navbar-brand[b-opnkphmv3a] {
     font-size: 1.1rem;
 }

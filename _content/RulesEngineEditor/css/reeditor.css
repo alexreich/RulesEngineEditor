@@ -54,7 +54,6 @@ rules > *:not(sp_grid_rules) {
     grid-gap: 5px;
 }
 
-/* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
 reeditor_blockquote {
     border-left: 10px solid #ccc;
     margin: 1.5em 10px;
@@ -101,7 +100,6 @@ sp_grid_workflow {
     display: inline-grid;
     border: none;
     padding: 2px;
-    /*grid-template-columns: 90% 10%;*/
     width: 100%;
 }
 
