@@ -27,14 +27,7 @@
         };
         re = new RulesEngine.RulesEngine(null, settings);
 
-        var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
-        var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
-        if (files == null || files.Length == 0)
-            throw new Exception("Rules not found.");
-
-        var fileData = File.ReadAllText(files[0]);
-        var workflow = JsonConvert.DeserializeObject<List<WorkflowRules>>(fileData);
-
-        Workflows = workflow.ToArray();
+        Workflows = new WorkflowRules[0];
+        StateHasChanged();
     }
 }

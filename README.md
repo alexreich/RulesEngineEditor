@@ -9,7 +9,7 @@ Editor for Microsoft RulesEngine - Blazor UI library intended for integration in
 
 ##### WebAssembly
 https://alexreich.github.io/RulesEngineEditor  
-> You can also install this as a PWA and use offline.
+> You can also install this as a standalone PWA and use offline.
 
 ##### With Sample Data
 https://alexreich.github.io/RulesEngineEditor/demo
