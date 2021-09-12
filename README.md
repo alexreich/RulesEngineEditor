@@ -5,6 +5,23 @@ Editor for Microsoft Rules Engine - Blazor UI library intended for integration i
 
 ![Animation of Rules Engine Editor Demo](content/RulesEngineEditor.gif)
 
+## Overview
+
+Rules Engine Editor is a library/NuGet package for use with [Microsoft Rules Engine](https://github.com/microsoft/RulesEngine) which itself is a package for abstracting business logic/rules/policies out of a system.
+
+## Installation
+
+To install this library, download the latest version of [NuGet Package](https://www.nuget.org/packages/RulesEngineEditor/) from [nuget.org](https://www.nuget.org/) and refer it into your project.  
+
+## How to use it
+
+There are several ways to populate workflows for the Rules Engine Editor as listed below.
+
+You need to store the rules based on the [schema definition](https://github.com/microsoft/RulesEngine/blob/main/schema/workflow-schema.json) given and they can be stored in any store as deemed appropriate like Azure Blob Storage, Cosmos DB, Azure App Configuration, [Entity Framework](https://github.com/microsoft/RulesEngine#entity-framework), SQL Servers, file systems etc. For RuleExpressionType `LamdaExpression`, the rule is written as a [lambda expressions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions).
+
+The Rules Engine Editor can also use a format for Input Rule Parameter based on the [schema defintiion](schema/inputRuleParameter-schema.json) and can likewise be stored as the aforementioned workflow schema. Input Rule Parameters allow the seeding of arbitrary input data to be used in the Rules Engine. Consider Input Rule Parameters like interactive "unit tests" which allow for "What-If" type analysis.
+
+
 #### Demo
 
 ##### WebAssembly
