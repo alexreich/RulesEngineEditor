@@ -1,4 +1,7 @@
-﻿using RulesEngine.Models;
+﻿// Copyright (c) Alex Reich.
+// Licensed under the CC BY 4.0 License.
+
+using RulesEngine.Models;
 using RulesEngineEditor.Models;
 using System;
 using System.Collections.Generic;

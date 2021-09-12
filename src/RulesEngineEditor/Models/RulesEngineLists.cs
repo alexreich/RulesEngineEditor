@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) Alex Reich.
+// Licensed under the CC BY 4.0 License.
+
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using RulesEngine.Models;
 
@@ -24,7 +27,7 @@ namespace RulesEngineEditor.Models
         public string ExceptionMessage { get; set; }
     }
     /// <summary>
-    /// ScopedParamData - inherited class so continue naming convention / future functionality
+    /// ScopedParamData - inherited class to continue naming convention / reserve future functionality
     /// </summary>
     public class ScopedParamData : ScopedParam
     {

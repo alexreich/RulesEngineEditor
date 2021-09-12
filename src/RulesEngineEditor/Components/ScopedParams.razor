@@ -1,12 +1,16 @@
-﻿@using RulesEngineEditor.Models
+﻿@*
+    // Copyright (c) Alex Reich.
+    // Licensed under the CC BY 4.0 License.
+*@
+@using RulesEngineEditor.Models
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 @if (scopedParams != null)
 {
-<sp_grid_kvp>
-    <div>Scoped Param Name</div>
-    <div>Expression</div>
-</sp_grid_kvp>
+    <sp_grid_kvp>
+        <div>Scoped Param Name</div>
+        <div>Expression</div>
+    </sp_grid_kvp>
     <Dropzone Items="scopedParams">
         <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
     </Dropzone>

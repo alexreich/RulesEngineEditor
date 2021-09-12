@@ -1,3 +1,6 @@
+// Copyright (c) Alex Reich.
+// Licensed under the CC BY 4.0 License.
+
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

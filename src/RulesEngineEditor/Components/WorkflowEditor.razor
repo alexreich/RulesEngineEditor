@@ -1,4 +1,8 @@
-﻿@using RulesEngineEditor.Models
+﻿@*
+    // Copyright (c) Alex Reich.
+    // Licensed under the CC BY 4.0 License.
+*@
+@using RulesEngineEditor.Models
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 <EditForm EditContext="@EditContext">
@@ -12,7 +16,7 @@
 </EditForm>
 @code {
 
-    private string Name {get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowService.WorkflowUpdate(); } }
+    private string Name { get { return workFlow.WorkflowName; } set { workFlow.WorkflowName = value; WorkflowService.WorkflowUpdate(); } }
 
     [Parameter]
     public WorkflowData workFlow { get; set; }

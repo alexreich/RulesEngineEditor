@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) Alex Reich.
+// Licensed under the CC BY 4.0 License.
+
+using System.Collections.Generic;
 
 namespace RulesEngineEditor.Models
 {
