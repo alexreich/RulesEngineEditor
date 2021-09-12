@@ -1,4 +1,8 @@
-﻿@page "/New"
+﻿@*
+    // Copyright (c) Alex Reich.
+    // Licensed under the CC BY 4.0 License.
+*@
+@page "/New"
 @using Newtonsoft.Json
 @using RulesEngine.Models
 @using RulesEngineEditor.Models
@@ -11,8 +15,6 @@
 
     private WorkflowRules[] _workflows;
     private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
-
-    private string Inputs;
 
     enum FooEnum
     {

@@ -1,6 +1,11 @@
 {
   "name": "Rules Engine Editor",
   "short_name": "RulesEngineEditor",
+  "author": "Alex Reich",
+  "developer": {
+    "name": "Alex Reich",
+    "url": "https://github.com/alexreich"
+  },
   "start_url": "./standalone",
   "display": "standalone",
   "background_color": "#ffffff",

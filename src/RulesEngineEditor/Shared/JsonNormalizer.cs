@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Alex Reich.
+// Licensed under the CC BY 4.0 License.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

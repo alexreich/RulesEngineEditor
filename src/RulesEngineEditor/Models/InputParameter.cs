@@ -1,4 +1,7 @@
-﻿namespace RulesEngineEditor.Models
+﻿// Copyright (c) Alex Reich.
+// Licensed under the CC BY 4.0 License.
+
+namespace RulesEngineEditor.Models
 {
     /// <summary>
     /// InputParameter - used as simple string kvp for HTML UI
