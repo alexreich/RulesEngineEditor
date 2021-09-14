@@ -22,7 +22,7 @@ Rules are based on the [Microsoft Rules Engine schema definition](https://github
 The Rules Engine Editor can also use a format for [Input Rule Parameters](https://github.com/microsoft/RulesEngine/wiki/Getting-Started#ruleparameter) based on the [schema defintiion](schema/inputRuleParameter-schema.json) and can likewise be stored as the aforementioned workflow schema. Input Rule Parameters allow the seeding of arbitrary input data to be used in the Rules Engine. Consider Input Rule Parameters like interactive "unit tests" which allow for "What-If" type analysis.
 
 
-## Demo
+## Live Demo
 
 ### WebAssembly
 https://alexreich.github.io/RulesEngineEditor  
