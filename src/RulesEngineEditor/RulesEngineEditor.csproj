@@ -5,6 +5,15 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <AssemblyName>RulesEngineEditor</AssemblyName>
     <RootNamespace>RulesEngineEditor</RootNamespace>
+    <Authors>Alex Reich</Authors>
+    <Description>Editor for Microsoft RulesEngine - Blazor UI library intended for integration in Web or Desktop</Description>
+    <Copyright>Copyright (c) Alex Reich.</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/alexreich/RulesEngineEditor</PackageProjectUrl>
+    <PackageTags>BRE, Rules Engine, Abstraction, Editor</PackageTags>
+    <PackageReleaseNotes>https://github.com/alexreich/RulesEngineEditor/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PackageIcon>RulesEngineEditor.png</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   
@@ -16,6 +25,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.9" />
     <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
     <PackageReference Include="RulesEngine" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\content\RulesEngineEditor.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
