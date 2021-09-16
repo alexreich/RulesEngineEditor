@@ -81,7 +81,7 @@
       "url": "sample-data\/discount.json"
     },
     {
-      "hash": "sha256-oWPzA8VhdbL5eQRqB2S4pdrbnfpJ1XOM4lOZAivFsAA=",
+      "hash": "sha256-dneyZ3Sa9JB1tSpYa4JVqhoJkMsHt1YvzfoJwdtcsO8=",
       "url": "sample-data\/discountInputs.json"
     },
     {
@@ -389,5 +389,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "U2vYv\/t0"
+  "version": "9C8NVVWq"
 };

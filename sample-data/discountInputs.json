@@ -23,14 +23,5 @@
       "percentageOfBuyingToVisit": 15
     },
     "InputRule": "input3"
-  },
-  {
-    "Parameter": {
-      "nested": {
-        "Deeply": true
-      },
-      "lastUpdated": "2021-09-14T18:00:00-07:00"
-    },
-    "InputRule": "input4"
   }
 ]
