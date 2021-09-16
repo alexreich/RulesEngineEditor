@@ -12,6 +12,11 @@ namespace RulesEngineEditor.Models
     /// </summary>
     public class WorkflowData : WorkflowRules
     {
+        /// <summary>
+        /// Reserved for Database / Entity Framework implementations
+        /// </summary>
+        [JsonIgnore] 
+        public int Id { get; set; }
         public new List<RuleData> Rules { get; set; }
         public new List<ScopedParamData> GlobalParams { get; set; }
 
@@ -19,6 +24,11 @@ namespace RulesEngineEditor.Models
     }
     public class RuleData : Rule
     {
+        /// <summary>
+        /// Reserved for Database / Entity Framework implementations
+        /// </summary>
+        [JsonIgnore]
+        public int Id { get; set; }
         public new List<RuleData> Rules { get; set; }
         public new List<ScopedParamData> LocalParams { get; set; }
         [JsonIgnore]
@@ -31,6 +41,10 @@ namespace RulesEngineEditor.Models
     /// </summary>
     public class ScopedParamData : ScopedParam
     {
-
+        /// <summary>
+        /// Reserved for Database / Entity Framework implementations
+        /// </summary>
+        [JsonIgnore]
+        public int Id { get; set; }
     }
 }
