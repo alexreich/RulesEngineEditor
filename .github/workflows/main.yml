@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 # Run workflow on every push to the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [ gh_pages_only ]
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
