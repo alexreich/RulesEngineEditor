@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Forms;
 using System.IO;
 
+//TODO switch to System.Text.Json when it supports polymorphic deserialization w/out needing converters
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using RulesEngineEditor.Shared;
@@ -47,11 +50,13 @@ namespace RulesEngineEditor.Pages
         [Parameter]
         public string InputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONUpdate(); RunRE(UpdateWorkflows: false); } }
 
+
         protected override async Task OnInitializedAsync()
         {
             jsonOptions = new JsonSerializerOptions {
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 IncludeFields = true,
+                IgnoreReadOnlyFields = true,
                 WriteIndented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
@@ -88,11 +93,10 @@ namespace RulesEngineEditor.Pages
         {
             WorkflowService.Inputs.Remove(input);
         }
-        private void NewWorkflows()
+        private void NewWorkflow()
         {
             WorkflowService.Workflows = new List<WorkflowData>();
-            WorkflowService.RuleParameters = new RuleParameter[0];
-            StateHasChanged();
+            WorkflowService.WorkflowUpdate();
         }
 
         private void AddWorkflow()
@@ -132,8 +136,6 @@ namespace RulesEngineEditor.Pages
 
         private void UpdateInputs()
         {
-            var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
-
             inputJSONErrors = "";
             List<InputRuleParameterDictionary> newInputs = new List<InputRuleParameterDictionary>();
             WorkflowService.Inputs.ForEach(i => {
@@ -144,7 +146,7 @@ namespace RulesEngineEditor.Pages
                 {
                     try
                     {
-                        newInput.Parameter.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value));
+                        newInput.Parameter.Add(p.Name, JsonConvert.DeserializeObject<dynamic>(p.Value, new ExpandoObjectConverter()));
                     }
                     catch (Exception ex)
                     {
@@ -156,7 +158,7 @@ namespace RulesEngineEditor.Pages
 
             if (inputJSONErrors == "")
             {
-                InputJSON = JsonSerializer.Serialize(newInputs, jsonOptions);
+                InputJSON = System.Text.Json.JsonSerializer.Serialize(newInputs, jsonOptions);
             }
         }
 
@@ -164,9 +166,9 @@ namespace RulesEngineEditor.Pages
         {
             try
             {
-                var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
+                var serializationOptions = new System.Text.Json.JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
 
-                Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, serializationOptions);
+                Workflows = System.Text.Json.JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, serializationOptions);
                 if (UpdateWorkflows)
                 {
                     WorkflowsChanged.InvokeAsync(Workflows);
@@ -216,7 +218,7 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                WorkflowService.Workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON);
+                WorkflowService.Workflows = JsonConvert.DeserializeObject<List<WorkflowData>>(WorkflowJSON);
                 RunRE(UpdateWorkflows: false);
             }
             catch (Exception ex)
@@ -229,7 +231,7 @@ namespace RulesEngineEditor.Pages
         private void DownloadFile()
         {
             workflowJSONErrors = "";
-            var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
+            var jsonString = System.Text.Json.JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
             if (jsonString == "[]")
             {
                 return;
@@ -238,8 +240,7 @@ namespace RulesEngineEditor.Pages
 
             try
             {
-                //ensure no serialzable errors in JSON before enabling download
-                var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<WorkflowRules>>(WorkflowJSON).ToArray());
+                var re = new RulesEngine.RulesEngine(System.Text.Json.JsonSerializer.Deserialize<List<WorkflowRules>>(WorkflowJSON).ToArray());
 
                 DownloadAttributes = new Dictionary<string, object>();
                 DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowJSON);
@@ -265,32 +266,35 @@ namespace RulesEngineEditor.Pages
             inputJSONErrors = "";
             try
             {
+                var inputs = JsonConvert.DeserializeObject<dynamic>(InputJSON);
 
-
-                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON);
-
+                var converter = new ExpandoObjectConverter();
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
-                foreach (var i in inputs.EnumerateArray())
+                foreach (var i in inputs)
                 {
-                    var key = i.GetProperty("InputRule").GetString();
-                    var value = i.GetProperty("Parameter");
+                    var key = Convert.ToString(i.InputRule);
+                    var value = Convert.ToString(i.Parameter);
 
                     InputRuleParameter input = new InputRuleParameter();
                     input.InputRule = key;
                     input.Parameter = new List<InputParameter>();
 
-                    var values = JsonSerializer.Deserialize<dynamic>(
-                        JsonSerializer.Serialize(value), new JsonSerializerOptions {
-                            Converters = { new DynamicJsonConverter() }
-                        });
+                    var values = JsonConvert.DeserializeObject<ExpandoObject>(value, converter);
 
                     foreach (KeyValuePair<string, object> v in values)
                     {
                         InputParameter param = new InputParameter();
                         param.Name = v.Key;
-                        param.Value = JsonSerializer.Serialize(v.Value);
+                        if (v.Value is string)
+                        {
+                            param.Value = @"""" + v.Value.ToString() + @"""";
+                        }
+                        else
+                        {
+                            param.Value = v.Value.ToString();
+                        }
 
                         input.Parameter.Add(param);
                     }
@@ -307,8 +311,10 @@ namespace RulesEngineEditor.Pages
 
         private void DownloadInputs()
         {
+            var jsonString = System.Text.Json.JsonSerializer.Serialize(InputJSON, jsonOptions);
+
             DownloadInputAttributes = new Dictionary<string, object>();
-            DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(InputJSON));
+            DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(jsonString));
             DownloadInputAttributes.Add("download", "RulesEngineInputs.json");
         }
     }
