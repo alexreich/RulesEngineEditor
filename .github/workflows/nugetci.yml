@@ -28,6 +28,8 @@ jobs:
             - name: setup nuget
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               uses: NuGet/setup-nuget@v1.0.2
+              env:
+                  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
               with:
                   nuget-version: latest
 
