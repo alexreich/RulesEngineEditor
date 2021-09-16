@@ -35,6 +35,12 @@ namespace RulesEngineEditor.Pages
         public EventCallback<WorkflowRules[]> WorkflowsChanged { get; set; }
 
         [Parameter]
+        public List<WorkflowData> WorkflowDatas { get { return WorkflowService.Workflows; } set { WorkflowService.Workflows = value; } }
+
+        [Parameter]
+        public EventCallback<List<WorkflowData>> WorkflowDatasChanged { get; set; }
+
+        [Parameter]
         public EventCallback<RulesEngine.RulesEngine> OnRulesEngineInitialize { get; set; }
 
 
@@ -54,6 +60,7 @@ namespace RulesEngineEditor.Pages
                 IncludeFields = true,
                 WriteIndented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNameCaseInsensitive = true
             };
 
             WorkflowService.OnInputChange += InputUpdate;
@@ -103,15 +110,24 @@ namespace RulesEngineEditor.Pages
             WorkflowService.Workflows.Insert(0, workflow);
             StateHasChanged();
         }
+        
+        private void NewInputs()
+        {
+            WorkflowService.Inputs = new List<InputRuleParameter>();
+            StateHasChanged();
+        }
 
-        private void NewInput()
+        private void AddInput()
         {
             InputRuleParameter input = new InputRuleParameter();
-            input.Parameter = new List<InputParameter>();
-            input.Parameter.Add(new InputParameter());
+            input.InputRule = $"Input{WorkflowService.Inputs.Count + 1}";
+            InputParameter parameter = new InputParameter();
+            parameter.Name = "param1";
+            input.Parameter.Add(parameter);
             WorkflowService.Inputs.Insert(0, input);
-            WorkflowService.WorkflowUpdate();
+            StateHasChanged();
         }
+
 
         private void WorkflowUpdate()
         {
@@ -170,6 +186,7 @@ namespace RulesEngineEditor.Pages
                 if (UpdateWorkflows)
                 {
                     WorkflowsChanged.InvokeAsync(Workflows);
+                    WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
                 }
 
                 if (WorkflowService.RuleParameters.Length == 0) return;

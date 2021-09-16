@@ -56,8 +56,11 @@
     }
     else
     {
-        <button title="New Input" class="reeditor_button" @onclick="NewInput">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
+        <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
         <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
+
+        <button title="Add Input" class="reeditor_button" @onclick="AddInput">Add</button>
+
         @if (WorkflowService.Inputs.Count > 0)
         {
             <div class="sp_grid_main">

@@ -11,7 +11,7 @@ namespace RulesEngineEditor.Models
     public class InputRuleParameter
     {
         public string InputRule { get; set; }
-        public List<InputParameter> Parameter { get; set; }
+        public List<InputParameter> Parameter { get; set; } = new List<InputParameter>();
     }
 
     /// <summary>
