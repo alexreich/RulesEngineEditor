@@ -35,7 +35,7 @@ namespace RulesEngineEditor.Pages
         public EventCallback<WorkflowRules[]> WorkflowsChanged { get; set; }
 
         [Parameter]
-        public List<WorkflowData> WorkflowDatas { get { return WorkflowService.Workflows; } set { WorkflowService.Workflows = value; } }
+        public List<WorkflowData> WorkflowDatas { get { return WorkflowService.Workflows; } set { WorkflowService.Workflows = value; WorkflowUpdate(); } }
 
         [Parameter]
         public EventCallback<List<WorkflowData>> WorkflowDatasChanged { get; set; }
