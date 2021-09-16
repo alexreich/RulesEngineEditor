@@ -34,6 +34,6 @@ jobs:
             - name: Publish NuGet
               uses: rohith/publish-nuget@v2
               with:
-                PROJECT_FILE_PATH: src/RulesEngineEditor.csproj # Relative to repository root
+                PROJECT_FILE_PATH: src/RulesEngineEditor/RulesEngineEditor.csproj # Relative to repository root
                 NUGET_KEY: $ # nuget.org API key
                 PACKAGE_NAME: RulesEngineEditor
