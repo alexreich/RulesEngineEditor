@@ -1,15 +1,17 @@
 name: Deploy to GitHub Pages
-# Run workflow on every push to the main branch
+# Run workflow on every push to the gh_pages_only branch (workarounds for WASM issues with Newtonsoft, etc. - maybe .NET5 isolated)
 on:
   push:
-    branches: [ gh_pages_only ]
+    branches: [ main, gh_pages_only ]
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
     steps:
-     # uses GitHub's checkout action to checkout code form the main branch
+     # uses GitHub's checkout action to checkout code from the gh_pages_only branch
     - uses: actions/checkout@v2
+      with:
+        ref: gh_pages_only
     
      # sets up .NET Core SDK 3.1
     - name: Setup .NET Core SDK
