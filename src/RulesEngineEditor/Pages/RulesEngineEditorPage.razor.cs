@@ -93,7 +93,7 @@ namespace RulesEngineEditor.Pages
         {
             WorkflowService.Inputs.Remove(input);
         }
-        private void NewWorkflow()
+        private void NewWorkflows()
         {
             WorkflowService.Workflows = new List<WorkflowData>();
             WorkflowService.WorkflowUpdate();
