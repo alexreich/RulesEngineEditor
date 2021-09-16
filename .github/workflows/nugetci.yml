@@ -35,5 +35,5 @@ jobs:
               uses: rohith/publish-nuget@v2
               with:
                 PROJECT_FILE_PATH: src/RulesEngineEditor/RulesEngineEditor.csproj # Relative to repository root
-                NUGET_KEY: $ # nuget.org API key
+                NUGET_KEY: ${{ secrets.NUGET_API_KEY }} 
                 PACKAGE_NAME: RulesEngineEditor
