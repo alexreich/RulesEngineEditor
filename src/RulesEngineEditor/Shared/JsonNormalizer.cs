@@ -15,6 +15,10 @@ namespace RulesEngineEditor.Shared
     {
         public static string Normalize(string jsonStr)
         {
+            if (jsonStr == null || jsonStr == "[]")
+            {
+                return jsonStr;
+            }
             using (JsonDocument doc = JsonDocument.Parse(jsonStr))
             {
                 return Normalize(doc.RootElement);
@@ -24,8 +28,7 @@ namespace RulesEngineEditor.Shared
         public static string Normalize(JsonElement je)
         {
             var ms = new MemoryStream();
-            JsonWriterOptions opts = new JsonWriterOptions
-            {
+            JsonWriterOptions opts = new JsonWriterOptions {
                 Indented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
