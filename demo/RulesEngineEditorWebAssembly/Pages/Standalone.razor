@@ -3,21 +3,20 @@
     // Licensed under the CC BY 4.0 License.
 *@
 @layout EmptyLayout
-@page "/standalone"
+@page "/Standalone"
 @using Newtonsoft.Json
 @using RulesEngine.Models
 @using RulesEngineEditor.Models
-@inject HttpClient Http
+@using System.IO
 
-<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" />
+<RulesEngineEditorPage @ref="ree" EditorRulesEngine="re" @bind-Workflows="Workflows" />
 
 @code {
     private RulesEngine.RulesEngine re;
+    RulesEngineEditorPage ree;
 
     private WorkflowRules[] _workflows;
     private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
-
-    private string Inputs;
 
     enum FooEnum
     {
@@ -32,7 +31,13 @@
         };
         re = new RulesEngine.RulesEngine(null, settings);
 
-        Workflows = new WorkflowRules[0];
-        StateHasChanged();
+        Workflows = new List<WorkflowRules>().ToArray();
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ree.NewWorkflows();
+        }
     }
 }

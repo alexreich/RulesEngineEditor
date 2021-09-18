@@ -15,8 +15,7 @@ namespace RulesEngineEditor.Models
         /// <summary>
         /// Reserved for Database / Entity Framework implementations
         /// </summary>
-        [JsonIgnore] 
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public new List<RuleData> Rules { get; set; }
         public new List<ScopedParamData> GlobalParams { get; set; }
 
@@ -27,8 +26,7 @@ namespace RulesEngineEditor.Models
         /// <summary>
         /// Reserved for Database / Entity Framework implementations
         /// </summary>
-        [JsonIgnore]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public new List<RuleData> Rules { get; set; }
         public new List<ScopedParamData> LocalParams { get; set; }
         [JsonIgnore]
@@ -44,7 +42,6 @@ namespace RulesEngineEditor.Models
         /// <summary>
         /// Reserved for Database / Entity Framework implementations
         /// </summary>
-        [JsonIgnore]
-        public int Id { get; set; }
+        public int? Id { get; set; }
     }
 }

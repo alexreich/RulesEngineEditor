@@ -46,7 +46,7 @@ namespace RulesEngineEditor.Pages
 
         string workflowJSONErrors;
         string _workflowJSON;
-        string WorkflowJSON { get { return _workflowJSON; } set { _workflowJSON = value; WorkflowJSONChange(); } }
+        string WorkflowJSON { get { return _workflowJSON; } set { if (value != _workflowJSON) { _workflowJSON = value; WorkflowJSONChange(); } } }
 
         string inputJSONErrors;
         string _inputJSON;
@@ -71,7 +71,20 @@ namespace RulesEngineEditor.Pages
         {
             if (Workflows != null)
             {
-                WorkflowJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
+                string newJSON;
+                if (WorkflowService.Workflows.Any())
+                {
+                    newJSON = System.Text.Json.JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
+                }
+                else
+                {
+                    newJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
+                }
+
+                if (newJSON != WorkflowJSON)
+                {
+                    WorkflowJSON = newJSON;
+                }
             }
         }
 
@@ -95,7 +108,7 @@ namespace RulesEngineEditor.Pages
         {
             WorkflowService.Inputs.Remove(input);
         }
-        private void NewWorkflows()
+        public void NewWorkflows()
         {
             WorkflowService.Workflows = new List<WorkflowData>();
             WorkflowService.RuleParameters = new RuleParameter[0];
@@ -110,7 +123,7 @@ namespace RulesEngineEditor.Pages
             WorkflowService.Workflows.Insert(0, workflow);
             StateHasChanged();
         }
-        
+
         private void NewInputs()
         {
             WorkflowService.Inputs = new List<InputRuleParameter>();
@@ -134,7 +147,7 @@ namespace RulesEngineEditor.Pages
             DownloadFile();
             UpdateInputs();
             DownloadInputs();
-            RunRE();
+            RunRE(UpdateWorkflows: false);
             StateHasChanged();
         }
 
@@ -240,7 +253,7 @@ namespace RulesEngineEditor.Pages
             {
                 workflowJSONErrors = ex.Message;
             }
-            StateHasChanged();
+            //StateHasChanged();
         }
 
         private void DownloadFile()

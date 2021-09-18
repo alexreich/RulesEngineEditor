@@ -1,8 +1,10 @@
 [
   {
+    "Id": 1,
     "WorkflowName": "Discount",
     "Rules": [
       {
+        "Id": 1,
         "RuleName": "GiveDiscount10",
         "SuccessEvent": "10",
         "ErrorMessage": "One or more adjust rules failed.",

@@ -2,19 +2,24 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
-@page "/Demo"
+@page "/DemoAlt"
 @using Newtonsoft.Json
 @using RulesEngine.Models
 @using RulesEngineEditor.Models
 @using System.IO
 
-<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" InputJSON="@Inputs" />
 
 @code {
     private RulesEngine.RulesEngine re;
 
+#if ConventionalJSON
     private WorkflowRules[] _workflows;
     private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
+#endif
+
+    private List<WorkflowData> _workflowDatas;
+    private List<WorkflowData> WorkflowDatas { get { return _workflowDatas; } set { _workflowDatas = value; } }
 
     private string Inputs;
 
@@ -53,7 +58,7 @@ workFlowRules.Add(workflowRule);
 
 Workflows = workFlowRules.ToArray();
 #endif
-
+#if ConventionalJSON
         var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
         var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
         if (files == null || files.Length == 0)
@@ -67,6 +72,21 @@ Workflows = workFlowRules.ToArray();
             throw new Exception("Inputs not found.");
 
         Workflows = workflow.ToArray();
+        Inputs = File.ReadAllText(files[0]);
+#endif
+        var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
+        var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
+        if (files == null || files.Length == 0)
+            throw new Exception("Rules not found.");
+
+        var fileData = File.ReadAllText(files[0]);
+        var workflowDatas = JsonConvert.DeserializeObject<List<WorkflowData>>(fileData);
+
+        files = Directory.GetFiles(path, "DiscountInputs.json", SearchOption.AllDirectories);
+        if (files == null || files.Length == 0)
+            throw new Exception("Inputs not found.");
+
+        WorkflowDatas = workflowDatas;
         Inputs = File.ReadAllText(files[0]);
     }
 }
