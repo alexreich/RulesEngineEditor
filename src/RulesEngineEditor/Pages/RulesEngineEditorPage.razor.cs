@@ -83,7 +83,7 @@ namespace RulesEngineEditor.Pages
 
                 if (newJSON != WorkflowJSON)
                 {
-                    WorkflowJSON = newJSON;
+                    WorkflowJSON = JsonNormalizer.Normalize(newJSON);
                 }
             }
         }

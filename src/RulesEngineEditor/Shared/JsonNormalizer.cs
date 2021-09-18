@@ -64,13 +64,16 @@ namespace RulesEngineEditor.Shared
 
                     //organize property names
                     List<JsonProperty> lo = new List<JsonProperty>();
+                    var idProperties = property.EnumerateObject().Where(o => o.Name.Contains("Id"));
+                    if (idProperties.Count() > 0)
+                        lo.Add(idProperties.First());
                     var namedProperties = property.EnumerateObject().Where(o => o.Name.Contains("Name"));
                     if (namedProperties.Count() > 0)
                         lo.Add(namedProperties.First());
                     var paramsProperties = property.EnumerateObject().Where(o => o.Name.Contains("Param"));
                     if (paramsProperties.Count() > 0)
                         lo.Add(paramsProperties.First());
-                    lo.AddRange(property.EnumerateObject().Except(namedProperties).Except(paramsProperties));
+                    lo.AddRange(property.EnumerateObject().Except(idProperties).Except(namedProperties).Except(paramsProperties));
                     foreach (JsonProperty jp in lo)
                     {
                         if (jp.Value.ValueKind is JsonValueKind.Array)
