@@ -35,7 +35,7 @@ namespace RulesEngineEditor.Pages
         public EventCallback<WorkflowRules[]> WorkflowsChanged { get; set; }
 
         [Parameter]
-        public List<WorkflowData> WorkflowDatas { get { return WorkflowService.Workflows; } set { WorkflowService.Workflows = value; WorkflowUpdate(); } }
+        public List<WorkflowData> WorkflowDatas { get { return WorkflowService.Workflows; } set { if (WorkflowService.Workflows != value) { WorkflowService.Workflows = value; WorkflowUpdate(); } } }
 
         [Parameter]
         public EventCallback<List<WorkflowData>> WorkflowDatasChanged { get; set; }
@@ -51,7 +51,7 @@ namespace RulesEngineEditor.Pages
         string inputJSONErrors;
         string _inputJSON;
         [Parameter]
-        public string InputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONUpdate(); RunRE(UpdateWorkflows: false); } }
+        public string InputJSON { get { return _inputJSON; } set { _inputJSON = value; InputJSONUpdate(); RunRE(); } }
 
         protected override async Task OnInitializedAsync()
         {
@@ -147,7 +147,9 @@ namespace RulesEngineEditor.Pages
             DownloadFile();
             UpdateInputs();
             DownloadInputs();
-            RunRE(UpdateWorkflows: false);
+            RunRE();
+            WorkflowsChanged.InvokeAsync(Workflows);
+            WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
             StateHasChanged();
         }
 
@@ -155,7 +157,7 @@ namespace RulesEngineEditor.Pages
         {
             UpdateInputs();
             DownloadInputs();
-            RunRE(UpdateWorkflows: false);
+            RunRE();
             StateHasChanged();
         }
 
@@ -189,18 +191,13 @@ namespace RulesEngineEditor.Pages
             }
         }
 
-        private void RunRE(bool UpdateWorkflows = true)
+        private void RunRE()
         {
             try
             {
                 var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
 
                 Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, serializationOptions);
-                if (UpdateWorkflows)
-                {
-                    WorkflowsChanged.InvokeAsync(Workflows);
-                    WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-                }
 
                 if (WorkflowService.RuleParameters.Length == 0) return;
 
@@ -247,7 +244,7 @@ namespace RulesEngineEditor.Pages
             try
             {
                 WorkflowService.Workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON);
-                RunRE(UpdateWorkflows: false);
+                RunRE();
             }
             catch (Exception ex)
             {
