@@ -13,6 +13,7 @@ using RulesEngineEditor.Models;
 using System.Dynamic;
 using RulesEngine.Models;
 using RulesEngineEditor.Services;
+using Omu.ValueInjecter;
 
 namespace RulesEngineEditor.Pages
 {
@@ -243,7 +244,17 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                WorkflowService.Workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON);
+                var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON);
+
+                if (!WorkflowService.Workflows.Any())
+                {
+                    WorkflowService.Workflows = workflows;
+                }
+                else
+                {
+                    Mapper.Map<WorkflowData>(workflows, WorkflowService.Workflows);
+                }
+
                 RunRE();
             }
             catch (Exception ex)

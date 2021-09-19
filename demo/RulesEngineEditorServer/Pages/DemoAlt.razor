@@ -14,13 +14,16 @@
     private RulesEngine.RulesEngine re;
 
 #if ConventionalJSON
-    private WorkflowRules[] _workflows;
-    private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
+private WorkflowRules[] _workflows;
+private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
 #endif
 
     private List<WorkflowData> _workflowDatas;
-    private List<WorkflowData> WorkflowDatas { get { return _workflowDatas; } 
-    set { _workflowDatas = value; } }
+    private List<WorkflowData> WorkflowDatas
+    {
+        get { return _workflowDatas; }
+        set { _workflowDatas = value; }
+    }
 
     private string Inputs;
 
@@ -60,20 +63,20 @@ workFlowRules.Add(workflowRule);
 Workflows = workFlowRules.ToArray();
 #endif
 #if ConventionalJSON
-        var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
-        var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
-        if (files == null || files.Length == 0)
-            throw new Exception("Rules not found.");
+    var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
+    var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
+    if (files == null || files.Length == 0)
+        throw new Exception("Rules not found.");
 
-        var fileData = File.ReadAllText(files[0]);
-        var workflow = JsonConvert.DeserializeObject<List<WorkflowRules>>(fileData);
+    var fileData = File.ReadAllText(files[0]);
+    var workflow = JsonConvert.DeserializeObject<List<WorkflowRules>>(fileData);
 
-        files = Directory.GetFiles(path, "DiscountInputs.json", SearchOption.AllDirectories);
-        if (files == null || files.Length == 0)
-            throw new Exception("Inputs not found.");
+    files = Directory.GetFiles(path, "DiscountInputs.json", SearchOption.AllDirectories);
+    if (files == null || files.Length == 0)
+        throw new Exception("Inputs not found.");
 
-        Workflows = workflow.ToArray();
-        Inputs = File.ReadAllText(files[0]);
+    Workflows = workflow.ToArray();
+    Inputs = File.ReadAllText(files[0]);
 #endif
         var path = Path.Combine(Directory.GetCurrentDirectory(), @"..\TestData\");
         var files = Directory.GetFiles(path, "Discount.json", SearchOption.AllDirectories);
@@ -82,6 +85,16 @@ Workflows = workFlowRules.ToArray();
 
         var fileData = File.ReadAllText(files[0]);
         var workflowDatas = JsonConvert.DeserializeObject<List<WorkflowData>>(fileData);
+
+        //emulate EF some Ids
+        for (int x = 0; x < workflowDatas.Count; x++)
+        {
+            workflowDatas[x].Id = x + 1;
+            for (int y = 0; y < workflowDatas[x].Rules.Count; y++)
+            {
+                workflowDatas[x].Rules[y].Id = y + 1;
+            }
+        }
 
         files = Directory.GetFiles(path, "DiscountInputs.json", SearchOption.AllDirectories);
         if (files == null || files.Length == 0)
