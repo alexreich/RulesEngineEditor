@@ -116,6 +116,15 @@ namespace RulesEngineEditor.Pages
             StateHasChanged();
         }
 
+        public void NewGlobalParam(WorkflowData wf)
+        {
+            if (wf.GlobalParams == null)
+            {
+                wf.GlobalParams = new List<ScopedParamData>();
+            }
+            wf.GlobalParams.Insert(0, new ScopedParamData());
+        }
+
         private void AddWorkflow()
         {
             WorkflowData workflow = new WorkflowData();
@@ -141,7 +150,6 @@ namespace RulesEngineEditor.Pages
             WorkflowService.Inputs.Insert(0, input);
             StateHasChanged();
         }
-
 
         private void WorkflowUpdate()
         {
@@ -176,7 +184,9 @@ namespace RulesEngineEditor.Pages
                 {
                     try
                     {
-                        newInput.Parameter.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value));
+                        newInput.Parameter.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value, new JsonSerializerOptions {
+                            Converters = { new DynamicJsonConverter() }
+                        }));
                     }
                     catch (Exception ex)
                     {
