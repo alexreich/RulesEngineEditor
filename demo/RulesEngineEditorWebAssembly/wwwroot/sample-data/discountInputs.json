@@ -1,27 +1,36 @@
 [
   {
-    "Parameter": {
+    "InputRuleName": "input1",
+    "Parameters": {
       "name": "hello",
       "email": "abcy@xyz.com",
       "creditHistory": "good",
       "country": "canada",
       "loyaltyFactor": 3,
       "totalPurchasesToDate": 10000
-    },
-    "InputRule": "input1"
+    }
   },
   {
-    "Parameter": {
+    "InputRuleName": "input2",
+    "Parameters": {
       "totalOrders": 5,
       "recurringItems": 2
-    },
-    "InputRule": "input2"
+    }
   },
   {
-    "Parameter": {
+    "InputRuleName": "input3",
+    "Parameters": {
       "noOfVisitsPerMonth": 10,
       "percentageOfBuyingToVisit": 15
-    },
-    "InputRule": "input3"
+    }
+  },
+  {
+    "InputRuleName": "input4",
+    "Parameters": {
+      "nested": {
+        "Deeply": true
+      },
+      "lastUpdated": "2021-09-14T18:00:00-07:00"
+    }
   }
 ]

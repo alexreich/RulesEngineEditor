@@ -105,6 +105,10 @@
 
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
+        if (e.FieldIdentifier.FieldName == "Enabled")
+        {
+            rule.ExceptionMessage = "";
+        }
         WorkflowService.WorkflowUpdate();
     }
     private Task OnValueChanged(string value)

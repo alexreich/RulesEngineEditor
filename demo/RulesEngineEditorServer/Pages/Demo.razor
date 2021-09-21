@@ -16,7 +16,8 @@
     private WorkflowRules[] _workflows;
     private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
 
-    private string Inputs;
+    private string _inputs;
+    private string Inputs { get { return _inputs; } set { _inputs = value; } }
 
     enum FooEnum
     {

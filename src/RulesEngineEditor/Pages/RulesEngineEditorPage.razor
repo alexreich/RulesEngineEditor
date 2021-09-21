@@ -25,55 +25,48 @@
 }
 <div hidden="@(!ShowWorkflows)">
     <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">New</button><span>&nbsp;</span><a class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
-    <div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@OnSubmit" />Import</div>
+    <div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@ImportWorkflows" />Import</div>
 
     <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button>
 </div>
 @if (WorkflowService.Workflows.Count > 0)
 {
-    @if (ShowWorkflows)
-    {
-        <div class="sp_grid_main">
-            <div>
-                <Dropzone Items="WorkflowService.Workflows" Class="reeditor_dragdrop">
-                    <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
-                    <h5>Rules</h5>
-                    <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
+    <div class="sp_grid_main" hidden="@(!ShowWorkflows)">
+        <div>
+            <Dropzone Items="WorkflowService.Workflows" Class="reeditor_dragdrop">
+                <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
+                <h5>Rules</h5>
+                <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
 
-                    <Rules rules=context.Rules RulesChanged="WorkflowUpdate" />
-                    <h5>Global Params</h5>
-                    <div>
-                        <button class="reeditor_button" @onclick="(e => { NewGlobalParam(context); })">New</button>
-                    </div>
-                    <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="WorkflowUpdate" />
-                </Dropzone>
-            </div>
-            <div>
-                <span class="JSONErrors">@workflowJSONErrors</span>
-                <textarea @bind="WorkflowJSON" class="jsonTextArea" />
-            </div>
+                <Rules rules=context.Rules RulesChanged="WorkflowUpdate" />
+                <h5>Global Params</h5>
+                <div>
+                    <button class="reeditor_button" @onclick="(e => { NewGlobalParam(context); })">New</button>
+                </div>
+                <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="WorkflowUpdate" />
+            </Dropzone>
         </div>
-    }
-    else
-    {
+        <div>
+            <span class="JSONErrors">@workflowJSONErrors</span>
+            <textarea @bind="WorkflowJSON" class="jsonTextArea" />
+        </div>
+    </div>
+    <div hidden="@(ShowWorkflows)">
         <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
         <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
 
         <button title="Add Input" class="reeditor_button" @onclick="AddInput">Add</button>
 
-        @if (WorkflowService.Inputs.Count > 0)
-        {
-            <div class="sp_grid_main">
-                <div>
-                    <Dropzone Items="WorkflowService.Inputs" Class="reeditor_dragdrop">
-                        <InputEditor Input=@context InputDeleted="DeleteInput" />
-                    </Dropzone>
-                </div>
-                <div>
-                    <span class="JSONErrors">@inputJSONErrors</span>
-                    <textarea @bind="InputJSON" class="jsonTextArea" />
-                </div>
+        <div class="sp_grid_main" hidden="@(!WorkflowService.Inputs.Any())">
+            <div>
+                <Dropzone Items="WorkflowService.Inputs" Class="reeditor_dragdrop">
+                    <InputEditor Input=@context InputDeleted="DeleteInput" />
+                </Dropzone>
             </div>
-        }
-    }
+            <div>
+                <span class="JSONErrors">@inputJSONErrors</span>
+                <textarea @bind="InputJSON" class="jsonTextArea" />
+            </div>
+        </div>
+    </div>
 }

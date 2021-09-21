@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Alex Reich.
 // Licensed under the CC BY 4.0 License.
 
+using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace RulesEngineEditor.Models
 {
@@ -10,8 +12,13 @@ namespace RulesEngineEditor.Models
     /// </summary>
     public class InputRuleParameter
     {
-        public string InputRule { get; set; }
-        public List<InputParameter> Parameter { get; set; } = new List<InputParameter>();
+        [Obsolete("InputRule is deprecated. Use InputRuleName instead.")]
+        public string InputRule { get { return InputRuleName; } set { InputRuleName = value; } }
+        public string InputRuleName { get; set; }
+
+        [Obsolete("Parameter is deprecated. Use Parameters instead.")]
+        public List<InputParameter> Parameter { get { return Parameters; } set { Parameters = value; } }
+        public List<InputParameter> Parameters { get; set; } = new List<InputParameter>();
     }
 
     /// <summary>
@@ -19,7 +26,9 @@ namespace RulesEngineEditor.Models
     /// </summary>
     public class InputRuleParameterDictionary
     {
-        public string InputRule { get; set; }
-        public Dictionary<string, object> Parameter { get; set; }
+        public string InputRuleName { get; set; }
+        //[Obsolete("Parameter is deprecated. Use Parameters instead.")]
+        //public Dictionary<string, object> Parameter { get { return Parameters; } set { Parameters = value; } }
+        public Dictionary<string, object> Parameters { get; set; }
     }
 }

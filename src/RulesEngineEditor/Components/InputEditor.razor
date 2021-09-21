@@ -7,27 +7,27 @@
 
 @if (Input != null)
 {
+<sp_grid_kvp>
+    <div>Input Name</div>
+</sp_grid_kvp>
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <sp_grid_workflow>
+        <div>
+            <InputText title="Name" class="form-control" @bind-Value="@Input.InputRuleName" />
+        </div>
+    </sp_grid_workflow>
+    <h5>Parameters</h5>
+    <button class="reeditor_button" title="Add Input Parameter" @onclick="AddParameter">Add</button>
     <sp_grid_kvp>
-        <div>Input Name</div>
+        <div>Input Param Name</div>
+        <div>Value</div>
     </sp_grid_kvp>
-    <EditForm EditContext="@EditContext">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <sp_grid_workflow>
-            <div>
-                <InputText title="Name" class="form-control" @bind-Value="@Input.InputRule" />
-            </div>
-        </sp_grid_workflow>
-        <h5>Parameters</h5>
-        <button class="reeditor_button" title="Add Input Parameter" @onclick="(() => Input.Parameter.Insert(0, new InputParameter()))">Add</button>
-        <sp_grid_kvp>
-            <div>Input Param Name</div>
-            <div>Value</div>
-        </sp_grid_kvp>
-    </EditForm>
-    <Dropzone Items="Input.Parameter">
-        <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
-    </Dropzone>
+</EditForm>
+<Dropzone Items="Input.Parameters">
+    <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
+</Dropzone>
 }
 @code {
     [Parameter]
@@ -59,7 +59,13 @@
 
     private void DeleteInputParam(InputParameter inputParameter)
     {
-        Input.Parameter.Remove(inputParameter);
+        Input.Parameters.Remove(inputParameter);
         WorkflowService.WorkflowUpdate();
+    }
+
+    private void AddParameter() {
+        InputParameter parameter = new InputParameter();
+        parameter.Name = $"param{Input.Parameters.Count + 1}";
+        Input.Parameters.Insert(0, parameter);
     }
 }

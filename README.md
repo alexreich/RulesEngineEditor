@@ -43,7 +43,7 @@ https://alexreich.github.io/RulesEngineEditor/demo
   * Pass pre-constructed instance of Rules Engine
   * Supports 2-way binding of Workflows
   * "Starter" Input Rule Parameter JSON
-* Allows for non-supported types in JSON
+* Allows for non-supported types in Rules Engine Workflow JSON
 
 ## Usage
 Simple:  
