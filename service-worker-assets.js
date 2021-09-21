@@ -81,7 +81,7 @@
       "url": "sample-data\/discount.json"
     },
     {
-      "hash": "sha256-dneyZ3Sa9JB1tSpYa4JVqhoJkMsHt1YvzfoJwdtcsO8=",
+      "hash": "sha256-FxLIyXUY+Ax5ML4pKE6Ca5Jvnp2Q+sQCmeFLQwQUmgE=",
       "url": "sample-data\/discountInputs.json"
     },
     {
@@ -141,19 +141,19 @@
       "url": "_framework\/FluentValidation.dll"
     },
     {
-      "hash": "sha256-4qmrs6HvAlnSoG5GhFIg6Xz8JkwZUajPX4ejX5J6wso=",
+      "hash": "sha256-vJJdT5WJiSXBeQiZl4O5hAzxFFe2LIUO5jqIpVjMsFA=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-P9Kd3nTMMrNFmvQnTeotq2jOmQbbGqXmeTasTV+3qVw=",
+      "hash": "sha256-OvnzvACC9Jc09y8JfbV8StkPKjenZA6xhWP64UZ65zk=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-      "hash": "sha256-leyVQu594SrEe+4+sm1+KQ0q4oQO4wCtUZrgQSbN66c=",
+      "hash": "sha256-idBcJbClwOnCbXJkBuv8Rms2ht+OZwKnFaK2u3yF5Y8=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-fvbh+eaZIY7oPs6G+hK4G+lyQm01hVNJJMSvLdEuPsY=",
+      "hash": "sha256-JVkYXLuEzAp5O0O0zcGBVkfktW5l1F3xyvH12EaEZOQ=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -201,11 +201,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-LfIKADbz9iiufOCRrL+UISOUUiKjLScF3YRhodd5IYE=",
+      "hash": "sha256-TR5hDhis1xKErFGi0z7WTfCvkHgS9BWrl9meUe7pJ1M=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-eF6xbzCQBK4yEs2CC3wnJR1I1ZWXwlJp7GJ4R1UMM14=",
+      "hash": "sha256-ZgZxgsJuivJx1FZBYEZrIMDwbVwRAg9xRMD7wCwEQUM=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -225,11 +225,15 @@
       "url": "_framework\/System.Linq.Dynamic.Core.dll"
     },
     {
-      "hash": "sha256-RGCyTfV+jFF43gHJYgcmwNMD7+QIC42xjsXPfYZGb\/k=",
+      "hash": "sha256-0tqxoGwYXARLV4+bnvnN1TlB+5rYd9+Oxa\/dbmBnZTw=",
+      "url": "_framework\/Omu.ValueInjecter.dll"
+    },
+    {
+      "hash": "sha256-b7BMJyPUL2EJC7JcpGnv7ePf+JD1eioiqnbBPRetCH0=",
       "url": "_framework\/RulesEngineEditor.dll"
     },
     {
-      "hash": "sha256-YSDcqowdj0O1dsiwW5VeOQd+4MDXfq2gBY+JGhjhwLc=",
+      "hash": "sha256-9M4ePUnjGFbc+DM1eAnVExbdsAiEye\/cLmhVHnhyA3o=",
       "url": "_framework\/RulesEngineEditorWebAssembly.dll"
     },
     {
@@ -381,7 +385,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-xlLzfDNbXZMN5p1SzwOwbxDdMxEMUuQJyYzyrJXx9Qs=",
+      "hash": "sha256-HWUDJ\/NawlEoyM7+qBWD3lf3Ml3ei01WfAuUQNz27Fs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -389,5 +393,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "9C8NVVWq"
+  "version": "3arvR0\/K"
 };
