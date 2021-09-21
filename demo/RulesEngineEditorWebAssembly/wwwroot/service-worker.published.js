@@ -21,8 +21,8 @@ async function onInstall(event) {
         //TODO: Remove for PRODUCTION
         //disabled for github pages - do not try this at home!
         //more info: https://docs.microsoft.com/en-us/aspnet/core/blazor/host-and-deploy/webassembly?view=aspnetcore-5.0#disable-integrity-checking-for-pwas-1
-        .map(asset => new Request(asset.url, { integrity: asset.hash }));
-        //.map(asset => new Request(asset.url));
+        //.map(asset => new Request(asset.url, { integrity: asset.hash }));
+        .map(asset => new Request(asset.url));
     await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
 }
 
