@@ -7,10 +7,13 @@
 
 @if (scopedParams != null)
 {
-    <sp_grid_kvp>
-        <div>Scoped Param Name</div>
-        <div>Expression</div>
-    </sp_grid_kvp>
+    if (scopedParams.Count > 0)
+    {
+        <sp_grid_kvp>
+            <div>Scoped Param Name</div>
+            <div>Expression</div>
+        </sp_grid_kvp>
+    }
     <Dropzone Items="scopedParams">
         <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
     </Dropzone>

@@ -262,6 +262,8 @@ namespace RulesEngineEditor.Pages
             WorkflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
 
             WorkflowJSONChange();
+            await WorkflowsChanged.InvokeAsync(Workflows);
+            await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
             StateHasChanged();
         }
 

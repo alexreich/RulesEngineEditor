@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.10] - 22-09-2021
+
+### Changed
+- Grid line alignment
+
+### Added
+- WF, Input Delete
+- Full EF example in Server
+
 ## [1.0.9] - 21-09-2021
 
 ### Changed

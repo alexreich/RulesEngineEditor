@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RulesEngineEditor.Services;
+using RulesEngineEditor.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RulesEngineEditorServer
 {
@@ -33,6 +35,9 @@ namespace RulesEngineEditorServer
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            //services.AddDbContext<RulesEngineEditorDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RulesEngineEditorDB")));
+            services.AddDbContextFactory<RulesEngineEditorDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RulesEngineEditorDB")), ServiceLifetime.Transient);
 
             services.AddRulesEngineEditor();
         }
@@ -56,8 +61,7 @@ namespace RulesEngineEditorServer
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
+            app.UseEndpoints(endpoints => {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

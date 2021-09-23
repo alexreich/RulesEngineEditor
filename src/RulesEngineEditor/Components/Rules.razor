@@ -32,7 +32,7 @@
 
     private void DeleteRule(RuleData sp)
     {
-        rules.RemoveAll(w => w.RuleName == sp.RuleName);
+        WorkflowService.DeleteRule(rules, sp);
         RulesChanged.InvokeAsync(rules);
     }
 }

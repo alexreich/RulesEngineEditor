@@ -12,6 +12,11 @@
         <div>
             <InputText placeholder="Workflow Name" title="Workflow Name" class="form-control" @bind-Value="@Name" />
         </div>
+        <div>
+            <button title="Delete Workflow" @onclick="@(e => DeleteWorkflow())" class="btn btn-secondary">
+                <span class="oi oi-trash"></span>
+            </button>
+        </div>
     </sp_grid_workflow>
 </EditForm>
 @code {
@@ -44,5 +49,17 @@
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
         WorkflowChanged.InvokeAsync(workFlow);
+    }
+
+    private void DeleteWorkflow()
+    {
+        if (workFlow.GlobalParams != null)
+            workFlow.GlobalParams.ToList().ForEach(gp => workFlow.GlobalParams.Remove(gp));
+
+        if (workFlow.Rules != null)
+            workFlow.Rules.ToList().ForEach(r => WorkflowService.DeleteRule(workFlow, r));
+
+        WorkflowService.Workflows.Remove(workFlow);
+        WorkflowService.WorkflowUpdate();
     }
 }
