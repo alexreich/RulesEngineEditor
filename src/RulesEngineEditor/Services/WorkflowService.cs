@@ -44,6 +44,14 @@ namespace RulesEngineEditor.Services
             WorkflowUpdate();
         }
 
+        public void Sort<T>(List<T> listToSort)
+        {
+            int x = 1;
+            listToSort.ForEach(item => {
+                ((dynamic)item).Seq = x++;
+            });
+        }
+
         public void DeleteRule(dynamic ruleParent, RuleData rule)
         {
             if (rule.LocalParams != null)

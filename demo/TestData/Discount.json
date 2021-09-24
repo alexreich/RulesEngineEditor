@@ -89,8 +89,7 @@
       },
       {
         "RuleName": "EditorTest",
-        "Enabled": true,
-        "ErrorType": 0,
+        "ErrorType": "Error",
         "Expression": "(DateTime.Now - input4.lastUpdated).Days >= 0 && input4.nested.Deeply"
       }
     ]

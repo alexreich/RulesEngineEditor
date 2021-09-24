@@ -69,7 +69,7 @@
 
     void RefreshDB()
     {
-        WorkflowDatas = db.Workflows.Include(i => i.GlobalParams).Include(i => i.Rules).ThenInclude(i => i.Rules).ThenInclude(i => i.LocalParams).ToList();
+        WorkflowDatas = db.Workflows.Include(i => i.GlobalParams.OrderBy(o => o.Seq)).Include(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.LocalParams.OrderBy(o => o.Seq)).ToList();
     }
 
     protected override void OnInitialized()

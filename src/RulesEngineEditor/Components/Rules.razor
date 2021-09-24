@@ -7,7 +7,7 @@
 
 @if (rules != null)
 {
-    <Dropzone Items="rules">
+    <Dropzone TItem="RuleData" Items="rules" OnItemDrop="@((i)=>RuleDragEnd(i))">
         <rules>
             <RuleEditor rule="@context" RuleDelete="DeleteRule" />
         </rules>
@@ -33,6 +33,12 @@
     private void DeleteRule(RuleData sp)
     {
         WorkflowService.DeleteRule(rules, sp);
+        RulesChanged.InvokeAsync(rules);
+    }
+
+    private void RuleDragEnd(RuleData sp)
+    {
+        WorkflowService.Sort(rules);
         RulesChanged.InvokeAsync(rules);
     }
 }

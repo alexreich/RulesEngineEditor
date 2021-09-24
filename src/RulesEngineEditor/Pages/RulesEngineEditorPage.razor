@@ -33,7 +33,7 @@
 {
     <div class="sp_grid_main" hidden="@(!ShowWorkflows)">
         <div>
-            <Dropzone Items="WorkflowService.Workflows" Class="reeditor_dragdrop">
+            <Dropzone TItem="WorkflowData" OnItemDrop="@((i)=>WorkflowDragEnd(i))" Items="WorkflowService.Workflows" Class="reeditor_dragdrop">
                 <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
                 <div class="sp_grid_workflow_children">
                     <h5>Rules</h5>
@@ -71,4 +71,8 @@
             </div>
         </div>
     </div>
+}
+else
+{
+    <span class="JSONErrors">@workflowJSONErrors</span>
 }

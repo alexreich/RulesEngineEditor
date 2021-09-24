@@ -19,8 +19,9 @@ namespace RulesEngineEditor.Models
         public int? Id { get; set; }
         public new List<RuleData> Rules { get; set; }
         public new List<ScopedParamData> GlobalParams { get; set; }
-
         public new string WorkflowName { get; set; }
+        [JsonIgnore]
+        public int Seq { get; set; }
     }
     public class RuleData : Rule
     {
@@ -35,6 +36,8 @@ namespace RulesEngineEditor.Models
         public bool? IsSuccess { get; set; }
         [JsonIgnore]
         public string ExceptionMessage { get; set; }
+        [JsonIgnore]
+        public int Seq { get; set; }
     }
     /// <summary>
     /// ScopedParamData - inherited class to continue naming convention / reserve future functionality
@@ -46,5 +49,7 @@ namespace RulesEngineEditor.Models
         /// </summary>
         [JsonIgnore]
         public int? Id { get; set; }
+        [JsonIgnore]
+        public int Seq { get; set; }
     }
 }
