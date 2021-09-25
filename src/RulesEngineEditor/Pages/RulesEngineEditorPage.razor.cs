@@ -74,15 +74,15 @@ namespace RulesEngineEditor.Pages
         }
         protected override void OnParametersSet()
         {
-            if (Workflows != null)
+            if (Workflows != default)
             {
-                string newJSON;
-                newJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
+                var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
+                //var oldJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions)));
 
                 if (newJSON != WorkflowJSON)
                 {
                     WorkflowService.Workflows = new List<WorkflowData>();
-                    WorkflowJSON = JsonNormalizer.Normalize(newJSON);
+                    WorkflowJSON = newJSON;
                     WorkflowJSONChange();
                 }
             }
@@ -110,7 +110,6 @@ namespace RulesEngineEditor.Pages
         }
         public void NewWorkflows()
         {
-            Workflows = new WorkflowRules[0];
             WorkflowService.Workflows = new List<WorkflowData>();
             WorkflowService.RuleParameters = new RuleParameter[0];
             WorkflowsChanged.InvokeAsync(Workflows);
@@ -211,7 +210,7 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, jsonOptions);
+                var Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, jsonOptions);
                 if (WorkflowService.RuleParameters.Length == 0) return;
 
                 _rulesEngine.ClearWorkflows();
