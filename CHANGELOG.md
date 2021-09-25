@@ -6,10 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Grid line alignment
+- Bugfixes
 
 ### Added
 - WF, Input Delete
 - Full EF example in Server
+- Advance input scenarios (nested + date time)
 
 ## [1.0.9] - 21-09-2021
 

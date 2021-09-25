@@ -77,18 +77,13 @@ namespace RulesEngineEditor.Pages
             if (Workflows != null)
             {
                 string newJSON;
-                if (WorkflowService.Workflows.Any())
-                {
-                    newJSON = System.Text.Json.JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
-                }
-                else
-                {
-                    newJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
-                }
+                newJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
 
                 if (newJSON != WorkflowJSON)
                 {
+                    WorkflowService.Workflows = new List<WorkflowData>();
                     WorkflowJSON = JsonNormalizer.Normalize(newJSON);
+                    WorkflowJSONChange();
                 }
             }
         }
