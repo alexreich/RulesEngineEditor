@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages - Legacy
 # Run workflow on every push to the gh_pages_only branch (workarounds for WASM issues with Newtonsoft, etc. - maybe .NET5 isolated)
 on:
   push:
