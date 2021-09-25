@@ -5,6 +5,7 @@ using RulesEngine.Models;
 using RulesEngineEditor.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RulesEngineEditor.Services
 {
@@ -41,6 +42,32 @@ namespace RulesEngineEditor.Services
             }
             ruleParent.Rules.Insert(0, rule);
             WorkflowUpdate();
+        }
+
+        public void Sort<T>(List<T> listToSort)
+        {
+            int x = 1;
+            listToSort.ForEach(item => {
+                ((dynamic)item).Seq = x++;
+            });
+        }
+
+        public void DeleteRule(dynamic ruleParent, RuleData rule)
+        {
+            if (rule.LocalParams != null)
+                rule.LocalParams.ToList().ForEach(lp => rule.LocalParams.Remove(lp));
+
+            if (rule.Rules != null)
+                rule.Rules.ToList().ForEach(r => DeleteRule(rule, r));
+
+            if (ruleParent is List<RuleData>)
+            {
+                ruleParent.Remove(rule);
+            }
+            else
+            {
+                ruleParent.Rules.Remove(rule);
+            }
         }
     }
 }

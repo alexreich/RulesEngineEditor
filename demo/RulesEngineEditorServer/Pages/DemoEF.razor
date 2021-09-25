@@ -1,0 +1,88 @@
+﻿@*
+    // Copyright (c) Alex Reich.
+    // Licensed under the CC BY 4.0 License.
+*@
+@page "/DemoEF"
+@implements IDisposable
+@using RulesEngine.Models
+@using RulesEngineEditor.Models
+@using Microsoft.EntityFrameworkCore
+@using RulesEngineEditor.Data
+
+@inject IDbContextFactory<RulesEngineEditorDbContext> DbFactory
+
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" />
+
+@code {
+    private RulesEngineEditorDbContext db;
+    private RulesEngine.RulesEngine re;
+
+    private List<WorkflowData> _workflowDatas;
+    private List<WorkflowData> WorkflowDatas
+    {
+        get { return _workflowDatas; }
+        set
+        {
+            _workflowDatas = value;
+
+            //add any missing workflows into dbcontext
+            foreach (var wf in _workflowDatas)
+            {
+                if (!db.Workflows.Any(w => w.Id == wf.Id))
+                    db.Workflows.Add(wf);
+            }
+
+            //remove any missing workflows into dbcontext
+            foreach (var wf in db.Workflows)
+            {
+                if (!_workflowDatas.Any(w => w.Id == wf.Id))
+                    db.Workflows.Remove(wf);
+            }
+
+            try
+            {
+                if (db.ChangeTracker.HasChanges())
+                {
+                    db.SaveChanges(true);
+
+                    RefreshDB();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+
+    private string Inputs;
+
+    enum FooEnum
+    {
+        bar = 123
+    }
+
+    public void Dispose()
+    {
+        db?.Dispose();
+    }
+
+    void RefreshDB()
+    {
+        WorkflowDatas = db.Workflows.Include(i => i.GlobalParams.OrderBy(o => o.Seq)).Include(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.LocalParams.OrderBy(o => o.Seq)).ToList();
+    }
+
+    protected override void OnInitialized()
+    {
+        var settings = new ReSettings
+        {
+            CustomTypes = new Type[] { typeof(FooEnum) }
+        };
+        re = new RulesEngine.RulesEngine(null, settings);
+
+        db = DbFactory.CreateDbContext();
+        db.Database.EnsureCreated();
+
+        RefreshDB();
+    }
+}

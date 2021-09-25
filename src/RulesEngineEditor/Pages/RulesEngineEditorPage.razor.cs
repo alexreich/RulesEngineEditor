@@ -64,7 +64,8 @@ namespace RulesEngineEditor.Pages
                 IncludeFields = true,
                 WriteIndented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = true,
+                Converters = { new JsonStringEnumConverter() }
             };
 
             WorkflowService.OnInputChange += InputUpdate;
@@ -76,18 +77,13 @@ namespace RulesEngineEditor.Pages
             if (Workflows != null)
             {
                 string newJSON;
-                if (WorkflowService.Workflows.Any())
-                {
-                    newJSON = System.Text.Json.JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
-                }
-                else
-                {
-                    newJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
-                }
+                newJSON = System.Text.Json.JsonSerializer.Serialize(Workflows, jsonOptions);
 
                 if (newJSON != WorkflowJSON)
                 {
+                    WorkflowService.Workflows = new List<WorkflowData>();
                     WorkflowJSON = JsonNormalizer.Normalize(newJSON);
+                    WorkflowJSONChange();
                 }
             }
         }
@@ -114,8 +110,11 @@ namespace RulesEngineEditor.Pages
         }
         public void NewWorkflows()
         {
+            Workflows = new WorkflowRules[0];
             WorkflowService.Workflows = new List<WorkflowData>();
             WorkflowService.RuleParameters = new RuleParameter[0];
+            WorkflowsChanged.InvokeAsync(Workflows);
+            WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
             StateHasChanged();
         }
 
@@ -133,6 +132,7 @@ namespace RulesEngineEditor.Pages
             WorkflowData workflow = new WorkflowData();
             workflow.GlobalParams = new List<ScopedParamData>();
             workflow.Rules = new List<RuleData>();
+            workflow.Seq = -1;
             WorkflowService.Workflows.Insert(0, workflow);
             StateHasChanged();
         }
@@ -211,11 +211,7 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                //Doesn't work in WASM PWA as of .NET 5
-                //var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
-
-                Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON);
-
+                Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, jsonOptions);
                 if (WorkflowService.RuleParameters.Length == 0) return;
 
                 _rulesEngine.ClearWorkflows();
@@ -255,6 +251,12 @@ namespace RulesEngineEditor.Pages
             StateHasChanged();
         }
 
+        private async void WorkflowDragEnd(WorkflowData wf)
+        {
+            WorkflowService.Sort(WorkflowService.Workflows);
+            await WorkflowsChanged.InvokeAsync(Workflows);
+            await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
+        }
         private async void ImportWorkflows(InputFileChangeEventArgs files)
         {
             var selectedFile = files.File;
@@ -262,6 +264,8 @@ namespace RulesEngineEditor.Pages
             WorkflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
 
             WorkflowJSONChange();
+            await WorkflowsChanged.InvokeAsync(Workflows);
+            await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
             StateHasChanged();
         }
 
@@ -270,7 +274,7 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON);
+                var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON, jsonOptions);
 
                 if (!WorkflowService.Workflows.Any())
                 {
@@ -287,7 +291,6 @@ namespace RulesEngineEditor.Pages
             {
                 workflowJSONErrors = ex.Message;
             }
-            //StateHasChanged();
         }
 
         private void DownloadFile()
@@ -303,7 +306,7 @@ namespace RulesEngineEditor.Pages
             try
             {
                 //ensure no serialzable errors in JSON before enabling download
-                var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<WorkflowRules>>(WorkflowJSON).ToArray());
+                var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<WorkflowRules>>(WorkflowJSON, jsonOptions).ToArray());
 
                 DownloadAttributes = new Dictionary<string, object>();
                 DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowJSON);

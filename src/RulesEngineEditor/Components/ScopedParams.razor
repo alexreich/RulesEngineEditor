@@ -7,11 +7,14 @@
 
 @if (scopedParams != null)
 {
-    <sp_grid_kvp>
-        <div>Scoped Param Name</div>
-        <div>Expression</div>
-    </sp_grid_kvp>
-    <Dropzone Items="scopedParams">
+    if (scopedParams.Count > 0)
+    {
+        <sp_grid_kvp>
+            <div>Scoped Param Name</div>
+            <div>Expression</div>
+        </sp_grid_kvp>
+    }
+    <Dropzone TItem="ScopedParamData" Items="scopedParams" OnItemDrop="@((i)=>ScopedParamDragEnd(i))">
         <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
     </Dropzone>
 }
@@ -30,6 +33,12 @@
     private void DeleteScopedParam(ScopedParamData sp)
     {
         scopedParams.Remove(sp);
+        ScopedParamsChanged.InvokeAsync(scopedParams);
+    }
+
+    private void ScopedParamDragEnd(ScopedParamData sp)
+    {
+        WorkflowService.Sort(scopedParams);
         ScopedParamsChanged.InvokeAsync(scopedParams);
     }
 }

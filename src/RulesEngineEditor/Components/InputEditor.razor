@@ -17,6 +17,11 @@
         <div>
             <InputText title="Name" class="form-control" @bind-Value="@Input.InputRuleName" />
         </div>
+        <div>
+            <button title="Delete Input" @onclick="@(e => DeleteInput())" class="btn btn-secondary">
+                <span class="oi oi-trash"></span>
+            </button>
+        </div>
     </sp_grid_workflow>
     <h5>Parameters</h5>
     <button class="reeditor_button" title="Add Input Parameter" @onclick="AddParameter">Add</button>
@@ -67,5 +72,10 @@
         InputParameter parameter = new InputParameter();
         parameter.Name = $"param{Input.Parameters.Count + 1}";
         Input.Parameters.Insert(0, parameter);
+    }
+    private void DeleteInput()
+    {
+        WorkflowService.Inputs.Remove(Input);
+        WorkflowService.InputUpdate();
     }
 }
