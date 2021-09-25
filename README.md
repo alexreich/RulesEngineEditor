@@ -92,6 +92,12 @@ services.AddRulesEngineEditor();
 <link href="_content/RulesEngineEditor/css/dragdrop.css" rel="stylesheet" />
 ```
 
+#### Entity Framework Demo Setup
+1. Ensure SQL Express is set up<br>`c:\> sqllocaldb<ENTER>`
+3. Create an instance of the test database<br>>`sqllocaldb c "RulesEngineEditorDB" -s`
+3. Open Package Manager Console (View > Other Windows > Package Manager Console)<br>`Add-Migration init`<br>`
+Update-Database`
+
 ## What's Next
 * Support for more types (ActionInfo, RuleActions, etc.)
 * Synchronization with next release of Microsoft Rules Engine
