@@ -210,7 +210,9 @@ namespace RulesEngineEditor.Pages
             workflowJSONErrors = "";
             try
             {
-                var Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, jsonOptions);
+                //TODO Reverted to Newtonsoft - roll forward to System.Text.Json when it's fully supported (Github Pages PWA fails without Newtonsoft)
+                var Workflows = Newtonsoft.Json.JsonConvert.DeserializeObject<WorkflowRules[]>(WorkflowJSON);
+                //var Workflows = JsonSerializer.Deserialize<WorkflowRules[]>(WorkflowJSON, jsonOptions);
                 if (WorkflowService.RuleParameters.Length == 0) return;
 
                 _rulesEngine.ClearWorkflows();
