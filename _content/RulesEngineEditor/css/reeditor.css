@@ -43,7 +43,7 @@ rules > *:not(sp_grid_rules) {
     display: inline-grid;
     grid-template-columns: 70% 30%;
     width: 100%;
-    padding: 5px;
+    padding: 10px 0px 10px 0px;
     grid-gap: 5px;
 }
 
@@ -98,9 +98,18 @@ sp_grid_kvp {
 sp_grid_workflow {
     grid-column: auto;
     display: inline-grid;
+    grid-template-columns: 95% 5%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     border: none;
     padding: 2px;
+    grid-gap: 5px;
     width: 100%;
+}
+
+.sp_grid_workflow_children {
+    margin-left: 1em;
 }
 
 .reeditor_menubutton {
