@@ -55,6 +55,11 @@ Complex:
 <RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
 ```
 
+Complex (EF Supported):
+```csharp 
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" InputJSON="@Inputs" />
+```
+
 ## Install
 
 [![NuGet](content/nuget-RulesEngineEditor-blue.svg)](https://www.nuget.org/packages/RulesEngineEditor/)
