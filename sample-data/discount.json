@@ -86,12 +86,6 @@
             "Expression": "input2.totalOrders > 15 AND input3.noOfVisitsPerMonth > 25"
           }
         ]
-      },
-      {
-        "RuleName": "EditorTest",
-        "Enabled": true,
-        "ErrorType": 0,
-        "Expression": "(DateTime.Now - input4.lastUpdated).Days >= 0 && input4.nested.Deeply"
       }
     ]
   }
