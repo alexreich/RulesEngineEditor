@@ -34,6 +34,8 @@ namespace RulesEngineEditor.Data
                 entity.ToTable("Workflow");
                 entity.HasKey(k => k.Id);
                 entity.Property(p => p.Id).ValueGeneratedOnAdd();
+                entity.Ignore(i => i.WorkflowsToInject);
+                //TODO: Remove when RE version >= 4
                 entity.Ignore(i => i.WorkflowRulesToInject);
                 entity.HasMany(r => r.Rules).WithOne().OnDelete(DeleteBehavior.ClientCascade);
                 entity.HasMany(g => g.GlobalParams).WithOne().OnDelete(DeleteBehavior.ClientCascade);
@@ -46,6 +48,8 @@ namespace RulesEngineEditor.Data
                 entity.Ignore(i => i.IsSuccess);
                 entity.Ignore(i => i.ErrorMessage);
                 entity.Ignore(i => i.ExceptionMessage);
+                entity.Ignore(i => i.WorkflowsToInject);
+                //TODO: Remove when RE version >= 4
                 entity.Ignore(i => i.WorkflowRulesToInject);
 
                 entity.Property(b => b.Properties)

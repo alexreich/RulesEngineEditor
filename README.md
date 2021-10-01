@@ -103,9 +103,14 @@ services.AddRulesEngineEditor();
 3. Open Package Manager Console (View > Other Windows > Package Manager Console)<br>`Add-Migration init`<br>`
 Update-Database`
 
+#### Suppress top level Buttons
+Any/all of the following menu buttons can explicitly disabled:  
+`NewWorkflows, DownloadWorkflows, ImportWorkflows, AddWorkflow, NewInputs, DownloadInputs, ImportInputs, AddInput`  
+See [DemoEF](https://raw.githubusercontent.com/alexreich/RulesEngineEditor/main/demo/RulesEngineEditorServer/Pages/DemoEF.razor) for example usage.
+
 ## What's Next
 * Support for more types (ActionInfo, RuleActions, etc.)
-* Synchronization with next release of Microsoft Rules Engine
+* Continued synchronization with releases of Microsoft Rules Engine
 * Support for .NET 6, Blazor Desktop
 ***
 This work is licensed under a

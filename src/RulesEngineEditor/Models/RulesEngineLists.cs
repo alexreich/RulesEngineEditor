@@ -10,7 +10,7 @@ namespace RulesEngineEditor.Models
     /// <summary>
     /// WorkflowData has convenience methods (e.g. Lists) for RE Workflows
     /// </summary>
-    public class WorkflowData : WorkflowRules
+    public class WorkflowData : Workflow
     {
         /// <summary>
         /// Reserved for Database / Entity Framework implementations

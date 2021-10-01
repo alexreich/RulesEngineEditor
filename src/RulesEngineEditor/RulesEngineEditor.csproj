@@ -14,9 +14,9 @@
     <PackageReleaseNotes>https://github.com/alexreich/RulesEngineEditor/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageIcon>RulesEngineEditor.png</PackageIcon>
     <PackageIconUrl />
-    <Version>1.0.11</Version>
-    <AssemblyVersion>1.0.11.0</AssemblyVersion>
-    <FileVersion>1.0.11.0</FileVersion>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
   
@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.10" />
     <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
-    <PackageReference Include="RulesEngine" Version="3.3.0" />
+    <PackageReference Include="RulesEngine" Version="3.4.0" />
     <PackageReference Include="ValueInjecter" Version="3.2.0" />
   </ItemGroup>
 

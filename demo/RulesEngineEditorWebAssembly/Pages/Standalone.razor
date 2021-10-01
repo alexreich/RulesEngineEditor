@@ -15,8 +15,8 @@
     private RulesEngine.RulesEngine re;
     RulesEngineEditorPage ree;
 
-    private WorkflowRules[] _workflows;
-    private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows = value; } }
+    private Workflow[] _workflows;
+    private Workflow[] Workflows { get { return _workflows; } set { _workflows = value; } }
 
     enum FooEnum
     {
@@ -31,7 +31,7 @@
         };
         re = new RulesEngine.RulesEngine(null, settings);
 
-        Workflows = new List<WorkflowRules>().ToArray();
+        Workflows = new List<Workflow>().ToArray();
     }
     protected override void OnAfterRender(bool firstRender)
     {

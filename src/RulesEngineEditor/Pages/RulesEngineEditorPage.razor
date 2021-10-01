@@ -24,10 +24,22 @@
     }
 }
 <div hidden="@(!ShowWorkflows)">
-    <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">New</button><span>&nbsp;</span><a class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
-    <div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@ImportWorkflows" />Import</div>
-
-    <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button>
+    @if (IsButtonEnabled("NewWorkflows"))
+    {
+        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">New</button><span>&nbsp;</span>
+    }
+    @if (IsButtonEnabled("DownloadWorkflows"))
+    {
+        <a class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
+    }
+    @if (IsButtonEnabled("ImportWorkflows"))
+    {
+        <div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@ImportWorkflows" />Import</div><span>&nbsp;</span>
+    }
+    @if (IsButtonEnabled("AddWorkflow"))
+    {
+        <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button><span>&nbsp;</span>
+    }
 </div>
 @if (WorkflowService.Workflows.Count > 0)
 {
@@ -54,10 +66,22 @@
         </div>
     </div>
     <div hidden="@(ShowWorkflows)">
-        <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button><span>&nbsp;</span><a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
-        <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
-
-        <button title="Add Input" class="reeditor_button" @onclick="AddInput">Add</button>
+        @if (IsButtonEnabled("NewInputs"))
+        {
+        <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button><span>&nbsp;</span>
+        }
+        @if (IsButtonEnabled("DownloadInputs"))
+        {
+            <a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
+        }
+        @if (IsButtonEnabled("ImportInputs"))
+        {
+            <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div><span>&nbsp;</span>
+        }
+        @if (IsButtonEnabled("AddInput"))
+        {
+            <button title="Add Input" class="reeditor_button" @onclick="AddInput">Add</button>
+        }
 
         <div class="sp_grid_main" hidden="@(!WorkflowService.Inputs.Any())">
             <div>
