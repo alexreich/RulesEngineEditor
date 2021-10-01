@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 1-10-2021
+
+### Changed
+- Updated to latest Rules Engine (3.4.0)
+
+
 ## [1.0.10] - 24-09-2021
 
 ### Changed

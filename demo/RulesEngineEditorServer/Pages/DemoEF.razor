@@ -11,7 +11,7 @@
 
 @inject IDbContextFactory<RulesEngineEditorDbContext> DbFactory
 
-<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" />
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" MenuButtons="menuButtons" />
 
 @code {
     private RulesEngineEditorDbContext db;
@@ -72,8 +72,12 @@
         WorkflowDatas = db.Workflows.Include(i => i.GlobalParams.OrderBy(o => o.Seq)).Include(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.LocalParams.OrderBy(o => o.Seq)).ToList();
     }
 
+    private List<MenuButton> menuButtons = new List<MenuButton>();
+
     protected override void OnInitialized()
     {
+        menuButtons.Add(new MenuButton("NewWorkflows", false));
+
         var settings = new ReSettings
         {
             CustomTypes = new Type[] { typeof(FooEnum) }
