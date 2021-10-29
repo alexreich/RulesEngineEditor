@@ -98,7 +98,7 @@ services.AddRulesEngineEditor();
 ```
 
 #### Entity Framework Demo Setup
-1. Ensure SQL Express is set up<br>`c:\> sqllocaldb<ENTER>`
+1. Ensure SQL Express is set up<br>`c:\> sqllocaldb`
 3. Create an instance of the test database<br>>`sqllocaldb c "RulesEngineEditorDB" -s`
 3. Open Package Manager Console (View > Other Windows > Package Manager Console)<br>`Add-Migration init`<br>`
 Update-Database`
