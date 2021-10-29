@@ -81,7 +81,7 @@ namespace RulesEngineEditor.Pages
     }
     protected override void OnParametersSet()
     {
-        if (Workflows != default)
+        if (Workflows != default && string.IsNullOrEmpty(WorkflowJSON))
         {
             var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
             //var oldJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions)));
