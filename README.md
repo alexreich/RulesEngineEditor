@@ -111,7 +111,7 @@ See [DemoEF](https://raw.githubusercontent.com/alexreich/RulesEngineEditor/main/
 ## What's Next
 * Support for more types (ActionInfo, RuleActions, etc.)
 * Continued synchronization with releases of Microsoft Rules Engine
-* Support for .NET 6, Blazor Desktop
+* Blazor Desktop
 ***
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
