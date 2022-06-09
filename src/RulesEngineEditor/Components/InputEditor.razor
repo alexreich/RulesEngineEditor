@@ -15,7 +15,7 @@
     <ValidationSummary />
     <sp_grid_workflow>
         <div>
-            <InputText title="Name" class="form-control" @bind-Value="@Input.InputRuleName" />
+            <InputText title="Name" class="form-control" @bind-Value="@Input.InputRuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
             <button title="Delete Input" @onclick="@(e => DeleteInput())" class="btn btn-secondary">

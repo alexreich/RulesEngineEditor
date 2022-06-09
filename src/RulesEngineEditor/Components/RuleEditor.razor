@@ -21,7 +21,7 @@
         <ValidationSummary />
         <sp_grid_rules>
             <div>
-                <InputText class="form-control" @bind-Value="@rule.RuleName" />
+                <InputText class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
                 @if (@rule.ExceptionMessage != "")
                 {
                     <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>
@@ -37,13 +37,13 @@
                 </InputSelect>
             </div>
             <div>
-                <InputText class="form-control" @bind-Value="@rule.SuccessEvent" />
+                <InputText class="form-control" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
-                <InputText class="form-control" @bind-Value="@rule.ErrorMessage" />
+                <InputText class="form-control" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
-                <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" />
+                <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
                 <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
