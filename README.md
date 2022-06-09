@@ -109,6 +109,7 @@ Any/all of the following menu buttons can explicitly disabled:
 See [DemoEF](https://raw.githubusercontent.com/alexreich/RulesEngineEditor/main/demo/RulesEngineEditorServer/Pages/DemoEF.razor) for example usage.
 
 ## What's Next
+* UI Update - large data (workflow, rule) handling
 * Support for more types (ActionInfo, RuleActions, etc.)
 * Continued synchronization with releases of Microsoft Rules Engine
 * Blazor Desktop
