@@ -35,8 +35,6 @@ namespace RulesEngineEditor.Data
                 entity.HasKey(k => k.Id);
                 entity.Property(p => p.Id).ValueGeneratedOnAdd();
                 entity.Ignore(i => i.WorkflowsToInject);
-                //TODO: Remove when RE version >= 4
-                entity.Ignore(i => i.WorkflowRulesToInject);
                 entity.HasMany(r => r.Rules).WithOne().OnDelete(DeleteBehavior.ClientCascade);
                 entity.HasMany(g => g.GlobalParams).WithOne().OnDelete(DeleteBehavior.ClientCascade);
             });
@@ -49,19 +47,17 @@ namespace RulesEngineEditor.Data
                 entity.Ignore(i => i.ErrorMessage);
                 entity.Ignore(i => i.ExceptionMessage);
                 entity.Ignore(i => i.WorkflowsToInject);
-                //TODO: Remove when RE version >= 4
-                entity.Ignore(i => i.WorkflowRulesToInject);
 
                 entity.Property(b => b.Properties)
                 .HasConversion(
-                    v => JsonSerializer.Serialize(v, null),
-                    v => JsonSerializer.Deserialize<Dictionary<string, object>>(v, null))
+                    v => JsonSerializer.Serialize(v, new JsonSerializerOptions()),
+                    v => JsonSerializer.Deserialize<Dictionary<string, object>>(v, new JsonSerializerOptions()))
                 .HasJsonConversion();
 
                 entity.Property(p => p.Actions)
                 .HasConversion(
-                    v => JsonSerializer.Serialize(v, null),
-                    v => JsonSerializer.Deserialize<RuleActions>(v, null));
+                    v => JsonSerializer.Serialize(v, new JsonSerializerOptions()),
+                    v => JsonSerializer.Deserialize<RuleActions>(v, new JsonSerializerOptions()));
                 entity.HasMany(r => r.Rules).WithOne().OnDelete(DeleteBehavior.ClientCascade);
                 entity.HasMany(g => g.LocalParams).WithOne().OnDelete(DeleteBehavior.ClientCascade);
             });
