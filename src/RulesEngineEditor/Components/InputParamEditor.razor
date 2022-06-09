@@ -10,10 +10,10 @@
     <ValidationSummary />
     <sp_grid_inputparameter>
         <div>
-            <InputText title="Input Parameter Name" class="form-control" @bind-Value="@InputParam.Name" />
+            <InputText title="Input Parameter Name" class="form-control" @bind-Value="@InputParam.Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea title="Value" rows="5" form="Expression" class="form-control" @bind-Value="@InputParam.Value" />
+            <InputTextArea title="Value" rows="5" form="Expression" class="form-control" @bind-Value="@InputParam.Value" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
             <button @onclick="@(e => InputParamDelete.InvokeAsync(InputParam))" class="btn btn-secondary m-1">

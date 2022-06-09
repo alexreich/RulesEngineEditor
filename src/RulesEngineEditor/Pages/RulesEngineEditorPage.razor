@@ -30,7 +30,7 @@
     }
     @if (IsButtonEnabled("DownloadWorkflows"))
     {
-        <a class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
+        <a title="Download Workflows" class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
     }
     @if (IsButtonEnabled("ImportWorkflows"))
     {
@@ -62,7 +62,7 @@
         </div>
         <div>
             <span class="JSONErrors">@workflowJSONErrors</span>
-            <textarea @bind="WorkflowJSON" class="jsonTextArea" />
+            <textarea @bind="WorkflowsJSON" class="jsonTextArea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
     </div>
     <div hidden="@(ShowWorkflows)">
@@ -91,7 +91,7 @@
             </div>
             <div>
                 <span class="JSONErrors">@inputJSONErrors</span>
-                <textarea @bind="InputJSON" class="jsonTextArea" />
+                <textarea @bind="InputJSON" class="jsonTextArea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
         </div>
     </div>

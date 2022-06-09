@@ -10,7 +10,7 @@
     <ValidationSummary />
     <sp_grid_workflow>
         <div>
-            <InputText placeholder="Workflow Name" title="Workflow Name" class="form-control" @bind-Value="@Name" />
+            <InputText placeholder="Workflow Name" title="Workflow Name" class="form-control" @bind-Value="@Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
             <button title="Delete Workflow" @onclick="@(e => DeleteWorkflow())" class="btn btn-secondary">

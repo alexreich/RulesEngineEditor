@@ -46,7 +46,7 @@ namespace RulesEngineEditor.Pages
 
         string workflowJSONErrors;
         string _workflowJSON;
-        string WorkflowJSON { get { return _workflowJSON; } set { if (value != _workflowJSON) { _workflowJSON = value; WorkflowJSONChange(); } } }
+        string WorkflowsJSON { get { return _workflowJSON; } set { if (value != _workflowJSON) { _workflowJSON = value; WorkflowJSONChange(); } } }
 
         string inputJSONErrors;
         string _inputJSON;
@@ -81,16 +81,17 @@ namespace RulesEngineEditor.Pages
     }
     protected override void OnParametersSet()
     {
-        if (Workflows != default && string.IsNullOrEmpty(WorkflowJSON))
+        if (Workflows != default && string.IsNullOrEmpty(WorkflowsJSON))
         {
             var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
             //var oldJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions)));
 
-            if (newJSON != WorkflowJSON)
+            if (newJSON != WorkflowsJSON)
             {
                 WorkflowService.Workflows = new List<WorkflowData>();
-                WorkflowJSON = newJSON;
+                WorkflowsJSON = newJSON;
                 WorkflowJSONChange();
+                DownloadWorkflows();
             }
         }
     }
@@ -162,7 +163,7 @@ namespace RulesEngineEditor.Pages
 
     private void WorkflowUpdate()
     {
-        DownloadFile();
+        DownloadWorkflows();
         UpdateInputs();
         DownloadInputs();
         RunRE();
@@ -219,7 +220,7 @@ namespace RulesEngineEditor.Pages
         {
             //TODO Reverted to Newtonsoft - roll forward to System.Text.Json when it's fully supported (Github Pages PWA fails without Newtonsoft)
             //var Workflows = Newtonsoft.Json.JsonConvert.DeserializeObject<Workflow[]>(WorkflowJSON);
-            var Workflows = JsonSerializer.Deserialize<Workflow[]>(WorkflowJSON, jsonOptions);
+            var Workflows = JsonSerializer.Deserialize<Workflow[]>(WorkflowsJSON, jsonOptions);
             if (WorkflowService.RuleParameters.Length == 0) return;
 
             _rulesEngine.ClearWorkflows();
@@ -269,7 +270,7 @@ namespace RulesEngineEditor.Pages
     {
         var selectedFile = files.File;
         StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
-        WorkflowJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
+        WorkflowsJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
 
         WorkflowJSONChange();
         await WorkflowsChanged.InvokeAsync(Workflows);
@@ -282,7 +283,7 @@ namespace RulesEngineEditor.Pages
         workflowJSONErrors = "";
         try
         {
-            var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowJSON, jsonOptions);
+            var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowsJSON, jsonOptions);
 
             if (!WorkflowService.Workflows.Any())
             {
@@ -301,7 +302,7 @@ namespace RulesEngineEditor.Pages
         }
     }
 
-    private void DownloadFile()
+    private void DownloadWorkflows()
     {
         workflowJSONErrors = "";
         var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
@@ -309,15 +310,15 @@ namespace RulesEngineEditor.Pages
         {
             return;
         }
-        WorkflowJSON = JsonNormalizer.Normalize(jsonString);
+        WorkflowsJSON = JsonNormalizer.Normalize(jsonString);
 
         try
         {
             //ensure no serialzable errors in JSON before enabling download
-            var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions).ToArray());
+            var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<Workflow>>(WorkflowsJSON, jsonOptions).ToArray());
 
             DownloadAttributes = new Dictionary<string, object>();
-            DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowJSON);
+            DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowsJSON);
             DownloadAttributes.Add("download", "RulesEngine.json");
         }
         catch (Exception ex)
