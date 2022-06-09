@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 6-9-2022
+- Cleanup
+
 ## [1.1.0] - 1-10-2021
 
 ### Changed
