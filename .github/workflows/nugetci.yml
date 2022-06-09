@@ -34,7 +34,7 @@ jobs:
                   nuget-version: latest
 
             - name: Publish NuGet
-              uses: rohith/publish-nuget@v2
+              uses: brandedoutcast/publish-nuget@v2
               with:
                 PROJECT_FILE_PATH: src/RulesEngineEditor/RulesEngineEditor.csproj # Relative to repository root
                 NUGET_KEY: ${{ secrets.NUGET_API_KEY }} 
