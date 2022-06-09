@@ -17,6 +17,7 @@
     <Version>1.1.2</Version>
     <AssemblyVersion>1.1.2.0</AssemblyVersion>
     <FileVersion>1.1.2.0</FileVersion>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   
@@ -39,6 +40,10 @@
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
