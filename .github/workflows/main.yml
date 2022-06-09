@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.*
+        dotnet-version: 6.*
         include-prerelease: true
         
      # publishes Blazor project to the release-folder
