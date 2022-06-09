@@ -91,6 +91,7 @@ namespace RulesEngineEditor.Pages
                 WorkflowService.Workflows = new List<WorkflowData>();
                 WorkflowsJSON = newJSON;
                 WorkflowJSONChange();
+                DownloadWorkflows();
             }
         }
     }
