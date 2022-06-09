@@ -30,7 +30,7 @@
     }
     @if (IsButtonEnabled("DownloadWorkflows"))
     {
-        <a class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
+        <a title="Download Workflows" class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
     }
     @if (IsButtonEnabled("ImportWorkflows"))
     {
@@ -62,7 +62,7 @@
         </div>
         <div>
             <span class="JSONErrors">@workflowJSONErrors</span>
-            <textarea @bind="WorkflowJSON" class="jsonTextArea" />
+            <textarea @bind="WorkflowsJSON" class="jsonTextArea" />
         </div>
     </div>
     <div hidden="@(ShowWorkflows)">
