@@ -44,6 +44,7 @@ https://alexreich.github.io/RulesEngineEditor/demo
   * Supports 2-way binding of Workflows
   * "Starter" Input Rule Parameter JSON
 * Allows for non-supported types in Rules Engine Workflow JSON
+* .NET 6 Support
 
 ## Usage
 Simple:  
