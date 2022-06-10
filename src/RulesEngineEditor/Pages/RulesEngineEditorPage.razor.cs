@@ -199,7 +199,8 @@ namespace RulesEngineEditor.Pages
                 }
                 catch (Exception ex)
                 {
-                    inputJSONErrors += ex.Message + " ";
+                    inputJSONErrors += ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
+                    Console.WriteLine(ex);
                 }
             }
             newInputs.Add(newInput);
