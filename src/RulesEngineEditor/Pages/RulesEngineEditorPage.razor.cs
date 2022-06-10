@@ -340,17 +340,21 @@ namespace RulesEngineEditor.Pages
         private void InputJSONUpdate()
         {
             if (InputJSON == null) return;
+            if (InputJSON == "[]")
+            {
+                return;
+            }
 
             inputJSONErrors = "";
             try
             {
-                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON, jsonOptions);
+                var inputs = JsonSerializer.Deserialize<List<dynamic>>(InputJSON, jsonOptions);
                 if (inputs == null) return;
 
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
-                foreach (var i in inputs.EnumerateArray())
+                foreach (var i in inputs)
                 {
                     string key = "";
                     dynamic value = null;
