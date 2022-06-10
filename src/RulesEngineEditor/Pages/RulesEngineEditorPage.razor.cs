@@ -339,6 +339,8 @@ namespace RulesEngineEditor.Pages
         [Obsolete("InputRule is deprecated. Use InputRuleName instead.")]
         private void InputJSONUpdate()
         {
+            if (InputJSON == null) return;
+
             inputJSONErrors = "";
             try
             {
