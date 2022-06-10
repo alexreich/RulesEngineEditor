@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <AssemblyName>RulesEngineEditor</AssemblyName>
     <RootNamespace>RulesEngineEditor</RootNamespace>

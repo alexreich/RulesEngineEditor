@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 # Run workflow on every push to the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [ net7 ]
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.*
+        dotnet-version: 7.*
         include-prerelease: true
         
      # publishes Blazor project to the release-folder
