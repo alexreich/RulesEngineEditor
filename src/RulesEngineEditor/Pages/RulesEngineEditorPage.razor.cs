@@ -364,11 +364,9 @@ namespace RulesEngineEditor.Pages
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var x in inputs.EnumerateArray())
                 {
-                    Console.WriteLine("ABOVE INSIDE set key/val v1");
+                    Console.WriteLine("ABOVE INSIDE set key/val v2");
                     JsonElement i = JsonSerializer.Deserialize<dynamic>(
                     x.ToString(), jsonOptions);
-
-                    Console.WriteLine(i);
 
                     string key = "";
                     dynamic value = null;
@@ -416,13 +414,29 @@ namespace RulesEngineEditor.Pages
                     //        Console.WriteLine(ex.InnerException);
                     //}
 
+                    string val = value.ToString();
+                    Console.WriteLine($"ISerialize2 {val}");
+
+                    //var values = val.Split(",");
+
+                  //  Dictionary<string, string> values = val.Split(',')
+                  //.Select(value => value.Split(':'))
+                  //.ToDictionary(pair => pair[0], pair => pair[1]);
+
                     var values = JsonSerializer.Deserialize<dynamic>(
-                   value.ToString(), new JsonSerializerOptions {
-                       Converters = { new DynamicJsonConverter() }
+                   val, 
+                       new JsonSerializerOptions {
+                           Converters = { new DynamicJsonConverter() }
+                               ,
+                           DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                           IncludeFields = true,
+                           WriteIndented = true,
+                           Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                           PropertyNameCaseInsensitive = true,
                    });
 
-                    Console.WriteLine($"ISerialize2 {key}");
-                    foreach (KeyValuePair<string, object> v in values)
+                    Console.WriteLine($"ISerialize3 {key}");
+                    foreach (var v in values)
                     {
                         Console.WriteLine($"v {v.Key}");
                         InputParameter param = new InputParameter();
