@@ -378,6 +378,7 @@ namespace RulesEngineEditor.Pages
 
                     var serialized = JsonSerializer.Serialize(value);
 
+                    Console.WriteLine("ISerialize1");
                     dynamic values = value;
                     try { 
                     values = JsonSerializer.Deserialize<dynamic>(
@@ -391,6 +392,7 @@ namespace RulesEngineEditor.Pages
                             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                             PropertyNameCaseInsensitive = true,
                         });
+                        Console.WriteLine("ISerialize2");
                     }
                     catch (Exception ex)
                     {
@@ -404,12 +406,14 @@ namespace RulesEngineEditor.Pages
 
                     foreach (KeyValuePair<string, object> v in values)
                     {
+                        Console.WriteLine("ISerialize3");
                         InputParameter param = new InputParameter();
                         param.Name = v.Key;
                         param.Value = JsonSerializer.Serialize(v.Value);
 
                         input.Parameters.Add(param);
 
+                        Console.WriteLine("ISerialize4");
                         Console.WriteLine(param);
                     }
                     WorkflowService.Inputs.Add(input);
