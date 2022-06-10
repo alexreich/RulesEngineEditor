@@ -364,7 +364,7 @@ namespace RulesEngineEditor.Pages
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var x in inputs.EnumerateArray())
                 {
-                    Console.WriteLine("ABOVE INSIDE set key/val v3");
+                    Console.WriteLine("ABOVE INSIDE set key/val v4");
                     JsonElement i = JsonSerializer.Deserialize<dynamic>(
                     x.ToString(), jsonOptions);
 
@@ -464,7 +464,7 @@ namespace RulesEngineEditor.Pages
                     WorkflowService.Inputs.Add(input);
 
                     Console.WriteLine($"ISerialize3 {key}");
-                    var values = JsonSerializer.Deserialize<dynamic>(
+                    var values = JsonSerializer.Deserialize<ExpandoObject>(
                    JsonSerializer.Serialize(value), new JsonSerializerOptions {
                        Converters = { new DynamicJsonConverter() }
                    });
