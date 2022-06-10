@@ -374,7 +374,7 @@ namespace RulesEngineEditor.Pages
                 input.InputRuleName = key;
                 input.Parameters = new List<InputParameter>();
 
-                var values = JsonSerializer.Deserialize<dynamic>(
+                var values = JsonSerializer.Deserialize<ExpandoObject>(
                     JsonSerializer.Serialize(value), new JsonSerializerOptions {
                         Converters = { new DynamicJsonConverter() }
                     });
