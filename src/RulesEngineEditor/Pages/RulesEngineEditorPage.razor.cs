@@ -59,8 +59,8 @@ namespace RulesEngineEditor.Pages
 
         private List<MenuButton> menuButtons = new List<MenuButton> { new MenuButton("NewWorkflows"), new MenuButton("DownloadWorkflows"), new MenuButton("ImportWorkflows"), new MenuButton("AddWorkflow"), new MenuButton("NewInputs"), new MenuButton("DownloadInputs"), new MenuButton("ImportInputs"), new MenuButton("AddInput") };
         [Parameter]
-        public List<MenuButton> MenuButtons { get { return menuButtons; } set { value.ForEach(v => menuButtons.Single(w => w.Name == v.Name).Enabled = v.Enabled); } } 
-        
+        public List<MenuButton> MenuButtons { get { return menuButtons; } set { value.ForEach(v => menuButtons.Single(w => w.Name == v.Name).Enabled = v.Enabled); } }
+
         bool IsButtonEnabled(string name) { return MenuButtons.Single(w => w.Name == name).Enabled; }
 
         protected override async Task OnInitializedAsync()
@@ -78,330 +78,331 @@ namespace RulesEngineEditor.Pages
             WorkflowService.OnWorkflowChange += WorkflowUpdate;
 
             await base.OnInitializedAsync();
-    }
-    protected override void OnParametersSet()
-    {
-        if (Workflows != default && string.IsNullOrEmpty(WorkflowsJSON))
+        }
+        protected override void OnParametersSet()
         {
-            var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
-            //var oldJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions)));
-
-            if (newJSON != WorkflowsJSON)
+            if (Workflows != default && string.IsNullOrEmpty(WorkflowsJSON))
             {
-                WorkflowService.Workflows = new List<WorkflowData>();
-                WorkflowsJSON = newJSON;
-                WorkflowJSONChange();
-                DownloadWorkflows();
+                var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
+                //var oldJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions)));
+
+                if (newJSON != WorkflowsJSON)
+                {
+                    WorkflowService.Workflows = new List<WorkflowData>();
+                    WorkflowsJSON = newJSON;
+                    WorkflowJSONChange();
+                    DownloadWorkflows();
+                }
             }
         }
-    }
 
-    public void Dispose()
-    {
-        WorkflowService.OnInputChange -= InputUpdate;
-        WorkflowService.OnWorkflowChange -= WorkflowUpdate;
-    }
-
-    private void DeleteWorkflow(WorkflowData workflow)
-    {
-        WorkflowService.Workflows.Remove(workflow);
-        WorkflowService.WorkflowUpdate();
-    }
-    void DeleteInput(InputRuleParameter input)
-    {
-        WorkflowService.Inputs.Remove(input);
-        WorkflowService.WorkflowUpdate();
-    }
-    void UpdateInputDelete(InputRuleParameter input)
-    {
-        WorkflowService.Inputs.Remove(input);
-    }
-    public void NewWorkflows()
-    {
-        WorkflowService.Workflows = new List<WorkflowData>();
-        WorkflowService.RuleParameters = new RuleParameter[0];
-        WorkflowsChanged.InvokeAsync(Workflows);
-        WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-        StateHasChanged();
-    }
-
-    public void NewGlobalParam(WorkflowData wf)
-    {
-        if (wf.GlobalParams == null)
+        public void Dispose()
         {
-            wf.GlobalParams = new List<ScopedParamData>();
+            WorkflowService.OnInputChange -= InputUpdate;
+            WorkflowService.OnWorkflowChange -= WorkflowUpdate;
         }
-        wf.GlobalParams.Insert(0, new ScopedParamData());
-    }
 
-    private void AddWorkflow()
-    {
-        WorkflowData workflow = new WorkflowData();
-        workflow.GlobalParams = new List<ScopedParamData>();
-        workflow.Rules = new List<RuleData>();
-        workflow.Seq = -1;
-        WorkflowService.Workflows.Insert(0, workflow);
-        StateHasChanged();
-    }
+        private void DeleteWorkflow(WorkflowData workflow)
+        {
+            WorkflowService.Workflows.Remove(workflow);
+            WorkflowService.WorkflowUpdate();
+        }
+        void DeleteInput(InputRuleParameter input)
+        {
+            WorkflowService.Inputs.Remove(input);
+            WorkflowService.WorkflowUpdate();
+        }
+        void UpdateInputDelete(InputRuleParameter input)
+        {
+            WorkflowService.Inputs.Remove(input);
+        }
+        public void NewWorkflows()
+        {
+            WorkflowService.Workflows = new List<WorkflowData>();
+            WorkflowService.RuleParameters = new RuleParameter[0];
+            WorkflowsChanged.InvokeAsync(Workflows);
+            WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
+            StateHasChanged();
+        }
 
-    private void NewInputs()
-    {
-        WorkflowService.Inputs = new List<InputRuleParameter>();
-        StateHasChanged();
-    }
-
-    private void AddInput()
-    {
-        InputRuleParameter input = new InputRuleParameter();
-        input.InputRuleName = $"Input{WorkflowService.Inputs.Count + 1}";
-        InputParameter parameter = new InputParameter();
-        parameter.Name = "param1";
-        input.Parameters.Add(parameter);
-        WorkflowService.Inputs.Insert(0, input);
-        StateHasChanged();
-    }
-
-    private void WorkflowUpdate()
-    {
-        DownloadWorkflows();
-        UpdateInputs();
-        DownloadInputs();
-        RunRE();
-        WorkflowsChanged.InvokeAsync(Workflows);
-        WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-        StateHasChanged();
-    }
-
-    private void InputUpdate()
-    {
-        UpdateInputs();
-        DownloadInputs();
-        RunRE();
-        InputJSONChanged.InvokeAsync(InputJSON);
-        StateHasChanged();
-    }
-
-    private void UpdateInputs()
-    {
-        var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
-
-        inputJSONErrors = "";
-        List<InputRuleParameterDictionary> newInputs = new List<InputRuleParameterDictionary>();
-        WorkflowService.Inputs.ForEach(i => {
-            InputRuleParameterDictionary newInput = new InputRuleParameterDictionary();
-            newInput.InputRuleName = i.InputRuleName;
-            newInput.Parameters = new Dictionary<string, object>();
-            foreach (var p in i.Parameters)
+        public void NewGlobalParam(WorkflowData wf)
+        {
+            if (wf.GlobalParams == null)
             {
-                try
-                {
-                    newInput.Parameters.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value, jsonOptions));
-                }
-                catch (Exception ex)
-                {
-                    inputJSONErrors += ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
-                    Console.WriteLine(ex);
-                }
+                wf.GlobalParams = new List<ScopedParamData>();
             }
-            newInputs.Add(newInput);
-        });
-
-        if (inputJSONErrors == "")
-        {
-            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
+            wf.GlobalParams.Insert(0, new ScopedParamData());
         }
-    }
 
-    private void RunRE()
-    {
-        workflowJSONErrors = "";
-        try
+        private void AddWorkflow()
         {
-            //TODO Reverted to Newtonsoft - roll forward to System.Text.Json when it's fully supported (Github Pages PWA fails without Newtonsoft)
-            //var Workflows = Newtonsoft.Json.JsonConvert.DeserializeObject<Workflow[]>(WorkflowJSON);
-            var Workflows = JsonSerializer.Deserialize<Workflow[]>(WorkflowsJSON, jsonOptions);
-            if (WorkflowService.RuleParameters.Length == 0) return;
-
-            _rulesEngine.ClearWorkflows();
-            _rulesEngine.AddOrUpdateWorkflow(Workflows);
-
-            List<RuleResultTree> resultList = new List<RuleResultTree>();
-            WorkflowService.Workflows.ForEach(async workflow => {
-                try
-                {
-                    resultList = await _rulesEngine.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowService.RuleParameters);
-                }
-                catch (Exception ex)
-                {
-                    workflowJSONErrors += ex.Message + " ";
-                    return;
-                }
-
-                for (int i = 0; i < resultList.Count; i++)
-                {
-                    var rule = workflow.Rules.FirstOrDefault(r => r.RuleName == resultList[i].Rule.RuleName);
-                    rule.IsSuccess = resultList[i].IsSuccess;
-                    if (!(bool)rule.IsSuccess)
-                    {
-                        rule.ExceptionMessage = resultList[i].ExceptionMessage;
-                    }
-                    else
-                    {
-                        rule.ExceptionMessage = "Rule was successful.";
-                    }
-                }
-            });
+            WorkflowData workflow = new WorkflowData();
+            workflow.GlobalParams = new List<ScopedParamData>();
+            workflow.Rules = new List<RuleData>();
+            workflow.Seq = -1;
+            WorkflowService.Workflows.Insert(0, workflow);
+            StateHasChanged();
         }
-        catch (Exception ex)
+
+        private void NewInputs()
         {
-            workflowJSONErrors += ex.Message + " ";
-        }
-        StateHasChanged();
-    }
-
-    private async void WorkflowDragEnd(WorkflowData wf)
-    {
-        WorkflowService.Sort(WorkflowService.Workflows);
-        await WorkflowsChanged.InvokeAsync(Workflows);
-        await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-    }
-    private async void ImportWorkflows(InputFileChangeEventArgs files)
-    {
-        var selectedFile = files.File;
-        StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
-        WorkflowsJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
-
-        WorkflowJSONChange();
-        await WorkflowsChanged.InvokeAsync(Workflows);
-        await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-        StateHasChanged();
-    }
-
-    private void WorkflowJSONChange()
-    {
-        workflowJSONErrors = "";
-        try
-        {
-            var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowsJSON, jsonOptions);
-
-            if (!WorkflowService.Workflows.Any())
-            {
-                WorkflowService.Workflows = workflows;
-            }
-            else
-            {
-                Mapper.Map<WorkflowData>(workflows, WorkflowService.Workflows);
-            }
-
-            RunRE();
-        }
-        catch (Exception ex)
-        {
-            workflowJSONErrors = ex.Message;
-        }
-    }
-
-    private void DownloadWorkflows()
-    {
-        workflowJSONErrors = "";
-        var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
-        if (jsonString == "[]")
-        {
-            return;
-        }
-        WorkflowsJSON = JsonNormalizer.Normalize(jsonString);
-
-        try
-        {
-            //ensure no serialzable errors in JSON before enabling download
-            var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<Workflow>>(WorkflowsJSON, jsonOptions).ToArray());
-
-            DownloadAttributes = new Dictionary<string, object>();
-            DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowsJSON);
-            DownloadAttributes.Add("download", "RulesEngine.json");
-        }
-        catch (Exception ex)
-        {
-            workflowJSONErrors = ex.Message;
-        }
-    }
-    private async void ImportInputs(InputFileChangeEventArgs files)
-    {
-        var selectedFile = files.File;
-        StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
-        InputJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
-        InputJSONUpdate();
-        ShowWorkflows = true;
-        WorkflowService.WorkflowUpdate();
-    }
-
-    [Obsolete("InputRule is deprecated. Use InputRuleName instead.")]
-    private void InputJSONUpdate()
-    {
-        inputJSONErrors = "";
-        try
-        {
-            var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON);
-
             WorkflowService.Inputs = new List<InputRuleParameter>();
-
-            List<RuleParameter> ruleParameters = new List<RuleParameter>();
-            foreach (var i in inputs.EnumerateArray())
-            {
-                string key;
-                dynamic value;
-
-                //TODO remove legacy properties
-                try
-                {
-                    key = i.GetProperty("InputRuleName").GetString();
-                }
-                catch (Exception ex)
-                {
-                    key = i.GetProperty("InputRule").GetString();
-                }
-                try
-                {
-                    value = i.GetProperty("Parameters");
-                }
-                catch (Exception ex)
-                {
-                    value = i.GetProperty("Parameter");
-                }
-
-                InputRuleParameter input = new InputRuleParameter();
-                input.InputRuleName = key;
-                input.Parameters = new List<InputParameter>();
-
-                var values = JsonSerializer.Deserialize<dynamic>(
-                    JsonSerializer.Serialize(value), new JsonSerializerOptions {
-                        Converters = { new DynamicJsonConverter() }
-                    });
-
-                foreach (KeyValuePair<string, object> v in values)
-                {
-                    InputParameter param = new InputParameter();
-                    param.Name = v.Key;
-                    param.Value = JsonSerializer.Serialize(v.Value);
-
-                    input.Parameters.Add(param);
-                }
-                WorkflowService.Inputs.Add(input);
-                ruleParameters.Add(new RuleParameter(key, values));
-            }
-            WorkflowService.RuleParameters = ruleParameters.ToArray();
+            StateHasChanged();
         }
-        catch (Exception ex)
+
+        private void AddInput()
         {
-            inputJSONErrors = ex.Message;
+            InputRuleParameter input = new InputRuleParameter();
+            input.InputRuleName = $"Input{WorkflowService.Inputs.Count + 1}";
+            InputParameter parameter = new InputParameter();
+            parameter.Name = "param1";
+            input.Parameters.Add(parameter);
+            WorkflowService.Inputs.Insert(0, input);
+            StateHasChanged();
+        }
+
+        private void WorkflowUpdate()
+        {
+            DownloadWorkflows();
+            UpdateInputs();
+            DownloadInputs();
+            RunRE();
+            WorkflowsChanged.InvokeAsync(Workflows);
+            WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
+            StateHasChanged();
+        }
+
+        private void InputUpdate()
+        {
+            UpdateInputs();
+            DownloadInputs();
+            RunRE();
+            InputJSONChanged.InvokeAsync(InputJSON);
+            StateHasChanged();
+        }
+
+        private void UpdateInputs()
+        {
+            var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
+
+            inputJSONErrors = "";
+            List<InputRuleParameterDictionary> newInputs = new List<InputRuleParameterDictionary>();
+            WorkflowService.Inputs.ForEach(i => {
+                InputRuleParameterDictionary newInput = new InputRuleParameterDictionary();
+                newInput.InputRuleName = i.InputRuleName;
+                newInput.Parameters = new Dictionary<string, object>();
+                foreach (var p in i.Parameters)
+                {
+                    try
+                    {
+                        newInput.Parameters.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value, jsonOptions));
+                    }
+                    catch (Exception ex)
+                    {
+                        inputJSONErrors += ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
+                        Console.WriteLine(ex);
+                    }
+                }
+                newInputs.Add(newInput);
+            });
+
+            if (inputJSONErrors == "")
+            {
+                InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
+            }
+        }
+
+        private void RunRE()
+        {
+            workflowJSONErrors = "";
+            try
+            {
+                //TODO Reverted to Newtonsoft - roll forward to System.Text.Json when it's fully supported (Github Pages PWA fails without Newtonsoft)
+                //var Workflows = Newtonsoft.Json.JsonConvert.DeserializeObject<Workflow[]>(WorkflowJSON);
+                var Workflows = JsonSerializer.Deserialize<Workflow[]>(WorkflowsJSON, jsonOptions);
+                if (WorkflowService.RuleParameters.Length == 0) return;
+
+                _rulesEngine.ClearWorkflows();
+                _rulesEngine.AddOrUpdateWorkflow(Workflows);
+
+                List<RuleResultTree> resultList = new List<RuleResultTree>();
+                WorkflowService.Workflows.ForEach(async workflow => {
+                    try
+                    {
+                        resultList = await _rulesEngine.ExecuteAllRulesAsync(workflow.WorkflowName, WorkflowService.RuleParameters);
+                    }
+                    catch (Exception ex)
+                    {
+                        workflowJSONErrors += ex.Message + " ";
+                        return;
+                    }
+
+                    for (int i = 0; i < resultList.Count; i++)
+                    {
+                        var rule = workflow.Rules.FirstOrDefault(r => r.RuleName == resultList[i].Rule.RuleName);
+                        rule.IsSuccess = resultList[i].IsSuccess;
+                        if (!(bool)rule.IsSuccess)
+                        {
+                            rule.ExceptionMessage = resultList[i].ExceptionMessage;
+                        }
+                        else
+                        {
+                            rule.ExceptionMessage = "Rule was successful.";
+                        }
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                workflowJSONErrors += ex.Message + " ";
+            }
+            StateHasChanged();
+        }
+
+        private async void WorkflowDragEnd(WorkflowData wf)
+        {
+            WorkflowService.Sort(WorkflowService.Workflows);
+            await WorkflowsChanged.InvokeAsync(Workflows);
+            await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
+        }
+        private async void ImportWorkflows(InputFileChangeEventArgs files)
+        {
+            var selectedFile = files.File;
+            StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
+            WorkflowsJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
+
+            WorkflowJSONChange();
+            await WorkflowsChanged.InvokeAsync(Workflows);
+            await WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
+            StateHasChanged();
+        }
+
+        private void WorkflowJSONChange()
+        {
+            workflowJSONErrors = "";
+            try
+            {
+                var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowsJSON, jsonOptions);
+
+                if (!WorkflowService.Workflows.Any())
+                {
+                    WorkflowService.Workflows = workflows;
+                }
+                else
+                {
+                    Mapper.Map<WorkflowData>(workflows, WorkflowService.Workflows);
+                }
+
+                RunRE();
+            }
+            catch (Exception ex)
+            {
+                workflowJSONErrors = ex.Message;
+            }
+        }
+
+        private void DownloadWorkflows()
+        {
+            workflowJSONErrors = "";
+            var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
+            if (jsonString == "[]")
+            {
+                return;
+            }
+            WorkflowsJSON = JsonNormalizer.Normalize(jsonString);
+
+            try
+            {
+                //ensure no serialzable errors in JSON before enabling download
+                var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<Workflow>>(WorkflowsJSON, jsonOptions).ToArray());
+
+                DownloadAttributes = new Dictionary<string, object>();
+                DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowsJSON);
+                DownloadAttributes.Add("download", "RulesEngine.json");
+            }
+            catch (Exception ex)
+            {
+                workflowJSONErrors = ex.Message;
+            }
+        }
+        private async void ImportInputs(InputFileChangeEventArgs files)
+        {
+            var selectedFile = files.File;
+            StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
+            InputJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
+            InputJSONUpdate();
+            ShowWorkflows = true;
+            WorkflowService.WorkflowUpdate();
+        }
+
+        [Obsolete("InputRule is deprecated. Use InputRuleName instead.")]
+        private void InputJSONUpdate()
+        {
+            inputJSONErrors = "";
+            try
+            {
+                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON);
+
+                WorkflowService.Inputs = new List<InputRuleParameter>();
+
+                List<RuleParameter> ruleParameters = new List<RuleParameter>();
+                foreach (var i in inputs.EnumerateArray())
+                {
+                    string key;
+                    dynamic value;
+
+                    //TODO remove legacy properties
+                    try
+                    {
+                        key = i.GetProperty("InputRuleName").GetString();
+                    }
+                    catch (Exception ex)
+                    {
+                        key = i.GetProperty("InputRule").GetString();
+                    }
+                    try
+                    {
+                        value = i.GetProperty("Parameters");
+                    }
+                    catch (Exception ex)
+                    {
+                        value = i.GetProperty("Parameter");
+                    }
+
+                    InputRuleParameter input = new InputRuleParameter();
+                    input.InputRuleName = key;
+                    input.Parameters = new List<InputParameter>();
+
+                    var values = JsonSerializer.Deserialize<dynamic>(
+                        JsonSerializer.Serialize(value), new JsonSerializerOptions {
+                            Converters = { new DynamicJsonConverter() }
+                        });
+
+                    foreach (KeyValuePair<string, object> v in values)
+                    {
+                        InputParameter param = new InputParameter();
+                        param.Name = v.Key;
+                        param.Value = JsonSerializer.Serialize(v.Value);
+
+                        input.Parameters.Add(param);
+                    }
+                    WorkflowService.Inputs.Add(input);
+                    ruleParameters.Add(new RuleParameter(key, values));
+                }
+                WorkflowService.RuleParameters = ruleParameters.ToArray();
+            }
+            catch (Exception ex)
+            {
+                inputJSONErrors += ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
+                Console.WriteLine(ex);
+            }
+        }
+
+        private void DownloadInputs()
+        {
+            DownloadInputAttributes = new Dictionary<string, object>();
+            DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(InputJSON));
+            DownloadInputAttributes.Add("download", "RulesEngineInputs.json");
         }
     }
-
-    private void DownloadInputs()
-    {
-        DownloadInputAttributes = new Dictionary<string, object>();
-        DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(InputJSON));
-        DownloadInputAttributes.Add("download", "RulesEngineInputs.json");
-    }
-}
 }
