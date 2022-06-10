@@ -344,7 +344,15 @@ namespace RulesEngineEditor.Pages
             inputJSONErrors = "";
             try
             {
-                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON);
+                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON, new JsonSerializerOptions {
+                    Converters = { new DynamicJsonConverter() }
+                                ,
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    IncludeFields = true,
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNameCaseInsensitive = true,
+                });
 
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
