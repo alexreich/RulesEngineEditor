@@ -344,18 +344,12 @@ namespace RulesEngineEditor.Pages
             inputJSONErrors = "";
             try
             {
-                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON, new JsonSerializerOptions {
-                    Converters = { new DynamicJsonConverter() }
-                                ,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                    IncludeFields = true,
-                    WriteIndented = true,
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                    PropertyNameCaseInsensitive = true,
-                });
+                var inputs = JsonSerializer.Deserialize<dynamic>(InputJSON, jsonOptions);
+                if (inputs == null) return;
 
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
+                Console.WriteLine(inputs);
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var i in inputs.EnumerateArray())
                 {
@@ -370,6 +364,7 @@ namespace RulesEngineEditor.Pages
                     catch (Exception ex)
                     {
                         inputJSONErrors = ex.Source + " " + ex.Message + " ";
+                        Console.WriteLine(i);
                         Console.WriteLine("INSIDE set key/val");
                         Console.WriteLine(ex.StackTrace);
                         Console.WriteLine(ex);
