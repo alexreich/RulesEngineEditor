@@ -349,7 +349,6 @@ namespace RulesEngineEditor.Pages
 
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
-                Console.WriteLine(inputs);
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var i in inputs.EnumerateArray())
                 {
