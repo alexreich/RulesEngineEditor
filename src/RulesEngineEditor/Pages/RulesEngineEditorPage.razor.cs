@@ -377,8 +377,7 @@ namespace RulesEngineEditor.Pages
                     input.Parameters = new List<InputParameter>();
 
                     var serialized = JsonSerializer.Serialize(value);
-                    Console.WriteLine(serialized);
-
+                    
                     var values = JsonSerializer.Deserialize<dynamic>(
                         serialized
                         , new JsonSerializerOptions {
@@ -391,6 +390,8 @@ namespace RulesEngineEditor.Pages
                             PropertyNameCaseInsensitive = true,
                         });
 
+                    Console.WriteLine(values);
+
                     foreach (KeyValuePair<string, object> v in values)
                     {
                         InputParameter param = new InputParameter();
@@ -398,6 +399,8 @@ namespace RulesEngineEditor.Pages
                         param.Value = JsonSerializer.Serialize(v.Value);
 
                         input.Parameters.Add(param);
+
+                        Console.WriteLine(param);
                     }
                     WorkflowService.Inputs.Add(input);
                     ruleParameters.Add(new RuleParameter(key, values));
@@ -407,6 +410,8 @@ namespace RulesEngineEditor.Pages
             catch (Exception ex)
             {
                 inputJSONErrors = ex.Source + " " + ex.Message + " ";
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
                 Console.WriteLine(ex);
                 if (ex.InnerException != null)
                     Console.WriteLine(ex.InnerException);
