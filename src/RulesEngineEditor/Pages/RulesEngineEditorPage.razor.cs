@@ -393,7 +393,7 @@ namespace RulesEngineEditor.Pages
             }
             catch (Exception ex)
             {
-                inputJSONErrors += ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
+                inputJSONErrors = ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
                 Console.WriteLine(ex);
             }
         }
