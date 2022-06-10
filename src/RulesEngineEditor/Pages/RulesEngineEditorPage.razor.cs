@@ -364,7 +364,7 @@ namespace RulesEngineEditor.Pages
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var x in inputs.EnumerateArray())
                 {
-                    Console.WriteLine("ABOVE INSIDE set key/val v2");
+                    Console.WriteLine("ABOVE INSIDE set key/val v3");
                     JsonElement i = JsonSerializer.Deserialize<dynamic>(
                     x.ToString(), jsonOptions);
 
@@ -414,33 +414,35 @@ namespace RulesEngineEditor.Pages
                     //        Console.WriteLine(ex.InnerException);
                     //}
 
-                    string val = value.ToString();
-                    Console.WriteLine($"ISerialize2 {val}");
+                    //  string val = value.ToString();
+                    //  Console.WriteLine($"ISerialize2 {val}");
 
-                    //var values = val.Split(",");
+                    //  //var values = val.Split(",");
 
-                  //  Dictionary<string, string> values = val.Split(',')
-                  //.Select(value => value.Split(':'))
-                  //.ToDictionary(pair => pair[0], pair => pair[1]);
+                    ////  Dictionary<string, string> values = val.Split(',')
+                    ////.Select(value => value.Split(':'))
+                    ////.ToDictionary(pair => pair[0], pair => pair[1]);
 
-                    var values = JsonSerializer.Deserialize<dynamic>(
-                   val, 
-                       new JsonSerializerOptions {
-                           Converters = { new DynamicJsonConverter() }
-                               ,
-                           DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                           IncludeFields = true,
-                           WriteIndented = true,
-                           Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                           PropertyNameCaseInsensitive = true,
-                   });
+                    //  //async?
+                    //  var values = JsonSerializer.Deserialize<dynamic>(
+                    // val, 
+                    //     new JsonSerializerOptions {
+                    //         Converters = { new DynamicJsonConverter() }
+                    //             ,
+                    //         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    //         IncludeFields = true,
+                    //         WriteIndented = true,
+                    //         Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    //         PropertyNameCaseInsensitive = true,
+                    // });
 
-                    Console.WriteLine($"ISerialize3 {key}");
-                    foreach (var v in values)
+
+                    
+                    foreach (JsonProperty v in value.EnumerateObject())
                     {
-                        Console.WriteLine($"v {v.Key}");
+                        Console.WriteLine($"v {v.Name}");
                         InputParameter param = new InputParameter();
-                        param.Name = v.Key;
+                        param.Name = v.Name;
                         param.Value = JsonSerializer.Serialize(v.Value);
 
                         input.Parameters.Add(param);
@@ -460,6 +462,14 @@ namespace RulesEngineEditor.Pages
                     //    Console.WriteLine(param);
                     //}
                     WorkflowService.Inputs.Add(input);
+
+                    Console.WriteLine($"ISerialize3 {key}");
+                    var values = JsonSerializer.Deserialize<dynamic>(
+                   JsonSerializer.Serialize(value), new JsonSerializerOptions {
+                       Converters = { new DynamicJsonConverter() }
+                   });
+                    Console.WriteLine($"ISerialize4 {key}");
+
                     ruleParameters.Add(new RuleParameter(key, values));
                 }
                 WorkflowService.RuleParameters = ruleParameters.ToArray();
