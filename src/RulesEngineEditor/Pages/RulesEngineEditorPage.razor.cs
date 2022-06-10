@@ -364,7 +364,7 @@ namespace RulesEngineEditor.Pages
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var x in inputs.EnumerateArray())
                 {
-                    Console.WriteLine("ABOVE INSIDE set key/val v7");
+                    Console.WriteLine("ABOVE INSIDE set key/val v8");
                     JsonElement i = JsonSerializer.Deserialize<dynamic>(
                     x.ToString(), jsonOptions);
 
@@ -395,48 +395,59 @@ namespace RulesEngineEditor.Pages
 
                     
                     Console.WriteLine($"ISerialize1 {key}");
-                    dynamic values = value;
-                    try
-                    {
-                        //values = JsonSerializer.Deserialize<dynamic>(
-                        //    serialized
-                        //    , new JsonSerializerOptions {
-                        //        Converters = { new DynamicJsonConverter() }
-                        //        ,
-                        //        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                        //        IncludeFields = true,
-                        //        WriteIndented = true,
-                        //        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        //        PropertyNameCaseInsensitive = true,
-                        //    });
-                        values = JsonSerializer.Deserialize<dynamic>(
-                 value, new JsonSerializerOptions {
-                     Converters = { new DynamicJsonConverter() }
-                 });
-                        Console.WriteLine("ISerialize2");
-                    }
-                    catch (Exception ex)
-                    {
-                        inputJSONErrors = ex.Source + " " + ex.Message + " ";
-                        Console.WriteLine("INSIDE DESERIALIZE");
-                        Console.WriteLine(ex.StackTrace);
-                        Console.WriteLine(ex);
-                        if (ex.InnerException != null)
-                            Console.WriteLine(ex.InnerException);
-                    }
+                    //KeyValuePair<string, object> values = new KeyValuePair<string, object>();
+                    //try
+                    //{
+                    //    //values = JsonSerializer.Deserialize<dynamic>(
+                    //    //    serialized
+                    //    //    , new JsonSerializerOptions {
+                    //    //        Converters = { new DynamicJsonConverter() }
+                    //    //        ,
+                    //    //        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    //    //        IncludeFields = true,
+                    //    //        WriteIndented = true,
+                    //    //        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    //    //        PropertyNameCaseInsensitive = true,
+                    //    //    });
+                    //    values = JsonSerializer.Deserialize<KeyValuePair<string, object>>(value);
+                    //    Console.WriteLine("ISerialize2");
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    inputJSONErrors = ex.Source + " " + ex.Message + " ";
+                    //    Console.WriteLine("INSIDE DESERIALIZE");
+                    //    Console.WriteLine(ex.StackTrace);
+                    //    Console.WriteLine(ex);
+                    //    if (ex.InnerException != null)
+                    //        Console.WriteLine(ex.InnerException);
+                    //}
 
+                    var values = JsonSerializer.Deserialize<dynamic>(
+                   value.ToString(), new JsonSerializerOptions {
+                       Converters = { new DynamicJsonConverter() }
+                   });
                     foreach (KeyValuePair<string, object> v in values)
                     {
-                        Console.WriteLine("ISerialize3");
                         InputParameter param = new InputParameter();
                         param.Name = v.Key;
                         param.Value = JsonSerializer.Serialize(v.Value);
 
                         input.Parameters.Add(param);
-
-                        Console.WriteLine("ISerialize4");
-                        Console.WriteLine(param);
                     }
+                    //foreach (JsonProperty v in values)
+                    //{
+                    //    Console.WriteLine("ISerialize3");
+                    //    InputParameter param = new InputParameter();
+                    //    param.Name = v.Name;
+                    //    param.Value = JsonSerializer.Serialize(v.Value.ToString(), new JsonSerializerOptions {
+                    //        Converters = { new DynamicJsonConverter() }
+                    //    });
+
+                    //    input.Parameters.Add(param);
+
+                    //    Console.WriteLine("ISerialize4");
+                    //    Console.WriteLine(param);
+                    //}
                     WorkflowService.Inputs.Add(input);
                     ruleParameters.Add(new RuleParameter(key, values));
                 }
