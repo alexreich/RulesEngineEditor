@@ -362,12 +362,12 @@ namespace RulesEngineEditor.Pages
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
-                foreach (var i in inputs.EnumerateArray())
+                foreach (var x in inputs.EnumerateArray())
                 {
+                    dynamic i = JsonSerializer.Deserialize<dynamic>(
+                    x.ToString(), jsonOptions);
                     string key = "";
                     dynamic value = null;
-
-                    Console.WriteLine(i);
 
                     try
                     {
@@ -377,6 +377,7 @@ namespace RulesEngineEditor.Pages
                     catch (Exception ex)
                     {
                         inputJSONErrors = ex.Source + " " + ex.Message + " ";
+                        Console.WriteLine(i);
                         Console.WriteLine("INSIDE set key/val v1");
                         Console.WriteLine(ex.StackTrace);
                         Console.WriteLine(ex);
