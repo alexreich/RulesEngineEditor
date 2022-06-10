@@ -364,7 +364,8 @@ namespace RulesEngineEditor.Pages
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var x in inputs.EnumerateArray())
                 {
-                    JsonElement i = JsonSerializer.Deserialize<JsonElement>(
+                    Console.WriteLine("ABOVE INSIDE set key/val v5");
+                    JsonElement i = JsonSerializer.Deserialize<dynamic>(
                     x.ToString(), jsonOptions);
                     string key = "";
                     dynamic value = null;
@@ -378,7 +379,7 @@ namespace RulesEngineEditor.Pages
                     {
                         inputJSONErrors = ex.Source + " " + ex.Message + " ";
                         Console.WriteLine(i);
-                        Console.WriteLine("INSIDE set key/val v3");
+                        Console.WriteLine("INSIDE set key/val v4");
                         Console.WriteLine(ex.StackTrace);
                         Console.WriteLine(ex);
                         if (ex.InnerException != null)
