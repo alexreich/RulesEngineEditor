@@ -195,7 +195,9 @@ namespace RulesEngineEditor.Pages
                 {
                     try
                     {
-                        newInput.Parameters.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value, jsonOptions));
+                        newInput.Parameters.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value, new JsonSerializerOptions {
+                            Converters = { new DynamicJsonConverter() }
+                        }));
                     }
                     catch (Exception ex)
                     {
@@ -393,7 +395,7 @@ namespace RulesEngineEditor.Pages
             }
             catch (Exception ex)
             {
-                inputJSONErrors = ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
+                inputJSONErrors += ex.Source + " " + ex.InnerException.Message + " " + ex.Message + " ";
                 Console.WriteLine(ex);
             }
         }
