@@ -364,7 +364,7 @@ namespace RulesEngineEditor.Pages
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
                 foreach (var x in inputs.EnumerateArray())
                 {
-                    Console.WriteLine("ABOVE INSIDE set key/val v6");
+                    Console.WriteLine("ABOVE INSIDE set key/val v7");
                     JsonElement i = JsonSerializer.Deserialize<dynamic>(
                     x.ToString(), jsonOptions);
 
@@ -393,23 +393,26 @@ namespace RulesEngineEditor.Pages
                     input.InputRuleName = key;
                     input.Parameters = new List<InputParameter>();
 
-                    var serialized = JsonSerializer.Serialize(value);
-
+                    
                     Console.WriteLine($"ISerialize1 {key}");
                     dynamic values = value;
                     try
                     {
+                        //values = JsonSerializer.Deserialize<dynamic>(
+                        //    serialized
+                        //    , new JsonSerializerOptions {
+                        //        Converters = { new DynamicJsonConverter() }
+                        //        ,
+                        //        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                        //        IncludeFields = true,
+                        //        WriteIndented = true,
+                        //        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        //        PropertyNameCaseInsensitive = true,
+                        //    });
                         values = JsonSerializer.Deserialize<dynamic>(
-                            serialized
-                            , new JsonSerializerOptions {
-                                Converters = { new DynamicJsonConverter() }
-                                ,
-                                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                                IncludeFields = true,
-                                WriteIndented = true,
-                                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                                PropertyNameCaseInsensitive = true,
-                            });
+                 value, new JsonSerializerOptions {
+                     Converters = { new DynamicJsonConverter() }
+                 });
                         Console.WriteLine("ISerialize2");
                     }
                     catch (Exception ex)
