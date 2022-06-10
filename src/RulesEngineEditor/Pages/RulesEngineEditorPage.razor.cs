@@ -374,9 +374,19 @@ namespace RulesEngineEditor.Pages
                     input.InputRuleName = key;
                     input.Parameters = new List<InputParameter>();
 
+                    var serialized = JsonSerializer.Serialize(value);
+                    Console.WriteLine(serialized);
+
                     var values = JsonSerializer.Deserialize<dynamic>(
-                        JsonSerializer.Serialize(value), new JsonSerializerOptions {
+                        serialized
+                        , new JsonSerializerOptions {
                             Converters = { new DynamicJsonConverter() }
+                            ,
+                            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                            IncludeFields = true,
+                            WriteIndented = true,
+                            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                            PropertyNameCaseInsensitive = true,
                         });
 
                     foreach (KeyValuePair<string, object> v in values)
@@ -396,6 +406,8 @@ namespace RulesEngineEditor.Pages
             {
                 inputJSONErrors = ex.Source + " " + ex.Message + " ";
                 Console.WriteLine(ex);
+                if (ex.InnerException != null)
+                    Console.WriteLine(ex.InnerException);
             }
         }
 
