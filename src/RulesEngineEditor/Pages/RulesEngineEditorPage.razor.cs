@@ -347,27 +347,21 @@ namespace RulesEngineEditor.Pages
             WorkflowService.Inputs = new List<InputRuleParameter>();
 
             List<RuleParameter> ruleParameters = new List<RuleParameter>();
-            foreach (var i in inputs.EnumerateArray())
+            foreach (var x in inputs.EnumerateArray())
             {
-                string key;
-                dynamic value;
+                string key = "";
+                dynamic value = null;
 
-                //TODO remove legacy properties
                 try
                 {
+                    JsonElement i = JsonSerializer.Deserialize<dynamic>(x.ToString(), jsonOptions);
+
                     key = i.GetProperty("InputRuleName").GetString();
-                }
-                catch (Exception ex)
-                {
-                    key = i.GetProperty("InputRule").GetString();
-                }
-                try
-                {
                     value = i.GetProperty("Parameters");
                 }
                 catch (Exception ex)
                 {
-                    value = i.GetProperty("Parameter");
+                    inputJSONErrors += " " + ex.Message;
                 }
 
                 InputRuleParameter input = new InputRuleParameter();
