@@ -196,6 +196,8 @@ namespace RulesEngineEditor.Pages
                 try
                 {
                     newInput.Parameters.Add(p.Name, JsonSerializer.Deserialize<dynamic>(p.Value, new JsonSerializerOptions {
+                        ReadCommentHandling = JsonCommentHandling.Skip,
+                        AllowTrailingCommas = true,
                         Converters = { new DynamicJsonConverter() }
                     }));
                 }
@@ -207,10 +209,7 @@ namespace RulesEngineEditor.Pages
             newInputs.Add(newInput);
         });
 
-        if (inputJSONErrors == "")
-        {
-            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
-        }
+        InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
     }
 
     private void RunRE()
