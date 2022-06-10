@@ -362,8 +362,10 @@ namespace RulesEngineEditor.Pages
                 WorkflowService.Inputs = new List<InputRuleParameter>();
 
                 List<RuleParameter> ruleParameters = new List<RuleParameter>();
-                foreach (var i in inputs.EnumerateArray())
+                foreach (var x in inputs.EnumerateArray())
                 {
+                    dynamic i = JsonSerializer.Deserialize<dynamic>(
+                    x, jsonOptions);
                     string key = "";
                     dynamic value = null;
 
