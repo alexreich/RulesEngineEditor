@@ -377,8 +377,10 @@ namespace RulesEngineEditor.Pages
                     input.Parameters = new List<InputParameter>();
 
                     var serialized = JsonSerializer.Serialize(value);
-                    
-                    var values = JsonSerializer.Deserialize<dynamic>(
+
+                    dynamic values = value;
+                    try { 
+                    values = JsonSerializer.Deserialize<dynamic>(
                         serialized
                         , new JsonSerializerOptions {
                             Converters = { new DynamicJsonConverter() }
@@ -389,8 +391,16 @@ namespace RulesEngineEditor.Pages
                             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                             PropertyNameCaseInsensitive = true,
                         });
-
-                    Console.WriteLine(values);
+                    }
+                    catch (Exception ex)
+                    {
+                        inputJSONErrors = ex.Source + " " + ex.Message + " ";
+                        Console.WriteLine("INSIDE DESERIALIZE");
+                        Console.WriteLine(ex.StackTrace);
+                        Console.WriteLine(ex);
+                        if (ex.InnerException != null)
+                            Console.WriteLine(ex.InnerException);
+                    }
 
                     foreach (KeyValuePair<string, object> v in values)
                     {
