@@ -22,11 +22,21 @@
     {
         return state ? "reeditor_menubutton_depressed" : "";
     }
+    public WorkflowData[] GetWorkflows()
+    {
+        List<WorkflowData> workflows = new List<WorkflowData>();
+        WorkflowData wd = new WorkflowData();
+        wd.WorkflowName="<All>";
+        workflows.Add(wd);
+
+        workflows.AddRange(WorkflowService.Workflows.OrderBy(o => o.WorkflowName));
+        return workflows.ToArray();
+    }
 }
 <div hidden="@(!ShowWorkflows)">
     @if (IsButtonEnabled("NewWorkflows"))
     {
-        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">New</button><span>&nbsp;</span>
+        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflowsAsync">New</button><span>&nbsp;</span>
     }
     @if (IsButtonEnabled("DownloadWorkflows"))
     {
@@ -40,6 +50,14 @@
     {
         <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button><span>&nbsp;</span>
     }
+    <EditForm Model="currentWorkflow" OnValidSubmit="ChangeWorkflow" class="reeditor_button">
+    <InputSelect @bind-Value="currentWorkflow.Id" class="reeditor_button">
+        @foreach (var wf in GetWorkflows()) 
+        {
+            <option value="@wf.Id">@wf.WorkflowName</option>
+        }
+    </InputSelect>
+     </EditForm>
 </div>
 @if (WorkflowService.Workflows.Count > 0)
 {

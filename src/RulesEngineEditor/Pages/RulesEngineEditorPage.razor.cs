@@ -32,6 +32,13 @@ namespace RulesEngineEditor.Pages
         [Parameter]
         public Workflow[] Workflows { get; set; }
 
+        WorkflowData currentWorkflow = new WorkflowData();
+
+        public void ChangeWorkflow()
+        {
+            var temp = currentWorkflow;
+        }
+
         [Parameter]
         public EventCallback<Workflow[]> WorkflowsChanged { get; set; }
 
@@ -76,7 +83,6 @@ namespace RulesEngineEditor.Pages
 
             WorkflowService.OnInputChange += InputUpdate;
             WorkflowService.OnWorkflowChange += WorkflowUpdate;
-
             await base.OnInitializedAsync();
     }
     protected override void OnParametersSet()
@@ -122,7 +128,8 @@ namespace RulesEngineEditor.Pages
         WorkflowService.RuleParameters = new RuleParameter[0];
         WorkflowsChanged.InvokeAsync(Workflows);
         WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-        StateHasChanged();
+
+            StateHasChanged();
     }
 
     public void NewGlobalParam(WorkflowData wf)
@@ -167,7 +174,6 @@ namespace RulesEngineEditor.Pages
         UpdateInputs();
         DownloadInputs();
         RunRE();
-        WorkflowsChanged.InvokeAsync(Workflows);
         WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
         StateHasChanged();
     }
