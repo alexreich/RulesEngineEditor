@@ -11,6 +11,7 @@
 
 @inject IDbContextFactory<RulesEngineEditorDbContext> DbFactory
 
+ @*TODO bubble up save event from reep to this page and save db then*@
 <RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" MenuButtons="menuButtons" />
 
 @code {

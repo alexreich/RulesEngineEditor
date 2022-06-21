@@ -57,7 +57,7 @@ namespace RulesEngineEditor.Pages
         public EventCallback<string> InputJSONChanged { get; set; }
 
 
-        private List<MenuButton> menuButtons = new List<MenuButton> { new MenuButton("NewWorkflows"), new MenuButton("DownloadWorkflows"), new MenuButton("ImportWorkflows"), new MenuButton("AddWorkflow"), new MenuButton("NewInputs"), new MenuButton("DownloadInputs"), new MenuButton("ImportInputs"), new MenuButton("AddInput") };
+        private List<MenuButton> menuButtons = new List<MenuButton> { new MenuButton("NewWorkflows"), new MenuButton("DownloadWorkflows"), new MenuButton("ImportWorkflows"), new MenuButton("AddWorkflow"), new MenuButton("SaveWorkflow"), new MenuButton("NewInputs"), new MenuButton("DownloadInputs"), new MenuButton("ImportInputs"), new MenuButton("AddInput") };
         [Parameter]
         public List<MenuButton> MenuButtons { get { return menuButtons; } set { value.ForEach(v => menuButtons.Single(w => w.Name == v.Name).Enabled = v.Enabled); } } 
         
@@ -142,6 +142,11 @@ namespace RulesEngineEditor.Pages
         workflow.Seq = -1;
         WorkflowService.Workflows.Insert(0, workflow);
         StateHasChanged();
+    }
+
+    private void SaveWorkflow()
+    {
+
     }
 
     private void NewInputs()

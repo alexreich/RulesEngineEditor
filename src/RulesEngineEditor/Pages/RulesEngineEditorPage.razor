@@ -40,6 +40,10 @@
     {
         <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button><span>&nbsp;</span>
     }
+     @if (IsButtonEnabled("SaveWorkflow"))
+    {
+        <button title="Save Workflow" class="reeditor_button" @onclick="SaveWorkflow">Save</button><span>&nbsp;</span>
+    }
 </div>
 @if (WorkflowService.Workflows.Count > 0)
 {
