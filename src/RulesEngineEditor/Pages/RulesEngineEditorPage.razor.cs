@@ -36,6 +36,9 @@ namespace RulesEngineEditor.Pages
         public EventCallback<Workflow[]> WorkflowsChanged { get; set; }
 
         [Parameter]
+        public EventCallback<Workflow[]> WorkflowsSaved { get; set; }
+
+        [Parameter]
         public List<WorkflowData> WorkflowDatas { get { return WorkflowService.Workflows; } set { if (WorkflowService.Workflows != value) { WorkflowService.Workflows = value; WorkflowUpdate(); } } }
 
         [Parameter]
@@ -146,7 +149,8 @@ namespace RulesEngineEditor.Pages
 
     private void SaveWorkflow()
     {
-
+        WorkflowUpdate();
+        WorkflowsSaved.InvokeAsync(Workflows);
     }
 
     private void NewInputs()
