@@ -11,7 +11,8 @@
 
 @inject IDbContextFactory<RulesEngineEditorDbContext> DbFactory
 
-<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" MenuButtons="menuButtons" />
+ Last Saved: @lastSaved
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-WorkflowDatas="WorkflowDatas" MenuButtons="menuButtons" WorkflowsSaved="Save" />
 
 @code {
     private RulesEngineEditorDbContext db;
@@ -55,6 +56,8 @@
         }
     }
 
+    DateTime? lastSaved;
+
     enum FooEnum
     {
         bar = 123
@@ -68,6 +71,13 @@
     void RefreshDB()
     {
         WorkflowDatas = db.Workflows.Include(i => i.GlobalParams.OrderBy(o => o.Seq)).Include(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.Rules.OrderBy(o => o.Seq)).ThenInclude(i => i.LocalParams.OrderBy(o => o.Seq)).ToList();
+    }
+
+    void Save(Workflow[] wfs)
+    {
+        lastSaved = DateTime.Now;
+        db.Workflows.UpdateRange(WorkflowDatas.ToList());
+        db.SaveChanges();
     }
 
     private List<MenuButton> menuButtons = new List<MenuButton>();
