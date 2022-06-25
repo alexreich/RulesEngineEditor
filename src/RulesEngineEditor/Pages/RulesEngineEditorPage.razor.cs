@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Web;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Forms;
@@ -19,6 +21,15 @@ namespace RulesEngineEditor.Pages
 {
     partial class RulesEngineEditorPage : ComponentBase
     {
+        [Parameter]
+        public string CurrentWorkflowName { get; set; } = "ALL";
+
+        [Parameter]
+        public RulesEngine.RulesEngine EditorRulesEngine { get { return _rulesEngine; } set { _rulesEngine = value; } }
+
+        [Parameter]
+        public Workflow[] Workflows { get; set; }
+
         private bool ShowWorkflows { get; set; } = true;
         public Dictionary<string, object> DownloadAttributes { get; set; }
         public Dictionary<string, object> DownloadInputAttributes { get; set; }
@@ -26,18 +37,8 @@ namespace RulesEngineEditor.Pages
         JsonSerializerOptions jsonOptions;
 
         private RulesEngine.RulesEngine _rulesEngine = new RulesEngine.RulesEngine(null, null);
-        [Parameter]
-        public RulesEngine.RulesEngine EditorRulesEngine { get { return _rulesEngine; } set { _rulesEngine = value; } }
-
-        [Parameter]
-        public Workflow[] Workflows { get; set; }
 
         WorkflowData currentWorkflow = new WorkflowData();
-
-        public void ChangeWorkflow()
-        {
-            var temp = currentWorkflow;
-        }
 
         [Parameter]
         public EventCallback<Workflow[]> WorkflowsChanged { get; set; }
@@ -67,7 +68,7 @@ namespace RulesEngineEditor.Pages
         public EventCallback<string> InputJSONChanged { get; set; }
 
 
-        private List<MenuButton> menuButtons = new List<MenuButton> { new MenuButton("NewWorkflows"), new MenuButton("DownloadWorkflows"), new MenuButton("ImportWorkflows"), new MenuButton("AddWorkflow"), new MenuButton("SaveWorkflow"), new MenuButton("NewInputs"), new MenuButton("DownloadInputs"), new MenuButton("ImportInputs"), new MenuButton("AddInput") };
+        private List<MenuButton> menuButtons = new List<MenuButton> { new MenuButton("NewWorkflows"), new MenuButton("DownloadWorkflows"), new MenuButton("ImportWorkflows"), new MenuButton("AddWorkflow"), new MenuButton("SaveWorkflow", false), new MenuButton("NewInputs"), new MenuButton("DownloadInputs"), new MenuButton("ImportInputs"), new MenuButton("AddInput") };
         [Parameter]
         public List<MenuButton> MenuButtons { get { return menuButtons; } set { value.ForEach(v => menuButtons.Single(w => w.Name == v.Name).Enabled = v.Enabled); } } 
         
@@ -93,7 +94,6 @@ namespace RulesEngineEditor.Pages
         if (Workflows != default && string.IsNullOrEmpty(WorkflowsJSON))
         {
             var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
-            //var oldJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(JsonSerializer.Deserialize<List<Workflow>>(WorkflowJSON, jsonOptions)));
 
             if (newJSON != WorkflowsJSON)
             {
@@ -129,10 +129,13 @@ namespace RulesEngineEditor.Pages
     {
         WorkflowService.Workflows = new List<WorkflowData>();
         WorkflowService.RuleParameters = new RuleParameter[0];
+        WorkflowService.Inputs = new List<InputRuleParameter>();
+        WorkflowsJSON = "";
+        InputJSON = "";
         WorkflowsChanged.InvokeAsync(Workflows);
         WorkflowDatasChanged.InvokeAsync(WorkflowService.Workflows);
-
-            StateHasChanged();
+        AddWorkflow();
+        StateHasChanged();
     }
 
     public void NewGlobalParam(WorkflowData wf)
