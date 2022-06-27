@@ -2,7 +2,6 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
-@page "/"
 @using RulesEngineEditor.Models
 @using RulesEngineEditor.Components
 @inject NavigationManager NavigationManager
@@ -22,11 +21,29 @@
     {
         return state ? "reeditor_menubutton_depressed" : "";
     }
+    public WorkflowData[] GetWorkflows()
+    {
+        List<WorkflowData> workflows = new List<WorkflowData>();
+        WorkflowData wd = new WorkflowData();
+        wd.WorkflowName="ALL";
+        workflows.Add(wd);
+
+        workflows.AddRange(WorkflowService.Workflows.OrderBy(o => o.WorkflowName));
+        return workflows.ToArray();
+    }
 }
 <div hidden="@(!ShowWorkflows)">
+    <EditForm Model="currentWorkflow" class="reeditor_button">
+        <InputSelect @bind-Value="CurrentWorkflowName" class="reeditor_button" title="Current Workflow">
+            @foreach (var wf in GetWorkflows()) 
+            {
+                <option value="@wf.WorkflowName">@wf.WorkflowName</option>
+            }
+        </InputSelect>
+    </EditForm>
     @if (IsButtonEnabled("NewWorkflows"))
     {
-        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">New</button><span>&nbsp;</span>
+        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">Reset</button><span>&nbsp;</span>
     }
     @if (IsButtonEnabled("DownloadWorkflows"))
     {
@@ -40,12 +57,16 @@
     {
         <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button><span>&nbsp;</span>
     }
+     @if (IsButtonEnabled("SaveWorkflow"))
+    {
+        <button title="Save Workflow" class="reeditor_button" @onclick="SaveWorkflow">Save</button><span>&nbsp;</span>
+    }
 </div>
 @if (WorkflowService.Workflows.Count > 0)
 {
     <div class="sp_grid_main" hidden="@(!ShowWorkflows)">
         <div>
-            <Dropzone TItem="WorkflowData" OnItemDrop="@((i)=>WorkflowDragEnd(i))" Items="WorkflowService.Workflows" Class="reeditor_dragdrop">
+            <Dropzone TItem="WorkflowData" OnItemDrop="@((i)=>WorkflowDragEnd(i))" Items="@(CurrentWorkflowName == null || CurrentWorkflowName == "ALL" ? WorkflowService.Workflows : WorkflowService.Workflows.Where(w => w.WorkflowName == CurrentWorkflowName).ToList())" Class="reeditor_dragdrop">
                 <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
                 <div class="sp_grid_workflow_children">
                     <h5>Rules</h5>

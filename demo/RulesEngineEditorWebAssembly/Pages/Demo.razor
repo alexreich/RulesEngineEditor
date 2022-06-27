@@ -2,15 +2,17 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
-@page "/demo"
+@page "/demo/{WorkflowName?}"
 @using Newtonsoft.Json
 @using RulesEngine.Models
 @using RulesEngineEditor.Models
 @inject HttpClient Http
 
-<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" />
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" CurrentWorkflowName="@WorkflowName" />
 
 @code {
+    [Parameter]
+    public string WorkflowName { get; set; }
     private RulesEngine.RulesEngine re;
 
     private Workflow[] _workflows;

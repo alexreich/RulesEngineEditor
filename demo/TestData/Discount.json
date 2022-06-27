@@ -93,5 +93,14 @@
         "Expression": "(DateTime.Now - input4.lastUpdated).Days >= 0 && input4.nested.Deeply"
       }
     ]
+  },
+  {
+    "WorkflowName": "Test Workflow",
+    "Rules": [
+      {
+        "RuleName": "Test Rule",
+        "Expression": "true"
+      }
+    ]
   }
 ]

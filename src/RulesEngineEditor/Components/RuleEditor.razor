@@ -37,10 +37,10 @@
                 </InputSelect>
             </div>
             <div>
-                <InputText class="form-control" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
-                <InputText class="form-control" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
                 <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />

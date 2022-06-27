@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 6-27-2022
+- UI Makeover + bugfixes
+
 ## [1.1.2] - 6-9-2022
 - Cleanup
 
