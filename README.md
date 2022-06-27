@@ -36,7 +36,7 @@ https://alexreich.github.io/RulesEngineEditor/demo
 * Real-time evaluation
 * Add, Edit, Delete in form view, JSON or switch between them
 * Drag, Drop objects to change order
-* Current Workflow dropdown, switch between workflows as well as [pass in current workflow as a parameter](https://alexreich.github.io/RulesEngineEditor/demo/demo/Test%20Workflow)
+* Current Workflow dropdown, switch between workflows as well as [pass in current workflow as a parameter](https://alexreich.github.io/RulesEngineEditor/demo/Test%20Workflow)
 * Nested Rule support
 * Import, Download [compliant Workflow json](https://github.com/microsoft/RulesEngine/blob/main/schema/workflowRules-schema.json)
 * Import, Download [compliant Input Rule Parameter json](schema/inputRuleParameter-schema.json)
