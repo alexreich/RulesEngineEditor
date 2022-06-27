@@ -36,9 +36,11 @@ https://alexreich.github.io/RulesEngineEditor/demo
 * Real-time evaluation
 * Add, Edit, Delete in form view, JSON or switch between them
 * Drag, Drop objects to change order
+* Current Workflow dropdown, switch between workflows as well as [pass in current workflow as a parameter](https://alexreich.github.io/RulesEngineEditor/demo/demo/Test%20Workflow)
 * Nested Rule support
 * Import, Download [compliant Workflow json](https://github.com/microsoft/RulesEngine/blob/main/schema/workflowRules-schema.json)
 * Import, Download [compliant Input Rule Parameter json](schema/inputRuleParameter-schema.json)
+* Entity Framework support for load and save ([example in Server project](https://github.com/alexreich/RulesEngineEditor/blob/main/demo/RulesEngineEditorServer/Pages/DemoEF.razor)) 
 * Design Time Support:
   * Pass pre-constructed instance of Rules Engine
   * Supports 2-way binding of Workflows
@@ -110,7 +112,7 @@ Any/all of the following menu buttons can explicitly disabled:
 See [DemoEF](https://raw.githubusercontent.com/alexreich/RulesEngineEditor/main/demo/RulesEngineEditorServer/Pages/DemoEF.razor) for example usage.
 
 ## What's Next
-* UI Update - large data (workflow, rule) handling
+* More UI Updates - large field data (rule name, success, expression) autosize?
 * Support for more types (ActionInfo, RuleActions, etc.)
 * Continued synchronization with releases of Microsoft Rules Engine
 * Blazor Desktop

@@ -2,17 +2,17 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
-@page "/Demo/{WFN?}"
+@page "/Demo/{WorkflowName?}"
 @using Newtonsoft.Json
 @using RulesEngine.Models
 @using RulesEngineEditor.Models
 @using System.IO
 
-<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" CurrentWorkflowName="@WFN" />
+<RulesEngineEditorPage EditorRulesEngine="re" @bind-Workflows="Workflows" InputJSON="@Inputs" CurrentWorkflowName="@WorkflowName" />
 
 @code {
     [Parameter]
-    public string WFN { get; set; }
+    public string WorkflowName { get; set; }
     private RulesEngine.RulesEngine re;
 
     private Workflow[] _workflows;
