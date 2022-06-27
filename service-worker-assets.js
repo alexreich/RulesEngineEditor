@@ -77,7 +77,7 @@
       "url": "manifest.json"
     },
     {
-      "hash": "sha256-DjJqCe3ywMXsCM06sOq91sj+VDiW4aehbJ2BtQIte4I=",
+      "hash": "sha256-MIKiKWrvRVAt2I7VZpL75VWTSORW22zIC62YEqlB\/4k=",
       "url": "sample-data\/discount.json"
     },
     {
@@ -477,5 +477,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "6xyZhNl7"
+  "version": "f4QngX2+"
 };
