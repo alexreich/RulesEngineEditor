@@ -3,10 +3,19 @@
     // Licensed under the CC BY 4.0 License.
 *@
 @using RulesEngineEditor.Models
+@using Microsoft.AspNetCore.Components.QuickGrid
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 @if (rules != null)
 {
+    <QuickGrid Items="@rules.AsQueryable()">
+        <PropertyColumn Property="@(p => p.RuleName)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.Operator)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.SuccessEvent)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.ErrorMessage)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.Expression)" Sortable="true" />
+    </QuickGrid>
+
     <Dropzone TItem="RuleData" Items="rules" OnItemDrop="@((i)=>RuleDragEnd(i))">
         <rules>
             <RuleEditor rule="@context" RuleDelete="DeleteRule" />
