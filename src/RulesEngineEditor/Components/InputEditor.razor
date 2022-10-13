@@ -7,34 +7,52 @@
 
 @if (Input != null)
 {
-<sp_grid_kvp>
-    <div>Input Name</div>
-</sp_grid_kvp>
-<EditForm EditContext="@EditContext">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <sp_grid_workflow>
-        <div>
-            <InputText title="Name" class="form-control" @bind-Value="@Input.InputRuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-        </div>
-        <div>
-            <button title="Delete Input" @onclick="@(e => DeleteInput())" class="btn btn-secondary">
-                <span class="oi oi-trash"></span>
-            </button>
-        </div>
-    </sp_grid_workflow>
-    <h5>Parameters</h5>
-    <button class="reeditor_button" title="Add Input Parameter" @onclick="AddParameter">Add</button>
     <sp_grid_kvp>
-        <div>Input Param Name</div>
-        <div>Value</div>
+        <div>Input Name</div>
     </sp_grid_kvp>
-</EditForm>
-<Dropzone Items="Input.Parameters">
-    <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
-</Dropzone>
+    <EditForm EditContext="@EditContext">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <sp_grid_workflow>
+            <div>
+                <InputText title="Name" class="form-control" @bind-Value="@Input.InputRuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            </div>
+            <div>
+                <button title="Delete Input" @onclick="@(e => DeleteInput())" class="btn btn-secondary">
+                    <span class="oi oi-trash"></span>
+                </button>
+            </div>
+        </sp_grid_workflow>
+        <h5>Parameters</h5>
+        <button class="reeditor_button" title="Add Input Parameter" @onclick="AddParameter">Add</button>
+        <button class="reeditor_button @IsPressed(sort, "button_depressed")" @onclick="(() => sort = !sort)">Arrange</button>
+        <sp_grid_kvp>
+            <div>Input Param Name</div>
+            <div>Value</div>
+        </sp_grid_kvp>
+    </EditForm>
+    @if (sort)
+    {
+        <Dropzone Items="Input.Parameters">
+            <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
+        </Dropzone>
+    }
+    else
+    {
+        @foreach (var context in Input.Parameters)
+        {
+            <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
+        }
+    }
 }
 @code {
+    public bool sort;
+
+    public string IsPressed(bool state, string suffix)
+    {
+        return state ? "reeditor_" + suffix : "";
+    }
+
     [Parameter]
     public InputRuleParameter Input { get; set; }
 
@@ -68,7 +86,8 @@
         WorkflowService.WorkflowUpdate();
     }
 
-    private void AddParameter() {
+    private void AddParameter()
+    {
         InputParameter parameter = new InputParameter();
         parameter.Name = $"param{Input.Parameters.Count + 1}";
         Input.Parameters.Insert(0, parameter);

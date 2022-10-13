@@ -7,13 +7,28 @@
 
 @if (rules != null)
 {
-    <Dropzone TItem="RuleData" Items="rules" OnItemDrop="@((i)=>RuleDragEnd(i))">
-        <rules>
-            <RuleEditor rule="@context" RuleDelete="DeleteRule" />
-        </rules>
-    </Dropzone>
+    <button class="reeditor_button @IsPressed(sort, "button_depressed")" @onclick="(() => sort = !sort)">Arrange</button>
+    <span>&nbsp;</span>
+    @if (sort)
+    {
+        <Dropzone TItem="RuleData" Items="rules" OnItemDrop="@((i)=>RuleDragEnd(i))">
+            <div class="rules_arrange">
+                <RuleEditor rule="@context" RuleDelete="DeleteRule" />
+            </div>
+        </Dropzone>
+    }
+    else
+    {
+        @foreach (RuleData context in rules)
+        {
+            <div class="rules">
+                <RuleEditor rule="@context" RuleDelete="DeleteRule" />
+            </div>
+        }
+    }
 }
 @code {
+    public bool sort;
     private List<RuleData> _rules;
     [Parameter]
     public List<RuleData> rules
@@ -40,5 +55,9 @@
     {
         WorkflowService.Sort(rules);
         RulesChanged.InvokeAsync(rules);
+    }
+    public string IsPressed(bool state, string suffix)
+    {
+        return state ? "reeditor_" + suffix : "";
     }
 }

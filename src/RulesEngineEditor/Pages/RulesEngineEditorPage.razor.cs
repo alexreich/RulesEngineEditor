@@ -74,6 +74,8 @@ namespace RulesEngineEditor.Pages
         
         bool IsButtonEnabled(string name) { return MenuButtons.Single(w => w.Name == name).Enabled; }
 
+        public bool sort_wf, sort_ip;
+
         protected override async Task OnInitializedAsync()
         {
             jsonOptions = new JsonSerializerOptions {

@@ -14,9 +14,19 @@
             <div>Expression</div>
         </sp_grid_kvp>
     }
-    <Dropzone TItem="ScopedParamData" Items="scopedParams" OnItemDrop="@((i)=>ScopedParamDragEnd(i))">
-        <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
-    </Dropzone>
+    @if (sort)
+    {
+        <Dropzone TItem="ScopedParamData" Items="scopedParams" OnItemDrop="@((i)=>ScopedParamDragEnd(i))">
+            <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
+        </Dropzone>
+    }
+    else
+    {
+        @foreach (var context in scopedParams)
+        {
+            <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
+        }
+    }
 }
 @code {
     [Parameter]
@@ -40,5 +50,12 @@
     {
         WorkflowService.Sort(scopedParams);
         ScopedParamsChanged.InvokeAsync(scopedParams);
+    }
+
+    public bool sort;
+
+    public string IsPressed(bool state, string suffix)
+    {
+        return state ? "reeditor_" + suffix : "";
     }
 }
