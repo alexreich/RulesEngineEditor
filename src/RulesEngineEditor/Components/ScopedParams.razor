@@ -9,6 +9,8 @@
 {
     if (scopedParams.Count > 0)
     {
+        <button class="reeditor_button @IsPressed(sort, "button_depressed")" @onclick="(() => sort = !sort)">Arrange</button>
+        <span>&nbsp;</span>
         <sp_grid_kvp>
             <div>Scoped Param Name</div>
             <div>Expression</div>
@@ -17,7 +19,9 @@
     @if (sort)
     {
         <Dropzone TItem="ScopedParamData" Items="scopedParams" OnItemDrop="@((i)=>ScopedParamDragEnd(i))">
-            <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
+            <div class="rules_arrange">
+                <ScopedParamEditor scopedParam="@context" ScopedParamDelete="DeleteScopedParam" />
+            </div>
         </Dropzone>
     }
     else

@@ -34,7 +34,9 @@
     @if (sort)
     {
         <Dropzone Items="Input.Parameters">
-            <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
+            <div class="rules_arrange">
+                <InputParamEditor InputParam="@context" InputParamDelete="DeleteInputParam" />
+            </div>
         </Dropzone>
     }
     else

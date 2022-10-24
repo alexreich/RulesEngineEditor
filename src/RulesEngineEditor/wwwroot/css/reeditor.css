@@ -9,7 +9,6 @@ sp_grid_scopedparam {
     grid-column: auto;
     display: inline-grid;
     grid-template-columns: 30% 60% 10%;
-    border: 3px dotted gray;
     width: 100%;
     padding: 5px;
     grid-gap: 5px;
@@ -28,7 +27,6 @@ sp_grid_rules {
     grid-column: auto;
     display: inline-grid;
     grid-template-columns: 20% 10% 10% 10% 35% 5% 10%;
-    /*border: 2px dotted gray;*/
     width: 100%;
     padding: 5px;
     grid-gap: 5px;
