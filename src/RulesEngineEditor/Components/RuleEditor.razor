@@ -2,7 +2,10 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
+@using RulesEngine.Models
 @using RulesEngineEditor.Models
+@using System.Text.Json
+@using System.Text.Json.Serialization
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 
@@ -12,6 +15,7 @@
     <div>Success Event</div>
     <div>Error Message</div>
     <div>Expression</div>
+    <div>Actions</div>
     <div>Enabled</div>
     <div>Delete</div>
 </sp_grid_rules>
@@ -45,6 +49,9 @@
             <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
+            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        <div>
             <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
         </div>
         <div>
@@ -67,6 +74,46 @@
 @code {
     [Parameter]
     public RuleData rule { get; set; }
+
+    string _actions;
+    public string Actions
+    {
+        get
+        {
+            return JsonNormalizer.Normalize(JsonSerializer.Serialize(rule.Actions, new JsonSerializerOptions
+                {
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    IncludeFields = true,
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNameCaseInsensitive = true,
+                    Converters = { new JsonStringEnumConverter() }
+                }));
+        }
+        set
+        {
+            //RulesEngine.Models.RuleActions
+            var actions = JsonSerializer.Deserialize<dynamic>(value, new JsonSerializerOptions
+                {
+                    Converters = { new DynamicJsonConverter() }
+                });
+
+            RuleActions newActions = new RuleActions();
+            if ((actions as IDictionary<string, object>).ContainsKey("OnSuccess"))
+            {
+                newActions.OnSuccess = new ActionInfo();
+                newActions.OnSuccess.Name = actions.OnSuccess.Name;
+                newActions.OnSuccess.Context = new Dictionary<string, object>(actions.OnSuccess.Context);
+            }
+            if ((actions as IDictionary<string, object>).ContainsKey("OnFailure"))
+            {
+                newActions.OnFailure = new ActionInfo();
+                newActions.OnFailure.Name = actions.OnFailure.Name;
+                newActions.OnFailure.Context = new Dictionary<string, object>(actions.OnSuccess.Context);
+            }
+            rule.Actions = newActions;
+        }
+    }
 
     [Parameter]
     public EventCallback<RuleData> RuleDelete { get; set; }
