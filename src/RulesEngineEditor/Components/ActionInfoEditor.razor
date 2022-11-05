@@ -1,0 +1,61 @@
+@*
+    // Rong Zhou
+*@
+@using RulesEngine.Models
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
+
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <sp_grid_actioninfo>
+        <div>
+            <InputTextArea rows="1" class="form-control" @bind-Value="@ActionInfo.Name" autocomplete="off"
+                autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        @if (ContextList != null)
+        {
+            <Dropzone TItem="KeyValuePair<string, object>" Items="ContextList" OnItemDrop="@((i)=>ActionInfoDragEnd(i))">
+                <ActionInfoContextEditor ContextEntry="@context" />
+            </Dropzone>
+        }
+    </sp_grid_actioninfo>
+</EditForm>
+@code {
+    private ActionInfo _actionInfo;
+    [Parameter]
+    public ActionInfo ActionInfo
+    {
+        get
+        {
+            return _actionInfo;
+        }
+        set
+        {
+            _actionInfo = value;
+            ContextList = value.Context.ToList();
+            StateHasChanged();
+        }
+    }
+
+    private IList<KeyValuePair<string, object>> ContextList { get; set; }
+    private EditContext EditContext;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(ActionInfo);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowService.WorkflowUpdate();
+    }
+
+    private void ActionInfoDragEnd(ActionInfo sp)
+    {
+        @* WorkflowService.Sort(rules);
+            RulesChanged.InvokeAsync(rules); *@
+    }
+}

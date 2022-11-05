@@ -1,0 +1,37 @@
+@*
+    // Rong Zhou
+*@
+@using RulesEngine.Models
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
+
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <sp_grid_ruleaction>
+        <div>
+            <ActionInfoEditor ActionInfo="@Actions.OnSuccess"></ActionInfoEditor>
+        </div>
+        <div>
+            <ActionInfoEditor ActionInfo="@Actions.OnFailure"></ActionInfoEditor>
+        </div>
+    </sp_grid_ruleaction>
+</EditForm>
+@code {
+    [Parameter]
+    public RuleActions Actions { get; set; }
+
+    private EditContext EditContext;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(Actions);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowService.WorkflowUpdate();
+    }
+}

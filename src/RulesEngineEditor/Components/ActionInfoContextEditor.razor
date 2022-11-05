@@ -1,0 +1,38 @@
+@*
+    // Rong Zhou
+*@
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
+
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <sp_grid_actioninfocontext>
+        <div>
+            <InputText class="form-control" @bind-Value="@ContextEntry.Key" autocomplete="off" autocorrect="off"
+                autocapitalize="off" spellcheck="false" />
+        </div>
+        <div>
+            <input class="form-control" @onchange="@(x => { ContextEntry.Value = x; })" type="text" autocomplete="off"
+                autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+    </sp_grid_actioninfocontext>
+</EditForm>
+@code {
+    [Parameter]
+    public KeyValuePair<string, object> ContextEntry { get; set; }
+
+    private EditContext EditContext;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(ContextEntry);
+        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        base.OnInitialized();
+    }
+
+    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        WorkflowService.WorkflowUpdate();
+    }
+}

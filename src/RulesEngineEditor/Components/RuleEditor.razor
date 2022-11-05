@@ -21,14 +21,16 @@
         <ValidationSummary />
         <sp_grid_rules>
             <div>
-                <InputText class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <InputText class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off"
+                    autocapitalize="off" spellcheck="false" />
                 @if (@rule.ExceptionMessage != "")
                 {
                     <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>
                 }
             </div>
             <div>
-                <InputSelect ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control" ValueChanged="((string value) => OnValueChanged(value))">
+                <InputSelect ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control"
+                    ValueChanged="((string value) => OnValueChanged(value))">
                     <option value="null"></option>
                     <option value="And">And</option>
                     <option value="AndAlso">AndAlso</option>
@@ -37,13 +39,19 @@
                 </InputSelect>
             </div>
             <div>
-                <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <InputTextArea rows="1" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent"
+                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
-                <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <InputTextArea rows="1" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage"
+                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
-                <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression"
+                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            </div>
+            <div>
+                <ActionsEditor row="1" rows="4" col="0" cols="2" Actions="@rule.Actions"></ActionsEditor>
             </div>
             <div>
                 <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
@@ -61,7 +69,8 @@
         </div>
         <h5>Rules</h5>
         <div>
-            <button class="reeditor_button" title="New Rule" @onclick="(() => WorkflowService.NewRule(rule))">Add</button>
+            <button class="reeditor_button" title="New Rule"
+                @onclick="(() => WorkflowService.NewRule(rule))">Add</button>
             <Rules rules=rule.Rules RulesChanged="WorkflowService.WorkflowUpdate" />
         </div>
     </EditForm>
