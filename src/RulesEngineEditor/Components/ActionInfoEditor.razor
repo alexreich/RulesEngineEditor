@@ -14,7 +14,7 @@
         </div>
         <div>
             <button class="reeditor_button" title="New Context" @onclick="NewContext">Add</button>
-            <ActionInfoContextEditor ContextEntry="@actionInfo.Context"/>
+            <ActionInfoContextEditor ContextEntry="@actionInfo.Context" ContextChanged="WorkflowService.WorkflowUpdate" />
         </div>
     </sp_grid_actioninfo>
 </EditForm>
@@ -30,12 +30,9 @@
         set
         {
             _actionInfo = value;
-            KeyList = value.Context.Keys.ToList();
-            StateHasChanged();
         }
     }
 
-    private IList<string> KeyList { get; set; }
     private EditContext EditContext;
 
     protected override void OnInitialized()
@@ -49,12 +46,6 @@
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
         WorkflowService.WorkflowUpdate();
-    }
-
-    private void ActionInfoDragEnd(ActionInfo sp)
-    {
-        @* WorkflowService.Sort(rules);
-            RulesChanged.InvokeAsync(rules); *@
     }
 
     private void NewContext() {

@@ -41,6 +41,7 @@
             <div>
                 <InputTextArea rows="1" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent"
                     autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                <ActionsEditor Actions="@rule.Actions"></ActionsEditor>
             </div>
             <div>
                 <InputTextArea rows="1" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage"
@@ -49,9 +50,6 @@
             <div>
                 <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression"
                     autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-            </div>
-            <div>
-                <ActionsEditor row="1" rows="4" col="0" cols="2" Actions="@rule.Actions"></ActionsEditor>
             </div>
             <div>
                 <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
