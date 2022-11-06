@@ -25,7 +25,7 @@
         get { return _context; } 
         set {
             _context = value;
-            contextCollection = value.ToObservableCollection(
+            contextCollection = value?.ToObservableCollection(
                 (item, e) => {
                     // find the old item
                     var oldKey = ((KeyValuePair<string, object>)(e.OldValue)).Key;
@@ -37,7 +37,8 @@
                     ContextChanged.InvokeAsync(context);
                 },
                 UpdateContext);
-            contextCollection.CollectionChanged += UpdateContext;
+            if (contextCollection != null)
+                contextCollection.CollectionChanged += UpdateContext;
         }
     }
 
@@ -64,6 +65,14 @@
         }
         // fire event
         ContextChanged.InvokeAsync(context);
+    }
+
+    protected override void OnInitialized()
+    {
+        if (context == null)
+            context = new Dictionary<string, object>();
+
+        base.OnInitialized();
     }
 
     private void ItemDragEnd(DictItem sp)

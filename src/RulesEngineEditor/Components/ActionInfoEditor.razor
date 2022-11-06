@@ -14,7 +14,7 @@
         </div>
         <div>
             <button class="reeditor_button" title="New Context" @onclick="NewContext">Add</button>
-            <ActionInfoContextEditor ContextEntry="@actionInfo.Context" ContextChanged="WorkflowService.WorkflowUpdate" />
+            <ActionInfoContextEditor context="@actionInfo.Context" ContextChanged="WorkflowService.WorkflowUpdate" />
         </div>
     </sp_grid_actioninfo>
 </EditForm>
@@ -37,6 +37,9 @@
 
     protected override void OnInitialized()
     {
+        if (actionInfo == null)
+            actionInfo = new ActionInfo();
+
         EditContext = new EditContext(actionInfo);
         EditContext.OnFieldChanged += EditContext_OnFieldChanged;
 
