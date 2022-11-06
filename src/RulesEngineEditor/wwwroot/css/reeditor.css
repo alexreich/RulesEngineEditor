@@ -27,7 +27,27 @@ sp_grid_inputparameter {
 sp_grid_rules {
     grid-column: auto;
     display: inline-grid;
-    grid-template-columns: 20% 10% 10% 10% 35% 5% 10%;
+    grid-template-columns: 20% 15% 50% 5% 10%;
+    /*border: 2px dotted gray;*/
+    width: 100%;
+    padding: 5px;
+    grid-gap: 5px;
+}
+
+sp_grid_rules_2 {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 20% 15% 15% 50%;
+    /*border: 2px dotted gray;*/
+    width: 100%;
+    padding: 5px;
+    grid-gap: 5px;
+}
+
+sp_grid_ruleaction {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
     /*border: 2px dotted gray;*/
     width: 100%;
     padding: 5px;
