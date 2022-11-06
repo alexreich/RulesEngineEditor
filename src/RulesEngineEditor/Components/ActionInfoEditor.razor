@@ -9,21 +9,19 @@
     <ValidationSummary />
     <sp_grid_actioninfo>
         <div>
-            <InputTextArea rows="1" class="form-control" @bind-Value="@ActionInfo.Name" autocomplete="off"
+            <InputText rows="1" class="form-control" @bind-Value="@actionInfo.Name" autocomplete="off"
                 autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
-        @if (ContextList != null)
-        {
-            <Dropzone TItem="KeyValuePair<string, object>" Items="ContextList" OnItemDrop="@((i)=>ActionInfoDragEnd(i))">
-                <ActionInfoContextEditor ContextEntry="@context" />
-            </Dropzone>
-        }
+        <div>
+            <button class="reeditor_button" title="New Context" @onclick="NewContext">Add</button>
+            <ActionInfoContextEditor ContextEntry="@actionInfo.Context"/>
+        </div>
     </sp_grid_actioninfo>
 </EditForm>
 @code {
     private ActionInfo _actionInfo;
     [Parameter]
-    public ActionInfo ActionInfo
+    public ActionInfo actionInfo
     {
         get
         {
@@ -32,17 +30,17 @@
         set
         {
             _actionInfo = value;
-            ContextList = value.Context.ToList();
+            KeyList = value.Context.Keys.ToList();
             StateHasChanged();
         }
     }
 
-    private IList<KeyValuePair<string, object>> ContextList { get; set; }
+    private IList<string> KeyList { get; set; }
     private EditContext EditContext;
 
     protected override void OnInitialized()
     {
-        EditContext = new EditContext(ActionInfo);
+        EditContext = new EditContext(actionInfo);
         EditContext.OnFieldChanged += EditContext_OnFieldChanged;
 
         base.OnInitialized();
@@ -57,5 +55,9 @@
     {
         @* WorkflowService.Sort(rules);
             RulesChanged.InvokeAsync(rules); *@
+    }
+
+    private void NewContext() {
+        actionInfo.Context.Add("", "");
     }
 }

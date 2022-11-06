@@ -1,38 +1,69 @@
+@using System.Collections.ObjectModel
+@using System.Collections.Specialized
 @*
     // Rong Zhou
 *@
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
-<EditForm EditContext="@EditContext">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <sp_grid_actioninfocontext>
-        <div>
-            <InputText class="form-control" @bind-Value="@ContextEntry.Key" autocomplete="off" autocorrect="off"
-                autocapitalize="off" spellcheck="false" />
-        </div>
-        <div>
-            <input class="form-control" @onchange="@(x => { ContextEntry.Value = x; })" type="text" autocomplete="off"
-                autocorrect="off" autocapitalize="off" spellcheck="false" />
-        </div>
-    </sp_grid_actioninfocontext>
-</EditForm>
-@code {
-    [Parameter]
-    public KeyValuePair<string, object> ContextEntry { get; set; }
-
-    private EditContext EditContext;
-
-    protected override void OnInitialized()
+@if (context != null)
+{
+    if (context.Count > 0)
     {
-        EditContext = new EditContext(ContextEntry);
-        EditContext.OnFieldChanged += EditContext_OnFieldChanged;
-
-        base.OnInitialized();
+        <sp_grid_ckvp>
+            <div>Context Name</div>
+            <div>Value</div>
+            @foreach (var cItem in context)
+            {
+                <ActionInfoContextItemEditor key="@cItem.Key" value="@cItem.Value"/>
+            }
+        </sp_grid_ckvp>
+    }
+    <Dropzone TItem="DictItem" Items="@contextCollection" OnItemDrop="@((i)=>ItemDragEnd(i))">
+        <ActionInfoContextItemEditor item="@context" />
+    </Dropzone>
+}
+@code {
+    private IDictionary<string, object> _context;
+    [Parameter]
+    public IDictionary<string, object> context { 
+        get { return _context; } 
+        set {
+            _context = value;
+            contextCollection = value.ToObservableCollection(
+                (item, e) => {
+                    // find the old item
+                    var oldKey = ((KeyValuePair<string, object>)(e.OldValue)).Key;
+                    // remove and add new value
+                    _context.Remove(oldKey);
+                    _context.Add((KeyValuePair<string, object>)(e.NewValue));
+                },
+                (collection, e) => {
+                    foreach(var oi in e.OldItems) {
+                        string oldKey = ((DictItem)oi).Key;
+                        _context.Remove(oldKey);
+                    }
+                    foreach(var ni in e.NewItems) {
+                        var item = new KeyValuePair<string, object>(
+                            ((DictItem)ni).Key,
+                            ((DictItem)ni).Value
+                        );
+                        _context.Add(item);
+                    }
+                });
+            contextCollection.CollectionChanged += UpdateContext;
+        }
     }
 
-    private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
+    private ObservableCollection<DictItem> contextCollection;
+
+    public override async Task SetParametersAsync(ParameterView parameters)
     {
-        WorkflowService.WorkflowUpdate();
+        await base.SetParametersAsync(parameters);
+    }
+
+    private void UpdateContext(object? sender, NotifyCollectionChangedEventArgs e) 
+    {
+        // synchronize context with contextCollection
+
     }
 }
