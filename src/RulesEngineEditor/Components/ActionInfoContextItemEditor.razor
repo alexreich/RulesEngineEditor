@@ -9,16 +9,25 @@
     <ValidationSummary />
     <sp_grid_scopedparam>
         <div>
-            <InputText title="Context Name" class="form-control" @bind="@item.Key" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <InputText title="Context Name" class="form-control" @bind-Value="@item.Key" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea title="Value" class="form-control" Value="@item.Value.ToString()" @onchange="ValueChanged" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <InputTextArea title="Value" class="form-control" @bind-Value="@stringValue" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
     </sp_grid_scopedparam>
 </EditForm>
 @code {
     [Parameter]
     public DictItem item { get; set; }
+
+    private string stringValue {
+        get {
+            return item.Value.ToString();
+        }
+        set {
+            item.Value = (object)value;
+        }
+    }
 
     private EditContext EditContext;
 
@@ -32,10 +41,5 @@
 
     private void EditContext_OnFieldChanged(object sender, FieldChangedEventArgs e)
     {
-    }
-
-    private void ValueChanged(ChangeEventArgs v)
-    {
-        item.Value = v?.Value;
     }
 }

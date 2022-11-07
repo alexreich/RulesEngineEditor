@@ -37,8 +37,8 @@ namespace RulesEngineEditor.Shared
 
         public DictItem(string key, object value)
         {
-            Key = key;
-            Value = value;
+            _key = key;
+            _value = value;
         }
 
         public event PropertyChangedEventHandlerExtended PropertyChanged;
