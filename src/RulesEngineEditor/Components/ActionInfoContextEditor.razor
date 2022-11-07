@@ -29,12 +29,25 @@
                 (item, e) => {
                     // find the old item
                     var oldKey = ((KeyValuePair<string, object>)(e.OldValue)).Key;
-                    // remove and add new value
-                    _context.Remove(oldKey);
-                    _context.Add((KeyValuePair<string, object>)(e.NewValue));
+                    // compare oldKey and newKey
+                    var newKey = ((KeyValuePair<string, object>)(e.NewValue)).Key;
+                    if (oldKey != newKey)
+                    {
+                        // remove and add new value
+                        _context.Remove(oldKey);
+                        _context.Add((KeyValuePair<string, object>)(e.NewValue));
 
-                    // fire event
-                    ContextChanged.InvokeAsync(context);
+                        // fire event
+                        ContextChanged.InvokeAsync(context);
+                    } else {
+                        // two keys are the same, compare values
+                        if (((KeyValuePair<string, object>)(e.NewValue)).Value != ((KeyValuePair<string, object>)(e.OldValue)).Value) {
+                            _context[((KeyValuePair<string, object>)(e.NewValue)).Key] = ((KeyValuePair<string, object>)(e.NewValue)).Value;
+
+                            // fire event
+                            ContextChanged.InvokeAsync(context);
+                        }
+                    }
                 },
                 UpdateContext);
             if (contextCollection != null)
@@ -69,9 +82,6 @@
 
     protected override void OnInitialized()
     {
-        if (context == null)
-            context = new Dictionary<string, object>();
-
         base.OnInitialized();
     }
 

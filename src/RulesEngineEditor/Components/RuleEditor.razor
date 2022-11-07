@@ -49,7 +49,9 @@
             <div>Result</div>
             <div>Success Event</div>
             <div>Error Message</div>
-            <div>Actions</div>
+            <div>Actions
+                <button @onclick="SetActions" class="btn btn-secondary">Set OutputExpression Actions</button>
+            </div>
         </sp_grid_rules_2>
         <sp_grid_rules_2>
             <div>
@@ -67,7 +69,10 @@
                                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             </div>
             <div>
-                <ActionsEditor Actions="@rule.Actions"></ActionsEditor>
+                @if (rule.Actions != null)
+                {
+                    <ActionsEditor Actions="@rule.Actions"></ActionsEditor>
+                }
             </div>
         </sp_grid_rules_2>
         <h5>Local Params</h5>
@@ -110,6 +115,25 @@
         }
         rule.LocalParams.Insert(0, new ScopedParamData());
         StateHasChanged();
+    }
+
+    void SetActions() {
+        if (rule.Actions == null) {
+            rule.Actions = new RulesEngine.Models.RuleActions() {
+                    OnSuccess = new RulesEngine.Models.ActionInfo() 
+                    {
+                        Name = "OutputExpression",
+                        Context = new Dictionary<string, object>() { { "Expression", "" } }
+                    },
+                    OnFailure = new RulesEngine.Models.ActionInfo()
+                    {
+                        Name = "OutputExpression",
+                        Context = new Dictionary<string, object>() { { "Expression", "" } }
+                    }
+            };
+            WorkflowService.WorkflowUpdate();
+            InvokeAsync(StateHasChanged);
+        }
     }
 
     protected override void OnInitialized()

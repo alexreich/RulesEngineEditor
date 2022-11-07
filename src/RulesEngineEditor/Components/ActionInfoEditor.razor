@@ -35,9 +35,6 @@
 
     protected override void OnInitialized()
     {
-        if (actionInfo == null)
-            actionInfo = new ActionInfo();
-
         EditContext = new EditContext(actionInfo);
         EditContext.OnFieldChanged += EditContext_OnFieldChanged;
 
@@ -50,8 +47,6 @@
     }
 
     private void NewContext() {
-        if (actionInfo.Context == null)
-            actionInfo.Context = new Dictionary<string, object>();
         actionInfo.Context.Add("", "");
     }
 }

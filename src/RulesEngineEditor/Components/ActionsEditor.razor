@@ -26,9 +26,6 @@
 
     protected override void OnInitialized()
     {
-        if (Actions == null)
-            Actions = new RuleActions();
-
         EditContext = new EditContext(Actions);
         EditContext.OnFieldChanged += EditContext_OnFieldChanged;
 
