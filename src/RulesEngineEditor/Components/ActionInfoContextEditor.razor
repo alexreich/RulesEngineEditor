@@ -10,12 +10,12 @@
     if (context.Count > 0)
     {
         <sp_grid_ckvp>
-            <div>Context Name</div>
+            <div>Name</div>
             <div>Value</div>
         </sp_grid_ckvp>
     }
     <Dropzone TItem="DictItem" Items="@contextCollection" OnItemDrop="@((i)=>ItemDragEnd(i))">
-        <ActionInfoContextItemEditor item="@context" />
+        <ActionInfoContextItemEditor item="@context" ContextDelete="ContextDelete"/>
     </Dropzone>
 }
 @code {
@@ -59,6 +59,19 @@
     public EventCallback<IDictionary<string, object>> ContextChanged { get; set; }
 
     private ObservableCollection<DictItem> contextCollection;
+
+    private void ContextDelete(DictItem sp)
+    {
+        if (context.Count <= 1)
+        {
+            // cannot have empty dictionary
+        }
+        else
+        {
+            context.Remove(sp.Key);
+            ContextChanged.InvokeAsync(context);
+        }
+    }
 
     private void UpdateContext(object? sender, NotifyCollectionChangedEventArgs e) 
     {

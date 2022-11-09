@@ -4,6 +4,12 @@
 @using RulesEngine.Models
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
+<sp_grid_actioninfo>
+    <div>@Name</div>
+    <div>
+        <button class="reeditor_button" title="New Context" @onclick="NewContext">Add Context</button>
+    </div>
+</sp_grid_actioninfo>
 <EditForm EditContext="@EditContext">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -12,7 +18,9 @@
             autocorrect="off" autocapitalize="off" spellcheck="false" />
     </div>
     <div>
-        <button class="reeditor_button" title="New Context" @onclick="NewContext">Add Context</button>
+        @if (errAddContextString != null) {
+            <blockquote class="reeditor_blockquote redditor_rules_error">@errAddContextString</blockquote>
+        }
         <ActionInfoContextEditor context="@actionInfo.Context" ContextChanged="WorkflowService.WorkflowUpdate" />
     </div>
 </EditForm>
@@ -31,6 +39,11 @@
         }
     }
 
+    [Parameter]
+    public string Name { get; set; }
+
+    private string errAddContextString = null;
+
     private EditContext EditContext;
 
     protected override void OnInitialized()
@@ -47,6 +60,11 @@
     }
 
     private void NewContext() {
-        actionInfo.Context.Add("", "");
+        if (actionInfo.Context.ContainsKey("")) {
+            errAddContextString = "There is an entry with no name, please use it.";
+        } else {
+            errAddContextString = null;
+            actionInfo.Context.Add("", "");
+        }
     }
 }

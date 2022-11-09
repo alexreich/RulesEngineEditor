@@ -7,19 +7,29 @@
 <EditForm EditContext="@EditContext">
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <sp_grid_scopedparam>
+    <sp_grid_ckvp>
         <div>
             <InputText title="Context Name" class="form-control" @bind-Value="@item.Key" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
             <InputTextArea title="Value" class="form-control" @bind-Value="@stringValue" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
-    </sp_grid_scopedparam>
+        <div>
+            <button @onclick="@(e => ContextDelete.InvokeAsync(item))" class="btn btn-secondary">
+                <span class="oi oi-trash"></span>
+            </button>
+        </div>
+    </sp_grid_ckvp>
 </EditForm>
 @code {
     [Parameter]
     public DictItem item { get; set; }
 
+    [Parameter]
+    public EventCallback<DictItem> ContextDelete { get; set; }
+
+    // to solve the problem that blazor binding doesn't support converters and don't bind to Object
+    // see https://stackoverflow.com/questions/57932850/how-to-make-two-way-binding-on-blazor-component
     private string stringValue {
         get {
             return item.Value.ToString();

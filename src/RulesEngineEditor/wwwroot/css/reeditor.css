@@ -115,6 +115,20 @@ sp_grid_kvp {
     width: 100%;
 }
 
+sp_grid_ckvp {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 30% 60% 10%;
+    width: 100%;
+}
+
+sp_grid_actioninfo {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+}
+
 sp_grid_workflow {
     grid-column: auto;
     display: inline-grid;
