@@ -262,11 +262,11 @@ namespace RulesEngineEditor.Pages
                     rule.IsSuccess = resultList[i].IsSuccess;
                     if (!(bool)rule.IsSuccess)
                     {
-                        rule.ExceptionMessage = $"{resultList[i].ExceptionMessage} ActionResult:{resultList[i].ActionResult?.Output}";
+                        rule.ExceptionMessage = $"{resultList[i].ExceptionMessage} Action Result:{resultList[i].ActionResult?.Output}";
                     }
                     else
                     {
-                        rule.ExceptionMessage = $"Rule was successful. ActionResult:{resultList[i].ActionResult?.Output}";
+                        rule.ExceptionMessage = $"Rule was successful. Action Result:{resultList[i].ActionResult?.Output}";
                     }
                 }
             });
