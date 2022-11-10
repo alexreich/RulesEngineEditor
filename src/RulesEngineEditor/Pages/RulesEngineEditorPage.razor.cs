@@ -36,7 +36,7 @@ namespace RulesEngineEditor.Pages
 
         JsonSerializerOptions jsonOptions;
 
-        private RulesEngine.RulesEngine _rulesEngine = new RulesEngine.RulesEngine(null, null);
+        private RulesEngine.RulesEngine _rulesEngine = new RulesEngine.RulesEngine(null);
 
         WorkflowData currentWorkflow = new WorkflowData();
 
