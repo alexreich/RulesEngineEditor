@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <AssemblyName>RulesEngineEditor</AssemblyName>
     <RootNamespace>RulesEngineEditor</RootNamespace>
@@ -14,10 +14,12 @@
     <PackageReleaseNotes>https://github.com/alexreich/RulesEngineEditor/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageIcon>RulesEngineEditor.png</PackageIcon>
     <PackageIconUrl />
-    <Version>1.2.1</Version>
-    <AssemblyVersion>1.2.1.0</AssemblyVersion>
-    <FileVersion>1.2.1.0</FileVersion>
+	<PackageId>RuleEngineEditor</PackageId>
+    <Version>1.3.0</Version>
+    <AssemblyVersion>1.3.0</AssemblyVersion>
+    <FileVersion>1.3.0</FileVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+	<IsPackable>true</IsPackable>
   </PropertyGroup>
 
   
@@ -26,9 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5" />
-	  <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
-	  <PackageReference Include="RulesEngine" Version="3.5.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.11" />
+	  <PackageReference Include="blazor-dragdrop" Version="2.4.0" />
+	  <PackageReference Include="RulesEngine" Version="4.0.0" />
 	  <PackageReference Include="ValueInjecter" Version="3.2.0" />
   </ItemGroup>
 
