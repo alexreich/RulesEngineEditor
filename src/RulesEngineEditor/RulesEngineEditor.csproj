@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <AssemblyName>RulesEngineEditor</AssemblyName>
     <RootNamespace>RulesEngineEditor</RootNamespace>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.11" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
 	  <PackageReference Include="blazor-dragdrop" Version="2.4.0" />
 	  <PackageReference Include="RulesEngine" Version="4.0.0" />
 	  <PackageReference Include="ValueInjecter" Version="3.2.0" />
