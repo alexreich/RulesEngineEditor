@@ -8,7 +8,6 @@
 @using System.Text.Json.Serialization
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
-
 <sp_grid_rules>
     <div>Rule Name</div>
     <div>Operator</div>
@@ -46,11 +45,24 @@
             <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+           @* <CodeSnippet>@((MarkupString)(UnescapeCodes(rule.Expression)))</CodeSnippet>*@
+                @*@((MarkupString)(Highlighter(rule.Expression)))*@
+            @*<code class="language-csharp">@((MarkupString)(UnescapeCodes(rule.Expression)))</code>*@
+
+                    @*
+            @((MarkupString)(rule.Expression == null ? "" : highlighter.Highlight("C#", rule.Expression)))
+            *@
+        @*</pre>*@
+                @*
+                    @((MarkupString)(rule.Expression == null ? "" : highlighter.Highlight("C#", "static main {" + rule.Expression + " } ")))
+                    *@
+            @*</pre>*@
+
+            <InputTextArea rows="5" form="Expression" class="prism-live language-js" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
-        <div>
+       @* <div>
             <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-        </div>
+        </div>*@
         <div>
             <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
         </div>

@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Append.Blazor.Printing" Version="1.1.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5" />
 	  <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
 	  <PackageReference Include="RulesEngine" Version="3.5.0" />

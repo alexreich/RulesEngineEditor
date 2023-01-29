@@ -22,6 +22,39 @@
 
     <link href="_content/RulesEngineEditor/css/reeditor.css" rel="stylesheet" />
     <link href="_content/RulesEngineEditor/css/dragdrop.css" rel="stylesheet" />
+    <script src="//prismjs.com/prism.js"></script>
+    <link rel="stylesheet" href="prism-live.css">
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism.min.css">
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-csharp.min.js"></script>
+
+    <script>
+        window.PrismIt = function () {
+            //console.log('y');
+            document.querySelectorAll('textarea.prism-live').forEach((t) => {
+                //console.log(t);
+                //t.dispatchEvent(new InputEvent("input"));
+                //let textareaControl = document.getElementById("inspector-textarea-control-0");
+                
+                let prismEditor = new Prism.Live(t);
+            });
+            //$("textarea.language-js.fill").forEach(t => { t.dispatchEvent(new InputEvent("input"));});
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            //document.querySelectorAll('pre code').forEach((el) => {
+            //    hljs.highlightElement(el);
+            //});
+
+            document.querySelectorAll('textarea').forEach((t) => {
+                //console.log(t);
+                //t.dispatchEvent(new InputEvent("input"));
+                //let prismEditor = new Prism.Live(t);
+            });
+        });
+    </script>
 </head>
 <body>
     <component type="typeof(App)" render-mode="ServerPrerendered" />
@@ -36,7 +69,14 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-
     <script src="_framework/blazor.server.js"></script>
+    <script src="https://blissfuljs.com/bliss.shy.min.js"></script>
+    <script src="https://prismjs.com/prism.js"></script>
+    <script src="https://prismjs.com/plugins/line-numbers/prism-line-numbers.js"></script>
+    <script src="src/prism-live.js"></script>
+    <script src="src/prism-live-markup.js"></script>
+    <script src="src/prism-live-css.js"></script>
+    <script src="src/prism-live-javascript.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

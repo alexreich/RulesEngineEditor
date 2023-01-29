@@ -1,0 +1,17 @@
+﻿@using Microsoft.JSInterop;
+@*<textarea @bind="@TextValue" class="" style="display:none; --max-height: 30em" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
+    @ChildContent
+</textarea>*@
+
+@code {
+    [Inject] private IJSRuntime _js { get; set; }
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string TextValue { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await _js.InvokeVoidAsync("PrismIt");
+    }
+}

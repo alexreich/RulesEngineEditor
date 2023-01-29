@@ -16,6 +16,7 @@ using System.Dynamic;
 using RulesEngine.Models;
 using RulesEngineEditor.Services;
 using Omu.ValueInjecter;
+using Append.Blazor.Printing;
 
 namespace RulesEngineEditor.Pages
 {
@@ -29,6 +30,9 @@ namespace RulesEngineEditor.Pages
 
         [Parameter]
         public Workflow[] Workflows { get; set; }
+
+        [Inject]
+        public IPrintingService PrintingService { get; set; }
 
         private bool ShowWorkflows { get; set; } = true;
         public Dictionary<string, object> DownloadAttributes { get; set; }
@@ -418,5 +422,11 @@ namespace RulesEngineEditor.Pages
         DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(InputJSON));
         DownloadInputAttributes.Add("download", "RulesEngineInputs.json");
     }
-}
+
+        private void PrintWorkflow()
+        {
+            //PrintOptions printOptions= new PrintOptions();
+            PrintingService.Print("sp_grid_main", printType: PrintType.Html);
+        }
+    }
 }
