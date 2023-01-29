@@ -9,7 +9,6 @@ sp_grid_scopedparam {
     grid-column: auto;
     display: inline-grid;
     grid-template-columns: 30% 60% 10%;
-    border: 3px dotted gray;
     width: 100%;
     padding: 5px;
     grid-gap: 5px;
@@ -28,7 +27,6 @@ sp_grid_rules {
     grid-column: auto;
     display: inline-grid;
     grid-template-columns: 20% 10% 10% 10% 35% 5% 10%;
-    /*border: 2px dotted gray;*/
     width: 100%;
     padding: 5px;
     grid-gap: 5px;
@@ -48,6 +46,13 @@ rules > *:not(sp_grid_rules) {
 }
 
 .rules {
+    padding: 5px;
+    border: 2px;
+    padding: 2px;
+    grid-gap: 5px;
+}
+
+.rules_arrange {
     padding: 5px;
     border: 2px dashed gray;
     padding: 2px;
@@ -159,6 +164,11 @@ sp_grid_workflow {
         opacity: 0;
         cursor: pointer;
     }
+
+.reeditor_button_depressed {
+    background-color: #008CBA;
+    color: white;
+}
 
 .jsonTextArea {
     height: 100%;
