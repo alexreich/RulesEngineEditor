@@ -10,22 +10,22 @@
 
 <sp_grid_tabs>
     <div>
-        <button class="reeditor_menubutton @IsShowWorkflows(ShowWorkflows)" @onclick="(() => ShowWorkflows = true)">Workflows</button>
+        <button class="reeditor_menubutton @IsPressed(ShowWorkflows, "menubutton_depressed")" @onclick="(() => ShowWorkflows = true)">Workflows</button>
     </div><div>
-        <button class="reeditor_menubutton @IsShowWorkflows(!ShowWorkflows)" @onclick="(() => ShowWorkflows = false)">Input Rule Parameters</button>
+        <button class="reeditor_menubutton @IsPressed(!ShowWorkflows, "menubutton_depressed")" @onclick="(() => ShowWorkflows = false)">Input Rule Parameters</button>
     </div>
 </sp_grid_tabs>
 <br />
 @functions {
-    public string IsShowWorkflows(bool state)
+    public string IsPressed(bool state, string suffix)
     {
-        return state ? "reeditor_menubutton_depressed" : "";
+        return state ? "reeditor_" + suffix : "";
     }
     public WorkflowData[] GetWorkflows()
     {
         List<WorkflowData> workflows = new List<WorkflowData>();
         WorkflowData wd = new WorkflowData();
-        wd.WorkflowName="ALL";
+        wd.WorkflowName = "ALL";
         workflows.Add(wd);
 
         workflows.AddRange(WorkflowService.Workflows.OrderBy(o => o.WorkflowName));
@@ -35,7 +35,7 @@
 <div hidden="@(!ShowWorkflows)">
     <EditForm Model="currentWorkflow" class="reeditor_button">
         <InputSelect @bind-Value="CurrentWorkflowName" class="reeditor_button" title="Current Workflow">
-            @foreach (var wf in GetWorkflows()) 
+            @foreach (var wf in GetWorkflows())
             {
                 <option value="@wf.WorkflowName">@wf.WorkflowName</option>
             }
@@ -43,43 +43,77 @@
     </EditForm>
     @if (IsButtonEnabled("NewWorkflows"))
     {
-        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">Reset</button><span>&nbsp;</span>
+        <button title="New Workflows" class="reeditor_button" @onclick="NewWorkflows">Reset</button>
+
+        <span>&nbsp;</span>
     }
     @if (IsButtonEnabled("DownloadWorkflows"))
     {
-        <a title="Download Workflows" class="reeditor_button" @attributes="@DownloadAttributes">Download</a><span>&nbsp;</span>
+        <a title="Download Workflows" class="reeditor_button" @attributes="@DownloadAttributes">Download</a>
+
+        <span>&nbsp;</span>
     }
     @if (IsButtonEnabled("ImportWorkflows"))
     {
-        <div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@ImportWorkflows" />Import</div><span>&nbsp;</span>
+        <div class="reeditor_button"><InputFile title="Import Workflows" OnChange="@ImportWorkflows" />Import</div>
+
+        <span>&nbsp;</span>
     }
     @if (IsButtonEnabled("AddWorkflow"))
     {
-        <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button><span>&nbsp;</span>
+        <button title="Add Workflow" class="reeditor_button" @onclick="AddWorkflow">Add</button>
+
+        <span>&nbsp;</span>
     }
-     @if (IsButtonEnabled("SaveWorkflow"))
+    @if (IsButtonEnabled("SaveWorkflow"))
     {
-        <button title="Save Workflow" class="reeditor_button" @onclick="SaveWorkflow">Save</button><span>&nbsp;</span>
+        <button title="Save Workflow" class="reeditor_button" @onclick="SaveWorkflow">Save</button>
+
+        <span>&nbsp;</span>
     }
+    <button class="reeditor_button @IsPressed(sort_wf, "button_depressed")" @onclick="(() => sort_wf = !sort_wf)">Arrange</button>
+    <span>&nbsp;</span>
 </div>
+
 @if (WorkflowService.Workflows.Count > 0)
 {
     <div class="sp_grid_main" hidden="@(!ShowWorkflows)">
         <div>
-            <Dropzone TItem="WorkflowData" OnItemDrop="@((i)=>WorkflowDragEnd(i))" Items="@(CurrentWorkflowName == null || CurrentWorkflowName == "ALL" ? WorkflowService.Workflows : WorkflowService.Workflows.Where(w => w.WorkflowName == CurrentWorkflowName).ToList())" Class="reeditor_dragdrop">
-                <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
-                <div class="sp_grid_workflow_children">
-                    <h5>Rules</h5>
-                    <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
+            @if (sort_wf)
+            {
+                <Dropzone TItem="WorkflowData" OnItemDrop="@((i)=>WorkflowDragEnd(i))" Items="@(CurrentWorkflowName == null || CurrentWorkflowName == "ALL" ? WorkflowService.Workflows : WorkflowService.Workflows.Where(w => w.WorkflowName == CurrentWorkflowName).ToList())" Class="reeditor_dragdrop">
+                    <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
+                    <div class="sp_grid_workflow_children">
+                        <h5>Rules</h5>
+                        <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
 
-                    <Rules rules=context.Rules RulesChanged="WorkflowUpdate" />
-                    <h5>Global Params</h5>
-                    <div>
-                        <button class="reeditor_button" @onclick="(e => { NewGlobalParam(context); })">New</button>
+                        <Rules rules=context.Rules RulesChanged="WorkflowUpdate" />
+                        <h5>Global Params</h5>
+                        <div>
+                            <button class="reeditor_button" @onclick="(e => { NewGlobalParam(context); })">New</button>
+                        </div>
+                        <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="WorkflowUpdate" />
                     </div>
-                    <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="WorkflowUpdate" />
-                </div>
-            </Dropzone>
+                </Dropzone>
+            }
+            else
+            {
+                @foreach (WorkflowData context in (CurrentWorkflowName == null || CurrentWorkflowName == "ALL" ? WorkflowService.Workflows : WorkflowService.Workflows.Where(w => w.WorkflowName == CurrentWorkflowName).ToList()))
+                {
+                    <WorkflowEditor workFlow="context" WorkflowDelete="DeleteWorkflow" />
+                    <div class="sp_grid_workflow_children">
+                        <h5>Rules</h5>
+                        <button class="reeditor_button" @onclick="(() => WorkflowService.NewRule(context))">New</button>
+
+                        <Rules rules=context.Rules RulesChanged="WorkflowUpdate" />
+                        <h5>Global Params</h5>
+                        <div>
+                            <button class="reeditor_button" @onclick="(e => { NewGlobalParam(context); })">New</button>
+                        </div>
+                        <ScopedParams scopedParams=context.GlobalParams ScopedParamsChanged="WorkflowUpdate" />
+                    </div>
+                }
+            }
         </div>
         <div>
             <span class="JSONErrors">@workflowJSONErrors</span>
@@ -89,16 +123,24 @@
     <div hidden="@(ShowWorkflows)">
         @if (IsButtonEnabled("NewInputs"))
         {
-        <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button><span>&nbsp;</span>
+            <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button>
+
+            <span>&nbsp;</span>
         }
         @if (IsButtonEnabled("DownloadInputs"))
         {
-            <a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a><span>&nbsp;</span>
+            <a title="Download Inputs" class="reeditor_button" @attributes="@DownloadInputAttributes">Download</a>
+
+            <span>&nbsp;</span>
         }
         @if (IsButtonEnabled("ImportInputs"))
         {
-            <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div><span>&nbsp;</span>
+            <div class="reeditor_button"><InputFile title="Import Inputs" OnChange="@ImportInputs" />Import</div>
+
+            <span>&nbsp;</span>
         }
+        <button class="reeditor_button @IsPressed(sort_ip, "button_depressed")" @onclick="(() => sort_ip = !sort_ip)">Arrange</button>
+        <span>&nbsp;</span>
         @if (IsButtonEnabled("AddInput"))
         {
             <button title="Add Input" class="reeditor_button" @onclick="AddInput">Add</button>
@@ -106,9 +148,23 @@
 
         <div class="sp_grid_main" hidden="@(!WorkflowService.Inputs.Any())">
             <div>
-                <Dropzone Items="WorkflowService.Inputs" Class="reeditor_dragdrop">
-                    <InputEditor Input=@context InputDeleted="DeleteInput" />
-                </Dropzone>
+                @if (sort_ip)
+                {
+                    <Dropzone Items="WorkflowService.Inputs" Class="reeditor_dragdrop">
+                        <div class="rules_arrange">
+                            <InputEditor Input=@context InputDeleted="DeleteInput" />
+                        </div>
+                    </Dropzone>
+                }
+                else
+                {
+                    @foreach (InputRuleParameter context in WorkflowService.Inputs)
+                    {
+                        <div class="rules">
+                            <InputEditor Input=@context InputDeleted="DeleteInput" />
+                        </div>
+                    }
+                }
             </div>
             <div>
                 <span class="JSONErrors">@inputJSONErrors</span>

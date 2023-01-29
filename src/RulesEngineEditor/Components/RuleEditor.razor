@@ -2,73 +2,118 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
+@using RulesEngine.Models
 @using RulesEngineEditor.Models
+@using System.Text.Json
+@using System.Text.Json.Serialization
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 
-<div class="rules">
+<sp_grid_rules>
+    <div>Rule Name</div>
+    <div>Operator</div>
+    <div>Success Event</div>
+    <div>Error Message</div>
+    <div>Expression</div>
+    <div>Actions</div>
+    <div>Enabled</div>
+    <div>Delete</div>
+</sp_grid_rules>
+<EditForm EditContext="@EditContext">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <sp_grid_rules>
-        <div>Rule Name</div>
-        <div>Operator</div>
-        <div>Success Event</div>
-        <div>Error Message</div>
-        <div>Expression</div>
-        <div>Enabled</div>
-        <div>Delete</div>
+        <div>
+            <InputText class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            @if (@rule.ExceptionMessage != "")
+            {
+                <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>
+            }
+        </div>
+        <div>
+            <InputSelect ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control" ValueChanged="((string value) => OnValueChanged(value))">
+                <option value="null"></option>
+                <option value="And">And</option>
+                <option value="AndAlso">AndAlso</option>
+                <option value="Or">Or</option>
+                <option value="OrElse">OrElse</option>
+            </InputSelect>
+        </div>
+        <div>
+            <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        <div>
+            <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        <div>
+            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        <div>
+            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        </div>
+        <div>
+            <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
+        </div>
+        <div>
+            <button @onclick="@(e => RuleDelete.InvokeAsync(rule))" class="btn btn-secondary">
+                <span class="oi oi-trash"></span>
+            </button>
+        </div>
     </sp_grid_rules>
-    <EditForm EditContext="@EditContext">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <sp_grid_rules>
-            <div>
-                <InputText class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-                @if (@rule.ExceptionMessage != "")
-                {
-                    <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>
-                }
-            </div>
-            <div>
-                <InputSelect ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control" ValueChanged="((string value) => OnValueChanged(value))">
-                    <option value="null"></option>
-                    <option value="And">And</option>
-                    <option value="AndAlso">AndAlso</option>
-                    <option value="Or">Or</option>
-                    <option value="OrElse">OrElse</option>
-                </InputSelect>
-            </div>
-            <div>
-                <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-            </div>
-            <div>
-                <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-            </div>
-            <div>
-                <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-            </div>
-            <div>
-                <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
-            </div>
-            <div>
-                <button @onclick="@(e => RuleDelete.InvokeAsync(rule))" class="btn btn-secondary">
-                    <span class="oi oi-trash"></span>
-                </button>
-            </div>
-        </sp_grid_rules>
-        <h5>Local Params</h5>
-        <div>
-            <button class="reeditor_button" title="New Local Param" @onclick="NewLocalParam">Add</button>
-            <ScopedParams scopedParams=rule.LocalParams ScopedParamsChanged="WorkflowService.WorkflowUpdate" />
-        </div>
-        <h5>Rules</h5>
-        <div>
-            <button class="reeditor_button" title="New Rule" @onclick="(() => WorkflowService.NewRule(rule))">Add</button>
-            <Rules rules=rule.Rules RulesChanged="WorkflowService.WorkflowUpdate" />
-        </div>
-    </EditForm>
-</div>
+    <h5>Local Params</h5>
+    <div>
+        <button class="reeditor_button" title="New Local Param" @onclick="NewLocalParam">Add</button>
+        <ScopedParams scopedParams=rule.LocalParams ScopedParamsChanged="WorkflowService.WorkflowUpdate" />
+    </div>
+    <h5>Rules</h5>
+    <div>
+        <button class="reeditor_button" title="New Rule" @onclick="(() => WorkflowService.NewRule(rule))">Add</button>
+        <Rules rules=rule.Rules RulesChanged="WorkflowService.WorkflowUpdate" />
+    </div>
+</EditForm>
 @code {
     [Parameter]
     public RuleData rule { get; set; }
+
+    string _actions;
+    public string Actions
+    {
+        get
+        {
+            return JsonNormalizer.Normalize(JsonSerializer.Serialize(rule.Actions, new JsonSerializerOptions
+                {
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    IncludeFields = true,
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNameCaseInsensitive = true,
+                    Converters = { new JsonStringEnumConverter() }
+                }));
+        }
+        set
+        {
+            //RulesEngine.Models.RuleActions
+            var actions = JsonSerializer.Deserialize<dynamic>(value, new JsonSerializerOptions
+                {
+                    Converters = { new DynamicJsonConverter() }
+                });
+
+            RuleActions newActions = new RuleActions();
+            if ((actions as IDictionary<string, object>).ContainsKey("OnSuccess"))
+            {
+                newActions.OnSuccess = new ActionInfo();
+                newActions.OnSuccess.Name = actions.OnSuccess.Name;
+                newActions.OnSuccess.Context = new Dictionary<string, object>(actions.OnSuccess.Context);
+            }
+            if ((actions as IDictionary<string, object>).ContainsKey("OnFailure"))
+            {
+                newActions.OnFailure = new ActionInfo();
+                newActions.OnFailure.Name = actions.OnFailure.Name;
+                newActions.OnFailure.Context = new Dictionary<string, object>(actions.OnSuccess.Context);
+            }
+            rule.Actions = newActions;
+        }
+    }
 
     [Parameter]
     public EventCallback<RuleData> RuleDelete { get; set; }
