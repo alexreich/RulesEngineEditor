@@ -17,7 +17,7 @@ jobs:
             - name: setup .net core sdk
               uses: actions/setup-dotnet@v1
               with:
-                  dotnet-version:  5.*
+                  dotnet-version:  6.*
 
             - name: dotnet build
               run: dotnet build RulesEngineEditor.sln --configuration Release
