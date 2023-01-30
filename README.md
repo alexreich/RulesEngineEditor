@@ -113,6 +113,8 @@ See [DemoEF](https://raw.githubusercontent.com/alexreich/RulesEngineEditor/main/
 
 ## What's Next
 * More UI Updates - large field data (rule name, success, expression) autosize?
+* Pretty JSON Expression Handling - Prism Live?
+* PDF Printing, XSLX Export
 * Support for more types (ActionInfo, RuleActions, etc.)
 * Continued synchronization with releases of Microsoft Rules Engine
 * Blazor Desktop
