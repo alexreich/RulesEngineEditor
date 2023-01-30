@@ -47,8 +47,6 @@ namespace RulesEngineEditor.Data
                 entity.Ignore(i => i.ErrorMessage);
                 entity.Ignore(i => i.ExceptionMessage);
                 entity.Ignore(i => i.WorkflowsToInject);
-                //TODO: Remove when RE version >= 4
-                entity.Ignore(i => i.WorkflowRulesToInject);
 
                 entity.Property(b => b.Properties)
                 .HasConversion(
