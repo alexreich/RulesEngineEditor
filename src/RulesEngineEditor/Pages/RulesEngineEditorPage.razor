@@ -73,11 +73,14 @@
     }
     <button class="reeditor_button @IsPressed(sort_wf, "button_depressed")" @onclick="(() => sort_wf = !sort_wf)">Arrange</button>
     <span>&nbsp;</span>
+    <button title="Print Workflow" class="reeditor_button" @onclick="PrintWorkflowAsync">Print</button>
+
+    <span>&nbsp;</span>
 </div>
 
 @if (WorkflowService.Workflows.Count > 0)
 {
-    <div class="sp_grid_main" hidden="@(!ShowWorkflows)">
+    <div id="sp_grid_main" class="sp_grid_main" hidden="@(!ShowWorkflows)">
         <div>
             @if (sort_wf)
             {

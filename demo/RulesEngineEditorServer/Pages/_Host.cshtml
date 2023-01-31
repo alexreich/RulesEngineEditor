@@ -36,7 +36,15 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+    <script>
 
+        window.myJsFunctions =
+        {
+            getHtml: function () {
+                return document.getElementById("sp_grid_main").innerHTML;
+            }
+        };
+    </script>
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>

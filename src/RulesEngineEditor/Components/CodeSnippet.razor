@@ -1,0 +1,17 @@
+﻿@using Microsoft.JSInterop;
+<span class="code"><code class="@Language">
+    @ChildContent
+</code></span>
+
+@code {
+    [Inject] private IJSRuntime _js { get; set; }
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Language { get; set; } = "language-csharp";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await _js.InvokeVoidAsync("highlightSnippet");
+        await _js.InvokeVoidAsync("hljs.highlightAll");
+    }
+}
