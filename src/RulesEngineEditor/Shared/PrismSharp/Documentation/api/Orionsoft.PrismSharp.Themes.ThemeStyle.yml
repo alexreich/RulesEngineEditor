@@ -1,0 +1,985 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeStyle
+  id: ThemeStyle
+  parent: Orionsoft.PrismSharp.Themes
+  children:
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  - Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  langs:
+  - csharp
+  - vb
+  name: ThemeStyle
+  nameWithType: ThemeStyle
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  type: Class
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: ThemeStyle
+    path: ../Themes/ThemeStyle.cs
+    startLine: 12
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nStyling of a token or an entire block of code\n"
+  example: []
+  syntax:
+    content: public sealed class ThemeStyle
+    content.vb: Public NotInheritable Class ThemeStyle
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  id: Type
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: ThemeStyle.Type
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Type
+    path: ../Themes/ThemeStyle.cs
+    startLine: 17
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nToken type, eg. keyword\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("type")]
+
+      public string Type { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("type")>
+
+      Public Property Type As String
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Type*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: type
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  id: Language
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Language
+  nameWithType: ThemeStyle.Language
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Language
+    path: ../Themes/ThemeStyle.cs
+    startLine: 23
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nLanguage, if the styling applies only to this language\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("language")]
+
+      public string Language { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("language")>
+
+      Public Property Language As String
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Language*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: language
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  id: Color
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: ThemeStyle.Color
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Color
+    path: ../Themes/ThemeStyle.cs
+    startLine: 29
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nForeground color\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("color")]
+
+      public RgbaColor Color { get; set; }
+    parameters: []
+    return:
+      type: Orionsoft.PrismSharp.Themes.RgbaColor
+    content.vb: >-
+      <JsonProperty("color")>
+
+      Public Property Color As RgbaColor
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Color*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: color
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  id: Opacity
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Opacity
+  nameWithType: ThemeStyle.Opacity
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Opacity
+    path: ../Themes/ThemeStyle.cs
+    startLine: 32
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: >-
+      [JsonProperty("opacity")]
+
+      public double? Opacity { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: >-
+      <JsonProperty("opacity")>
+
+      Public Property Opacity As Double?
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: opacity
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  id: Background
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Background
+  nameWithType: ThemeStyle.Background
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Background
+    path: ../Themes/ThemeStyle.cs
+    startLine: 38
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nBackground color\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("background")]
+
+      public RgbaColor Background { get; set; }
+    parameters: []
+    return:
+      type: Orionsoft.PrismSharp.Themes.RgbaColor
+    content.vb: >-
+      <JsonProperty("background")>
+
+      Public Property Background As RgbaColor
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Background*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: background
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  id: Bold
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Bold
+  nameWithType: ThemeStyle.Bold
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Bold
+    path: ../Themes/ThemeStyle.cs
+    startLine: 41
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: >-
+      [JsonProperty("bold")]
+
+      public bool? Bold { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: >-
+      <JsonProperty("bold")>
+
+      Public Property Bold As Boolean?
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: bold
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  id: Italic
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Italic
+  nameWithType: ThemeStyle.Italic
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Italic
+    path: ../Themes/ThemeStyle.cs
+    startLine: 44
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: >-
+      [JsonProperty("italic")]
+
+      public bool? Italic { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: >-
+      <JsonProperty("italic")>
+
+      Public Property Italic As Boolean?
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: italic
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  id: Underline
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Underline
+  nameWithType: ThemeStyle.Underline
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Underline
+    path: ../Themes/ThemeStyle.cs
+    startLine: 47
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: >-
+      [JsonProperty("underline")]
+
+      public bool? Underline { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: >-
+      <JsonProperty("underline")>
+
+      Public Property Underline As Boolean?
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: underline
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  commentId: M:Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  id: Clone
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: ThemeStyle.Clone()
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone()
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: Clone
+    path: ../Themes/ThemeStyle.cs
+    startLine: 50
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: public ThemeStyle Clone()
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    content.vb: Public Function Clone As ThemeStyle
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  id: MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: MergeWith(ThemeStyle)
+  nameWithType: ThemeStyle.MergeWith(ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeStyle.cs
+    id: MergeWith
+    path: ../Themes/ThemeStyle.cs
+    startLine: 60
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nMerges this styling with another that is used as a base style and undefined values are taken from this base style.\n"
+  example: []
+  syntax:
+    content: public ThemeStyle MergeWith(ThemeStyle baseStyle)
+    parameters:
+    - id: baseStyle
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+      description: ''
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+      description: ''
+    content.vb: Public Function MergeWith(baseStyle As ThemeStyle) As ThemeStyle
+  overload: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Orionsoft.PrismSharp.Themes
+  commentId: N:Orionsoft.PrismSharp.Themes
+  name: Orionsoft.PrismSharp.Themes
+  nameWithType: Orionsoft.PrismSharp.Themes
+  fullName: Orionsoft.PrismSharp.Themes
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Type*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  name: Type
+  nameWithType: ThemeStyle.Type
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Language*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  name: Language
+  nameWithType: ThemeStyle.Language
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Color*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  name: Color
+  nameWithType: ThemeStyle.Color
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor
+  commentId: T:Orionsoft.PrismSharp.Themes.RgbaColor
+  parent: Orionsoft.PrismSharp.Themes
+  name: RgbaColor
+  nameWithType: RgbaColor
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  name: Opacity
+  nameWithType: ThemeStyle.Opacity
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Double>
+  nameWithType: Nullable<Double>
+  fullName: System.Nullable<System.Double>
+  nameWithType.vb: Nullable(Of Double)
+  fullName.vb: System.Nullable(Of System.Double)
+  name.vb: Nullable(Of Double)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Double
+    name: Double
+    nameWithType: Double
+    fullName: System.Double
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Double
+    name: Double
+    nameWithType: Double
+    fullName: System.Double
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Background*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  name: Background
+  nameWithType: ThemeStyle.Background
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  name: Bold
+  nameWithType: ThemeStyle.Bold
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Boolean>
+  nameWithType: Nullable<Boolean>
+  fullName: System.Nullable<System.Boolean>
+  nameWithType.vb: Nullable(Of Boolean)
+  fullName.vb: System.Nullable(Of System.Boolean)
+  name.vb: Nullable(Of Boolean)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  name: Italic
+  nameWithType: ThemeStyle.Italic
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  name: Underline
+  nameWithType: ThemeStyle.Underline
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  name: Clone
+  nameWithType: ThemeStyle.Clone
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeStyle
+  parent: Orionsoft.PrismSharp.Themes
+  name: ThemeStyle
+  nameWithType: ThemeStyle
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith*
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith
+  name: MergeWith
+  nameWithType: ThemeStyle.MergeWith
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith

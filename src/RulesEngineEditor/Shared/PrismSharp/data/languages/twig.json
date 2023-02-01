@@ -1,0 +1,29 @@
+{
+  "comment": "r:/^\\{#[\\s\\S]*?#\\}(?:(?=\\r$)|$)/",
+  "tag-name": {
+    "pattern": "r:/(^\\{%-?\\s*)\\w+/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "delimiter": {
+    "pattern": "r:/^\\{[{%]-?|-?[%}]\\}(?:(?=\\r$)|$)/",
+    "alias": "s:punctuation"
+  },
+  "string": {
+    "pattern": "r:/(\"|')(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "inside": {
+      "punctuation": "r:/^['\"]|['\"](?:(?=\\r$)|$)/"
+    }
+  },
+  "keyword": "r:/\\b(?:even|if|odd)\\b/",
+  "boolean": "r:/\\b(?:false|null|true)\\b/",
+  "number": "r:/\\b0x[\\dA-Fa-f]+|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:[Ee][-+]?\\d+)?/",
+  "operator": [
+    {
+      "pattern": "r:/(\\s)(?:and|b-and|b-or|b-xor|ends with|in|is|matches|not|or|same as|starts with)(?=\\s)/",
+      "lookbehind": true
+    },
+    "r:/[=<>]=?|!=|\\*\\*?|\\/\\/?|\\?:?|[-+~%|]/"
+  ],
+  "punctuation": "r:/[()\\[\\]{}:.,]/"
+}

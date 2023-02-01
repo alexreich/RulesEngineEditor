@@ -1,0 +1,52 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))|--[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/(^|[^\"\\\\@])(?:\"(?:[^\"\\\\]|\\\\[\\s\\S])*\"|@\"[^\"]*\")/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "path": {
+    "pattern": "r:/\\$(?:[\\w/\\\\.*?]|'[^']*')*/",
+    "greedy": true,
+    "alias": "s:string"
+  },
+  "function-call": {
+    "pattern": "r:/((?:^|[;=<>+\\-*/^({\\[]|\\b(?:and|by|case|catch|collect|do|else|if|in|not|or|return|then|to|try|where|while|with)\\b)[ \t]*)(?!\\b(?:about|and|animate|as|at|attributes|by|case|catch|collect|continue|coordsys|do|else|exit|fn|for|from|function|global|if|in|local|macroscript|mapped|max|not|of|off|on|or|parameters|persistent|plugin|rcmenu|return|rollout|set|struct|then|throw|to|tool|try|undo|utility|when|where|while|with)\\b)[a-z_]\\w*\\b(?=[ \t]*(?:(?!\\b(?:about|and|animate|as|at|attributes|by|case|catch|collect|continue|coordsys|do|else|exit|fn|for|from|function|global|if|in|local|macroscript|mapped|max|not|of|off|on|or|parameters|persistent|plugin|rcmenu|return|rollout|set|struct|then|throw|to|tool|try|undo|utility|when|where|while|with)\\b)[a-z_]|\\d|-\\.?\\d|[({'\"$@#?]))/im",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:function"
+  },
+  "function-definition": {
+    "pattern": "r:/(\\b(?:fn|function)\\s+)\\w+\\b/i",
+    "lookbehind": true,
+    "alias": "s:function"
+  },
+  "argument": {
+    "pattern": "r:/\\b[a-z_]\\w*(?=:)/i",
+    "alias": "s:attr-name"
+  },
+  "keyword": "r:/\\b(?:about|and|animate|as|at|attributes|by|case|catch|collect|continue|coordsys|do|else|exit|fn|for|from|function|global|if|in|local|macroscript|mapped|max|not|of|off|on|or|parameters|persistent|plugin|rcmenu|return|rollout|set|struct|then|throw|to|tool|try|undo|utility|when|where|while|with)\\b/i",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "time": {
+    "pattern": "r:/(^|[^\\w.])(?:(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eEdD][+-]\\d+|[LP])?[msft])+|\\d+:\\d+(?:\\.\\d*)?)(?![\\w.:])/",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "number": [
+    {
+      "pattern": "r:/(^|[^\\w.])(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eEdD][+-]\\d+|[LP])?|0x[a-fA-F0-9]+)(?![\\w.:])/",
+      "lookbehind": true
+    },
+    "r:/\\b(?:e|pi)\\b/"
+  ],
+  "constant": "r:/\\b(?:dontcollect|ok|silentValue|undefined|unsupplied)\\b/",
+  "color": {
+    "pattern": "r:/\\b(?:black|blue|brown|gray|green|orange|red|white|yellow)\\b/i",
+    "alias": "s:constant"
+  },
+  "operator": "r:/[-+*/<>=!]=?|[&^?]|#(?!\\()/",
+  "punctuation": "r:/[()\\[\\]{}.:,;]|#(?=\\()|\\\\(?:(?=\\r$)|$)/m"
+}

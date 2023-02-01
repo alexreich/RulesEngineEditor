@@ -1,0 +1,48 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  id: Orionsoft.PrismSharp.Tokenizing
+  children:
+  - Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  - Orionsoft.PrismSharp.Tokenizing.Token
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - Orionsoft.PrismSharp.Tokenizing.TokenizerException
+  langs:
+  - csharp
+  - vb
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+  type: Namespace
+  assemblies:
+  - PrismSharp
+references:
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: RangeTokenizationSettings
+  nameWithType: RangeTokenizationSettings
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+- uid: Orionsoft.PrismSharp.Tokenizing.Token
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Token
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: Token
+  nameWithType: Token
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: Tokenizer
+  nameWithType: Tokenizer
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+- uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.TokenizerException
+  name: TokenizerException
+  nameWithType: TokenizerException
+  fullName: Orionsoft.PrismSharp.Tokenizing.TokenizerException
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing

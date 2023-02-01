@@ -1,0 +1,23 @@
+{
+  "comment": "r:/\\(\\*[\\s\\S]*?\\*\\)/",
+  "string": {
+    "pattern": "r:/\"[^\"\\r\\n]*\"|'[^'\\r\\n]*'/",
+    "greedy": true
+  },
+  "special": {
+    "pattern": "r:/\\?[^?\\r\\n]*\\?/",
+    "greedy": true,
+    "alias": "s:class-name"
+  },
+  "definition": {
+    "pattern": "r:/^([\\t ]*)[a-z]\\w*(?:[ \\t]+[a-z]\\w*)*(?=\\s*=)/im",
+    "lookbehind": true,
+    "alias": [
+      "s:rule",
+      "s:keyword"
+    ]
+  },
+  "rule": "r:/\\b[a-z]\\w*(?:[ \\t]+[a-z]\\w*)*\\b/i",
+  "punctuation": "r:/\\([:/]|[:/]\\)|[.,;()[\\]{}]/",
+  "operator": "r:/[-=|*/!]/"
+}

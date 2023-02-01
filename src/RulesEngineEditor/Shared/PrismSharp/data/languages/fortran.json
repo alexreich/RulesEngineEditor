@@ -1,0 +1,35 @@
+{
+  "quoted-number": {
+    "pattern": "r:/[BOZ](['\"])[A-F0-9]+\\1/i",
+    "alias": "s:number"
+  },
+  "string": {
+    "pattern": "r:/(?:\\b\\w+_)?(['\"])(?:\\1\\1|&(?:\\r\\n?|\\n)(?:[ \\t]*![^\\r\\n]*(?:\\r\\n?|\\n)|(?![ \\t]*!))|(?!\\1)[^\\r\\n])*(?:\\1|&)/",
+    "inside": {
+      "comment": {
+        "pattern": "r:/(&(?:\\r\\n?|\\n)\\s*)![^\\r\\n]*/",
+        "lookbehind": true
+      }
+    }
+  },
+  "comment": {
+    "pattern": "r:/![^\\r\\n]*/",
+    "greedy": true
+  },
+  "boolean": "r:/\\.(?:FALSE|TRUE)\\.(?:_\\w+)?/i",
+  "number": "r:/(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:[ED][+-]?\\d+)?(?:_\\w+)?/i",
+  "keyword": [
+    "r:/\\b(?:CHARACTER|COMPLEX|DOUBLE ?PRECISION|INTEGER|LOGICAL|REAL)\\b/i",
+    "r:/\\b(?:END ?)?(?:BLOCK ?DATA|DO|FILE|FORALL|FUNCTION|IF|INTERFACE|MODULE(?! PROCEDURE)|PROGRAM|SELECT|SUBROUTINE|TYPE|WHERE)\\b/i",
+    "r:/\\b(?:ALLOCATABLE|ALLOCATE|BACKSPACE|CALL|CASE|CLOSE|COMMON|CONTAINS|CONTINUE|CYCLE|DATA|DEALLOCATE|DIMENSION|DO|END|EQUIVALENCE|EXIT|EXTERNAL|FORMAT|GO ?TO|IMPLICIT(?: NONE)?|INQUIRE|INTENT|INTRINSIC|MODULE PROCEDURE|NAMELIST|NULLIFY|OPEN|OPTIONAL|PARAMETER|POINTER|PRINT|PRIVATE|PUBLIC|READ|RETURN|REWIND|SAVE|SELECT|STOP|TARGET|WHILE|WRITE)\\b/i",
+    "r:/\\b(?:ASSIGNMENT|DEFAULT|ELEMENTAL|ELSE|ELSEIF|ELSEWHERE|ENTRY|IN|INCLUDE|INOUT|KIND|NULL|ONLY|OPERATOR|OUT|PURE|RECURSIVE|RESULT|SEQUENCE|STAT|THEN|USE)\\b/i"
+  ],
+  "operator": [
+    "r:/\\*\\*|\\/\\/|=>|[=\\/]=|[<>]=?|::|[+\\-*=%]|\\.[A-Z]+\\./i",
+    {
+      "pattern": "r:/(^|(?!\\()[^\\r\\n])\\/(?!\\))/",
+      "lookbehind": true
+    }
+  ],
+  "punctuation": "r:/\\(\\/|\\/\\)|[(),;:&]/"
+}

@@ -1,0 +1,90 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?\\*\\//",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\])#[^\\r\\n]*/",
+      "lookbehind": true
+    }
+  ],
+  "interpolated-string": {
+    "pattern": "r:/(^|[^\"])(\"\"\"|\")(?:\\\\[\\s\\S]|(?!\\2)[^\\\\])*\\2(?!\")/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "variable": {
+        "pattern": "r:/(^|[^\\\\])#[a-z_](?:-?[a-z]|[\\d_])*/m",
+        "lookbehind": true
+      },
+      "interpolation": {
+        "pattern": "r:/(^|[^\\\\])#\\{[^}]+\\}/m",
+        "lookbehind": true,
+        "inside": {
+          "interpolation-punctuation": {
+            "pattern": "r:/^#\\{|\\}(?:(?=\\r$)|$)/",
+            "alias": "s:variable"
+          },
+          "rest": "s:[Circular ~]"
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "string": [
+    {
+      "pattern": "r:/('''|')(?:\\\\[\\s\\S]|(?!\\1)[^\\\\])*\\1/",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/<\\[[\\s\\S]*?\\]>/",
+      "greedy": true
+    },
+    "r:/\\\\[^\\s,;\\])}]+/"
+  ],
+  "regex": [
+    {
+      "pattern": "r:/\\/\\/(?:\\[[^\\r\\n\\]]*\\]|\\\\[^\\r\\n]|(?!\\/\\/)[^\\\\\\[])+\\/\\/[gimyu]{0,5}/",
+      "greedy": true,
+      "inside": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])#[^\\r\\n]*/",
+          "lookbehind": true
+        }
+      }
+    },
+    {
+      "pattern": "r:/\\/(?:\\[[^\\r\\n\\]]*\\]|\\\\[^\\r\\n]|[^/\\\\\\r\\n\\[])+\\/[gimyu]{0,5}/",
+      "greedy": true
+    }
+  ],
+  "keyword": {
+    "pattern": "r:/(^|(?!-)[^\\r\\n])\\b(?:break|case|catch|class|const|continue|default|do|else|extends|fallthrough|finally|for(?: ever)?|function|if|implements|it|let|loop|new|null|otherwise|own|return|super|switch|that|then|this|throw|try|unless|until|var|void|when|while|yield)(?!-)\\b/m",
+    "lookbehind": true
+  },
+  "keyword-operator": {
+    "pattern": "r:/(^|[^-])\\b(?:(?:delete|require|typeof)!|(?:and|by|delete|export|from|import(?: all)?|in|instanceof|is(?: not|nt)?|not|of|or|til|to|typeof|with|xor)(?!-)\\b)/m",
+    "lookbehind": true,
+    "alias": "s:operator"
+  },
+  "boolean": {
+    "pattern": "r:/(^|[^-])\\b(?:false|no|off|on|true|yes)(?!-)\\b/m",
+    "lookbehind": true
+  },
+  "argument": {
+    "pattern": "r:/(^|(?!\\.&\\.)[^&])&(?!&)\\d*/m",
+    "lookbehind": true,
+    "alias": "s:variable"
+  },
+  "number": "r:/\\b(?:\\d+~[\\da-z]+|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[a-z]\\w*)?)/i",
+  "identifier": "r:/[a-z_](?:-?[a-z]|[\\d_])*/i",
+  "operator": [
+    {
+      "pattern": "r:/( )\\.(?= )/",
+      "lookbehind": true
+    },
+    "r:/\\.(?:[=~]|\\.\\.?)|\\.(?:[&|^]|<<|>>>?)\\.|:(?:=|:=?)|&&|\\|[|>]|<(?:<<?<?|--?!?|~~?!?|[|=?])?|>[>=?]?|-(?:->?|>)?|\\+\\+?|@@?|%%?|\\*\\*?|!(?:~?=|--?>|~?~>)?|~(?:~?>|=)?|==?|\\^\\^?|[\\/?]/"
+  ],
+  "punctuation": "r:/[(){}\\[\\]|.,:;`]/"
+}

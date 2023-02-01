@@ -1,0 +1,42 @@
+{
+  "comment": "r:/(?:\\brem|')[^\\r\\n]*/i",
+  "directive-statement": {
+    "pattern": "r:/(^[\\t ]*)#(?:const|else(?:[\\t ]+if)?|end[\\t ]+if|error|if)[^\\r\\n]*/im",
+    "lookbehind": true,
+    "alias": "s:property",
+    "inside": {
+      "error-message": {
+        "pattern": "r:/(^#error)[^\\r\\n]+/",
+        "lookbehind": true
+      },
+      "directive": {
+        "pattern": "r:/^#(?:const|else(?:[\\t ]+if)?|end[\\t ]+if|error|if)/",
+        "alias": "s:keyword"
+      },
+      "expression": {
+        "pattern": "r:/[\\s\\S]+/",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "property": {
+    "pattern": "r:/([\\r\\n{,][\\t ]*)(?:(?!\\d)\\w+|\"(?:[^\"\\r\\n]|\"\")*\"(?!\"))(?=[ \\t]*:)/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"(?:[^\"\\r\\n]|\"\")*\"(?!\")/",
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(\\bAs[\\t ]+)\\w+/i",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:As|Dim|Each|Else|Elseif|End|Exit|For|Function|Goto|If|In|Print|Return|Step|Stop|Sub|Then|To|While)\\b/i",
+  "boolean": "r:/\\b(?:false|true)\\b/i",
+  "function": "r:/\\b(?!\\d)\\w+(?=[\\t ]*\\()/",
+  "number": "r:/(?:\\b\\d+(?:\\.\\d+)?(?:[ed][+-]\\d+)?|&h[a-f\\d]+)\\b[%&!#]?/i",
+  "operator": "r:/--|\\+\\+|>>=?|<<=?|<>|[-+*/\\\\<>]=?|[:^=?]|\\b(?:and|mod|not|or)\\b/i",
+  "punctuation": "r:/[.,;()[\\]{}]/",
+  "constant": "r:/\\b(?:LINE_NUM)\\b/i"
+}

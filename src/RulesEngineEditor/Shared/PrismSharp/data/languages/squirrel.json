@@ -1,0 +1,45 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])(?:\\/\\/|#)[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "char": {
+    "pattern": "r:/(^|[^\\\\\"'])'(?:[^\\\\']|\\\\(?:[xuU][0-9a-fA-F]{0,8}|[\\s\\S]))'/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\\"'@])(?:@\"(?:[^\"]|\"\")*\"(?!\")|\"(?:[^\\\\\\r\\n\"]|\\\\[^\\r\\n])*\")/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(\\b(?:class|enum|extends|instanceof)\\s+)\\w+(?:\\.\\w+)*/",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "keyword": "r:/\\b(?:__FILE__|__LINE__|base|break|case|catch|class|clone|const|constructor|continue|default|delete|else|enum|extends|for|foreach|function|if|in|instanceof|local|null|resume|return|static|switch|this|throw|try|typeof|while|yield)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": "r:/\\b(?:0x[0-9a-fA-F]+|\\d+(?:\\.(?:\\d+|[eE][+-]?\\d+))?)\\b/",
+  "attribute-punctuation": {
+    "pattern": "r:/<\\/|\\/>/",
+    "alias": "s:important"
+  },
+  "lambda": {
+    "pattern": "r:/@(?=\\()/",
+    "alias": "s:operator"
+  },
+  "operator": "r:/\\+\\+|--|<=>|<[-<]|>>>?|&&?|\\|\\|?|[-+*/%!=<>]=?|[~^]|::?/",
+  "punctuation": "r:/[(){}\\[\\],;.]/"
+}

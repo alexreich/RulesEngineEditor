@@ -1,0 +1,12 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name="CopyFiles" BeforeTargets="Build">
+    <ItemGroup>
+      <LanguageFiles Include="$(MSBuildThisFileDirectory)..\contentFiles\data\languages\*.json" />
+      <ThemeFiles Include="$(MSBuildThisFileDirectory)..\contentFiles\data\themes\*.json" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(LanguageFiles)" DestinationFolder="$(TargetDir)\data\languages\" />
+    <Copy SourceFiles="@(ThemeFiles)" DestinationFolder="$(TargetDir)\data\themes\" />
+  </Target>
+</Project>

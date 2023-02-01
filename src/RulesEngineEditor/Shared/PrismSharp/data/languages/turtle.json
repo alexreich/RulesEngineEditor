@@ -1,0 +1,53 @@
+{
+  "comment": {
+    "pattern": "r:/#[^\\r\\n]*/",
+    "greedy": true
+  },
+  "multiline-string": {
+    "pattern": "r:/\"\"\"(?:(?:\"\"?)?(?:[^\"\\\\]|\\\\[^\\r\\n]))*\"\"\"|'''(?:(?:''?)?(?:[^'\\\\]|\\\\[^\\r\\n]))*'''/",
+    "greedy": true,
+    "alias": "s:string",
+    "inside": {
+      "comment": "r:/#[^\\r\\n]*/"
+    }
+  },
+  "string": {
+    "pattern": "r:/\"(?:[^\\\\\"\\r\\n]|\\\\[^\\r\\n])*\"|'(?:[^\\\\'\\r\\n]|\\\\[^\\r\\n])*'/",
+    "greedy": true
+  },
+  "url": {
+    "pattern": "r:/<(?:[^\\x00-\\x20<>\"{}|^`\\\\]|\\\\(?:u[\\da-fA-F]{4}|U[\\da-fA-F]{8}))*>/",
+    "greedy": true,
+    "inside": {
+      "punctuation": "r:/[<>]/"
+    }
+  },
+  "function": {
+    "pattern": "r:/(?:(?![-.\\d\\xB7])[-.\\w\\xB7\\xC0-\\uFFFD]+)?:(?:(?![-.])(?:[-.:\\w\\xC0-\\uFFFD]|%[\\da-f]{2}|\\\\[^\\r\\n])+)?/i",
+    "inside": {
+      "local-name": {
+        "pattern": "r:/([^:]*:)[\\s\\S]+/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]+/",
+        "inside": {
+          "punctuation": "r:/:/"
+        }
+      }
+    }
+  },
+  "number": "r:/[+-]?\\b\\d+(?:\\.\\d*)?(?:e[+-]?\\d+)?/i",
+  "punctuation": "r:/[{}.,;()[\\]]|\\^\\^/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "keyword": [
+    "r:/(?:\\ba|@prefix|@base)\\b|=/",
+    "r:/\\b(?:base|graph|prefix)\\b/i"
+  ],
+  "tag": {
+    "pattern": "r:/@[a-z]+(?:-[a-z\\d]+)*/i",
+    "inside": {
+      "punctuation": "r:/@/"
+    }
+  }
+}

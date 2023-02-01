@@ -1,0 +1,49 @@
+{
+  "comment": {
+    "pattern": "r:/#[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"[^\"\\r\\n]*\"|'[^'\\r\\n]*'/",
+    "greedy": true,
+    "inside": {
+      "guid": {
+        "pattern": "r:/\\{[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}\\}/i",
+        "alias": "s:constant",
+        "inside": {
+          "punctuation": "r:/[{}]/"
+        }
+      }
+    }
+  },
+  "object": {
+    "pattern": "r:/^([ \\t]*)(?:([A-Z]\\w*)\\b(?=[^\\r\\n]*(?:\\r\\n?|\\n)(?:\\1[ \\t][^\\r\\n]*(?:\\r\\n?|\\n))*\\1End\\2(?=[ \\t]*(?:(?=\\r$)|$)))|End[A-Z]\\w*(?=[ \\t]*(?:(?=\\r$)|$)))/m",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:keyword"
+  },
+  "property": {
+    "pattern": "r:/^([ \\t]*)(?!\\s)[^\\r\\n\"#=()]*[^\\s\"#=()](?=\\s*=)/m",
+    "lookbehind": true,
+    "inside": {
+      "guid": {
+        "pattern": "r:/\\{[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}\\}/i",
+        "alias": "s:constant",
+        "inside": {
+          "punctuation": "r:/[{}]/"
+        }
+      }
+    }
+  },
+  "guid": {
+    "pattern": "r:/\\{[\\da-f]{8}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{4}-[\\da-f]{12}\\}/i",
+    "alias": "s:constant",
+    "inside": {
+      "punctuation": "r:/[{}]/"
+    }
+  },
+  "number": "r:/\\b\\d+(?:\\.\\d+)*\\b/",
+  "boolean": "r:/\\b(?:FALSE|TRUE)\\b/",
+  "operator": "r:/=/",
+  "punctuation": "r:/[(),]/"
+}

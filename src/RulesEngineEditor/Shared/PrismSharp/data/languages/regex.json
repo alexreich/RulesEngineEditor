@@ -1,0 +1,91 @@
+{
+  "char-class": {
+    "pattern": "r:/((?:^|[^\\\\])(?:\\\\\\\\)*)\\[(?:[^\\\\\\]]|\\\\[\\s\\S])*\\]/",
+    "lookbehind": true,
+    "inside": {
+      "char-class-negation": {
+        "pattern": "r:/(^\\[)\\^/",
+        "lookbehind": true,
+        "alias": "s:operator"
+      },
+      "char-class-punctuation": {
+        "pattern": "r:/^\\[|\\](?:(?=\\r$)|$)/",
+        "alias": "s:punctuation"
+      },
+      "range": {
+        "pattern": "r:/(?:[^\\\\-]|\\\\(?:x[\\da-fA-F]{2}|u[\\da-fA-F]{4}|u\\{[\\da-fA-F]+\\}|0[0-7]{0,2}|[123][0-7]{2}|c[a-zA-Z]|[^\\r\\n]))-(?:[^\\\\-]|\\\\(?:x[\\da-fA-F]{2}|u[\\da-fA-F]{4}|u\\{[\\da-fA-F]+\\}|0[0-7]{0,2}|[123][0-7]{2}|c[a-zA-Z]|[^\\r\\n]))/",
+        "inside": {
+          "escape": "r:/\\\\(?:x[\\da-fA-F]{2}|u[\\da-fA-F]{4}|u\\{[\\da-fA-F]+\\}|0[0-7]{0,2}|[123][0-7]{2}|c[a-zA-Z]|[^\\r\\n])/",
+          "range-punctuation": {
+            "pattern": "r:/-/",
+            "alias": "s:operator"
+          }
+        }
+      },
+      "special-escape": {
+        "pattern": "r:/\\\\[\\\\(){}[\\]^$+*?|.]/",
+        "alias": "s:escape"
+      },
+      "char-set": {
+        "pattern": "r:/\\\\[wsd]|\\\\p\\{[^{}]+\\}/i",
+        "alias": "s:class-name"
+      },
+      "escape": "r:/\\\\(?:x[\\da-fA-F]{2}|u[\\da-fA-F]{4}|u\\{[\\da-fA-F]+\\}|0[0-7]{0,2}|[123][0-7]{2}|c[a-zA-Z]|[^\\r\\n])/"
+    }
+  },
+  "special-escape": {
+    "pattern": "r:/\\\\[\\\\(){}[\\]^$+*?|.]/",
+    "alias": "s:escape"
+  },
+  "char-set": {
+    "pattern": "r:/\\.|\\\\[wsd]|\\\\p\\{[^{}]+\\}/i",
+    "alias": "s:class-name"
+  },
+  "backreference": [
+    {
+      "pattern": "r:/\\\\(?![123][0-7]{2})[1-9]/",
+      "alias": "s:keyword"
+    },
+    {
+      "pattern": "r:/\\\\k<[^<>']+>/",
+      "alias": "s:keyword",
+      "inside": {
+        "group-name": {
+          "pattern": "r:/(<|')[^<>']+(?=[>'](?:(?=\\r$)|$))/",
+          "lookbehind": true,
+          "alias": "s:variable"
+        }
+      }
+    }
+  ],
+  "anchor": {
+    "pattern": "r:/[$^]|\\\\[ABbGZz]/",
+    "alias": "s:function"
+  },
+  "escape": "r:/\\\\(?:x[\\da-fA-F]{2}|u[\\da-fA-F]{4}|u\\{[\\da-fA-F]+\\}|0[0-7]{0,2}|[123][0-7]{2}|c[a-zA-Z]|[^\\r\\n])/",
+  "group": [
+    {
+      "pattern": "r:/\\((?:\\?(?:<[^<>']+>|'[^<>']+'|[>:]|<?[=!]|[idmnsuxU]+(?:-[idmnsuxU]+)?:?))?/",
+      "alias": "s:punctuation",
+      "inside": {
+        "group-name": {
+          "pattern": "r:/(<|')[^<>']+(?=[>'](?:(?=\\r$)|$))/",
+          "lookbehind": true,
+          "alias": "s:variable"
+        }
+      }
+    },
+    {
+      "pattern": "r:/\\)/",
+      "alias": "s:punctuation"
+    }
+  ],
+  "quantifier": {
+    "pattern": "r:/(?:[+*?]|\\{\\d+(?:,\\d*)?\\})[?+]?/",
+    "alias": "s:number"
+  },
+  "alternation": {
+    "pattern": "r:/\\|/",
+    "alias": "s:keyword"
+  }
+}

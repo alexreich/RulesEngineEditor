@@ -1,0 +1,75 @@
+{
+  "scheme": {
+    "pattern": "r:/^[a-z][a-z0-9+.-]*:/im",
+    "greedy": true,
+    "inside": {
+      "scheme-delimiter": "r:/:(?:(?=\\r$)|$)/"
+    }
+  },
+  "fragment": {
+    "pattern": "r:/#[\\w\\-.~!$&'()*+,;=%:@/?]*/",
+    "inside": {
+      "fragment-delimiter": "r:/^#/"
+    }
+  },
+  "query": {
+    "pattern": "r:/\\?[\\w\\-.~!$&'()*+,;=%:@/?]*/",
+    "inside": {
+      "query-delimiter": {
+        "pattern": "r:/^\\?/",
+        "greedy": true
+      },
+      "pair-delimiter": "r:/[&;]/",
+      "pair": {
+        "pattern": "r:/^[^=][\\s\\S]*/",
+        "inside": {
+          "key": "r:/^[^=]+/",
+          "value": {
+            "pattern": "r:/(^=)[\\s\\S]+/",
+            "lookbehind": true
+          }
+        }
+      }
+    }
+  },
+  "authority": {
+    "pattern": "r:/^\\/\\/(?:[\\w\\-.~!$&'()*+,;=%:]*@)?(?:\\[(?:[0-9a-fA-F:.]{2,48}|v[0-9a-fA-F]+\\.[\\w\\-.~!$&'()*+,;=]+)\\]|[\\w\\-.~!$&'()*+,;=%]*)(?::\\d*)?/m",
+    "inside": {
+      "authority-delimiter": "r:/^\\/\\//",
+      "user-info-segment": {
+        "pattern": "r:/^[\\w\\-.~!$&'()*+,;=%:]*@/",
+        "inside": {
+          "user-info-delimiter": "r:/@(?:(?=\\r$)|$)/",
+          "user-info": "r:/^[\\w\\-.~!$&'()*+,;=%:]+/"
+        }
+      },
+      "port-segment": {
+        "pattern": "r:/:\\d*(?:(?=\\r$)|$)/",
+        "inside": {
+          "port-delimiter": "r:/^:/",
+          "port": "r:/^\\d+/"
+        }
+      },
+      "host": {
+        "pattern": "r:/[\\s\\S]+/",
+        "inside": {
+          "ip-literal": {
+            "pattern": "r:/^\\[[\\s\\S]+\\](?:(?=\\r$)|$)/",
+            "inside": {
+              "ip-literal-delimiter": "r:/^\\[|\\](?:(?=\\r$)|$)/",
+              "ipv-future": "r:/^v[\\s\\S]+/",
+              "ipv6-address": "r:/^[\\s\\S]+/"
+            }
+          },
+          "ipv4-address": "r:/^(?:(?:[03-9]\\d?|[12]\\d{0,2})\\.){3}(?:[03-9]\\d?|[12]\\d{0,2})(?:(?=\\r$)|$)/"
+        }
+      }
+    }
+  },
+  "path": {
+    "pattern": "r:/^[\\w\\-.~!$&'()*+,;=%:@/]+/m",
+    "inside": {
+      "path-separator": "r:/\\//"
+    }
+  }
+}

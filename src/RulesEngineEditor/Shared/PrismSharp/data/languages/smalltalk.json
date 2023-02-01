@@ -1,0 +1,38 @@
+{
+  "comment": {
+    "pattern": "r:/\"(?:\"\"|[^\"])*\"/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/\\$[^\\r\\n]/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/'(?:''|[^'])*'/",
+    "greedy": true
+  },
+  "symbol": "r:/#[\\da-z]+|#(?:-|([+\\/\\\\*~<>=@%|&?!])\\1?)|#(?=\\()/i",
+  "block-arguments": {
+    "pattern": "r:/(\\[\\s*):[^\\[|]*\\|/",
+    "lookbehind": true,
+    "inside": {
+      "variable": "r:/:[\\da-z]+/i",
+      "punctuation": "r:/\\|/"
+    }
+  },
+  "temporary-variables": {
+    "pattern": "r:/\\|[^|]+\\|/",
+    "inside": {
+      "variable": "r:/[\\da-z]+/i",
+      "punctuation": "r:/\\|/"
+    }
+  },
+  "keyword": "r:/\\b(?:new|nil|self|super)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": [
+    "r:/\\d+r-?[\\dA-Z]+(?:\\.[\\dA-Z]+)?(?:e-?\\d+)?/",
+    "r:/\\b\\d+(?:\\.\\d+)?(?:e-?\\d+)?/"
+  ],
+  "operator": "r:/[<=]=?|:=|~[~=]|\\/\\/?|\\\\\\\\|>[>=]?|[!^+\\-*&|,@]/",
+  "punctuation": "r:/[.;:?\\[\\](){}]/"
+}

@@ -1,0 +1,32 @@
+{
+  "comment": "r:/(?:⍝|#[! ])[^\\r\\n]*(?:(?=\\r$)|$)/m",
+  "string": {
+    "pattern": "r:/'(?:[^'\\r\\n]|'')*'/",
+    "greedy": true
+  },
+  "number": "r:/¯?(?:\\d*\\.?\\b\\d+(?:e[+¯]?\\d+)?|¯|∞)(?:j¯?(?:(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:e[+¯]?\\d+)?|¯|∞))?/i",
+  "statement": "r:/:[A-Z][a-z][A-Za-z]*\\b/",
+  "system-function": {
+    "pattern": "r:/⎕[A-Z]+/i",
+    "alias": "s:function"
+  },
+  "constant": "r:/[⍬⌾#⎕⍞]/",
+  "function": "r:/[-+×÷⌈⌊∣|⍳⍸?*⍟○!⌹<≤=>≥≠≡≢∊⍷∪∩~∨∧⍱⍲⍴,⍪⌽⊖⍉↑↓⊂⊃⊆⊇⌷⍋⍒⊤⊥⍕⍎⊣⊢⍁⍂≈⍯↗¤→]/",
+  "monadic-operator": {
+    "pattern": "r:/[\\\\\\/⌿⍀¨⍨⌶&∥]/",
+    "alias": "s:operator"
+  },
+  "dyadic-operator": {
+    "pattern": "r:/[.⍣⍠⍤∘⌸@⌺⍥]/",
+    "alias": "s:operator"
+  },
+  "assignment": {
+    "pattern": "r:/←/",
+    "alias": "s:keyword"
+  },
+  "punctuation": "r:/[\\[;\\]()◇⋄]/",
+  "dfn": {
+    "pattern": "r:/[{}⍺⍵⍶⍹∇⍫:]/",
+    "alias": "s:builtin"
+  }
+}

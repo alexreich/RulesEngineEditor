@@ -1,0 +1,27 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "keyword": {
+    "pattern": "r:/(^|\\s)(?:(?:external|import)\\b|(?:facet|instance of)(?=[ \\t]+[\\w-]+[ \\t]*\\{))/",
+    "lookbehind": true
+  },
+  "component": {
+    "pattern": "r:/[\\w-]+(?=[ \\t]*\\{)/",
+    "alias": "s:variable"
+  },
+  "property": "r:/[\\w.-]+(?=[ \\t]*:)/",
+  "value": {
+    "pattern": "r:/(=[ \\t]*(?![ \\t]))[^,;]+/",
+    "lookbehind": true,
+    "alias": "s:attr-value"
+  },
+  "optional": {
+    "pattern": "r:/\\(optional\\)/",
+    "alias": "s:builtin"
+  },
+  "wildcard": {
+    "pattern": "r:/(\\.)\\*/",
+    "lookbehind": true,
+    "alias": "s:operator"
+  },
+  "punctuation": "r:/[{},.;:=]/"
+}

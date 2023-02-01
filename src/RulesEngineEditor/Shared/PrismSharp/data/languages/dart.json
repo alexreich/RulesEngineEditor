@@ -1,0 +1,94 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string-literal": {
+    "pattern": "r:/r?(?:(\"\"\"|''')[\\s\\S]*?\\1|([\"'])(?:\\\\[^\\r\\n]|(?!\\2)[^\\\\\\r\\n])*\\2(?!\\2))/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$(?:\\w+|\\{(?:[^{}]|\\{[^{}]*\\})*\\})/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^\\$\\{?|\\}(?:(?=\\r$)|$)/",
+          "expression": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": "s:[Circular ~]"
+          }
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "metadata": {
+    "pattern": "r:/@\\w+/",
+    "alias": "s:function"
+  },
+  "generics": {
+    "pattern": "r:/<(?:[\\w\\s,.&?]|<(?:[\\w\\s,.&?]|<(?:[\\w\\s,.&?]|<[\\w\\s,.&?]*>)*>)*>)*>/",
+    "inside": {
+      "class-name": {
+        "pattern": "r:/(^|[^\\w.])(?:[a-z]\\w*\\s*\\.\\s*)*(?:[A-Z]\\w*\\s*\\.\\s*)*[A-Z](?:[\\d_A-Z]*[a-z]\\w*)?\\b/",
+        "lookbehind": true,
+        "inside": {
+          "namespace": {
+            "pattern": "r:/^[a-z]\\w*(?:\\s*\\.\\s*[a-z]\\w*)*(?:\\s*\\.)?/",
+            "inside": {
+              "punctuation": "r:/\\./"
+            }
+          }
+        }
+      },
+      "keyword": [
+        "r:/\\b(?:async|sync|yield)\\*/",
+        "r:/\\b(?:abstract|assert|async|await|break|case|catch|class|const|continue|covariant|default|deferred|do|dynamic|else|enum|export|extends|extension|external|factory|final|finally|for|get|hide|if|implements|import|in|interface|library|mixin|new|null|on|operator|part|rethrow|return|set|show|static|super|switch|sync|this|throw|try|typedef|var|void|while|with|yield)\\b/"
+      ],
+      "punctuation": "r:/[<>(),.:]/",
+      "operator": "r:/[?&|]/"
+    }
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(^|[^\\w.])(?:[a-z]\\w*\\s*\\.\\s*)*(?:[A-Z]\\w*\\s*\\.\\s*)*[A-Z](?:[\\d_A-Z]*[a-z]\\w*)?\\b/",
+      "lookbehind": true,
+      "inside": {
+        "namespace": {
+          "pattern": "r:/^[a-z]\\w*(?:\\s*\\.\\s*[a-z]\\w*)*(?:\\s*\\.)?/",
+          "inside": {
+            "punctuation": "r:/\\./"
+          }
+        }
+      }
+    },
+    {
+      "pattern": "r:/(^|[^\\w.])(?:[a-z]\\w*\\s*\\.\\s*)*(?:[A-Z]\\w*\\s*\\.\\s*)*[A-Z]\\w*(?=\\s+\\w+\\s*[;,=()])/",
+      "lookbehind": true,
+      "inside": {
+        "namespace": {
+          "pattern": "r:/^[a-z]\\w*(?:\\s*\\.\\s*[a-z]\\w*)*(?:\\s*\\.)?/",
+          "inside": {
+            "punctuation": "r:/\\./"
+          }
+        }
+      }
+    }
+  ],
+  "keyword": [
+    "r:/\\b(?:async|sync|yield)\\*/",
+    "r:/\\b(?:abstract|assert|async|await|break|case|catch|class|const|continue|covariant|default|deferred|do|dynamic|else|enum|export|extends|extension|external|factory|final|finally|for|get|hide|if|implements|import|in|interface|library|mixin|new|null|on|operator|part|rethrow|return|set|show|static|super|switch|sync|this|throw|try|typedef|var|void|while|with|yield)\\b/"
+  ],
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "operator": "r:/\\bis!|\\b(?:as|is)\\b|\\+\\+|--|&&|\\|\\||<<=?|>>=?|~(?:\\/=?)?|[+\\-*\\/%&^|=!<>]=?|\\?/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

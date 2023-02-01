@@ -38,7 +38,13 @@ namespace RulesEngineEditor.Pages
         [Inject]
         IJSRuntime JSRuntime { get; set; }
 
-        private bool ShowWorkflows { get; set; } = true;
+        enum Modes {
+            Workflow = 0,
+            Input = 1,
+            Report = 2
+        }
+
+        private Modes REEMode { get; set; } = Modes.Workflow;
         public Dictionary<string, object> DownloadAttributes { get; set; }
         public Dictionary<string, object> DownloadInputAttributes { get; set; }
 
@@ -360,7 +366,7 @@ namespace RulesEngineEditor.Pages
             StreamReader sr = new StreamReader(selectedFile.OpenReadStream());
             InputJSON = JsonNormalizer.Normalize(await sr.ReadToEndAsync());
             InputJSONUpdate();
-            ShowWorkflows = true;
+            REEMode = Modes.Workflow;
             WorkflowService.WorkflowUpdate();
         }
 
@@ -429,6 +435,8 @@ namespace RulesEngineEditor.Pages
         private async Task PrintWorkflowAsync()
         {
             //var html = await JSRuntime.InvokeAsync<string>("myJsFunctions.getHtml");
+
+            //await JSRuntime.InvokeVoidAsync(@"tableToExcel('tblExport', 'W3C Example Table')");
             await PrintingService.Print("sp_grid_main", printType:PrintType.Html);
         }
     }

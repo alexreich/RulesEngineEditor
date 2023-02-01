@@ -1,0 +1,47 @@
+{
+  "directive": {
+    "pattern": "r:/(^|[\\s;])(?:base-uri|block-all-mixed-content|(?:child|connect|default|font|frame|img|manifest|media|object|prefetch|script|style|worker)-src|disown-opener|form-action|frame-(?:ancestors|options)|input-protection(?:-(?:clip|selectors))?|navigate-to|plugin-types|policy-uri|referrer|reflected-xss|report-(?:to|uri)|require-sri-for|sandbox|(?:script|style)-src-(?:attr|elem)|upgrade-insecure-requests)(?=[\\s;]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true,
+    "alias": "s:property"
+  },
+  "scheme": {
+    "pattern": "r:/([ \\t])(?:[a-z][a-z0-9.+-]*:)(?=[\\s;]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true
+  },
+  "none": {
+    "pattern": "r:/([ \\t])(?:'none')(?=[\\s;]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "nonce": {
+    "pattern": "r:/([ \\t])(?:'nonce-[-+/\\w=]+')(?=[\\s;]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "hash": {
+    "pattern": "r:/([ \\t])(?:'sha(?:256|384|512)-[-+/\\w=]+')(?=[\\s;]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "host": {
+    "pattern": "r:/([ \\t])(?:[a-z][a-z0-9.+-]*:\\/\\/[^\\s;,']*|\\*[^\\s;,']*|[a-z0-9-]+(?:\\.[a-z0-9-]+)+(?::[\\d*]+)?(?:\\/[^\\s;,']*)?)(?=[\\s;]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true,
+    "alias": "s:url",
+    "inside": {
+      "important": "r:/\\*/"
+    }
+  },
+  "keyword": [
+    {
+      "pattern": "r:/([ \\t])(?:'unsafe-[a-z-]+')(?=[\\s;]|(?:(?=\\r$)|$))/i",
+      "lookbehind": true,
+      "alias": "s:unsafe"
+    },
+    {
+      "pattern": "r:/([ \\t])(?:'[a-z-]+')(?=[\\s;]|(?:(?=\\r$)|$))/i",
+      "lookbehind": true,
+      "alias": "s:safe"
+    }
+  ],
+  "punctuation": "r:/;/"
+}

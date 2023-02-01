@@ -1,0 +1,53 @@
+{
+  "comment": {
+    "pattern": "r:/(\\bN\\(\\s*)\"(?:[^\"]|\"\")*\"(?=\\s*\\))/i",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"(?:[^\"]|\"\")*\"(?!\")/",
+    "greedy": true
+  },
+  "reference": {
+    "pattern": "r:/(?:'[^']*'|(?:[^\\s()[\\]{}<>*?\"';,$&]*\\[[^^\\s()[\\]{}<>*?\"']+\\])?\\w+)!/",
+    "greedy": true,
+    "alias": "s:string",
+    "inside": {
+      "operator": "r:/!(?:(?=\\r$)|$)/",
+      "punctuation": "r:/'/",
+      "sheet": {
+        "pattern": "r:/[^[\\]]+(?:(?=\\r$)|$)/",
+        "alias": "s:function"
+      },
+      "file": {
+        "pattern": "r:/\\[[^[\\]]+\\](?:(?=\\r$)|$)/",
+        "inside": {
+          "punctuation": "r:/[[\\]]/"
+        }
+      },
+      "path": "r:/[\\s\\S]+/"
+    }
+  },
+  "function-name": {
+    "pattern": "r:/\\b[A-Z]\\w*(?=\\()/i",
+    "alias": "s:keyword"
+  },
+  "range": {
+    "pattern": "r:/\\$?\\b(?:[A-Z]+\\$?\\d+:\\$?[A-Z]+\\$?\\d+|[A-Z]+:\\$?[A-Z]+|\\d+:\\$?\\d+)\\b/i",
+    "alias": "s:property",
+    "inside": {
+      "operator": "r:/:/",
+      "cell": "r:/\\$?[A-Z]+\\$?\\d+/i",
+      "column": "r:/\\$?[A-Z]+/i",
+      "row": "r:/\\$?\\d+/"
+    }
+  },
+  "cell": {
+    "pattern": "r:/\\b[A-Z]+\\d+\\b|\\$[A-Za-z]+\\$?\\d+\\b|\\b[A-Za-z]+\\$\\d+\\b/",
+    "alias": "s:property"
+  },
+  "number": "r:/(?:\\b\\d+(?:\\.\\d+)?|\\B\\.\\d+)(?:e[+-]?\\d+)?\\b/i",
+  "boolean": "r:/\\b(?:FALSE|TRUE)\\b/i",
+  "operator": "r:/[-+*/^%=&,]|<[=>]?|>=?/",
+  "punctuation": "r:/[[\\]();{}|]/"
+}

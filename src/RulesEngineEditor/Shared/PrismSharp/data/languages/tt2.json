@@ -1,0 +1,38 @@
+{
+  "comment": "r:/#[^\\r\\n]*|\\[%#[\\s\\S]*?%\\]/",
+  "single-quoted-string": {
+    "pattern": "r:/'[^\\\\']*(?:\\\\[\\s\\S][^\\\\']*)*'/",
+    "greedy": true,
+    "alias": "s:string"
+  },
+  "double-quoted-string": {
+    "pattern": "r:/\"[^\\\\\"]*(?:\\\\[\\s\\S][^\\\\\"]*)*\"/",
+    "greedy": true,
+    "alias": "s:string",
+    "inside": {
+      "variable": {
+        "pattern": "r:/\\$(?:[a-z]\\w*(?:\\.(?:\\d+|\\$?[a-z]\\w*))*)/i"
+      }
+    }
+  },
+  "class-name": {
+    "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/[.\\\\]/"
+    }
+  },
+  "delimiter": {
+    "pattern": "r:/^(?:\\[%|%%)-?|-?%\\](?:(?=\\r$)|$)/",
+    "alias": "s:punctuation"
+  },
+  "keyword": "r:/\\b(?:BLOCK|CALL|CASE|CATCH|CLEAR|DEBUG|DEFAULT|ELSE|ELSIF|END|FILTER|FINAL|FOREACH|GET|IF|IN|INCLUDE|INSERT|LAST|MACRO|META|NEXT|PERL|PROCESS|RAWPERL|RETURN|SET|STOP|SWITCH|TAGS|THROW|TRY|UNLESS|USE|WHILE|WRAPPER)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "operator": "r:/=[>=]?|!=?|<=?|>=?|&&|\\|\\|?|\\b(?:and|not|or)\\b/",
+  "variable": {
+    "pattern": "r:/\\b[a-z]\\w*(?:\\s*\\.\\s*(?:\\d+|\\$?[a-z]\\w*))*\\b/i"
+  },
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "punctuation": "r:/[[\\]{},()]/"
+}

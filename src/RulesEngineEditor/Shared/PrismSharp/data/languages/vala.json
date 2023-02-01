@@ -1,0 +1,89 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "raw-string": {
+    "pattern": "r:/\"\"\"[\\s\\S]*?\"\"\"/",
+    "greedy": true,
+    "alias": "s:string"
+  },
+  "template-string": {
+    "pattern": "r:/@\"[\\s\\S]*?\"/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/\\$(?:\\([^)]*\\)|[a-zA-Z]\\w*)/",
+        "inside": {
+          "delimiter": {
+            "pattern": "r:/^\\$\\(?|\\)(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          },
+          "rest": "s:[Circular ~]"
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/\\b[A-Z]\\w*(?:\\.\\w+)*\\b(?=(?:\\?\\s+|\\*?\\s+\\*?)\\w)/",
+      "inside": {
+        "punctuation": "r:/\\./"
+      }
+    },
+    {
+      "pattern": "r:/(\\[)[A-Z]\\w*(?:\\.\\w+)*\\b/",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/\\./"
+      }
+    },
+    {
+      "pattern": "r:/(\\b(?:class|interface)\\s+[A-Z]\\w*(?:\\.\\w+)*\\s*:\\s*)[A-Z]\\w*(?:\\.\\w+)*\\b/",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/\\./"
+      }
+    },
+    {
+      "pattern": "r:/((?:\\b(?:class|enum|interface|new|struct)\\s+)|(?:catch\\s+\\())[A-Z]\\w*(?:\\.\\w+)*\\b/",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/\\./"
+      }
+    }
+  ],
+  "regex": {
+    "pattern": "r:/\\/(?:\\[(?:[^\\]\\\\\\r\\n]|\\\\[^\\r\\n])*\\]|\\\\[^\\r\\n]|[^/\\\\\\[\\r\\n])+\\/[imsx]{0,4}(?=\\s*(?:(?:(?=\\r$)|$)|[\\r\\n,.;})\\]]))/",
+    "greedy": true,
+    "inside": {
+      "regex-source": {
+        "pattern": "r:/^(\\/)[\\s\\S]+(?=\\/[a-z]*(?:(?=\\r$)|$))/",
+        "lookbehind": true,
+        "alias": "s:language-regex"
+      },
+      "regex-delimiter": "r:/^\\//",
+      "regex-flags": "r:/^[a-z]+(?:(?=\\r$)|$)/"
+    }
+  },
+  "keyword": "r:/\\b(?:abstract|as|assert|async|base|bool|break|case|catch|char|class|const|construct|continue|default|delegate|delete|do|double|dynamic|else|ensures|enum|errordomain|extern|finally|float|for|foreach|get|if|in|inline|int|int16|int32|int64|int8|interface|internal|is|lock|long|namespace|new|null|out|override|owned|params|private|protected|public|ref|requires|return|set|short|signal|sizeof|size_t|ssize_t|static|string|struct|switch|this|throw|throws|try|typeof|uchar|uint|uint16|uint32|uint64|uint8|ulong|unichar|unowned|ushort|using|value|var|virtual|void|volatile|weak|while|yield)\\b/i",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\s*\\()/",
+  "number": "r:/(?:\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?)(?:f|u?l?)?/i",
+  "operator": "r:/\\+\\+|--|&&|\\|\\||<<=?|>>=?|=>|->|~|[+\\-*\\/%&^|=!<>]=?|\\?\\??|\\.\\.\\./",
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "constant": "r:/\\b[A-Z0-9_]+\\b/"
+}

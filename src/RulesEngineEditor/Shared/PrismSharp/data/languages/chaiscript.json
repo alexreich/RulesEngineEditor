@@ -1,0 +1,69 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string-interpolation": {
+    "pattern": "r:/(^|[^\\\\])\"(?:[^\"$\\\\]|\\\\[\\s\\S]|\\$(?!\\{)|\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*\\})*\"/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "interpolation-expression": {
+            "pattern": "r:/(^\\$\\{)[\\s\\S]+(?=\\}(?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": "s:[Circular ~]"
+          },
+          "interpolation-punctuation": {
+            "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          }
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\])'(?:[^'\\\\]|\\\\[\\s\\S])*'/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\bclass\\s+)\\w+/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(\\b(?:attr|def)\\s+)\\w+(?=\\s*::)/",
+      "lookbehind": true
+    }
+  ],
+  "keyword": "r:/\\b(?:attr|auto|break|case|catch|class|continue|def|default|else|finally|for|fun|global|if|return|switch|this|try|var|while)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": [
+    {
+      "pattern": "r:/(?:\\b0b[01']+|\\b0x(?:[\\da-f']+(?:\\.[\\da-f']*)?|\\.[\\da-f']+)(?:p[+-]?[\\d']+)?|(?:\\b[\\d']+(?:\\.[\\d']*)?|\\B\\.[\\d']+)(?:e[+-]?[\\d']+)?)[ful]{0,4}/i",
+      "greedy": true
+    },
+    "r:/\\b(?:Infinity|NaN)\\b/"
+  ],
+  "parameter-type": {
+    "pattern": "r:/([,(]\\s*)\\w+(?=\\s+\\w)/",
+    "lookbehind": true,
+    "alias": "s:class-name"
+  },
+  "operator": "r:/>>=?|<<=?|\\|\\||&&|:[:=]?|--|\\+\\+|[=!<>+\\-*/%|&^]=?|[?~]|`[^`\\r\\n]{1,4}`/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

@@ -89,7 +89,7 @@ sp_grid_tabs {
     grid-column: auto;
     display: grid;
     text-align: center;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
     width: 100%;
 }
 

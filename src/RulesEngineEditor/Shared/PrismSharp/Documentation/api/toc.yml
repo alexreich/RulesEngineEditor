@@ -1,0 +1,45 @@
+### YamlMime:TableOfContent
+- uid: Orionsoft.PrismSharp.Highlighters
+  name: Orionsoft.PrismSharp.Highlighters
+  items:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter<TResult>
+    name.vb: IHighlighter(Of TResult)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract
+  name: Orionsoft.PrismSharp.Highlighters.Abstract
+  items:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+    name: AbstractHighlighter<TResult>
+    name.vb: AbstractHighlighter(Of TResult)
+- uid: Orionsoft.PrismSharp.Highlighters.Html
+  name: Orionsoft.PrismSharp.Highlighters.Html
+  items:
+  - uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+    name: HtmlHighlighter
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf
+  name: Orionsoft.PrismSharp.Highlighters.Rtf
+  items:
+  - uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+    name: RtfHighlighter
+- uid: Orionsoft.PrismSharp.Themes
+  name: Orionsoft.PrismSharp.Themes
+  items:
+  - uid: Orionsoft.PrismSharp.Themes.RgbaColor
+    name: RgbaColor
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+- uid: Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  items:
+  - uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+    name: RangeTokenizationSettings
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+  - uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException
+    name: TokenizerException

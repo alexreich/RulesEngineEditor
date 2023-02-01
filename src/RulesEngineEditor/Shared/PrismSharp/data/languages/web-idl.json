@@ -1,0 +1,190 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"[^\"]*\"/",
+    "greedy": true
+  },
+  "namespace": {
+    "pattern": "r:/(\\bnamespace\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+    "lookbehind": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(^|[^\\w-])(?:iterable|maplike|setlike)\\s*<(?:[^<>]|<[^<>]*>)*>/",
+      "lookbehind": true,
+      "inside": {
+        "comment": {
+          "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/\"[^\"]*\"/",
+          "greedy": true
+        },
+        "namespace": {
+          "pattern": "r:/(\\bnamespace\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+          "lookbehind": true
+        },
+        "builtin": "r:/\\b(?:ArrayBuffer|BigInt64Array|BigUint64Array|ByteString|DOMString|DataView|Float32Array|Float64Array|FrozenArray|Int16Array|Int32Array|Int8Array|ObservableArray|Promise|USVString|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray)\\b/",
+        "keyword": [
+          "r:/\\b(?:async|attribute|callback|const|constructor|deleter|dictionary|enum|getter|implements|includes|inherit|interface|mixin|namespace|null|optional|or|partial|readonly|required|setter|static|stringifier|typedef|unrestricted)\\b/",
+          "r:/\\b(?:any|bigint|boolean|byte|double|float|iterable|long|maplike|object|octet|record|sequence|setlike|short|symbol|undefined|unsigned|void)\\b/"
+        ],
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "number": {
+          "pattern": "r:/(^|[^\\w-])-?(?:0x[0-9a-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|NaN|Infinity)(?![\\w-])/i",
+          "lookbehind": true
+        },
+        "operator": "r:/\\.{3}|[=:?<>-]/",
+        "punctuation": "r:/[(){}[\\].,;]/"
+      }
+    },
+    {
+      "pattern": "r:/(\\b(?:attribute|const|deleter|getter|optional|setter)\\s+)(?:\\b(?:unsigned\\s+)?long\\s+long(?![\\w-])|\\b(?:unrestricted|unsigned)\\s+[a-z]+(?![\\w-])|(?!(?:unrestricted|unsigned)\\b)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])(?:\\s*<(?:[^<>]|<[^<>]*>)*>)?)(?:\\s*\\?)?/",
+      "lookbehind": true,
+      "inside": {
+        "comment": {
+          "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/\"[^\"]*\"/",
+          "greedy": true
+        },
+        "namespace": {
+          "pattern": "r:/(\\bnamespace\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+          "lookbehind": true
+        },
+        "builtin": "r:/\\b(?:ArrayBuffer|BigInt64Array|BigUint64Array|ByteString|DOMString|DataView|Float32Array|Float64Array|FrozenArray|Int16Array|Int32Array|Int8Array|ObservableArray|Promise|USVString|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray)\\b/",
+        "keyword": [
+          "r:/\\b(?:async|attribute|callback|const|constructor|deleter|dictionary|enum|getter|implements|includes|inherit|interface|mixin|namespace|null|optional|or|partial|readonly|required|setter|static|stringifier|typedef|unrestricted)\\b/",
+          "r:/\\b(?:any|bigint|boolean|byte|double|float|iterable|long|maplike|object|octet|record|sequence|setlike|short|symbol|undefined|unsigned|void)\\b/"
+        ],
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "number": {
+          "pattern": "r:/(^|[^\\w-])-?(?:0x[0-9a-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|NaN|Infinity)(?![\\w-])/i",
+          "lookbehind": true
+        },
+        "operator": "r:/\\.{3}|[=:?<>-]/",
+        "punctuation": "r:/[(){}[\\].,;]/"
+      }
+    },
+    {
+      "pattern": "r:/(\\bcallback\\s+(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])\\s*=\\s*)(?:\\b(?:unsigned\\s+)?long\\s+long(?![\\w-])|\\b(?:unrestricted|unsigned)\\s+[a-z]+(?![\\w-])|(?!(?:unrestricted|unsigned)\\b)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])(?:\\s*<(?:[^<>]|<[^<>]*>)*>)?)(?:\\s*\\?)?/",
+      "lookbehind": true,
+      "inside": {
+        "comment": {
+          "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/\"[^\"]*\"/",
+          "greedy": true
+        },
+        "namespace": {
+          "pattern": "r:/(\\bnamespace\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+          "lookbehind": true
+        },
+        "builtin": "r:/\\b(?:ArrayBuffer|BigInt64Array|BigUint64Array|ByteString|DOMString|DataView|Float32Array|Float64Array|FrozenArray|Int16Array|Int32Array|Int8Array|ObservableArray|Promise|USVString|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray)\\b/",
+        "keyword": [
+          "r:/\\b(?:async|attribute|callback|const|constructor|deleter|dictionary|enum|getter|implements|includes|inherit|interface|mixin|namespace|null|optional|or|partial|readonly|required|setter|static|stringifier|typedef|unrestricted)\\b/",
+          "r:/\\b(?:any|bigint|boolean|byte|double|float|iterable|long|maplike|object|octet|record|sequence|setlike|short|symbol|undefined|unsigned|void)\\b/"
+        ],
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "number": {
+          "pattern": "r:/(^|[^\\w-])-?(?:0x[0-9a-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|NaN|Infinity)(?![\\w-])/i",
+          "lookbehind": true
+        },
+        "operator": "r:/\\.{3}|[=:?<>-]/",
+        "punctuation": "r:/[(){}[\\].,;]/"
+      }
+    },
+    {
+      "pattern": "r:/(\\btypedef\\b\\s*)(?:\\b(?:unsigned\\s+)?long\\s+long(?![\\w-])|\\b(?:unrestricted|unsigned)\\s+[a-z]+(?![\\w-])|(?!(?:unrestricted|unsigned)\\b)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])(?:\\s*<(?:[^<>]|<[^<>]*>)*>)?)(?:\\s*\\?)?/",
+      "lookbehind": true,
+      "inside": {
+        "comment": {
+          "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/\"[^\"]*\"/",
+          "greedy": true
+        },
+        "namespace": {
+          "pattern": "r:/(\\bnamespace\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+          "lookbehind": true
+        },
+        "builtin": "r:/\\b(?:ArrayBuffer|BigInt64Array|BigUint64Array|ByteString|DOMString|DataView|Float32Array|Float64Array|FrozenArray|Int16Array|Int32Array|Int8Array|ObservableArray|Promise|USVString|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray)\\b/",
+        "keyword": [
+          "r:/\\b(?:async|attribute|callback|const|constructor|deleter|dictionary|enum|getter|implements|includes|inherit|interface|mixin|namespace|null|optional|or|partial|readonly|required|setter|static|stringifier|typedef|unrestricted)\\b/",
+          "r:/\\b(?:any|bigint|boolean|byte|double|float|iterable|long|maplike|object|octet|record|sequence|setlike|short|symbol|undefined|unsigned|void)\\b/"
+        ],
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "number": {
+          "pattern": "r:/(^|[^\\w-])-?(?:0x[0-9a-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|NaN|Infinity)(?![\\w-])/i",
+          "lookbehind": true
+        },
+        "operator": "r:/\\.{3}|[=:?<>-]/",
+        "punctuation": "r:/[(){}[\\].,;]/"
+      }
+    },
+    {
+      "pattern": "r:/(\\b(?:callback|dictionary|enum|interface(?:\\s+mixin)?)\\s+)(?!(?:interface|mixin)\\b)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(:\\s*)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+      "lookbehind": true
+    },
+    "r:/(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])(?=\\s+(?:implements|includes)\\b)/",
+    {
+      "pattern": "r:/(\\b(?:implements|includes)\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(?:\\b(?:unsigned\\s+)?long\\s+long(?![\\w-])|\\b(?:unrestricted|unsigned)\\s+[a-z]+(?![\\w-])|(?!(?:unrestricted|unsigned)\\b)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])(?:\\s*<(?:[^<>]|<[^<>]*>)*>)?)(?:\\s*\\?)?(?=\\s*(?:\\.{3}\\s*)?(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])\\s*[(),;=])/",
+      "inside": {
+        "comment": {
+          "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/\"[^\"]*\"/",
+          "greedy": true
+        },
+        "namespace": {
+          "pattern": "r:/(\\bnamespace\\s+)(?:\\B-|\\b_|\\b)[A-Za-z][\\w-]*(?![\\w-])/",
+          "lookbehind": true
+        },
+        "builtin": "r:/\\b(?:ArrayBuffer|BigInt64Array|BigUint64Array|ByteString|DOMString|DataView|Float32Array|Float64Array|FrozenArray|Int16Array|Int32Array|Int8Array|ObservableArray|Promise|USVString|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray)\\b/",
+        "keyword": [
+          "r:/\\b(?:async|attribute|callback|const|constructor|deleter|dictionary|enum|getter|implements|includes|inherit|interface|mixin|namespace|null|optional|or|partial|readonly|required|setter|static|stringifier|typedef|unrestricted)\\b/",
+          "r:/\\b(?:any|bigint|boolean|byte|double|float|iterable|long|maplike|object|octet|record|sequence|setlike|short|symbol|undefined|unsigned|void)\\b/"
+        ],
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "number": {
+          "pattern": "r:/(^|[^\\w-])-?(?:0x[0-9a-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|NaN|Infinity)(?![\\w-])/i",
+          "lookbehind": true
+        },
+        "operator": "r:/\\.{3}|[=:?<>-]/",
+        "punctuation": "r:/[(){}[\\].,;]/"
+      }
+    }
+  ],
+  "builtin": "r:/\\b(?:ArrayBuffer|BigInt64Array|BigUint64Array|ByteString|DOMString|DataView|Float32Array|Float64Array|FrozenArray|Int16Array|Int32Array|Int8Array|ObservableArray|Promise|USVString|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray)\\b/",
+  "keyword": [
+    "r:/\\b(?:async|attribute|callback|const|constructor|deleter|dictionary|enum|getter|implements|includes|inherit|interface|mixin|namespace|null|optional|or|partial|readonly|required|setter|static|stringifier|typedef|unrestricted)\\b/",
+    "r:/\\b(?:any|bigint|boolean|byte|double|float|iterable|long|maplike|object|octet|record|sequence|setlike|short|symbol|undefined|unsigned|void)\\b/"
+  ],
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": {
+    "pattern": "r:/(^|[^\\w-])-?(?:0x[0-9a-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|NaN|Infinity)(?![\\w-])/i",
+    "lookbehind": true
+  },
+  "operator": "r:/\\.{3}|[=:?<>-]/",
+  "punctuation": "r:/[(){}[\\].,;]/"
+}

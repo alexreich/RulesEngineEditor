@@ -1,0 +1,3756 @@
+[
+  {
+    "name": "markup",
+    "title": "Markup",
+    "aliases": [
+      "html",
+      "xml",
+      "svg",
+      "mathml",
+      "ssml",
+      "atom",
+      "rss"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "css",
+    "title": "CSS",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "clike",
+    "title": "C-like",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "javascript",
+    "title": "JavaScript",
+    "aliases": [
+      "js"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "abap",
+    "title": "ABAP",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "abnf",
+    "title": "ABNF",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "actionscript",
+    "title": "ActionScript",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "ada",
+    "title": "Ada",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "agda",
+    "title": "Agda",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "al",
+    "title": "AL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "antlr4",
+    "title": "ANTLR4",
+    "aliases": [
+      "g4"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "apacheconf",
+    "title": "Apache Configuration",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "apex",
+    "title": "Apex",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "apl",
+    "title": "APL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "applescript",
+    "title": "AppleScript",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "aql",
+    "title": "AQL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "arduino",
+    "title": "Arduino",
+    "aliases": [
+      "ino"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "arff",
+    "title": "ARFF",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "asciidoc",
+    "title": "AsciiDoc",
+    "aliases": [
+      "adoc"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "aspnet",
+    "title": "ASP.NET (C#)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "asm6502",
+    "title": "6502 Assembly",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "asmatmel",
+    "title": "Atmel AVR Assembly",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "autohotkey",
+    "title": "AutoHotkey",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "autoit",
+    "title": "AutoIt",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "avisynth",
+    "title": "AviSynth",
+    "aliases": [
+      "avs"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "avro-idl",
+    "title": "Avro IDL",
+    "aliases": [
+      "avdl"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "bash",
+    "title": "Bash",
+    "aliases": [
+      "shell"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "basic",
+    "title": "BASIC",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "batch",
+    "title": "Batch",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "bbcode",
+    "title": "BBcode",
+    "aliases": [
+      "shortcode"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "bicep",
+    "title": "Bicep",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "birb",
+    "title": "Birb",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "bison",
+    "title": "Bison",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "bnf",
+    "title": "BNF",
+    "aliases": [
+      "rbnf"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "brainfuck",
+    "title": "Brainfuck",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "brightscript",
+    "title": "BrightScript",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "bro",
+    "title": "Bro",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "bsl",
+    "title": "BSL (1C:Enterprise)",
+    "aliases": [
+      "oscript"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "c",
+    "title": "C",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "csharp",
+    "title": "C#",
+    "aliases": [
+      "cs",
+      "dotnet"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "cpp",
+    "title": "C++",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "cfscript",
+    "title": "CFScript",
+    "aliases": [
+      "cfc"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "chaiscript",
+    "title": "ChaiScript",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "cil",
+    "title": "CIL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "clojure",
+    "title": "Clojure",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "cmake",
+    "title": "CMake",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "cobol",
+    "title": "COBOL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "coffeescript",
+    "title": "CoffeeScript",
+    "aliases": [
+      "coffee"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "concurnas",
+    "title": "Concurnas",
+    "aliases": [
+      "conc"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "csp",
+    "title": "Content-Security-Policy",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "coq",
+    "title": "Coq",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "crystal",
+    "title": "Crystal",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "csv",
+    "title": "CSV",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "cypher",
+    "title": "Cypher",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "d",
+    "title": "D",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "dart",
+    "title": "Dart",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "dataweave",
+    "title": "DataWeave",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "dax",
+    "title": "DAX",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "dhall",
+    "title": "Dhall",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "diff",
+    "title": "Diff",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "django",
+    "title": "Django/Jinja2",
+    "aliases": [
+      "jinja2"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "dns-zone-file",
+    "title": "DNS zone file",
+    "aliases": [
+      "dns-zone"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "docker",
+    "title": "Docker",
+    "aliases": [
+      "dockerfile"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "dot",
+    "title": "DOT (Graphviz)",
+    "aliases": [
+      "gv"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ebnf",
+    "title": "EBNF",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "editorconfig",
+    "title": "EditorConfig",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "eiffel",
+    "title": "Eiffel",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ejs",
+    "title": "EJS",
+    "aliases": [
+      "eta"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "elixir",
+    "title": "Elixir",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "elm",
+    "title": "Elm",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "etlua",
+    "title": "Embedded Lua templating",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "erb",
+    "title": "ERB",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "erlang",
+    "title": "Erlang",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "excel-formula",
+    "title": "Excel Formula",
+    "aliases": [
+      "xlsx",
+      "xls"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "fsharp",
+    "title": "F#",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "factor",
+    "title": "Factor",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "false",
+    "title": "False",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "firestore-security-rules",
+    "title": "Firestore security rules",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "flow",
+    "title": "Flow",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "fortran",
+    "title": "Fortran",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ftl",
+    "title": "FreeMarker Template Language",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "gml",
+    "title": "GameMaker Language",
+    "aliases": [
+      "gamemakerlanguage"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "gap",
+    "title": "GAP (CAS)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "gcode",
+    "title": "G-code",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "gdscript",
+    "title": "GDScript",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "gedcom",
+    "title": "GEDCOM",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "gherkin",
+    "title": "Gherkin",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "git",
+    "title": "Git",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "glsl",
+    "title": "GLSL",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "gn",
+    "title": "GN",
+    "aliases": [
+      "gni"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "go",
+    "title": "Go",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "go-module",
+    "title": "Go module",
+    "aliases": [
+      "go-mod"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "graphql",
+    "title": "GraphQL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "groovy",
+    "title": "Groovy",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "haml",
+    "title": "Haml",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "handlebars",
+    "title": "Handlebars",
+    "aliases": [
+      "hbs"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "haskell",
+    "title": "Haskell",
+    "aliases": [
+      "hs"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "haxe",
+    "title": "Haxe",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "hcl",
+    "title": "HCL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "hlsl",
+    "title": "HLSL",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "hoon",
+    "title": "Hoon",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "http",
+    "title": "HTTP",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "hpkp",
+    "title": "HTTP Public-Key-Pins",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "hsts",
+    "title": "HTTP Strict-Transport-Security",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ichigojam",
+    "title": "IchigoJam",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "icon",
+    "title": "Icon",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "icu-message-format",
+    "title": "ICU Message Format",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "idris",
+    "title": "Idris",
+    "aliases": [
+      "idr"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ignore",
+    "title": ".ignore",
+    "aliases": [
+      "gitignore",
+      "hgignore",
+      "npmignore"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "inform7",
+    "title": "Inform 7",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ini",
+    "title": "Ini",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "io",
+    "title": "Io",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "j",
+    "title": "J",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "java",
+    "title": "Java",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "javadoc",
+    "title": "JavaDoc",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "javadoclike",
+    "title": "JavaDoc-like",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "javastacktrace",
+    "title": "Java stack trace",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "jexl",
+    "title": "Jexl",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "jolie",
+    "title": "Jolie",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "jq",
+    "title": "JQ",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "jsdoc",
+    "title": "JSDoc",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "json",
+    "title": "JSON",
+    "aliases": [
+      "webmanifest"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "json5",
+    "title": "JSON5",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "jsonp",
+    "title": "JSONP",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "jsstacktrace",
+    "title": "JS stack trace",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "julia",
+    "title": "Julia",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "keepalived",
+    "title": "Keepalived Configure",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "keyman",
+    "title": "Keyman",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "kotlin",
+    "title": "Kotlin",
+    "aliases": [
+      "kt",
+      "kts"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "kumir",
+    "title": "KuMir (КуМир)",
+    "aliases": [
+      "kum"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "kusto",
+    "title": "Kusto",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "latex",
+    "title": "LaTeX",
+    "aliases": [
+      "tex",
+      "context"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "latte",
+    "title": "Latte",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "less",
+    "title": "Less",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "lilypond",
+    "title": "LilyPond",
+    "aliases": [
+      "ly"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "liquid",
+    "title": "Liquid",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "lisp",
+    "title": "Lisp",
+    "aliases": [
+      "emacs",
+      "elisp",
+      "emacs-lisp"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "livescript",
+    "title": "LiveScript",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "llvm",
+    "title": "LLVM IR",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "log",
+    "title": "Log file",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "lolcode",
+    "title": "LOLCODE",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "lua",
+    "title": "Lua",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "magma",
+    "title": "Magma (CAS)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "makefile",
+    "title": "Makefile",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "markdown",
+    "title": "Markdown",
+    "aliases": [
+      "md"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "markup-templating",
+    "title": "Markup templating",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "matlab",
+    "title": "MATLAB",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "maxscript",
+    "title": "MAXScript",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "mel",
+    "title": "MEL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "mermaid",
+    "title": "Mermaid",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "mizar",
+    "title": "Mizar",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "mongodb",
+    "title": "MongoDB",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "monkey",
+    "title": "Monkey",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "moonscript",
+    "title": "MoonScript",
+    "aliases": [
+      "moon"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "n1ql",
+    "title": "N1QL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "n4js",
+    "title": "N4JS",
+    "aliases": [
+      "n4jsd"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "nand2tetris-hdl",
+    "title": "Nand To Tetris HDL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "naniscript",
+    "title": "Naninovel Script",
+    "aliases": [
+      "nani"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "nasm",
+    "title": "NASM",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "neon",
+    "title": "NEON",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "nevod",
+    "title": "Nevod",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "nginx",
+    "title": "nginx",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "nim",
+    "title": "Nim",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "nix",
+    "title": "Nix",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "nsis",
+    "title": "NSIS",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "objectivec",
+    "title": "Objective-C",
+    "aliases": [
+      "objc"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "ocaml",
+    "title": "OCaml",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "opencl",
+    "title": "OpenCL",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "openqasm",
+    "title": "OpenQasm",
+    "aliases": [
+      "qasm"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "oz",
+    "title": "Oz",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "parigp",
+    "title": "PARI/GP",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "parser",
+    "title": "Parser",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "pascal",
+    "title": "Pascal",
+    "aliases": [
+      "objectpascal"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "pascaligo",
+    "title": "Pascaligo",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "psl",
+    "title": "PATROL Scripting Language",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "pcaxis",
+    "title": "PC-Axis",
+    "aliases": [
+      "px"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "peoplecode",
+    "title": "PeopleCode",
+    "aliases": [
+      "pcode"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "perl",
+    "title": "Perl",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "php",
+    "title": "PHP",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "phpdoc",
+    "title": "PHPDoc",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "plsql",
+    "title": "PL/SQL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "powerquery",
+    "title": "PowerQuery",
+    "aliases": [
+      "pq",
+      "mscript"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "powershell",
+    "title": "PowerShell",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "processing",
+    "title": "Processing",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "prolog",
+    "title": "Prolog",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "promql",
+    "title": "PromQL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "properties",
+    "title": ".properties",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "protobuf",
+    "title": "Protocol Buffers",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "pug",
+    "title": "Pug",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "puppet",
+    "title": "Puppet",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "pure",
+    "title": "Pure",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "purebasic",
+    "title": "PureBasic",
+    "aliases": [
+      "pbfasm"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "purescript",
+    "title": "PureScript",
+    "aliases": [
+      "purs"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "python",
+    "title": "Python",
+    "aliases": [
+      "py"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "qsharp",
+    "title": "Q#",
+    "aliases": [
+      "qs"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "q",
+    "title": "Q (kdb+ database)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "qml",
+    "title": "QML",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "qore",
+    "title": "Qore",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "r",
+    "title": "R",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "racket",
+    "title": "Racket",
+    "aliases": [
+      "rkt"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "cshtml",
+    "title": "Razor C#",
+    "aliases": [
+      "razor"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "jsx",
+    "title": "React JSX",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "tsx",
+    "title": "React TSX",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "reason",
+    "title": "Reason",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "regex",
+    "title": "Regex",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "rego",
+    "title": "Rego",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "renpy",
+    "title": "Ren'py",
+    "aliases": [
+      "rpy"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "rest",
+    "title": "reST (reStructuredText)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "rip",
+    "title": "Rip",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "roboconf",
+    "title": "Roboconf",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "robotframework",
+    "title": "Robot Framework",
+    "aliases": [
+      "robot"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "ruby",
+    "title": "Ruby",
+    "aliases": [
+      "rb"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "rust",
+    "title": "Rust",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "sas",
+    "title": "SAS",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "sass",
+    "title": "Sass (Sass)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "scss",
+    "title": "Sass (Scss)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "scala",
+    "title": "Scala",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "scheme",
+    "title": "Scheme",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "shell-session",
+    "title": "Shell session",
+    "aliases": [
+      "sh-session",
+      "shellsession"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "smali",
+    "title": "Smali",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "smalltalk",
+    "title": "Smalltalk",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "smarty",
+    "title": "Smarty",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "sml",
+    "title": "SML",
+    "aliases": [
+      "smlnj"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "solidity",
+    "title": "Solidity (Ethereum)",
+    "aliases": [
+      "sol"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "solution-file",
+    "title": "Solution file",
+    "aliases": [
+      "sln"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "soy",
+    "title": "Soy (Closure Template)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "sparql",
+    "title": "SPARQL",
+    "aliases": [
+      "rq"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "splunk-spl",
+    "title": "Splunk SPL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "sqf",
+    "title": "SQF: Status Quo Function (Arma 3)",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "sql",
+    "title": "SQL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "squirrel",
+    "title": "Squirrel",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "stan",
+    "title": "Stan",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "iecst",
+    "title": "Structured Text (IEC 61131-3)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "stylus",
+    "title": "Stylus",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "swift",
+    "title": "Swift",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "systemd",
+    "title": "Systemd configuration file",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "t4-templating",
+    "title": "T4 templating",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "t4-cs",
+    "title": "T4 Text Templates (C#)",
+    "aliases": [
+      "t4"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "t4-vb",
+    "title": "T4 Text Templates (VB)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "tap",
+    "title": "TAP",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "tcl",
+    "title": "Tcl",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "tt2",
+    "title": "Template Toolkit 2",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "textile",
+    "title": "Textile",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "toml",
+    "title": "TOML",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "tremor",
+    "title": "Tremor",
+    "aliases": [
+      "trickle",
+      "troy"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "turtle",
+    "title": "Turtle",
+    "aliases": [
+      "trig"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "twig",
+    "title": "Twig",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "typescript",
+    "title": "TypeScript",
+    "aliases": [
+      "ts"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "typoscript",
+    "title": "TypoScript",
+    "aliases": [
+      "tsconfig"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "unrealscript",
+    "title": "UnrealScript",
+    "aliases": [
+      "uscript",
+      "uc"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "uri",
+    "title": "URI",
+    "aliases": [
+      "url"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "v",
+    "title": "V",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "vala",
+    "title": "Vala",
+    "rangeTokenizationSettings": {
+      "preRange": 0,
+      "postRange": 0,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": "clike"
+    }
+  },
+  {
+    "name": "vbnet",
+    "title": "VB.Net",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "velocity",
+    "title": "Velocity",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "verilog",
+    "title": "Verilog",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "vhdl",
+    "title": "VHDL",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "vim",
+    "title": "vim",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "visual-basic",
+    "title": "Visual Basic",
+    "aliases": [
+      "vb",
+      "vba"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "warpscript",
+    "title": "WarpScript",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "wasm",
+    "title": "WebAssembly",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "web-idl",
+    "title": "Web IDL",
+    "aliases": [
+      "webidl"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "wiki",
+    "title": "Wiki markup",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "wolfram",
+    "title": "Wolfram language",
+    "aliases": [
+      "mathematica",
+      "nb",
+      "wl"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "wren",
+    "title": "Wren",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "xeora",
+    "title": "Xeora",
+    "aliases": [
+      "xeoracube"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "xojo",
+    "title": "Xojo (REALbasic)",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "xquery",
+    "title": "XQuery",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "yaml",
+    "title": "YAML",
+    "aliases": [
+      "yml"
+    ],
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "yang",
+    "title": "YANG",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  },
+  {
+    "name": "zig",
+    "title": "Zig",
+    "rangeTokenizationSettings": {
+      "preRange": 2000,
+      "postRange": 2000,
+      "safePoints": [
+        "\r\n",
+        "\n"
+      ],
+      "safePointAdjusterName": null
+    }
+  }
+]

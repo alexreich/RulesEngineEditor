@@ -1,0 +1,706 @@
+{
+  "comment": {
+    "pattern": "r:/<!--(?:(?!<!--)[\\s\\S])*?-->/",
+    "greedy": true
+  },
+  "prolog": {
+    "pattern": "r:/<\\?[\\s\\S]+?\\?>/",
+    "greedy": true
+  },
+  "doctype": {
+    "pattern": "r:/<!DOCTYPE(?:[^>\"'[\\]]|\"[^\"]*\"|'[^']*')+(?:\\[(?:[^<\"'\\]]|\"[^\"]*\"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\\]\\s*)?>/i",
+    "greedy": true,
+    "inside": {
+      "internal-subset": {
+        "pattern": "r:/(^[^\\[]*\\[)[\\s\\S]+(?=\\]>(?:(?=\\r$)|$))/",
+        "lookbehind": true,
+        "greedy": true,
+        "inside": "s:[Circular ~]"
+      },
+      "string": {
+        "pattern": "r:/\"[^\"]*\"|'[^']*'/",
+        "greedy": true
+      },
+      "punctuation": "r:/^<!|>(?:(?=\\r$)|$)|[[\\]]/",
+      "doctype-tag": "r:/^DOCTYPE/i",
+      "name": "r:/[^\\s<>'\"]+/"
+    }
+  },
+  "style": {
+    "pattern": "r:/(<style[^>]*>)(?:<!\\[CDATA\\[(?:[^\\]]|\\](?!\\]>))*\\]\\]>|(?!<!\\[CDATA\\[)[\\s\\S])*?(?=<\\/style>)/i",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "included-cdata": {
+        "pattern": "r:/<!\\[CDATA\\[[\\s\\S]*?\\]\\]>/i",
+        "inside": {
+          "language-css": {
+            "pattern": "r:/(^<!\\[CDATA\\[)[\\s\\S]+?(?=\\]\\]>(?:(?=\\r$)|$))/i",
+            "lookbehind": true,
+            "inside": {
+              "comment": "r:/\\/\\*[\\s\\S]*?\\*\\//",
+              "atrule": {
+                "pattern": "r:/@[\\w-](?:[^;{\\s]|\\s+(?![\\s{]))*(?:;|(?=\\s*\\{))/",
+                "inside": {
+                  "rule": "r:/^@[\\w-]+/",
+                  "selector-function-argument": {
+                    "pattern": "r:/(\\bselector\\s*\\(\\s*(?![\\s)]))(?:[^()\\s]|\\s+(?![\\s)])|\\((?:[^()]|\\([^()]*\\))*\\))+(?=\\s*\\))/",
+                    "lookbehind": true,
+                    "alias": "s:selector"
+                  },
+                  "keyword": {
+                    "pattern": "r:/(^|[^\\w-])(?:and|not|only|or)(?![\\w-])/",
+                    "lookbehind": true
+                  },
+                  "rest": "s:[Circular ~.style.inside.included-cdata.inside.language-css.inside]"
+                }
+              },
+              "url": {
+                "pattern": "r:/\\burl\\((?:(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')|(?:[^\\\\\\r\\n()\"']|\\\\[\\s\\S])*)\\)/i",
+                "greedy": true,
+                "inside": {
+                  "function": "r:/^url/i",
+                  "punctuation": "r:/^\\(|\\)(?:(?=\\r$)|$)/",
+                  "string": {
+                    "pattern": "r:/^(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')(?:(?=\\r$)|$)/",
+                    "alias": "s:url"
+                  }
+                }
+              },
+              "selector": {
+                "pattern": "r:/(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*'))*(?=\\s*\\{)/",
+                "lookbehind": true
+              },
+              "string": {
+                "pattern": "r:/(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')/",
+                "greedy": true
+              },
+              "property": {
+                "pattern": "r:/(^|[^-\\w\\xA0-\\uFFFF])(?!\\s)[-_a-z\\xA0-\\uFFFF](?:(?!\\s)[-\\w\\xA0-\\uFFFF])*(?=\\s*:)/i",
+                "lookbehind": true
+              },
+              "important": "r:/!important\\b/i",
+              "function": {
+                "pattern": "r:/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
+                "lookbehind": true
+              },
+              "punctuation": "r:/[(){};:,]/"
+            }
+          },
+          "cdata": "r:/^<!\\[CDATA\\[|\\]\\]>(?:(?=\\r$)|$)/i"
+        }
+      },
+      "language-css": {
+        "pattern": "r:/[\\s\\S]+/",
+        "inside": {
+          "comment": "r:/\\/\\*[\\s\\S]*?\\*\\//",
+          "atrule": {
+            "pattern": "r:/@[\\w-](?:[^;{\\s]|\\s+(?![\\s{]))*(?:;|(?=\\s*\\{))/",
+            "inside": {
+              "rule": "r:/^@[\\w-]+/",
+              "selector-function-argument": {
+                "pattern": "r:/(\\bselector\\s*\\(\\s*(?![\\s)]))(?:[^()\\s]|\\s+(?![\\s)])|\\((?:[^()]|\\([^()]*\\))*\\))+(?=\\s*\\))/",
+                "lookbehind": true,
+                "alias": "s:selector"
+              },
+              "keyword": {
+                "pattern": "r:/(^|[^\\w-])(?:and|not|only|or)(?![\\w-])/",
+                "lookbehind": true
+              },
+              "rest": "s:[Circular ~.style.inside.language-css.inside]"
+            }
+          },
+          "url": {
+            "pattern": "r:/\\burl\\((?:(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')|(?:[^\\\\\\r\\n()\"']|\\\\[\\s\\S])*)\\)/i",
+            "greedy": true,
+            "inside": {
+              "function": "r:/^url/i",
+              "punctuation": "r:/^\\(|\\)(?:(?=\\r$)|$)/",
+              "string": {
+                "pattern": "r:/^(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')(?:(?=\\r$)|$)/",
+                "alias": "s:url"
+              }
+            }
+          },
+          "selector": {
+            "pattern": "r:/(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*'))*(?=\\s*\\{)/",
+            "lookbehind": true
+          },
+          "string": {
+            "pattern": "r:/(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')/",
+            "greedy": true
+          },
+          "property": {
+            "pattern": "r:/(^|[^-\\w\\xA0-\\uFFFF])(?!\\s)[-_a-z\\xA0-\\uFFFF](?:(?!\\s)[-\\w\\xA0-\\uFFFF])*(?=\\s*:)/i",
+            "lookbehind": true
+          },
+          "important": "r:/!important\\b/i",
+          "function": {
+            "pattern": "r:/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
+            "lookbehind": true
+          },
+          "punctuation": "r:/[(){};:,]/"
+        }
+      }
+    }
+  },
+  "script": {
+    "pattern": "r:/(<script[^>]*>)(?:<!\\[CDATA\\[(?:[^\\]]|\\](?!\\]>))*\\]\\]>|(?!<!\\[CDATA\\[)[\\s\\S])*?(?=<\\/script>)/i",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "included-cdata": {
+        "pattern": "r:/<!\\[CDATA\\[[\\s\\S]*?\\]\\]>/i",
+        "inside": {
+          "language-javascript": {
+            "pattern": "r:/(^<!\\[CDATA\\[)[\\s\\S]+?(?=\\]\\]>(?:(?=\\r$)|$))/i",
+            "lookbehind": true,
+            "inside": {
+              "comment": [
+                {
+                  "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "hashbang": {
+                "pattern": "r:/^#![^\\r\\n]*/",
+                "greedy": true,
+                "alias": "s:comment"
+              },
+              "template-string": {
+                "pattern": "r:/`(?:\\\\[\\s\\S]|\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}|(?!\\$\\{)[^\\\\`])*`/",
+                "greedy": true,
+                "inside": {
+                  "template-punctuation": {
+                    "pattern": "r:/^`|`(?:(?=\\r$)|$)/",
+                    "alias": "s:string"
+                  },
+                  "interpolation": {
+                    "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+                    "lookbehind": true,
+                    "inside": {
+                      "interpolation-punctuation": {
+                        "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+                        "alias": "s:punctuation"
+                      },
+                      "rest": "s:[Circular ~.script.inside.included-cdata.inside.language-javascript.inside]"
+                    }
+                  },
+                  "string": "r:/[\\s\\S]+/"
+                }
+              },
+              "string-property": {
+                "pattern": "r:/((?:^|[,{])[ \\t]*)([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\2)[^\\\\\\r\\n])*\\2(?=\\s*:)/m",
+                "lookbehind": true,
+                "greedy": true,
+                "alias": "s:property"
+              },
+              "string": {
+                "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+                "greedy": true
+              },
+              "class-name": [
+                {
+                  "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+                  "lookbehind": true,
+                  "inside": {
+                    "punctuation": "r:/[.\\\\]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$A-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\.(?:constructor|prototype))/",
+                  "lookbehind": true
+                }
+              ],
+              "regex": {
+                "pattern": "r:/((?:^|[^$\\w\\xA0-\\uFFFF.\"'\\])\\s]|\\b(?:return|yield))\\s*)\\/(?:\\[(?:[^\\]\\\\\\r\\n]|\\\\[^\\r\\n])*\\]|\\\\[^\\r\\n]|[^/\\\\\\[\\r\\n])+\\/[dgimyus]{0,7}(?=(?:\\s|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/)*(?:(?:(?=\\r$)|$)|[\\r\\n,.;:})\\]]|\\/\\/))/",
+                "lookbehind": true,
+                "greedy": true,
+                "inside": {
+                  "regex-source": {
+                    "pattern": "r:/^(\\/)[\\s\\S]+(?=\\/[a-z]*(?:(?=\\r$)|$))/",
+                    "lookbehind": true,
+                    "alias": "s:language-regex"
+                  },
+                  "regex-delimiter": "r:/^\\/|\\/(?:(?=\\r$)|$)/",
+                  "regex-flags": "r:/^[a-z]+(?:(?=\\r$)|$)/"
+                }
+              },
+              "function-variable": {
+                "pattern": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*[=:]\\s*(?:async\\s*)?(?:\\bfunction\\b|(?:\\((?:[^()]|\\([^()]*\\))*\\)|(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)\\s*=>))/",
+                "alias": "s:function"
+              },
+              "parameter": [
+                {
+                  "pattern": "r:/(function(?:\\s+(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)?\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\))/",
+                  "lookbehind": true,
+                  "inside": "s:[Circular ~.script.inside.included-cdata.inside.language-javascript.inside]"
+                },
+                {
+                  "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$a-z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*=>)/i",
+                  "lookbehind": true,
+                  "inside": "s:[Circular ~.script.inside.included-cdata.inside.language-javascript.inside]"
+                },
+                {
+                  "pattern": "r:/(\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*=>)/",
+                  "lookbehind": true,
+                  "inside": "s:[Circular ~.script.inside.included-cdata.inside.language-javascript.inside]"
+                },
+                {
+                  "pattern": "r:/((?:\\b|\\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\\w\\xA0-\\uFFFF]))(?:(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*\\s*)\\(\\s*|\\]\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*\\{)/",
+                  "lookbehind": true,
+                  "inside": "s:[Circular ~.script.inside.included-cdata.inside.language-javascript.inside]"
+                }
+              ],
+              "constant": "r:/\\b[A-Z](?:[A-Z_]|\\dx?)*\\b/",
+              "keyword": [
+                {
+                  "pattern": "r:/((?:^|\\})\\s*)catch\\b/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(^|[^.]|\\.\\.\\.\\s*)\\b(?:as|assert(?=\\s*\\{)|async(?=\\s*(?:function\\b|\\(|[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\\s*(?:\\{|(?:(?=\\r$)|$)))|for|from(?=\\s*(?:['\"]|(?:(?=\\r$)|$)))|function|(?:get|set)(?=\\s*(?:[#\\[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\\b/",
+                  "lookbehind": true
+                }
+              ],
+              "boolean": "r:/\\b(?:false|true)\\b/",
+              "function": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*(?:\\.\\s*(?:apply|bind|call)\\s*)?\\()/",
+              "number": {
+                "pattern": "r:/(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\.(?:\\d+(?:_\\d+)*)?)?|\\.\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])/",
+                "lookbehind": true
+              },
+              "literal-property": {
+                "pattern": "r:/((?:^|[,{])[ \\t]*)(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*:)/m",
+                "lookbehind": true,
+                "alias": "s:property"
+              },
+              "operator": "r:/--|\\+\\+|\\*\\*=?|=>|&&=?|\\|\\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\.{3}|\\?\\?=?|\\?\\.?|[~:]/",
+              "punctuation": "r:/[{}[\\];(),.:]/"
+            }
+          },
+          "cdata": "r:/^<!\\[CDATA\\[|\\]\\]>(?:(?=\\r$)|$)/i"
+        }
+      },
+      "language-javascript": {
+        "pattern": "r:/[\\s\\S]+/",
+        "inside": {
+          "comment": [
+            {
+              "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+              "lookbehind": true,
+              "greedy": true
+            },
+            {
+              "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+              "lookbehind": true,
+              "greedy": true
+            }
+          ],
+          "hashbang": {
+            "pattern": "r:/^#![^\\r\\n]*/",
+            "greedy": true,
+            "alias": "s:comment"
+          },
+          "template-string": {
+            "pattern": "r:/`(?:\\\\[\\s\\S]|\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}|(?!\\$\\{)[^\\\\`])*`/",
+            "greedy": true,
+            "inside": {
+              "template-punctuation": {
+                "pattern": "r:/^`|`(?:(?=\\r$)|$)/",
+                "alias": "s:string"
+              },
+              "interpolation": {
+                "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+                "lookbehind": true,
+                "inside": {
+                  "interpolation-punctuation": {
+                    "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+                    "alias": "s:punctuation"
+                  },
+                  "rest": "s:[Circular ~.script.inside.language-javascript.inside]"
+                }
+              },
+              "string": "r:/[\\s\\S]+/"
+            }
+          },
+          "string-property": {
+            "pattern": "r:/((?:^|[,{])[ \\t]*)([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\2)[^\\\\\\r\\n])*\\2(?=\\s*:)/m",
+            "lookbehind": true,
+            "greedy": true,
+            "alias": "s:property"
+          },
+          "string": {
+            "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+            "greedy": true
+          },
+          "class-name": [
+            {
+              "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+              "lookbehind": true,
+              "inside": {
+                "punctuation": "r:/[.\\\\]/"
+              }
+            },
+            {
+              "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$A-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\.(?:constructor|prototype))/",
+              "lookbehind": true
+            }
+          ],
+          "regex": {
+            "pattern": "r:/((?:^|[^$\\w\\xA0-\\uFFFF.\"'\\])\\s]|\\b(?:return|yield))\\s*)\\/(?:\\[(?:[^\\]\\\\\\r\\n]|\\\\[^\\r\\n])*\\]|\\\\[^\\r\\n]|[^/\\\\\\[\\r\\n])+\\/[dgimyus]{0,7}(?=(?:\\s|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/)*(?:(?:(?=\\r$)|$)|[\\r\\n,.;:})\\]]|\\/\\/))/",
+            "lookbehind": true,
+            "greedy": true,
+            "inside": {
+              "regex-source": {
+                "pattern": "r:/^(\\/)[\\s\\S]+(?=\\/[a-z]*(?:(?=\\r$)|$))/",
+                "lookbehind": true,
+                "alias": "s:language-regex"
+              },
+              "regex-delimiter": "r:/^\\/|\\/(?:(?=\\r$)|$)/",
+              "regex-flags": "r:/^[a-z]+(?:(?=\\r$)|$)/"
+            }
+          },
+          "function-variable": {
+            "pattern": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*[=:]\\s*(?:async\\s*)?(?:\\bfunction\\b|(?:\\((?:[^()]|\\([^()]*\\))*\\)|(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)\\s*=>))/",
+            "alias": "s:function"
+          },
+          "parameter": [
+            {
+              "pattern": "r:/(function(?:\\s+(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)?\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\))/",
+              "lookbehind": true,
+              "inside": "s:[Circular ~.script.inside.language-javascript.inside]"
+            },
+            {
+              "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$a-z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*=>)/i",
+              "lookbehind": true,
+              "inside": "s:[Circular ~.script.inside.language-javascript.inside]"
+            },
+            {
+              "pattern": "r:/(\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*=>)/",
+              "lookbehind": true,
+              "inside": "s:[Circular ~.script.inside.language-javascript.inside]"
+            },
+            {
+              "pattern": "r:/((?:\\b|\\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\\w\\xA0-\\uFFFF]))(?:(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*\\s*)\\(\\s*|\\]\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*\\{)/",
+              "lookbehind": true,
+              "inside": "s:[Circular ~.script.inside.language-javascript.inside]"
+            }
+          ],
+          "constant": "r:/\\b[A-Z](?:[A-Z_]|\\dx?)*\\b/",
+          "keyword": [
+            {
+              "pattern": "r:/((?:^|\\})\\s*)catch\\b/",
+              "lookbehind": true
+            },
+            {
+              "pattern": "r:/(^|[^.]|\\.\\.\\.\\s*)\\b(?:as|assert(?=\\s*\\{)|async(?=\\s*(?:function\\b|\\(|[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\\s*(?:\\{|(?:(?=\\r$)|$)))|for|from(?=\\s*(?:['\"]|(?:(?=\\r$)|$)))|function|(?:get|set)(?=\\s*(?:[#\\[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\\b/",
+              "lookbehind": true
+            }
+          ],
+          "boolean": "r:/\\b(?:false|true)\\b/",
+          "function": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*(?:\\.\\s*(?:apply|bind|call)\\s*)?\\()/",
+          "number": {
+            "pattern": "r:/(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\.(?:\\d+(?:_\\d+)*)?)?|\\.\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])/",
+            "lookbehind": true
+          },
+          "literal-property": {
+            "pattern": "r:/((?:^|[,{])[ \\t]*)(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*:)/m",
+            "lookbehind": true,
+            "alias": "s:property"
+          },
+          "operator": "r:/--|\\+\\+|\\*\\*=?|=>|&&=?|\\|\\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\.{3}|\\?\\?=?|\\?\\.?|[~:]/",
+          "punctuation": "r:/[{}[\\];(),.:]/"
+        }
+      }
+    }
+  },
+  "cdata": {
+    "pattern": "r:/<!\\[CDATA\\[[\\s\\S]*?\\]\\]>/i",
+    "greedy": true
+  },
+  "tag": {
+    "pattern": "r:/<\\/?(?!\\d)[^\\s>\\/=$<%]+(?:\\s(?:\\s*[^\\s>\\/=]+(?:\\s*=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s'\">=]+(?=[\\s>]))|(?=[\\s/>])))+)?\\s*\\/?>/",
+    "greedy": true,
+    "inside": {
+      "tag": {
+        "pattern": "r:/^<\\/?[^\\s>\\/]+/",
+        "inside": {
+          "punctuation": "r:/^<\\/?/",
+          "namespace": "r:/^[^\\s>\\/:]+:/"
+        }
+      },
+      "special-attr": [
+        {
+          "pattern": "r:/(^|[\"'\\s])(?:style)\\s*=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s'\">=]+(?=[\\s>]))/i",
+          "lookbehind": true,
+          "inside": {
+            "attr-name": "r:/^[^\\s=]+/",
+            "attr-value": {
+              "pattern": "r:/=[\\s\\S]+/",
+              "inside": {
+                "value": {
+                  "pattern": "r:/(^=\\s*([\"']|(?![\"'])))\\S[\\s\\S]*(?=\\2(?:(?=\\r$)|$))/",
+                  "lookbehind": true,
+                  "alias": [
+                    "s:css",
+                    "s:language-css"
+                  ],
+                  "inside": {
+                    "comment": "r:/\\/\\*[\\s\\S]*?\\*\\//",
+                    "atrule": {
+                      "pattern": "r:/@[\\w-](?:[^;{\\s]|\\s+(?![\\s{]))*(?:;|(?=\\s*\\{))/",
+                      "inside": {
+                        "rule": "r:/^@[\\w-]+/",
+                        "selector-function-argument": {
+                          "pattern": "r:/(\\bselector\\s*\\(\\s*(?![\\s)]))(?:[^()\\s]|\\s+(?![\\s)])|\\((?:[^()]|\\([^()]*\\))*\\))+(?=\\s*\\))/",
+                          "lookbehind": true,
+                          "alias": "s:selector"
+                        },
+                        "keyword": {
+                          "pattern": "r:/(^|[^\\w-])(?:and|not|only|or)(?![\\w-])/",
+                          "lookbehind": true
+                        },
+                        "rest": "s:[Circular ~.tag.inside.special-attr.0.inside.attr-value.inside.value.inside]"
+                      }
+                    },
+                    "url": {
+                      "pattern": "r:/\\burl\\((?:(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')|(?:[^\\\\\\r\\n()\"']|\\\\[\\s\\S])*)\\)/i",
+                      "greedy": true,
+                      "inside": {
+                        "function": "r:/^url/i",
+                        "punctuation": "r:/^\\(|\\)(?:(?=\\r$)|$)/",
+                        "string": {
+                          "pattern": "r:/^(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')(?:(?=\\r$)|$)/",
+                          "alias": "s:url"
+                        }
+                      }
+                    },
+                    "selector": {
+                      "pattern": "r:/(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*'))*(?=\\s*\\{)/",
+                      "lookbehind": true
+                    },
+                    "string": {
+                      "pattern": "r:/(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')/",
+                      "greedy": true
+                    },
+                    "property": {
+                      "pattern": "r:/(^|[^-\\w\\xA0-\\uFFFF])(?!\\s)[-_a-z\\xA0-\\uFFFF](?:(?!\\s)[-\\w\\xA0-\\uFFFF])*(?=\\s*:)/i",
+                      "lookbehind": true
+                    },
+                    "important": "r:/!important\\b/i",
+                    "function": {
+                      "pattern": "r:/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
+                      "lookbehind": true
+                    },
+                    "punctuation": "r:/[(){};:,]/"
+                  }
+                },
+                "punctuation": [
+                  {
+                    "pattern": "r:/^=/",
+                    "alias": "s:attr-equals"
+                  },
+                  "r:/\"|'/"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "pattern": "r:/(^|[\"'\\s])(?:on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel))\\s*=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s'\">=]+(?=[\\s>]))/i",
+          "lookbehind": true,
+          "inside": {
+            "attr-name": "r:/^[^\\s=]+/",
+            "attr-value": {
+              "pattern": "r:/=[\\s\\S]+/",
+              "inside": {
+                "value": {
+                  "pattern": "r:/(^=\\s*([\"']|(?![\"'])))\\S[\\s\\S]*(?=\\2(?:(?=\\r$)|$))/",
+                  "lookbehind": true,
+                  "alias": [
+                    "s:javascript",
+                    "s:language-javascript"
+                  ],
+                  "inside": {
+                    "comment": [
+                      {
+                        "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                        "lookbehind": true,
+                        "greedy": true
+                      },
+                      {
+                        "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+                        "lookbehind": true,
+                        "greedy": true
+                      }
+                    ],
+                    "hashbang": {
+                      "pattern": "r:/^#![^\\r\\n]*/",
+                      "greedy": true,
+                      "alias": "s:comment"
+                    },
+                    "template-string": {
+                      "pattern": "r:/`(?:\\\\[\\s\\S]|\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}|(?!\\$\\{)[^\\\\`])*`/",
+                      "greedy": true,
+                      "inside": {
+                        "template-punctuation": {
+                          "pattern": "r:/^`|`(?:(?=\\r$)|$)/",
+                          "alias": "s:string"
+                        },
+                        "interpolation": {
+                          "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+                          "lookbehind": true,
+                          "inside": {
+                            "interpolation-punctuation": {
+                              "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+                              "alias": "s:punctuation"
+                            },
+                            "rest": "s:[Circular ~.tag.inside.special-attr.1.inside.attr-value.inside.value.inside]"
+                          }
+                        },
+                        "string": "r:/[\\s\\S]+/"
+                      }
+                    },
+                    "string-property": {
+                      "pattern": "r:/((?:^|[,{])[ \\t]*)([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\2)[^\\\\\\r\\n])*\\2(?=\\s*:)/m",
+                      "lookbehind": true,
+                      "greedy": true,
+                      "alias": "s:property"
+                    },
+                    "string": {
+                      "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+                      "greedy": true
+                    },
+                    "class-name": [
+                      {
+                        "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+                        "lookbehind": true,
+                        "inside": {
+                          "punctuation": "r:/[.\\\\]/"
+                        }
+                      },
+                      {
+                        "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$A-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\.(?:constructor|prototype))/",
+                        "lookbehind": true
+                      }
+                    ],
+                    "regex": {
+                      "pattern": "r:/((?:^|[^$\\w\\xA0-\\uFFFF.\"'\\])\\s]|\\b(?:return|yield))\\s*)\\/(?:\\[(?:[^\\]\\\\\\r\\n]|\\\\[^\\r\\n])*\\]|\\\\[^\\r\\n]|[^/\\\\\\[\\r\\n])+\\/[dgimyus]{0,7}(?=(?:\\s|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/)*(?:(?:(?=\\r$)|$)|[\\r\\n,.;:})\\]]|\\/\\/))/",
+                      "lookbehind": true,
+                      "greedy": true,
+                      "inside": {
+                        "regex-source": {
+                          "pattern": "r:/^(\\/)[\\s\\S]+(?=\\/[a-z]*(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "alias": "s:language-regex"
+                        },
+                        "regex-delimiter": "r:/^\\/|\\/(?:(?=\\r$)|$)/",
+                        "regex-flags": "r:/^[a-z]+(?:(?=\\r$)|$)/"
+                      }
+                    },
+                    "function-variable": {
+                      "pattern": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*[=:]\\s*(?:async\\s*)?(?:\\bfunction\\b|(?:\\((?:[^()]|\\([^()]*\\))*\\)|(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)\\s*=>))/",
+                      "alias": "s:function"
+                    },
+                    "parameter": [
+                      {
+                        "pattern": "r:/(function(?:\\s+(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)?\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\))/",
+                        "lookbehind": true,
+                        "inside": "s:[Circular ~.tag.inside.special-attr.1.inside.attr-value.inside.value.inside]"
+                      },
+                      {
+                        "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$a-z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*=>)/i",
+                        "lookbehind": true,
+                        "inside": "s:[Circular ~.tag.inside.special-attr.1.inside.attr-value.inside.value.inside]"
+                      },
+                      {
+                        "pattern": "r:/(\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*=>)/",
+                        "lookbehind": true,
+                        "inside": "s:[Circular ~.tag.inside.special-attr.1.inside.attr-value.inside.value.inside]"
+                      },
+                      {
+                        "pattern": "r:/((?:\\b|\\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\\w\\xA0-\\uFFFF]))(?:(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*\\s*)\\(\\s*|\\]\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*\\{)/",
+                        "lookbehind": true,
+                        "inside": "s:[Circular ~.tag.inside.special-attr.1.inside.attr-value.inside.value.inside]"
+                      }
+                    ],
+                    "constant": "r:/\\b[A-Z](?:[A-Z_]|\\dx?)*\\b/",
+                    "keyword": [
+                      {
+                        "pattern": "r:/((?:^|\\})\\s*)catch\\b/",
+                        "lookbehind": true
+                      },
+                      {
+                        "pattern": "r:/(^|[^.]|\\.\\.\\.\\s*)\\b(?:as|assert(?=\\s*\\{)|async(?=\\s*(?:function\\b|\\(|[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\\s*(?:\\{|(?:(?=\\r$)|$)))|for|from(?=\\s*(?:['\"]|(?:(?=\\r$)|$)))|function|(?:get|set)(?=\\s*(?:[#\\[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\\b/",
+                        "lookbehind": true
+                      }
+                    ],
+                    "boolean": "r:/\\b(?:false|true)\\b/",
+                    "function": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*(?:\\.\\s*(?:apply|bind|call)\\s*)?\\()/",
+                    "number": {
+                      "pattern": "r:/(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\.(?:\\d+(?:_\\d+)*)?)?|\\.\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])/",
+                      "lookbehind": true
+                    },
+                    "literal-property": {
+                      "pattern": "r:/((?:^|[,{])[ \\t]*)(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*:)/m",
+                      "lookbehind": true,
+                      "alias": "s:property"
+                    },
+                    "operator": "r:/--|\\+\\+|\\*\\*=?|=>|&&=?|\\|\\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\.{3}|\\?\\?=?|\\?\\.?|[~:]/",
+                    "punctuation": "r:/[{}[\\];(),.:]/"
+                  }
+                },
+                "punctuation": [
+                  {
+                    "pattern": "r:/^=/",
+                    "alias": "s:attr-equals"
+                  },
+                  "r:/\"|'/"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "attr-value": {
+        "pattern": "r:/=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s'\">=]+)/",
+        "inside": {
+          "punctuation": [
+            {
+              "pattern": "r:/^=/",
+              "alias": "s:attr-equals"
+            },
+            "r:/\"|'/"
+          ],
+          "entity": [
+            {
+              "pattern": "r:/&[\\da-z]{1,8};/i",
+              "alias": "s:named-entity"
+            },
+            "r:/&#x?[\\da-f]{1,8};/i"
+          ]
+        }
+      },
+      "punctuation": "r:/\\/?>/",
+      "attr-name": {
+        "pattern": "r:/[^\\s>\\/]+/",
+        "inside": {
+          "namespace": "r:/^[^\\s>\\/:]+:/"
+        }
+      }
+    }
+  },
+  "entity": [
+    {
+      "pattern": "r:/&[\\da-z]{1,8};/i",
+      "alias": "s:named-entity"
+    },
+    "r:/&#x?[\\da-f]{1,8};/i"
+  ]
+}

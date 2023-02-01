@@ -1,0 +1,24 @@
+{
+  "comment": "r:/\\(\\*(?:\\(\\*(?:[^*]|\\*(?!\\)))*\\*\\)|(?!\\(\\*)[\\s\\S])*?\\*\\)/",
+  "string": {
+    "pattern": "r:/\"(?:\\\\[^\\r\\n]|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "keyword": "r:/\\b(?:Abs|AbsArg|Accuracy|Block|Do|For|Function|If|Manipulate|Module|Nest|NestList|None|Return|Switch|Table|Which|While)\\b/",
+  "context": {
+    "pattern": "r:/\\b\\w+`+\\w*/",
+    "alias": "s:class-name"
+  },
+  "blank": {
+    "pattern": "r:/\\b\\w+_\\b/",
+    "alias": "s:regex"
+  },
+  "global-variable": {
+    "pattern": "r:/\\$\\w+/",
+    "alias": "s:variable"
+  },
+  "boolean": "r:/\\b(?:False|True)\\b/",
+  "number": "r:/(?:\\b(?=\\d)|\\B(?=\\.))(?:0[bo])?(?:(?:\\d|0x[\\da-f])[\\da-f]*(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?j?\\b/i",
+  "operator": "r:/\\/\\.|;|=\\.|\\^=|\\^:=|:=|<<|>>|<\\||\\|>|:>|\\|->|->|<-|@@@|@@|@|\\/@|=!=|===|==|=|\\+|-|\\^|\\[\\/-+%=\\]=?|!=|\\*\\*?=?|\\/\\/?=?|<[<=>]?|>[=>]?|[&|^~]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

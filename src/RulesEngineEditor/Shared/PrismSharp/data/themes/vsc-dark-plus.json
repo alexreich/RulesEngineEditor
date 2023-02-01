@@ -1,0 +1,674 @@
+{
+  "styles": [
+    {
+      "type": "~",
+      "language": null,
+      "color": {
+        "R": 212,
+        "G": 212,
+        "B": 212,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": {
+        "R": 30,
+        "G": 30,
+        "B": 30,
+        "A": 1.0
+      },
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "javascript",
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "jsx",
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "typescript",
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "tsx",
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "css",
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "html",
+      "color": {
+        "R": 212,
+        "G": 212,
+        "B": 212,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "comment",
+      "language": null,
+      "color": {
+        "R": 106,
+        "G": 153,
+        "B": 85,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "prolog",
+      "language": null,
+      "color": {
+        "R": 106,
+        "G": 153,
+        "B": 85,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "punctuation",
+      "language": null,
+      "color": {
+        "R": 212,
+        "G": 212,
+        "B": 212,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "property",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "tag",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "boolean",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "number",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "constant",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "symbol",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "inserted",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "unit",
+      "language": null,
+      "color": {
+        "R": 181,
+        "G": 206,
+        "B": 168,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "selector",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "attr-name",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "string",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "char",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "builtin",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "deleted",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "string",
+      "language": "css",
+      "color": null,
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "operator",
+      "language": null,
+      "color": {
+        "R": 212,
+        "G": 212,
+        "B": 212,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "entity",
+      "language": null,
+      "color": {
+        "R": 212,
+        "G": 212,
+        "B": 212,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "atrule",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "keyword",
+      "language": null,
+      "color": {
+        "R": 86,
+        "G": 156,
+        "B": 214,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "function",
+      "language": null,
+      "color": {
+        "R": 220,
+        "G": 220,
+        "B": 170,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "regex",
+      "language": null,
+      "color": {
+        "R": 209,
+        "G": 105,
+        "B": 105,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "important",
+      "language": null,
+      "color": {
+        "R": 86,
+        "G": 156,
+        "B": 214,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "italic",
+      "language": null,
+      "color": null,
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": true,
+      "underline": null
+    },
+    {
+      "type": "class-name",
+      "language": null,
+      "color": {
+        "R": 78,
+        "G": 201,
+        "B": 176,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "maybe-class-name",
+      "language": null,
+      "color": {
+        "R": 78,
+        "G": 201,
+        "B": 176,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "console",
+      "language": null,
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "parameter",
+      "language": null,
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "interpolation",
+      "language": null,
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "variable",
+      "language": null,
+      "color": {
+        "R": 156,
+        "G": 220,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "escape",
+      "language": null,
+      "color": {
+        "R": 215,
+        "G": 186,
+        "B": 125,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "cdata",
+      "language": null,
+      "color": {
+        "R": 128,
+        "G": 128,
+        "B": 128,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "attr-value",
+      "language": null,
+      "color": {
+        "R": 206,
+        "G": 145,
+        "B": 120,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "namespace",
+      "language": null,
+      "color": {
+        "R": 78,
+        "G": 201,
+        "B": 176,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "anchor",
+      "language": "regex",
+      "color": {
+        "R": 220,
+        "G": 220,
+        "B": 170,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "punctuation",
+      "language": "html",
+      "color": {
+        "R": 128,
+        "G": 128,
+        "B": 128,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    }
+  ]
+}

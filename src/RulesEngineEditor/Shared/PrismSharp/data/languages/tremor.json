@@ -1,0 +1,50 @@
+{
+  "comment": {
+    "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|(?:--|\\/\\/|#)[^\\r\\n]*)/",
+    "lookbehind": true
+  },
+  "interpolated-string": {
+    "pattern": "r:/(^|[^\\\\])(?:\"\"\"(?:[^\"\\\\#]|\\\\[\\s\\S]|\"(?!\"\")|#(?!\\{)|#\\{(?:[^\"{}]|\\{[^{}]*\\}|\"(?:[^\"\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\")*\\})*\"\"\"|\"(?:[^\"\\\\\\r\\n#]|\\\\(?:\\r\\n|[\\s\\S])|#(?!\\{)|#\\{(?:[^\"{}]|\\{[^{}]*\\}|\"(?:[^\"\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\")*\\})*\")/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/#\\{(?:[^\"{}]|\\{[^{}]*\\}|\"(?:[^\"\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\")*\\}/",
+        "inside": {
+          "punctuation": "r:/^#\\{|\\}(?:(?=\\r$)|$)/",
+          "expression": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": "s:[Circular ~]"
+          }
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "extractor": {
+    "pattern": "r:/\\b[a-z_]\\w*\\|(?:[^\\r\\n\\\\|]|\\\\(?:\\r\\n|[\\s\\S]))*\\|/i",
+    "greedy": true,
+    "inside": {
+      "regex": {
+        "pattern": "r:/(^re)\\|[\\s\\S]+/",
+        "lookbehind": true
+      },
+      "function": "r:/^\\w+/",
+      "value": "r:/\\|[\\s\\S]+/"
+    }
+  },
+  "identifier": {
+    "pattern": "r:/`[^`]*`/",
+    "greedy": true
+  },
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*(?:::\\s*<|\\())\\b/",
+  "keyword": "r:/\\b(?:args|as|by|case|config|connect|connector|const|copy|create|default|define|deploy|drop|each|emit|end|erase|event|flow|fn|for|from|group|having|insert|into|intrinsic|let|links|match|merge|mod|move|of|operator|patch|pipeline|recur|script|select|set|sliding|state|stream|to|tumbling|update|use|when|where|window|with)\\b/",
+  "boolean": "r:/\\b(?:false|null|true)\\b/i",
+  "number": "r:/\\b(?:0b[01_]*|0x[0-9a-fA-F_]*|\\d[\\d_]*(?:\\.\\d[\\d_]*)?(?:[Ee][+-]?[\\d_]+)?)\\b/",
+  "pattern-punctuation": {
+    "pattern": "r:/%(?=[({[])/",
+    "alias": "s:punctuation"
+  },
+  "operator": "r:/[-+*\\/%~!^]=?|=[=>]?|&[&=]?|\\|[|=]?|<<?=?|>>?>?=?|(?:absent|and|not|or|present|xor)\\b/",
+  "punctuation": "r:/::|[;\\[\\]()\\{\\},.:]/"
+}

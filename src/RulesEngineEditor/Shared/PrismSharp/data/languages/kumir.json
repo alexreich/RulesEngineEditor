@@ -1,0 +1,56 @@
+{
+  "comment": {
+    "pattern": "r:/\\|[^\\r\\n]*/"
+  },
+  "prolog": {
+    "pattern": "r:/#[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"[^\\n\\r\"]*\"|'[^\\n\\r']*'/",
+    "greedy": true
+  },
+  "boolean": {
+    "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])(?:да|нет)(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+    "lookbehind": true
+  },
+  "operator-word": {
+    "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])(?:и|или|не)(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "system-variable": {
+    "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])знач(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "type": [
+    {
+      "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])(?:вещ|лит|лог|сим|цел)(?:\\x20*таб)?(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "alias": "s:builtin"
+    },
+    {
+      "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])(?:компл|сканкод|файл|цвет)(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "alias": "s:important"
+    }
+  ],
+  "keyword": {
+    "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])(?:алг|арг(?:\\x20*рез)?|ввод|ВКЛЮЧИТЬ|вс[её]|выбор|вывод|выход|дано|для|до|дс|если|иначе|исп|использовать|кон(?:(?:\\x20+|_)исп)?|кц(?:(?:\\x20+|_)при)?|надо|нач|нс|нц|от|пауза|пока|при|раза?|рез|стоп|таб|то|утв|шаг)(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+    "lookbehind": true
+  },
+  "name": {
+    "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])[^\\d\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e][^\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]*(?:\\x20+[^\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]+)*(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/",
+    "lookbehind": true
+  },
+  "number": {
+    "pattern": "r:/(^|[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e])(?:\\B\\$[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?)(?=[\\s\\x00-\\x1f\\x22-\\x2f\\x3a-\\x3f\\x5b-\\x5e\\x60\\x7b-\\x7e]|(?:(?=\\r$)|$))/i",
+    "lookbehind": true
+  },
+  "punctuation": "r:/:=|[(),:;\\[\\]]/",
+  "operator-char": {
+    "pattern": "r:/\\*\\*?|<[=>]?|>=?|[-+/=]/",
+    "alias": "s:operator"
+  }
+}

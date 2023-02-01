@@ -1,0 +1,33 @@
+{
+  "comment": "r:/^\\{#[\\s\\S]*?#\\}(?:(?=\\r$)|$)/",
+  "tag": {
+    "pattern": "r:/(^\\{%[+-]?\\s*)\\w+/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "delimiter": {
+    "pattern": "r:/^\\{[{%][+-]?|[+-]?[}%]\\}(?:(?=\\r$)|$)/",
+    "alias": "s:punctuation"
+  },
+  "string": {
+    "pattern": "r:/(\"|')(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "filter": {
+    "pattern": "r:/(\\|)\\w+/",
+    "lookbehind": true,
+    "alias": "s:function"
+  },
+  "test": {
+    "pattern": "r:/(\\bis\\s+(?:not\\s+)?)(?!not\\b)\\w+/",
+    "lookbehind": true,
+    "alias": "s:function"
+  },
+  "function": "r:/\\b[a-z_]\\w+(?=\\s*\\()/i",
+  "keyword": "r:/\\b(?:and|as|by|else|for|if|import|in|is|loop|not|or|recursive|with|without)\\b/",
+  "operator": "r:/[-+%=]=?|!=|\\*\\*?=?|\\/\\/?=?|<[<=>]?|>[=>]?|[&|^~]/",
+  "number": "r:/\\b\\d+(?:\\.\\d+)?\\b/",
+  "boolean": "r:/[Ff]alse|[Nn]one|[Tt]rue/",
+  "variable": "r:/\\b\\w+\\b/",
+  "punctuation": "r:/[{}[\\](),.:;]/"
+}

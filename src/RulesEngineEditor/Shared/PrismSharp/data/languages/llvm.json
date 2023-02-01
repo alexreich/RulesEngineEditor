@@ -1,0 +1,17 @@
+{
+  "comment": "r:/;[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/\"[^\"]*\"/",
+    "greedy": true
+  },
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "variable": "r:/[%@!#](?:(?!\\d)(?:[-$.\\w]|\\\\[a-f\\d]{2})+|\\d+)/i",
+  "label": "r:/(?!\\d)(?:[-$.\\w]|\\\\[a-f\\d]{2})+:/i",
+  "type": {
+    "pattern": "r:/\\b(?:double|float|fp128|half|i[1-9]\\d*|label|metadata|ppc_fp128|token|void|x86_fp80|x86_mmx)\\b/",
+    "alias": "s:class-name"
+  },
+  "keyword": "r:/\\b[a-z_][a-z_0-9]*\\b/",
+  "number": "r:/[+-]?\\b\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b|\\b0x[\\dA-Fa-f]+\\b|\\b0xK[\\dA-Fa-f]{20}\\b|\\b0x[ML][\\dA-Fa-f]{32}\\b|\\b0xH[\\dA-Fa-f]{4}\\b/",
+  "punctuation": "r:/[{}[\\];(),.!*=<>]/"
+}

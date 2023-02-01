@@ -1,0 +1,429 @@
+{
+  "styles": [
+    {
+      "type": "~",
+      "language": null,
+      "color": {
+        "R": 118,
+        "G": 217,
+        "B": 230,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": {
+        "R": 42,
+        "G": 42,
+        "B": 42,
+        "A": 1.0
+      },
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "~",
+      "language": "markup",
+      "color": {
+        "R": 249,
+        "G": 249,
+        "B": 249,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "namespace",
+      "language": null,
+      "color": null,
+      "opacity": 0.7,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "comment",
+      "language": null,
+      "color": {
+        "R": 111,
+        "G": 112,
+        "B": 94,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "prolog",
+      "language": null,
+      "color": {
+        "R": 111,
+        "G": 112,
+        "B": 94,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "doctype",
+      "language": null,
+      "color": {
+        "R": 111,
+        "G": 112,
+        "B": 94,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "cdata",
+      "language": null,
+      "color": {
+        "R": 111,
+        "G": 112,
+        "B": 94,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "operator",
+      "language": null,
+      "color": {
+        "R": 167,
+        "G": 122,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "boolean",
+      "language": null,
+      "color": {
+        "R": 167,
+        "G": 122,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "number",
+      "language": null,
+      "color": {
+        "R": 167,
+        "G": 122,
+        "B": 254,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "attr-name",
+      "language": null,
+      "color": {
+        "R": 230,
+        "G": 208,
+        "B": 108,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "string",
+      "language": null,
+      "color": {
+        "R": 230,
+        "G": 208,
+        "B": 108,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "entity",
+      "language": null,
+      "color": {
+        "R": 230,
+        "G": 208,
+        "B": 108,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "url",
+      "language": null,
+      "color": {
+        "R": 230,
+        "G": 208,
+        "B": 108,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "string",
+      "language": "css",
+      "color": {
+        "R": 230,
+        "G": 208,
+        "B": 108,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "selector",
+      "language": null,
+      "color": {
+        "R": 166,
+        "G": 226,
+        "B": 45,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "inserted",
+      "language": null,
+      "color": {
+        "R": 166,
+        "G": 226,
+        "B": 45,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "atrule",
+      "language": null,
+      "color": {
+        "R": 239,
+        "G": 59,
+        "B": 125,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "attr-value",
+      "language": null,
+      "color": {
+        "R": 239,
+        "G": 59,
+        "B": 125,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "keyword",
+      "language": null,
+      "color": {
+        "R": 239,
+        "G": 59,
+        "B": 125,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "important",
+      "language": null,
+      "color": {
+        "R": 239,
+        "G": 59,
+        "B": 125,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": true,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "deleted",
+      "language": null,
+      "color": {
+        "R": 239,
+        "G": 59,
+        "B": 125,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "regex",
+      "language": null,
+      "color": {
+        "R": 118,
+        "G": 217,
+        "B": 230,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "statement",
+      "language": null,
+      "color": {
+        "R": 118,
+        "G": 217,
+        "B": 230,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": true,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "placeholder",
+      "language": null,
+      "color": {
+        "R": 255,
+        "G": 255,
+        "B": 255,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "variable",
+      "language": null,
+      "color": {
+        "R": 255,
+        "G": 255,
+        "B": 255,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "bold",
+      "language": null,
+      "color": null,
+      "opacity": null,
+      "background": null,
+      "bold": true,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "punctuation",
+      "language": null,
+      "color": {
+        "R": 190,
+        "G": 190,
+        "B": 197,
+        "A": 1.0
+      },
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": null,
+      "underline": null
+    },
+    {
+      "type": "italic",
+      "language": null,
+      "color": null,
+      "opacity": null,
+      "background": null,
+      "bold": null,
+      "italic": true,
+      "underline": null
+    }
+  ]
+}

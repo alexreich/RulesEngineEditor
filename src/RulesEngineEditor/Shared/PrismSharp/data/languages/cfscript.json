@@ -1,0 +1,44 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "inside": {
+        "annotation": {
+          "pattern": "r:/(?:^|[^.])@[\\w\\.]+/",
+          "alias": "s:punctuation"
+        }
+      }
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "function-variable": {
+    "pattern": "r:/[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*[=:]\\s*(?:\\bfunction\\b|(?:\\((?:[^()]|\\([^()]*\\))*\\)|(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)\\s*=>))/",
+    "alias": "s:function"
+  },
+  "keyword": "r:/\\b(?:abstract|break|catch|component|continue|default|do|else|extends|final|finally|for|function|if|in|include|package|private|property|public|remote|required|rethrow|return|static|switch|throw|try|var|while|xml)\\b(?!\\s*=)/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "operator": [
+    "r:/\\+\\+|--|&&|\\|\\||::|=>|[!=]==|<=?|>=?|[-+*/%&|^!=<>]=?|\\?(?:\\.|:)?|[?:]/",
+    "r:/\\b(?:and|contains|eq|equal|eqv|gt|gte|imp|is|lt|lte|mod|not|or|xor)\\b/"
+  ],
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "scope": {
+    "pattern": "r:/\\b(?:application|arguments|cgi|client|cookie|local|session|super|this|variables)\\b/",
+    "alias": "s:global"
+  },
+  "type": {
+    "pattern": "r:/\\b(?:any|array|binary|boolean|date|guid|numeric|query|string|struct|uuid|void|xml)\\b/",
+    "alias": "s:builtin"
+  }
+}

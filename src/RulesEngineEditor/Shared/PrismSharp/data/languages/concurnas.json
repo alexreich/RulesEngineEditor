@@ -1,0 +1,56 @@
+{
+  "comment": {
+    "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))|\\/\\/[^\\r\\n]*)/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "regex-literal": {
+    "pattern": "r:/\\br(\"|')(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+        "lookbehind": true,
+        "inside": "s:[Circular ~]"
+      },
+      "regex": "r:/[\\s\\S]+/"
+    }
+  },
+  "string-literal": {
+    "pattern": "r:/(?:\\B|\\bs)(\"|')(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+        "lookbehind": true,
+        "inside": "s:[Circular ~]"
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "langext": {
+    "pattern": "r:/\\b\\w+\\s*\\|\\|[\\s\\S]+?\\|\\|/",
+    "greedy": true,
+    "inside": {
+      "class-name": "r:/^\\w+/",
+      "string": {
+        "pattern": "r:/(^\\s*\\|\\|)[\\s\\S]+(?=\\|\\|(?:(?=\\r$)|$))/",
+        "lookbehind": true
+      },
+      "punctuation": "r:/\\|\\|/"
+    }
+  },
+  "function": {
+    "pattern": "r:/((?:^|\\s)def[ \\t]+)[a-zA-Z_]\\w*(?=\\s*\\()/",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": "r:/\\b0b[01][01_]*L?\\b|\\b0x(?:[\\da-f_]*\\.)?[\\da-f_p+-]+\\b|(?:\\b\\d[\\d_]*(?:\\.[\\d_]*)?|\\B\\.\\d[\\d_]*)(?:e[+-]?\\d[\\d_]*)?[dfls]?/i",
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "operator": "r:/<==|>==|=>|->|<-|<>|&==|&<>|\\?:?|\\.\\?|\\+\\+|--|[-+*/=<>]=?|[!^~]|\\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\\b=?/",
+  "annotation": {
+    "pattern": "r:/@(?:\\w+:)?(?:\\w+|\\[[^\\]]+\\])?/",
+    "alias": "s:builtin"
+  }
+}

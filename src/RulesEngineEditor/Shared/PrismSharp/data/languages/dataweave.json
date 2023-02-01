@@ -1,0 +1,38 @@
+{
+  "url": "r:/\\b[A-Za-z]+:\\/\\/[\\w/:.?=&-]+|\\burn:[\\w:.?=&-]+/",
+  "property": {
+    "pattern": "r:/(?:\\b\\w+#)?(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|\\b\\w+)(?=\\s*[:@])/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/([\"'`])(?:\\\\[\\s\\S]|(?!\\1)[^\\\\])*\\1/",
+    "greedy": true
+  },
+  "mime-type": "r:/\\b(?:application|audio|image|multipart|text|video)\\/[\\w+-]+/",
+  "date": {
+    "pattern": "r:/\\|[\\w:+-]+\\|/",
+    "greedy": true
+  },
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "regex": {
+    "pattern": "r:/\\/(?:[^\\\\\\/\\r\\n]|\\\\[^\\r\\n])+\\//",
+    "greedy": true
+  },
+  "keyword": "r:/\\b(?:and|as|at|case|do|else|fun|if|input|is|match|not|ns|null|or|output|type|unless|update|using|var)\\b/",
+  "function": "r:/\\b[A-Z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/-?\\b\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?\\b/i",
+  "punctuation": "r:/[{}[\\];(),.:@]/",
+  "operator": "r:/<<|>>|->|[<>~=]=?|!=|--?-?|\\+\\+?|!|\\?/",
+  "boolean": "r:/\\b(?:false|true)\\b/"
+}

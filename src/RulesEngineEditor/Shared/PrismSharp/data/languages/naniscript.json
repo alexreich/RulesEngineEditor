@@ -1,0 +1,126 @@
+{
+  "comment": {
+    "pattern": "r:/^([\\t ]*);[^\\r\\n]*/m",
+    "lookbehind": true
+  },
+  "define": {
+    "pattern": "r:/^>[^\\r\\n]+/m",
+    "alias": "s:tag",
+    "inside": {
+      "value": {
+        "pattern": "r:/(^>\\w+[\\t ]+)(?!\\s)[^{}\\r\\n]+/",
+        "lookbehind": true,
+        "alias": "s:operator"
+      },
+      "key": {
+        "pattern": "r:/(^>)\\w+/",
+        "lookbehind": true
+      }
+    }
+  },
+  "label": {
+    "pattern": "r:/^([\\t ]*)#[\\t ]*\\w+[\\t ]*(?:(?=\\r$)|$)/m",
+    "lookbehind": true,
+    "alias": "s:regex"
+  },
+  "command": {
+    "pattern": "r:/^([\\t ]*)@\\w+(?=[\\t ]|(?:(?=\\r$)|$))[^\\r\\n]*/m",
+    "lookbehind": true,
+    "alias": "s:function",
+    "inside": {
+      "command-name": "r:/^@\\w+/",
+      "expression": {
+        "pattern": "r:/\\{[^\\r\\n\\[\\]{}]*\\}/",
+        "greedy": true,
+        "alias": "s:selector"
+      },
+      "command-params": {
+        "pattern": "r:/\\s*\\S[\\s\\S]*/",
+        "inside": {
+          "quoted-string": {
+            "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+            "alias": "s:operator"
+          },
+          "command-param-id": {
+            "pattern": "r:/(\\s)\\w+:/",
+            "lookbehind": true,
+            "alias": "s:property"
+          },
+          "command-param-value": [
+            {
+              "pattern": "r:/\\{[^\\r\\n\\[\\]{}]*\\}/",
+              "alias": "s:selector"
+            },
+            {
+              "pattern": "r:/([\\t ])\\S+/",
+              "lookbehind": true,
+              "greedy": true,
+              "alias": "s:operator"
+            },
+            {
+              "pattern": "r:/\\S(?:[^\\r\\n]*\\S)?/",
+              "alias": "s:operator"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "generic-text": {
+    "pattern": "r:/(^[ \\t]*)[^#@>;\\s][^\\r\\n]*/m",
+    "lookbehind": true,
+    "alias": "s:punctuation",
+    "inside": {
+      "escaped-char": "r:/\\\\[{}\\[\\]\"]/",
+      "expression": {
+        "pattern": "r:/\\{[^\\r\\n\\[\\]{}]*\\}/",
+        "greedy": true,
+        "alias": "s:selector"
+      },
+      "inline-command": {
+        "pattern": "r:/\\[[\\t ]*\\w[^\\r\\n\\[\\]]*\\]/",
+        "greedy": true,
+        "alias": "s:function",
+        "inside": {
+          "command-params": {
+            "pattern": "r:/(^\\[[\\t ]*\\w+\\b)[\\s\\S]+(?=\\](?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": {
+              "quoted-string": {
+                "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                "alias": "s:operator"
+              },
+              "command-param-id": {
+                "pattern": "r:/(\\s)\\w+:/",
+                "lookbehind": true,
+                "alias": "s:property"
+              },
+              "command-param-value": [
+                {
+                  "pattern": "r:/\\{[^\\r\\n\\[\\]{}]*\\}/",
+                  "alias": "s:selector"
+                },
+                {
+                  "pattern": "r:/([\\t ])\\S+/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "alias": "s:operator"
+                },
+                {
+                  "pattern": "r:/\\S(?:[^\\r\\n]*\\S)?/",
+                  "alias": "s:operator"
+                }
+              ]
+            }
+          },
+          "command-param-name": {
+            "pattern": "r:/^(\\[[\\t ]*)\\w+/",
+            "lookbehind": true,
+            "alias": "s:name"
+          },
+          "start-stop-char": "r:/[\\[\\]]/"
+        }
+      }
+    }
+  }
+}

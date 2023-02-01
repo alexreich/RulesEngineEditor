@@ -1,0 +1,55 @@
+{
+  "comment": [
+    "r:/\\bOBTW\\s[\\s\\S]*?\\sTLDR\\b/",
+    "r:/\\bBTW[^\\r\\n]+/"
+  ],
+  "string": {
+    "pattern": "r:/\"(?::[^\\r\\n]|[^\":])*\"/",
+    "inside": {
+      "variable": "r:/:\\{[^}]+\\}/",
+      "symbol": [
+        "r:/:\\([a-f\\d]+\\)/i",
+        "r:/:\\[[^\\]]+\\]/",
+        "r:/:[)>o\":]/"
+      ]
+    },
+    "greedy": true
+  },
+  "number": "r:/(?:\\B-)?(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)/",
+  "symbol": {
+    "pattern": "r:/(^|\\s)(?:A )?(?:BUKKIT|NOOB|NUMBAR|NUMBR|TROOF|YARN)(?=\\s|,|(?:(?=\\r$)|$))/",
+    "lookbehind": true,
+    "inside": {
+      "keyword": "r:/A(?=\\s)/"
+    }
+  },
+  "label": {
+    "pattern": "r:/((?:^|\\s)(?:IM IN YR|IM OUTTA YR) )[a-zA-Z]\\w*/",
+    "lookbehind": true,
+    "alias": "s:string"
+  },
+  "function": {
+    "pattern": "r:/((?:^|\\s)(?:HOW IZ I|I IZ|IZ) )[a-zA-Z]\\w*/",
+    "lookbehind": true
+  },
+  "keyword": [
+    {
+      "pattern": "r:/(^|\\s)(?:AN|FOUND YR|GIMMEH|GTFO|HAI|HAS A|HOW IZ I|I HAS A|I IZ|IF U SAY SO|IM IN YR|IM OUTTA YR|IS NOW(?: A)?|ITZ(?: A)?|IZ|KTHX|KTHXBYE|LIEK(?: A)?|MAEK|MEBBE|MKAY|NERFIN|NO WAI|O HAI IM|O RLY\\?|OIC|OMG|OMGWTF|R|SMOOSH|SRS|TIL|UPPIN|VISIBLE|WILE|WTF\\?|YA RLY|YR)(?=\\s|,|(?:(?=\\r$)|$))/",
+      "lookbehind": true
+    },
+    "r:/'Z(?=\\s|,|(?:(?=\\r$)|$))/"
+  ],
+  "boolean": {
+    "pattern": "r:/(^|\\s)(?:FAIL|WIN)(?=\\s|,|(?:(?=\\r$)|$))/",
+    "lookbehind": true
+  },
+  "variable": {
+    "pattern": "r:/(^|\\s)IT(?=\\s|,|(?:(?=\\r$)|$))/",
+    "lookbehind": true
+  },
+  "operator": {
+    "pattern": "r:/(^|\\s)(?:NOT|BOTH SAEM|DIFFRINT|(?:ALL|ANY|BIGGR|BOTH|DIFF|EITHER|MOD|PRODUKT|QUOSHUNT|SMALLR|SUM|WON) OF)(?=\\s|,|(?:(?=\\r$)|$))/",
+    "lookbehind": true
+  },
+  "punctuation": "r:/\\.{3}|…|,|!/"
+}

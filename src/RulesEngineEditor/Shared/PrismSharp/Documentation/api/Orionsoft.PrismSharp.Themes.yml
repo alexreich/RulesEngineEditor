@@ -1,0 +1,49 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Themes
+  commentId: N:Orionsoft.PrismSharp.Themes
+  id: Orionsoft.PrismSharp.Themes
+  children:
+  - Orionsoft.PrismSharp.Themes.RgbaColor
+  - Orionsoft.PrismSharp.Themes.Theme
+  - Orionsoft.PrismSharp.Themes.ThemeNames
+  - Orionsoft.PrismSharp.Themes.ThemeStyle
+  langs:
+  - csharp
+  - vb
+  name: Orionsoft.PrismSharp.Themes
+  nameWithType: Orionsoft.PrismSharp.Themes
+  fullName: Orionsoft.PrismSharp.Themes
+  type: Namespace
+  assemblies:
+  - PrismSharp
+references:
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor
+  commentId: T:Orionsoft.PrismSharp.Themes.RgbaColor
+  parent: Orionsoft.PrismSharp.Themes
+  name: RgbaColor
+  nameWithType: RgbaColor
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor
+- uid: Orionsoft.PrismSharp.Themes.Theme
+  commentId: T:Orionsoft.PrismSharp.Themes.Theme
+  parent: Orionsoft.PrismSharp.Themes
+  name: Theme
+  nameWithType: Theme
+  fullName: Orionsoft.PrismSharp.Themes.Theme
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeNames
+  parent: Orionsoft.PrismSharp.Themes
+  name: ThemeNames
+  nameWithType: ThemeNames
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeStyle
+  parent: Orionsoft.PrismSharp.Themes
+  name: ThemeStyle
+  nameWithType: ThemeStyle
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+- uid: Orionsoft.PrismSharp.Themes
+  commentId: N:Orionsoft.PrismSharp.Themes
+  name: Orionsoft.PrismSharp.Themes
+  nameWithType: Orionsoft.PrismSharp.Themes
+  fullName: Orionsoft.PrismSharp.Themes

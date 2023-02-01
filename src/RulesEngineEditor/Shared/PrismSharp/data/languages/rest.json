@@ -1,0 +1,190 @@
+{
+  "table": [
+    {
+      "pattern": "r:/(^[\\t ]*)(?:\\+[=-]+)+\\+(?:\\r?\\n|\\r)(?:\\1[+|][^\\r\\n]+[+|](?:\\r?\\n|\\r))+\\1(?:\\+[=-]+)+\\+/m",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/\\||(?:\\+[=-]+)+\\+/"
+      }
+    },
+    {
+      "pattern": "r:/(^[\\t ]*)=+ [ =]*=(?:(?:\\r?\\n|\\r)\\1[^\\r\\n]+)+(?:\\r?\\n|\\r)\\1=+ [ =]*=(?=(?:\\r?\\n|\\r){2}|\\s*(?:(?=\\r$)|$))/m",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/[=-]+/"
+      }
+    }
+  ],
+  "substitution-def": {
+    "pattern": "r:/(^[\\t ]*\\.\\. )\\|(?:[^|\\s](?:[^|]*[^|\\s])?)\\| [^:]+::/m",
+    "lookbehind": true,
+    "inside": {
+      "substitution": {
+        "pattern": "r:/^\\|(?:[^|\\s]|[^|\\s][^|]*[^|\\s])\\|/",
+        "alias": "s:attr-value",
+        "inside": {
+          "punctuation": "r:/^\\||\\|(?:(?=\\r$)|$)/"
+        }
+      },
+      "directive": {
+        "pattern": "r:/( )(?! )[^:]+::/",
+        "lookbehind": true,
+        "alias": "s:function",
+        "inside": {
+          "punctuation": "r:/::(?:(?=\\r$)|$)/"
+        }
+      }
+    }
+  },
+  "link-target": [
+    {
+      "pattern": "r:/(^[\\t ]*\\.\\. )\\[[^\\]]+\\]/m",
+      "lookbehind": true,
+      "alias": "s:string",
+      "inside": {
+        "punctuation": "r:/^\\[|\\](?:(?=\\r$)|$)/"
+      }
+    },
+    {
+      "pattern": "r:/(^[\\t ]*\\.\\. )_(?:`[^`]+`|(?:[^:\\\\]|\\\\[^\\r\\n])+):/m",
+      "lookbehind": true,
+      "alias": "s:string",
+      "inside": {
+        "punctuation": "r:/^_|:(?:(?=\\r$)|$)/"
+      }
+    }
+  ],
+  "directive": {
+    "pattern": "r:/(^[\\t ]*\\.\\. )[^:]+::/m",
+    "lookbehind": true,
+    "alias": "s:function",
+    "inside": {
+      "punctuation": "r:/::(?:(?=\\r$)|$)/"
+    }
+  },
+  "comment": {
+    "pattern": "r:/(^[\\t ]*\\.\\.)(?:(?: [^\\r\\n]+)?(?:(?:\\r?\\n|\\r)[^\\r\\n]+)+| [^\\r\\n]+)(?=(?:\\r?\\n|\\r){2}|(?:(?=\\r$)|$))/m",
+    "lookbehind": true
+  },
+  "title": [
+    {
+      "pattern": "r:/^(([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~])\\2+)(?:\\r?\\n|\\r)[^\\r\\n]+(?:\\r?\\n|\\r)\\1(?:(?=\\r$)|$)/m",
+      "inside": {
+        "punctuation": "r:/^[!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~]+|[!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~]+(?:(?=\\r$)|$)/",
+        "important": "r:/[^\\r\\n]+/"
+      }
+    },
+    {
+      "pattern": "r:/(^|(?:\\r?\\n|\\r){2})[^\\r\\n]+(?:\\r?\\n|\\r)([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~])\\2+(?=\\r?\\n|\\r|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/[!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~]+(?:(?=\\r$)|$)/",
+        "important": "r:/[^\\r\\n]+/"
+      }
+    }
+  ],
+  "hr": {
+    "pattern": "r:/((?:\\r?\\n|\\r){2})([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~])\\2{3,}(?=(?:\\r?\\n|\\r){2})/",
+    "lookbehind": true,
+    "alias": "s:punctuation"
+  },
+  "field": {
+    "pattern": "r:/(^[\\t ]*):[^:\\r\\n]+:(?= )/m",
+    "lookbehind": true,
+    "alias": "s:attr-name"
+  },
+  "command-line-option": {
+    "pattern": "r:/(^[\\t ]*)(?:[+-][a-z\\d]|(?:--|\\/)[a-z\\d-]+)(?:[ =](?:[a-z][\\w-]*|<[^<>]+>))?(?:, (?:[+-][a-z\\d]|(?:--|\\/)[a-z\\d-]+)(?:[ =](?:[a-z][\\w-]*|<[^<>]+>))?)*(?=(?:\\r?\\n|\\r)? {2,}\\S)/im",
+    "lookbehind": true,
+    "alias": "s:symbol"
+  },
+  "literal-block": {
+    "pattern": "r:/::(?:\\r?\\n|\\r){2}([ \\t]+)(?![ \\t])[^\\r\\n]+(?:(?:\\r?\\n|\\r)\\1[^\\r\\n]+)*/",
+    "inside": {
+      "literal-block-punctuation": {
+        "pattern": "r:/^::/",
+        "alias": "s:punctuation"
+      }
+    }
+  },
+  "quoted-literal-block": {
+    "pattern": "r:/::(?:\\r?\\n|\\r){2}([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~])[^\\r\\n]*(?:(?:\\r?\\n|\\r)\\1[^\\r\\n]*)*/",
+    "inside": {
+      "literal-block-punctuation": {
+        "pattern": "r:/^(?:::|([!\"#$%&'()*+,\\-.\\/:;<=>?@\\[\\\\\\]^_`{|}~])\\1*)/m",
+        "alias": "s:punctuation"
+      }
+    }
+  },
+  "list-bullet": {
+    "pattern": "r:/(^[\\t ]*)(?:[*+\\-•‣⁃]|\\(?(?:\\d+|[a-z]|[ivxdclm]+)\\)|(?:\\d+|[a-z]|[ivxdclm]+)\\.)(?= )/im",
+    "lookbehind": true,
+    "alias": "s:punctuation"
+  },
+  "doctest-block": {
+    "pattern": "r:/(^[\\t ]*)>>> [^\\r\\n]+(?:(?:\\r?\\n|\\r)[^\\r\\n]+)*/m",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/^>>>/"
+    }
+  },
+  "inline": [
+    {
+      "pattern": "r:/(^|[\\s\\-:\\/'\"<(\\[{])(?::[^:]+:`[^\\r\\n]*?`|`[^\\r\\n]*?`:[^:]+:|(\\*\\*?|``?|\\|)(?!\\s)(?:(?!\\2)[^\\r\\n])*\\S\\2(?=[\\s\\-.,:;!?\\\\\\/'\")\\]}]|(?:(?=\\r$)|$)))/m",
+      "lookbehind": true,
+      "inside": {
+        "bold": {
+          "pattern": "r:/(^\\*\\*)[^\\r\\n]+(?=\\*\\*(?:(?=\\r$)|$))/",
+          "lookbehind": true
+        },
+        "italic": {
+          "pattern": "r:/(^\\*)[^\\r\\n]+(?=\\*(?:(?=\\r$)|$))/",
+          "lookbehind": true
+        },
+        "inline-literal": {
+          "pattern": "r:/(^``)[^\\r\\n]+(?=``(?:(?=\\r$)|$))/",
+          "lookbehind": true,
+          "alias": "s:symbol"
+        },
+        "role": {
+          "pattern": "r:/^:[^:]+:|:[^:]+:(?:(?=\\r$)|$)/",
+          "alias": "s:function",
+          "inside": {
+            "punctuation": "r:/^:|:(?:(?=\\r$)|$)/"
+          }
+        },
+        "interpreted-text": {
+          "pattern": "r:/(^`)[^\\r\\n]+(?=`(?:(?=\\r$)|$))/",
+          "lookbehind": true,
+          "alias": "s:attr-value"
+        },
+        "substitution": {
+          "pattern": "r:/(^\\|)[^\\r\\n]+(?=\\|(?:(?=\\r$)|$))/",
+          "lookbehind": true,
+          "alias": "s:attr-value"
+        },
+        "punctuation": "r:/\\*\\*?|``?|\\|/"
+      }
+    }
+  ],
+  "link": [
+    {
+      "pattern": "r:/\\[[^\\[\\]]+\\]_(?=[\\s\\-.,:;!?\\\\\\/'\")\\]}]|(?:(?=\\r$)|$))/",
+      "alias": "s:string",
+      "inside": {
+        "punctuation": "r:/^\\[|\\]_(?:(?=\\r$)|$)/"
+      }
+    },
+    {
+      "pattern": "r:/(?:\\b[a-z\\d]+(?:[_.:+][a-z\\d]+)*_?_|`[^`]+`_?_|_`[^`]+`)(?=[\\s\\-.,:;!?\\\\\\/'\")\\]}]|(?:(?=\\r$)|$))/i",
+      "alias": "s:string",
+      "inside": {
+        "punctuation": "r:/^_?`|`(?:(?=\\r$)|$)|`?_?_(?:(?=\\r$)|$)/"
+      }
+    }
+  ],
+  "punctuation": {
+    "pattern": "r:/(^[\\t ]*)(?:\\|(?= |(?:(?=\\r$)|$))|(?:---?|—|\\.\\.|__)(?= )|\\.\\.(?:(?=\\r$)|$))/m",
+    "lookbehind": true
+  }
+}

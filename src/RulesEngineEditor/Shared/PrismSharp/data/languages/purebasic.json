@@ -1,0 +1,56 @@
+{
+  "comment": "r:/;[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "tag": "r:/#\\w+/",
+  "asm": {
+    "pattern": "r:/(^[\\t ]*)![^\\r\\n]*/m",
+    "lookbehind": true,
+    "alias": "s:tag",
+    "inside": {
+      "comment": "r:/;[^\\r\\n]*/",
+      "string": {
+        "pattern": "r:/([\"'`])(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+        "greedy": true
+      },
+      "label-reference-anonymous": {
+        "pattern": "r:/(!\\s*j[a-z]+\\s+)@[fb]/i",
+        "lookbehind": true,
+        "alias": "s:fasm-label"
+      },
+      "label-reference-addressed": {
+        "pattern": "r:/(!\\s*j[a-z]+\\s+)[A-Z._?$@][\\w.?$@~#]*/i",
+        "lookbehind": true,
+        "alias": "s:fasm-label"
+      },
+      "keyword": [
+        "r:/\\b(?:extern|global)\\b[^;\\r\\n]*/i",
+        "r:/\\b(?:CPU|DEFAULT|FLOAT)\\b[^\\r\\n]*/"
+      ],
+      "function": {
+        "pattern": "r:/^([\\t ]*!\\s*)[\\da-z]+(?=\\s|(?:(?=\\r$)|$))/im",
+        "lookbehind": true
+      },
+      "function-inline": {
+        "pattern": "r:/(:\\s*)[\\da-z]+(?=\\s)/i",
+        "lookbehind": true,
+        "alias": "s:function"
+      },
+      "label": {
+        "pattern": "r:/^([\\t ]*!\\s*)[A-Za-z._?$@][\\w.?$@~#]*(?=:)/m",
+        "lookbehind": true,
+        "alias": "s:fasm-label"
+      },
+      "register": "r:/\\b(?:st\\d|[xyz]mm\\d\\d?|[cdt]r\\d|r\\d\\d?[bwd]?|[er]?[abcd]x|[abcd][hl]|[er]?(?:bp|di|si|sp)|[cdefgs]s|mm\\d+)\\b/i",
+      "number": "r:/(?:\\b|-|(?=\\$))(?:0[hx](?:[\\da-f]*\\.)?[\\da-f]+(?:p[+-]?\\d+)?|\\d[\\da-f]+[hx]|\\$\\d[\\da-f]*|0[oq][0-7]+|[0-7]+[oq]|0[by][01]+|[01]+[by]|0[dt]\\d+|(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:\\.?e[+-]?\\d+)?[dt]?)\\b/i",
+      "operator": "r:/[\\[\\]*+\\-/%<>=&|$!,.:]/"
+    }
+  },
+  "keyword": "r:/\\b(?:align|and|as|break|calldebugger|case|compilercase|compilerdefault|compilerelse|compilerelseif|compilerendif|compilerendselect|compilererror|compilerif|compilerselect|continue|data|datasection|debug|debuglevel|declare|declarec|declarecdll|declaredll|declaremodule|default|define|dim|disableasm|disabledebugger|disableexplicit|else|elseif|enableasm|enabledebugger|enableexplicit|end|enddatasection|enddeclaremodule|endenumeration|endif|endimport|endinterface|endmacro|endmodule|endprocedure|endselect|endstructure|endstructureunion|endwith|enumeration|extends|fakereturn|for|foreach|global|gosub|goto|if|import|importc|includebinary|includefile|includepath|interface|macro|module|newlist|newmap|next|not|or|procedure|procedurec|procedurecdll|proceduredll|procedurereturn|protected|prototype|prototypec|read|redim|repeat|restore|return|runtime|select|shared|static|step|structure|structureunion|swap|threaded|to|until|wend|while|with|xincludefile|xor)\\b/i",
+  "function": "r:/\\b\\w+(?:\\.\\w+)?\\s*(?=\\()/",
+  "number": "r:/(?:\\$[\\da-f]+|\\b-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:e[+-]?\\d+)?)\\b/i",
+  "operator": "r:/(?:@\\*?|\\?|\\*)\\w+|-[>-]?|\\+\\+?|!=?|<<?=?|>>?=?|==?|&&?|\\|?\\||[~^%?*/@]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

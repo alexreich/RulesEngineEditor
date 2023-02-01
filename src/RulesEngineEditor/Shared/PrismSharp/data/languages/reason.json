@@ -1,0 +1,33 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string": {
+    "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\\\\\\r\\n\"])*\"/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:\\\\x[\\da-f]{2}|\\\\o[0-3][0-7][0-7]|\\\\\\d{3}|\\\\[^\\r\\n]|[^'\\\\\\r\\n])'/",
+    "greedy": true
+  },
+  "constructor": "r:/\\b[A-Z]\\w*\\b(?!\\s*\\.)/",
+  "label": {
+    "pattern": "r:/\\b[a-z]\\w*(?=::)/",
+    "alias": "s:symbol"
+  },
+  "class-name": "r:/\\b[A-Z]\\w*/",
+  "keyword": "r:/\\b(?:and|as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|method|module|mutable|new|nonrec|object|of|open|or|private|rec|sig|struct|switch|then|to|try|type|val|virtual|when|while|with)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "operator": "r:/\\.{3}|:[:=]|\\|>|->|=(?:==?|>)?|<=?|>=?|[|^?'#!~`]|[+\\-*\\/]\\.?|\\b(?:asr|land|lor|lsl|lsr|lxor|mod)\\b/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

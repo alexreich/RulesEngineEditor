@@ -1,0 +1,32 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))|\\(\\*[\\s\\S]*?(?:\\*\\)|(?:(?=\\r$)|$))|\\{[\\s\\S]*?(?:\\}|(?:(?=\\r$)|$)))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "keyword": [
+    "r:/\\b(?:END_)?(?:PROGRAM|CONFIGURATION|INTERFACE|FUNCTION_BLOCK|FUNCTION|ACTION|TRANSITION|TYPE|STRUCT|(?:INITIAL_)?STEP|NAMESPACE|LIBRARY|CHANNEL|FOLDER|RESOURCE|VAR_(?:ACCESS|CONFIG|EXTERNAL|GLOBAL|INPUT|IN_OUT|OUTPUT|TEMP)|VAR|METHOD|PROPERTY)\\b/i",
+    "r:/\\b(?:AT|BY|(?:END_)?(?:CASE|FOR|IF|REPEAT|WHILE)|CONSTANT|CONTINUE|DO|ELSE|ELSIF|EXIT|EXTENDS|FROM|GET|GOTO|IMPLEMENTS|JMP|NON_RETAIN|OF|PRIVATE|PROTECTED|PUBLIC|RETAIN|RETURN|SET|TASK|THEN|TO|UNTIL|USING|WITH|__CATCH|__ENDTRY|__FINALLY|__TRY)\\b/"
+  ],
+  "class-name": "r:/\\b(?:ANY|ARRAY|BOOL|BYTE|U?(?:D|L|S)?INT|(?:D|L)?WORD|DATE(?:_AND_TIME)?|DT|L?REAL|POINTER|STRING|TIME(?:_OF_DAY)?|TOD)\\b/",
+  "address": {
+    "pattern": "r:/%[IQM][XBWDL][\\d.]*|%[IQ][\\d.]*/",
+    "alias": "s:symbol"
+  },
+  "number": "r:/\\b(?:16#[\\da-f]+|2#[01_]+|0x[\\da-f]+)\\b|\\b(?:D|DT|T|TOD)#[\\d_shmd:]*|\\b[A-Z]*#[\\d.,_]*|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "boolean": "r:/\\b(?:FALSE|NULL|TRUE)\\b/",
+  "operator": "r:/S?R?:?=>?|&&?|\\*\\*?|<[=>]?|>=?|[-:^/+#]|\\b(?:AND|EQ|EXPT|GE|GT|LE|LT|MOD|NE|NOT|OR|XOR)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "punctuation": "r:/[()[\\].,;]/"
+}

@@ -1,0 +1,9 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+  "keyword": "r:/\\b(?:BUILTIN|CHIP|CLOCKED|IN|OUT|PARTS)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b[A-Za-z][A-Za-z0-9]*(?=\\()/",
+  "number": "r:/\\b\\d+\\b/",
+  "operator": "r:/=|\\.\\./",
+  "punctuation": "r:/[{}[\\];(),:]/"
+}

@@ -1,0 +1,382 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+    "greedy": true
+  },
+  "macro": {
+    "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property",
+    "inside": {
+      "string": [
+        {
+          "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+          "greedy": true
+        }
+      ],
+      "char": {
+        "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+        "greedy": true
+      },
+      "comment": {
+        "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+        "greedy": true
+      },
+      "macro-name": [
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+          "lookbehind": true,
+          "alias": "s:function"
+        }
+      ],
+      "directive": {
+        "pattern": "r:/^(#\\s*)[a-z]+/",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "directive-hash": "r:/^#/",
+      "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+      "expression": {
+        "pattern": "r:/\\S[\\s\\S]*/",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "module": {
+    "pattern": "r:/(\\b(?:import|module)\\s+)(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|<[^<>\\r\\n]*>|\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b(?:\\s*:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)?|:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "string": "r:/^[<\"][\\s\\S]+/",
+      "operator": "r:/:/",
+      "punctuation": "r:/\\./"
+    }
+  },
+  "raw-string": {
+    "pattern": "r:/R\"([^()\\\\ ]{0,16})\\([\\s\\S]*?\\)\\1\"/",
+    "alias": "s:string",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "base-clause": {
+    "pattern": "r:/(\\b(?:class|struct)\\s+\\w+\\s*:\\s*)[^;{}\"'\\s]+(?:\\s+[^;{}\"'\\s]+)*(?=\\s*[;{])/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "comment": {
+        "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+        "greedy": true
+      },
+      "char": {
+        "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+        "greedy": true
+      },
+      "macro": {
+        "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+        "lookbehind": true,
+        "greedy": true,
+        "alias": "s:property",
+        "inside": {
+          "string": [
+            {
+              "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+              "lookbehind": true
+            },
+            {
+              "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+              "greedy": true
+            }
+          ],
+          "char": {
+            "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+            "greedy": true
+          },
+          "comment": {
+            "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+            "greedy": true
+          },
+          "macro-name": [
+            {
+              "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+              "lookbehind": true
+            },
+            {
+              "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+              "lookbehind": true,
+              "alias": "s:function"
+            }
+          ],
+          "directive": {
+            "pattern": "r:/^(#\\s*)[a-z]+/",
+            "lookbehind": true,
+            "alias": "s:keyword"
+          },
+          "directive-hash": "r:/^#/",
+          "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+          "expression": {
+            "pattern": "r:/\\S[\\s\\S]*/",
+            "inside": {
+              "comment": {
+                "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                "greedy": true
+              },
+              "char": {
+                "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+                "greedy": true
+              },
+              "macro": "s:[Circular ~.base-clause.inside.macro]",
+              "module": {
+                "pattern": "r:/(\\b(?:import|module)\\s+)(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|<[^<>\\r\\n]*>|\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b(?:\\s*:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)?|:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)/",
+                "lookbehind": true,
+                "greedy": true,
+                "inside": {
+                  "string": "r:/^[<\"][\\s\\S]+/",
+                  "operator": "r:/:/",
+                  "punctuation": "r:/\\./"
+                }
+              },
+              "raw-string": {
+                "pattern": "r:/R\"([^()\\\\ ]{0,16})\\([\\s\\S]*?\\)\\1\"/",
+                "alias": "s:string",
+                "greedy": true
+              },
+              "string": {
+                "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+                "greedy": true
+              },
+              "class-name": [
+                {
+                  "pattern": "r:/(\\b(?:class|concept|enum|struct|typename)\\s+)(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+/",
+                  "lookbehind": true
+                },
+                "r:/\\b[A-Z]\\w*(?=\\s*::\\s*\\w+\\s*\\()/",
+                "r:/\\b[A-Z_]\\w*(?=\\s*::\\s*~\\w+\\s*\\()/i",
+                "r:/\\b\\w+(?=\\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\\s*::\\s*\\w+\\s*\\()/"
+              ],
+              "generic-function": {
+                "pattern": "r:/\\b(?!operator\\b)[a-z_]\\w*\\s*<(?:[^<>]|<[^<>]*>)*>(?=\\s*\\()/i",
+                "inside": {
+                  "function": "r:/^\\w+/",
+                  "generic": {
+                    "pattern": "r:/<[\\s\\S]+/",
+                    "alias": "s:class-name",
+                    "inside": "s:[Circular ~.base-clause.inside.macro.inside.expression.inside]"
+                  }
+                }
+              },
+              "keyword": "r:/\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b/",
+              "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+              "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+              "number": {
+                "pattern": "r:/(?:\\b0b[01']+|\\b0x(?:[\\da-f']+(?:\\.[\\da-f']*)?|\\.[\\da-f']+)(?:p[+-]?[\\d']+)?|(?:\\b[\\d']+(?:\\.[\\d']*)?|\\B\\.[\\d']+)(?:e[+-]?[\\d']+)?)[ful]{0,4}/i",
+                "greedy": true
+              },
+              "double-colon": {
+                "pattern": "r:/::/",
+                "alias": "s:punctuation"
+              },
+              "operator": "r:/>>=?|<<=?|->|--|\\+\\+|&&|\\|\\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\\b/",
+              "punctuation": "r:/[{}[\\];(),.:]/",
+              "boolean": "r:/\\b(?:false|true)\\b/"
+            }
+          }
+        }
+      },
+      "module": {
+        "pattern": "r:/(\\b(?:import|module)\\s+)(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|<[^<>\\r\\n]*>|\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b(?:\\s*:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)?|:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)/",
+        "lookbehind": true,
+        "greedy": true,
+        "inside": {
+          "string": "r:/^[<\"][\\s\\S]+/",
+          "operator": "r:/:/",
+          "punctuation": "r:/\\./"
+        }
+      },
+      "raw-string": {
+        "pattern": "r:/R\"([^()\\\\ ]{0,16})\\([\\s\\S]*?\\)\\1\"/",
+        "alias": "s:string",
+        "greedy": true
+      },
+      "string": {
+        "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+        "greedy": true
+      },
+      "generic-function": {
+        "pattern": "r:/\\b(?!operator\\b)[a-z_]\\w*\\s*<(?:[^<>]|<[^<>]*>)*>(?=\\s*\\()/i",
+        "inside": {
+          "function": "r:/^\\w+/",
+          "generic": {
+            "pattern": "r:/<[\\s\\S]+/",
+            "alias": "s:class-name",
+            "inside": {
+              "comment": {
+                "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                "greedy": true
+              },
+              "char": {
+                "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+                "greedy": true
+              },
+              "macro": {
+                "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+                "lookbehind": true,
+                "greedy": true,
+                "alias": "s:property",
+                "inside": {
+                  "string": [
+                    {
+                      "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+                      "lookbehind": true
+                    },
+                    {
+                      "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+                      "greedy": true
+                    }
+                  ],
+                  "char": {
+                    "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+                    "greedy": true
+                  },
+                  "comment": {
+                    "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                    "greedy": true
+                  },
+                  "macro-name": [
+                    {
+                      "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+                      "lookbehind": true
+                    },
+                    {
+                      "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+                      "lookbehind": true,
+                      "alias": "s:function"
+                    }
+                  ],
+                  "directive": {
+                    "pattern": "r:/^(#\\s*)[a-z]+/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "directive-hash": "r:/^#/",
+                  "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+                  "expression": {
+                    "pattern": "r:/\\S[\\s\\S]*/",
+                    "inside": "s:[Circular ~.base-clause.inside.generic-function.inside.generic.inside]"
+                  }
+                }
+              },
+              "module": {
+                "pattern": "r:/(\\b(?:import|module)\\s+)(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|<[^<>\\r\\n]*>|\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b(?:\\s*:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)?|:\\s*\\b(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+(?:\\s*\\.\\s*\\w+)*\\b)/",
+                "lookbehind": true,
+                "greedy": true,
+                "inside": {
+                  "string": "r:/^[<\"][\\s\\S]+/",
+                  "operator": "r:/:/",
+                  "punctuation": "r:/\\./"
+                }
+              },
+              "raw-string": {
+                "pattern": "r:/R\"([^()\\\\ ]{0,16})\\([\\s\\S]*?\\)\\1\"/",
+                "alias": "s:string",
+                "greedy": true
+              },
+              "string": {
+                "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+                "greedy": true
+              },
+              "class-name": [
+                {
+                  "pattern": "r:/(\\b(?:class|concept|enum|struct|typename)\\s+)(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+/",
+                  "lookbehind": true
+                },
+                "r:/\\b[A-Z]\\w*(?=\\s*::\\s*\\w+\\s*\\()/",
+                "r:/\\b[A-Z_]\\w*(?=\\s*::\\s*~\\w+\\s*\\()/i",
+                "r:/\\b\\w+(?=\\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\\s*::\\s*\\w+\\s*\\()/"
+              ],
+              "generic-function": "s:[Circular ~.base-clause.inside.generic-function]",
+              "keyword": "r:/\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b/",
+              "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+              "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+              "number": {
+                "pattern": "r:/(?:\\b0b[01']+|\\b0x(?:[\\da-f']+(?:\\.[\\da-f']*)?|\\.[\\da-f']+)(?:p[+-]?[\\d']+)?|(?:\\b[\\d']+(?:\\.[\\d']*)?|\\B\\.[\\d']+)(?:e[+-]?[\\d']+)?)[ful]{0,4}/i",
+                "greedy": true
+              },
+              "double-colon": {
+                "pattern": "r:/::/",
+                "alias": "s:punctuation"
+              },
+              "operator": "r:/>>=?|<<=?|->|--|\\+\\+|&&|\\|\\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\\b/",
+              "punctuation": "r:/[{}[\\];(),.:]/",
+              "boolean": "r:/\\b(?:false|true)\\b/"
+            }
+          }
+        }
+      },
+      "keyword": "r:/\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b/",
+      "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+      "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+      "number": {
+        "pattern": "r:/(?:\\b0b[01']+|\\b0x(?:[\\da-f']+(?:\\.[\\da-f']*)?|\\.[\\da-f']+)(?:p[+-]?[\\d']+)?|(?:\\b[\\d']+(?:\\.[\\d']*)?|\\B\\.[\\d']+)(?:e[+-]?[\\d']+)?)[ful]{0,4}/i",
+        "greedy": true
+      },
+      "class-name": "r:/\\b[a-z_]\\w*\\b(?!\\s*::)/i",
+      "double-colon": {
+        "pattern": "r:/::/",
+        "alias": "s:punctuation"
+      },
+      "operator": "r:/>>=?|<<=?|->|--|\\+\\+|&&|\\|\\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\\b/",
+      "punctuation": "r:/[{}[\\];(),.:]/",
+      "boolean": "r:/\\b(?:false|true)\\b/"
+    }
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\b(?:class|concept|enum|struct|typename)\\s+)(?!\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b)\\w+/",
+      "lookbehind": true
+    },
+    "r:/\\b[A-Z]\\w*(?=\\s*::\\s*\\w+\\s*\\()/",
+    "r:/\\b[A-Z_]\\w*(?=\\s*::\\s*~\\w+\\s*\\()/i",
+    "r:/\\b\\w+(?=\\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\\s*::\\s*\\w+\\s*\\()/"
+  ],
+  "generic-function": {
+    "pattern": "r:/\\b(?!operator\\b)[a-z_]\\w*\\s*<(?:[^<>]|<[^<>]*>)*>(?=\\s*\\()/i",
+    "inside": {
+      "function": "r:/^\\w+/",
+      "generic": {
+        "pattern": "r:/<[\\s\\S]+/",
+        "alias": "s:class-name",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "keyword": "r:/\\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\\b/",
+  "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": {
+    "pattern": "r:/(?:\\b0b[01']+|\\b0x(?:[\\da-f']+(?:\\.[\\da-f']*)?|\\.[\\da-f']+)(?:p[+-]?[\\d']+)?|(?:\\b[\\d']+(?:\\.[\\d']*)?|\\B\\.[\\d']+)(?:e[+-]?[\\d']+)?)[ful]{0,4}/i",
+    "greedy": true
+  },
+  "double-colon": {
+    "pattern": "r:/::/",
+    "alias": "s:punctuation"
+  },
+  "operator": "r:/>>=?|<<=?|->|--|\\+\\+|&&|\\|\\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\\b/",
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "boolean": "r:/\\b(?:false|true)\\b/"
+}

@@ -1,0 +1,45 @@
+{
+  "comment": {
+    "pattern": "r:/^[;#][^\\r\\n]*/m",
+    "greedy": true
+  },
+  "section": {
+    "pattern": "r:/^\\[[^\\n\\r\\[\\]]*\\](?=[ \\t]*(?:(?=\\r$)|$))/m",
+    "greedy": true,
+    "inside": {
+      "punctuation": "r:/^\\[|\\](?:(?=\\r$)|$)/",
+      "section-name": {
+        "pattern": "r:/[\\s\\S]+/",
+        "alias": "s:selector"
+      }
+    }
+  },
+  "key": {
+    "pattern": "r:/^[^\\s=]+(?=[ \\t]*=)/m",
+    "greedy": true,
+    "alias": "s:attr-name"
+  },
+  "value": {
+    "pattern": "r:/(=[ \\t]*(?!\\s))(?:\"(?:[^\\r\\n\"\\\\]|\\\\(?:[^\\r]|\\r\\n?))*\"(?!\\S)|(?=[^\"\\r\\n]))(?:[^\\s\\\\]|[ \t]+(?:(?![ \t\"])|\"(?:[^\\r\\n\"\\\\]|\\\\(?:[^\\r]|\\r\\n?))*\"(?!\\S))|\\\\[\\r\\n]+(?:[#;][^\\r\\n]*[\\r\\n]+)*(?![#;]))*/",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:attr-value",
+    "inside": {
+      "comment": {
+        "pattern": "r:/^[;#][^\\r\\n]*/m",
+        "greedy": true
+      },
+      "quoted": {
+        "pattern": "r:/(^|\\s)\"(?:[^\\r\\n\"\\\\]|\\\\(?:[^\\r]|\\r\\n?))*\"(?!\\S)/",
+        "lookbehind": true,
+        "greedy": true
+      },
+      "punctuation": "r:/\\\\(?:(?=\\r$)|$)/m",
+      "boolean": {
+        "pattern": "r:/^(?:false|no|off|on|true|yes)(?:(?=\\r$)|$)/",
+        "greedy": true
+      }
+    }
+  },
+  "operator": "r:/=/"
+}

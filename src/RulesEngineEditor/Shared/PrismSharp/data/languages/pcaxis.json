@@ -1,0 +1,51 @@
+{
+  "string": "r:/\"[^\"]*\"/",
+  "keyword": {
+    "pattern": "r:/((?:^|;)\\s*)[-A-Z\\d]+(?:\\s*\\[[-\\w]+\\])?(?:\\s*\\(\"[^\"]*\"(?:,\\s*\"[^\"]*\")*\\))?(?=\\s*=)/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "keyword": "r:/^[-A-Z\\d]+/",
+      "language": {
+        "pattern": "r:/^(\\s*)\\[[-\\w]+\\]/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^\\[|\\](?:(?=\\r$)|$)/",
+          "property": "r:/[-\\w]+/"
+        }
+      },
+      "sub-key": {
+        "pattern": "r:/^(\\s*)\\S[\\s\\S]*/",
+        "lookbehind": true,
+        "inside": {
+          "parameter": {
+            "pattern": "r:/\"[^\"]*\"/",
+            "alias": "s:property"
+          },
+          "punctuation": "r:/^\\(|\\)(?:(?=\\r$)|$)|,/"
+        }
+      }
+    }
+  },
+  "operator": "r:/=/",
+  "tlist": {
+    "pattern": "r:/TLIST\\s*\\(\\s*\\w+(?:(?:\\s*,\\s*\"[^\"]*\")+|\\s*,\\s*\"[^\"]*\"-\"[^\"]*\")?\\s*\\)/",
+    "greedy": true,
+    "inside": {
+      "function": "r:/^TLIST/",
+      "property": {
+        "pattern": "r:/^(\\s*\\(\\s*)\\w+/",
+        "lookbehind": true
+      },
+      "string": "r:/\"[^\"]*\"/",
+      "punctuation": "r:/[(),]/",
+      "operator": "r:/-/"
+    }
+  },
+  "punctuation": "r:/[;,]/",
+  "number": {
+    "pattern": "r:/(^|\\s)\\d+(?:\\.\\d+)?(?!\\S)/",
+    "lookbehind": true
+  },
+  "boolean": "r:/NO|YES/"
+}

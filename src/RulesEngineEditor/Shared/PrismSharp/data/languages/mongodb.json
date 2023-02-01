@@ -1,0 +1,149 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "hashbang": {
+    "pattern": "r:/^#![^\\r\\n]*/",
+    "greedy": true,
+    "alias": "s:comment"
+  },
+  "template-string": {
+    "pattern": "r:/`(?:\\\\[\\s\\S]|\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}|(?!\\$\\{)[^\\\\`])*`/",
+    "greedy": true,
+    "inside": {
+      "template-punctuation": {
+        "pattern": "r:/^`|`(?:(?=\\r$)|$)/",
+        "alias": "s:string"
+      },
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+        "lookbehind": true,
+        "inside": {
+          "interpolation-punctuation": {
+            "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          },
+          "rest": "s:[Circular ~]"
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "string-property": {
+    "pattern": "r:/((?:^|[,{])[ \\t]*)([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\2)[^\\\\\\r\\n])*\\2(?=\\s*:)/m",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property"
+  },
+  "property": {
+    "pattern": "r:/(?:([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1|(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)(?=\\s*:)/",
+    "greedy": true,
+    "inside": {
+      "keyword": "r:/^(['\"])?(?:\\$eq|\\$gt|\\$gte|\\$in|\\$lt|\\$lte|\\$ne|\\$nin|\\$and|\\$not|\\$nor|\\$or|\\$exists|\\$type|\\$expr|\\$jsonSchema|\\$mod|\\$regex|\\$text|\\$where|\\$geoIntersects|\\$geoWithin|\\$near|\\$nearSphere|\\$all|\\$elemMatch|\\$size|\\$bitsAllClear|\\$bitsAllSet|\\$bitsAnyClear|\\$bitsAnySet|\\$comment|\\$elemMatch|\\$meta|\\$slice|\\$currentDate|\\$inc|\\$min|\\$max|\\$mul|\\$rename|\\$set|\\$setOnInsert|\\$unset|\\$addToSet|\\$pop|\\$pull|\\$push|\\$pullAll|\\$each|\\$position|\\$slice|\\$sort|\\$bit|\\$addFields|\\$bucket|\\$bucketAuto|\\$collStats|\\$count|\\$currentOp|\\$facet|\\$geoNear|\\$graphLookup|\\$group|\\$indexStats|\\$limit|\\$listLocalSessions|\\$listSessions|\\$lookup|\\$match|\\$merge|\\$out|\\$planCacheStats|\\$project|\\$redact|\\$replaceRoot|\\$replaceWith|\\$sample|\\$set|\\$skip|\\$sort|\\$sortByCount|\\$unionWith|\\$unset|\\$unwind|\\$abs|\\$accumulator|\\$acos|\\$acosh|\\$add|\\$addToSet|\\$allElementsTrue|\\$and|\\$anyElementTrue|\\$arrayElemAt|\\$arrayToObject|\\$asin|\\$asinh|\\$atan|\\$atan2|\\$atanh|\\$avg|\\$binarySize|\\$bsonSize|\\$ceil|\\$cmp|\\$concat|\\$concatArrays|\\$cond|\\$convert|\\$cos|\\$dateFromParts|\\$dateToParts|\\$dateFromString|\\$dateToString|\\$dayOfMonth|\\$dayOfWeek|\\$dayOfYear|\\$degreesToRadians|\\$divide|\\$eq|\\$exp|\\$filter|\\$first|\\$floor|\\$function|\\$gt|\\$gte|\\$hour|\\$ifNull|\\$in|\\$indexOfArray|\\$indexOfBytes|\\$indexOfCP|\\$isArray|\\$isNumber|\\$isoDayOfWeek|\\$isoWeek|\\$isoWeekYear|\\$last|\\$last|\\$let|\\$literal|\\$ln|\\$log|\\$log10|\\$lt|\\$lte|\\$ltrim|\\$map|\\$max|\\$mergeObjects|\\$meta|\\$min|\\$millisecond|\\$minute|\\$mod|\\$month|\\$multiply|\\$ne|\\$not|\\$objectToArray|\\$or|\\$pow|\\$push|\\$radiansToDegrees|\\$range|\\$reduce|\\$regexFind|\\$regexFindAll|\\$regexMatch|\\$replaceOne|\\$replaceAll|\\$reverseArray|\\$round|\\$rtrim|\\$second|\\$setDifference|\\$setEquals|\\$setIntersection|\\$setIsSubset|\\$setUnion|\\$size|\\$sin|\\$slice|\\$split|\\$sqrt|\\$stdDevPop|\\$stdDevSamp|\\$strcasecmp|\\$strLenBytes|\\$strLenCP|\\$substr|\\$substrBytes|\\$substrCP|\\$subtract|\\$sum|\\$switch|\\$tan|\\$toBool|\\$toDate|\\$toDecimal|\\$toDouble|\\$toInt|\\$toLong|\\$toObjectId|\\$toString|\\$toLower|\\$toUpper|\\$trim|\\$trunc|\\$type|\\$week|\\$year|\\$zip|\\$comment|\\$explain|\\$hint|\\$max|\\$maxTimeMS|\\$min|\\$orderby|\\$query|\\$returnKey|\\$showDiskLoc|\\$natural)\\b(?:\\1)?(?:(?=\\r$)|$)/"
+    }
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true,
+    "inside": {
+      "url": {
+        "pattern": "r:/https?:\\/\\/[-\\w@:%.+~#=]{1,256}\\.[a-z0-9()]{1,6}\\b[-\\w()@:%+.~#?&/=]*/i",
+        "greedy": true
+      },
+      "entity": {
+        "pattern": "r:/\\b(?:(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\b/",
+        "greedy": true
+      }
+    }
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/[.\\\\]/"
+      }
+    },
+    {
+      "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$A-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\.(?:constructor|prototype))/",
+      "lookbehind": true
+    }
+  ],
+  "regex": {
+    "pattern": "r:/((?:^|[^$\\w\\xA0-\\uFFFF.\"'\\])\\s]|\\b(?:return|yield))\\s*)\\/(?:\\[(?:[^\\]\\\\\\r\\n]|\\\\[^\\r\\n])*\\]|\\\\[^\\r\\n]|[^/\\\\\\[\\r\\n])+\\/[dgimyus]{0,7}(?=(?:\\s|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/)*(?:(?:(?=\\r$)|$)|[\\r\\n,.;:})\\]]|\\/\\/))/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "regex-source": {
+        "pattern": "r:/^(\\/)[\\s\\S]+(?=\\/[a-z]*(?:(?=\\r$)|$))/",
+        "lookbehind": true,
+        "alias": "s:language-regex"
+      },
+      "regex-delimiter": "r:/^\\/|\\/(?:(?=\\r$)|$)/",
+      "regex-flags": "r:/^[a-z]+(?:(?=\\r$)|$)/"
+    }
+  },
+  "function-variable": {
+    "pattern": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*[=:]\\s*(?:async\\s*)?(?:\\bfunction\\b|(?:\\((?:[^()]|\\([^()]*\\))*\\)|(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)\\s*=>))/",
+    "alias": "s:function"
+  },
+  "parameter": [
+    {
+      "pattern": "r:/(function(?:\\s+(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)?\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\))/",
+      "lookbehind": true,
+      "inside": "s:[Circular ~]"
+    },
+    {
+      "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$a-z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*=>)/i",
+      "lookbehind": true,
+      "inside": "s:[Circular ~]"
+    },
+    {
+      "pattern": "r:/(\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*=>)/",
+      "lookbehind": true,
+      "inside": "s:[Circular ~]"
+    },
+    {
+      "pattern": "r:/((?:\\b|\\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\\w\\xA0-\\uFFFF]))(?:(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*\\s*)\\(\\s*|\\]\\s*\\(\\s*)(?!\\s)(?:[^()\\s]|\\s+(?![\\s)])|\\([^()]*\\))+(?=\\s*\\)\\s*\\{)/",
+      "lookbehind": true,
+      "inside": "s:[Circular ~]"
+    }
+  ],
+  "builtin": {
+    "pattern": "r:/\\b(?:ObjectId|Code|BinData|DBRef|Timestamp|NumberLong|NumberDecimal|MaxKey|MinKey|RegExp|ISODate|UUID)\\b/",
+    "alias": "s:keyword"
+  },
+  "constant": "r:/\\b[A-Z](?:[A-Z_]|\\dx?)*\\b/",
+  "keyword": [
+    {
+      "pattern": "r:/((?:^|\\})\\s*)catch\\b/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^.]|\\.\\.\\.\\s*)\\b(?:as|assert(?=\\s*\\{)|async(?=\\s*(?:function\\b|\\(|[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\\s*(?:\\{|(?:(?=\\r$)|$)))|for|from(?=\\s*(?:['\"]|(?:(?=\\r$)|$)))|function|(?:get|set)(?=\\s*(?:[#\\[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\\b/",
+      "lookbehind": true
+    }
+  ],
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*(?:\\.\\s*(?:apply|bind|call)\\s*)?\\()/",
+  "number": {
+    "pattern": "r:/(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\.(?:\\d+(?:_\\d+)*)?)?|\\.\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])/",
+    "lookbehind": true
+  },
+  "literal-property": {
+    "pattern": "r:/((?:^|[,{])[ \\t]*)(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*:)/m",
+    "lookbehind": true,
+    "alias": "s:property"
+  },
+  "operator": "r:/--|\\+\\+|\\*\\*=?|=>|&&=?|\\|\\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\.{3}|\\?\\?=?|\\?\\.?|[~:]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

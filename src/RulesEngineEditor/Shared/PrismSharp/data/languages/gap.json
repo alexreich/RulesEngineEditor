@@ -1,0 +1,44 @@
+{
+  "shell": {
+    "pattern": "r:/^gap>[\\s\\S]*?(?=^gap>|(?:(?=\\r$)|$)(?![\\s\\S]))/m",
+    "greedy": true,
+    "inside": {
+      "gap": {
+        "pattern": "r:/^(gap>)[^\\r\\n]+(?:(?:\\r(?:\\n|(?!\\n))|\\n)>[^\\r\\n]*)*/",
+        "lookbehind": true,
+        "inside": "s:[Circular ~]"
+      },
+      "punctuation": "r:/^gap>/"
+    }
+  },
+  "comment": {
+    "pattern": "r:/#[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\'\"])(?:'(?:[^\\r\\n\\\\']|\\\\[^\\r\\n]){1,10}'|\"(?:[^\\r\\n\\\\\"]|\\\\[^\\r\\n])*\"(?!\")|\"\"\"[\\s\\S]*?\"\"\")/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "continuation": {
+        "pattern": "r:/([\\r\\n])>/",
+        "lookbehind": true,
+        "alias": "s:punctuation"
+      }
+    }
+  },
+  "keyword": "r:/\\b(?:Assert|Info|IsBound|QUIT|TryNextMethod|Unbind|and|atomic|break|continue|do|elif|else|end|fi|for|function|if|in|local|mod|not|od|or|quit|readonly|readwrite|rec|repeat|return|then|until|while)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": {
+    "pattern": "r:/(^|[^\\w.]|\\.\\.)(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?(?:_[a-z]?)?(?=(?:(?=\\r$)|$)|[^\\w.]|\\.\\.)/",
+    "lookbehind": true
+  },
+  "continuation": {
+    "pattern": "r:/([\\r\\n])>/",
+    "lookbehind": true,
+    "alias": "s:punctuation"
+  },
+  "operator": "r:/->|[-+*/^~=!]|<>|[<>]=?|:=|\\.\\./",
+  "punctuation": "r:/[()[\\]{},;.:]/"
+}

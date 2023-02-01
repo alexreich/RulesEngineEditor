@@ -1,0 +1,96 @@
+{
+  "comment": {
+    "pattern": "r:/%%[^\\r\\n]*/",
+    "greedy": true
+  },
+  "style": {
+    "pattern": "r:/^([ \\t]*(?:classDef|linkStyle|style)[ \\t]+[\\w$-]+[ \\t]+)\\w[^\\r\\n]*[^\\s;]/m",
+    "lookbehind": true,
+    "inside": {
+      "property": "r:/\\b\\w[\\w-]*(?=[ \\t]*:)/",
+      "operator": "r:/:/",
+      "punctuation": "r:/,/"
+    }
+  },
+  "inter-arrow-label": {
+    "pattern": "r:/([^<>ox.=-])(?:-[-.]|==)(?![<>ox.=-])[ \\t]*(?:\"[^\"\\r\\n]*\"|[^\\s\".=-](?:[^\\r\\n.=-]*[^\\s.=-])?)[ \\t]*(?:\\.+->?|--+[->]|==+[=>])(?![<>ox.=-])/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "arrow": {
+        "pattern": "r:/(?:\\.+->?|--+[->]|==+[=>])(?:(?=\\r$)|$)/",
+        "alias": "s:operator"
+      },
+      "label": {
+        "pattern": "r:/^([\\s\\S]{2}[ \\t]*)\\S(?:[\\s\\S]*\\S)?/",
+        "lookbehind": true,
+        "alias": "s:property"
+      },
+      "arrow-head": {
+        "pattern": "r:/^\\S+/",
+        "alias": [
+          "s:arrow",
+          "s:operator"
+        ]
+      }
+    }
+  },
+  "arrow": [
+    {
+      "pattern": "r:/(^|[^{}|o.-])[|}][|o](?:--|\\.\\.)[|o][|{](?![{}|o.-])/",
+      "lookbehind": true,
+      "alias": "s:operator"
+    },
+    {
+      "pattern": "r:/(^|[^<>ox.=-])(?:[<ox](?:==+|--+|-\\.*-)[>ox]?|(?:==+|--+|-\\.*-)[>ox]|===+|---+|-\\.+-)(?![<>ox.=-])/",
+      "lookbehind": true,
+      "alias": "s:operator"
+    },
+    {
+      "pattern": "r:/(^|[^<>()x-])(?:--?(?:>>|[x>)])(?![<>()x])|(?:<<|[x<(])--?(?!-))/",
+      "lookbehind": true,
+      "alias": "s:operator"
+    },
+    {
+      "pattern": "r:/(^|[^<>|*o.-])(?:[*o]--|--[*o]|<\\|?(?:--|\\.\\.)|(?:--|\\.\\.)\\|?>|--|\\.\\.)(?![<>|*o.-])/",
+      "lookbehind": true,
+      "alias": "s:operator"
+    }
+  ],
+  "label": {
+    "pattern": "r:/(^|[^|<])\\|(?:[^\\r\\n\"|]|\"[^\"\\r\\n]*\")+\\|/",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property"
+  },
+  "text": {
+    "pattern": "r:/(?:[(\\[{]+|\\b>)(?:[^\\r\\n\"()\\[\\]{}]|\"[^\"\\r\\n]*\")+(?:[)\\]}]+|>)/",
+    "alias": "s:string"
+  },
+  "string": {
+    "pattern": "r:/\"[^\"\\r\\n]*\"/",
+    "greedy": true
+  },
+  "annotation": {
+    "pattern": "r:/<<(?:abstract|choice|enumeration|fork|interface|join|service)>>|\\[\\[(?:choice|fork|join)\\]\\]/i",
+    "alias": "s:important"
+  },
+  "keyword": [
+    {
+      "pattern": "r:/(^[ \\t]*)(?:action|callback|class|classDef|classDiagram|click|direction|erDiagram|flowchart|gantt|gitGraph|graph|journey|link|linkStyle|pie|requirementDiagram|sequenceDiagram|stateDiagram|stateDiagram-v2|style|subgraph)(?![\\w$-])/m",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^[ \\t]*)(?:activate|alt|and|as|autonumber|deactivate|else|end(?:[ \\t]+note)?|loop|opt|par|participant|rect|state|note[ \\t]+(?:over|(?:left|right)[ \\t]+of))(?![\\w$-])/im",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "entity": "r:/#[a-z0-9]+;/",
+  "operator": {
+    "pattern": "r:/(\\w[ \\t]*)&(?=[ \\t]*\\w)|:::|:/",
+    "lookbehind": true
+  },
+  "punctuation": "r:/[(){};]/"
+}

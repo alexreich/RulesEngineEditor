@@ -1,0 +1,51 @@
+{
+  "comment": "r:/;[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/(?:%[is])?\"[^\"\\n\\r]*\"/",
+    "greedy": true,
+    "inside": {
+      "punctuation": "r:/^%[is]/"
+    }
+  },
+  "range": {
+    "pattern": "r:/%(?:b[01]+-[01]+|d\\d+-\\d+|x[A-F\\d]+-[A-F\\d]+)/i",
+    "alias": "s:number"
+  },
+  "terminal": {
+    "pattern": "r:/%(?:b[01]+(?:\\.[01]+)*|d\\d+(?:\\.\\d+)*|x[A-F\\d]+(?:\\.[A-F\\d]+)*)/i",
+    "alias": "s:number"
+  },
+  "repetition": {
+    "pattern": "r:/(^|[^\\w-])(?:\\d*\\*\\d*|\\d+)/",
+    "lookbehind": true,
+    "alias": "s:operator"
+  },
+  "definition": {
+    "pattern": "r:/(^[ \\t]*)(?:[a-z][\\w-]*|<[^<>\\r\\n]*>)(?=\\s*=)/m",
+    "lookbehind": true,
+    "alias": "s:keyword",
+    "inside": {
+      "punctuation": "r:/<|>/"
+    }
+  },
+  "core-rule": {
+    "pattern": "r:/(?:(^|[^<\\w-])(?:ALPHA|BIT|CHAR|CR|CRLF|CTL|DIGIT|DQUOTE|HEXDIG|HTAB|LF|LWSP|OCTET|SP|VCHAR|WSP)|<(?:ALPHA|BIT|CHAR|CR|CRLF|CTL|DIGIT|DQUOTE|HEXDIG|HTAB|LF|LWSP|OCTET|SP|VCHAR|WSP)>)(?![\\w-])/i",
+    "lookbehind": true,
+    "alias": [
+      "s:rule",
+      "s:constant"
+    ],
+    "inside": {
+      "punctuation": "r:/<|>/"
+    }
+  },
+  "rule": {
+    "pattern": "r:/(^|[^<\\w-])[a-z][\\w-]*|<[^<>\\r\\n]*>/i",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/<|>/"
+    }
+  },
+  "operator": "r:/=\\/?|\\//",
+  "punctuation": "r:/[()\\[\\]]/"
+}

@@ -1,0 +1,720 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  id: Tokenizer
+  parent: Orionsoft.PrismSharp.Tokenizing
+  children:
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)
+  - Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  langs:
+  - csharp
+  - vb
+  name: Tokenizer
+  nameWithType: Tokenizer
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  type: Class
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: Tokenizer
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 18
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nTokenizer engine converting the source code to a tree of tokens (code fractions with their logical meanings, e.g. foreach - keyword\n"
+  example: []
+  syntax:
+    content: public sealed class Tokenizer
+    content.vb: Public NotInheritable Class Tokenizer
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  id: LanguageList
+  parent: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  langs:
+  - csharp
+  - vb
+  name: LanguageList
+  nameWithType: Tokenizer.LanguageList
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: LanguageList
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 23
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nReturns list of supported languages\n"
+  example: []
+  syntax:
+    content: public List<string> LanguageList { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public ReadOnly Property LanguageList As List(Of String)
+  overload: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  id: GrammarDir
+  parent: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  langs:
+  - csharp
+  - vb
+  name: GrammarDir
+  nameWithType: Tokenizer.GrammarDir
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: GrammarDir
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 28
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nDirectory with language definitions, should it be changed from default path\n"
+  example: []
+  syntax:
+    content: public string GrammarDir { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property GrammarDir As String
+  overload: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  id: '#ctor'
+  parent: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  langs:
+  - csharp
+  - vb
+  name: Tokenizer()
+  nameWithType: Tokenizer.Tokenizer()
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenizer()
+  type: Constructor
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: .ctor
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 36
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  syntax:
+    content: public Tokenizer()
+    content.vb: Public Sub New
+  overload: Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)
+  id: Tokenize(System.String,System.String)
+  parent: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  langs:
+  - csharp
+  - vb
+  name: Tokenize(String, String)
+  nameWithType: Tokenizer.Tokenize(String, String)
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: Tokenize
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 48
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nTokenizes the source code according to the language rules\n"
+  example: []
+  syntax:
+    content: public Token Tokenize(string code, string language)
+    parameters:
+    - id: code
+      type: System.String
+      description: source code to tokenize
+    - id: language
+      type: System.String
+      description: programming language name or an alias
+    return:
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+    content.vb: Public Function Tokenize(code As String, language As String) As Token
+  overload: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)
+  id: TokenizeRange(System.String,System.Int32,System.Int32,System.String)
+  parent: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  langs:
+  - csharp
+  - vb
+  name: TokenizeRange(String, Int32, Int32, String)
+  nameWithType: Tokenizer.TokenizeRange(String, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String, System.Int32, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: TokenizeRange
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 65
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nTokenizes the specified range of the source code according to the language rules.\nTokenization settings are loaded automatically according to the language param.\n"
+  example: []
+  syntax:
+    content: public Token TokenizeRange(string code, int start, int length, string language)
+    parameters:
+    - id: code
+      type: System.String
+      description: source code to tokenize
+    - id: start
+      type: System.Int32
+      description: starting position of the range within the code
+    - id: length
+      type: System.Int32
+      description: length of the range
+    - id: language
+      type: System.String
+      description: programming language name or an alias
+    return:
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+    content.vb: Public Function TokenizeRange(code As String, start As Integer, length As Integer, language As String) As Token
+  overload: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  id: TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  parent: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  langs:
+  - csharp
+  - vb
+  name: TokenizeRange(String, Int32, Int32, String, RangeTokenizationSettings)
+  nameWithType: Tokenizer.TokenizeRange(String, Int32, Int32, String, RangeTokenizationSettings)
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String, System.Int32, System.Int32, System.String, Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Tokenizer.cs
+    id: TokenizeRange
+    path: ../Tokenizing/Tokenizer.cs
+    startLine: 81
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nTokenizes the specified range of the source code according to the language rules and provided settings\n"
+  example: []
+  syntax:
+    content: public Token TokenizeRange(string code, int start, int length, string language, RangeTokenizationSettings settings)
+    parameters:
+    - id: code
+      type: System.String
+      description: source code to tokenize
+    - id: start
+      type: System.Int32
+      description: starting position of the range within the code
+    - id: length
+      type: System.Int32
+      description: length of the range
+    - id: language
+      type: System.String
+      description: language name or an alias
+    - id: settings
+      type: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+      description: custom range tokenization settings
+    return:
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+    content.vb: Public Function TokenizeRange(code As String, start As Integer, length As Integer, language As String, settings As RangeTokenizationSettings) As Token
+  overload: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  name: LanguageList
+  nameWithType: Tokenizer.LanguageList
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  name: GrammarDir
+  nameWithType: Tokenizer.GrammarDir
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  name: Tokenizer
+  nameWithType: Tokenizer.Tokenizer
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenizer
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize
+  name: Tokenize
+  nameWithType: Tokenizer.Tokenize
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize
+- uid: Orionsoft.PrismSharp.Tokenizing.Token
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Token
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: Token
+  nameWithType: Token
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange
+  name: TokenizeRange
+  nameWithType: Tokenizer.TokenizeRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: RangeTokenizationSettings
+  nameWithType: RangeTokenizationSettings
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings

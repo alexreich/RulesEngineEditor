@@ -1,0 +1,28 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\*[\\s\\S]*?\\*\\/|%[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"(?:[^\"\\\\]|\\\\[\\s\\S])*\"/",
+    "greedy": true
+  },
+  "atom": {
+    "pattern": "r:/'(?:[^'\\\\]|\\\\[\\s\\S])*'/",
+    "greedy": true,
+    "alias": "s:builtin"
+  },
+  "keyword": "r:/\\$|\\[\\]|\\b(?:_|at|attr|case|catch|choice|class|cond|declare|define|dis|else(?:case|if)?|end|export|fail|false|feat|finally|from|fun|functor|if|import|in|local|lock|meth|nil|not|of|or|prepare|proc|prop|raise|require|self|skip|then|thread|true|try|unit)\\b/",
+  "function": [
+    "r:/\\b[a-z][A-Za-z\\d]*(?=\\()/",
+    {
+      "pattern": "r:/(\\{)[A-Z][A-Za-z\\d]*\\b/",
+      "lookbehind": true
+    }
+  ],
+  "number": "r:/\\b(?:0[bx][\\da-f]+|\\d+(?:\\.\\d*)?(?:e~?\\d+)?)\\b|&(?:[^\\\\]|\\\\(?:\\d{3}|[^\\r\\n]))/i",
+  "variable": "r:/`(?:[^`\\\\]|\\\\[^\\r\\n])+`/",
+  "attr-name": "r:/\\b\\w+(?=[ \\t]*:(?![:=]))/",
+  "operator": "r:/:(?:=|::?)|<[-:=]?|=(?:=|<?:?)|>=?:?|\\\\=:?|!!?|[|#+\\-*\\/,~^@]|\\b(?:andthen|div|mod|orelse)\\b/",
+  "punctuation": "r:/[\\[\\](){}.:;?]/"
+}

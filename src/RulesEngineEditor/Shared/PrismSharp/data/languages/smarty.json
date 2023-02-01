@@ -1,0 +1,81 @@
+{
+  "comment": {
+    "pattern": "r:/^\\{\\*[\\s\\S]*?\\*\\}/",
+    "greedy": true
+  },
+  "embedded-php": {
+    "pattern": "r:/^\\{php\\}[\\s\\S]*?\\{\\/php\\}/",
+    "greedy": true,
+    "inside": {
+      "smarty": {
+        "pattern": "r:/^\\{php\\}|\\{\\/php\\}(?:(?=\\r$)|$)/",
+        "inside": "s:[Circular ~]"
+      },
+      "php": {
+        "pattern": "r:/[\\s\\S]+/",
+        "alias": "s:language-php"
+      }
+    }
+  },
+  "string": [
+    {
+      "pattern": "r:/\"(?:\\\\[^\\r\\n]|[^\"\\\\\\r\\n])*\"/",
+      "greedy": true,
+      "inside": {
+        "interpolation": {
+          "pattern": "r:/\\{[^{}]*\\}|`[^`]*`/",
+          "inside": {
+            "interpolation-punctuation": {
+              "pattern": "r:/^[{`]|[`}](?:(?=\\r$)|$)/",
+              "alias": "s:punctuation"
+            },
+            "expression": {
+              "pattern": "r:/[\\s\\S]+/",
+              "inside": "s:[Circular ~]"
+            }
+          }
+        },
+        "variable": "r:/\\$\\w+/"
+      }
+    },
+    {
+      "pattern": "r:/'(?:\\\\[^\\r\\n]|[^'\\\\\\r\\n])*'/",
+      "greedy": true
+    }
+  ],
+  "keyword": {
+    "pattern": "r:/(^\\{\\/?)[a-z_]\\w*\\b(?!\\()/i",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "delimiter": {
+    "pattern": "r:/^\\{\\/?|\\}(?:(?=\\r$)|$)/",
+    "greedy": true,
+    "alias": "s:punctuation"
+  },
+  "number": "r:/\\b0x[\\dA-Fa-f]+|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:[Ee][-+]?\\d+)?/",
+  "variable": [
+    "r:/\\$(?!\\d)\\w+/",
+    "r:/#(?!\\d)\\w+#/",
+    {
+      "pattern": "r:/(\\.|->|\\w\\s*=)(?!\\d)\\w+\\b(?!\\()/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(\\[)(?!\\d)\\w+(?=\\])/",
+      "lookbehind": true
+    }
+  ],
+  "function": {
+    "pattern": "r:/(\\|\\s*)@?[a-z_]\\w*|\\b[a-z_]\\w*(?=\\()/i",
+    "lookbehind": true
+  },
+  "attr-name": "r:/\\b[a-z_]\\w*(?=\\s*=)/i",
+  "boolean": "r:/\\b(?:false|no|off|on|true|yes)\\b/",
+  "punctuation": "r:/[\\[\\](){}.,:`]|->/",
+  "operator": [
+    "r:/[+\\-*\\/%]|==?=?|[!<>]=?|&&|\\|\\|?/",
+    "r:/\\bis\\s+(?:not\\s+)?(?:div|even|odd)(?:\\s+by)?\\b/",
+    "r:/\\b(?:and|eq|gt?e|gt|lt?e|lt|mod|neq?|not|or)\\b/"
+  ]
+}

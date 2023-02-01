@@ -1,0 +1,2646 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  id: HtmlHighlighter
+  parent: Orionsoft.PrismSharp.Highlighters.Html
+  children:
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  - Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  langs:
+  - csharp
+  - vb
+  name: HtmlHighlighter
+  nameWithType: HtmlHighlighter
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  type: Class
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: HtmlHighlighter
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 15
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  summary: "\nHighlighter creating output in html format (just HTML spans or a pre block). A PrismJS css theme must be included in the html document.\n"
+  example: []
+  syntax:
+    content: 'public sealed class HtmlHighlighter : AbstractHighlighter<string>, IHighlighter<string>'
+    content.vb: >-
+      Public NotInheritable Class HtmlHighlighter
+          Inherits AbstractHighlighter(Of String)
+          Implements IHighlighter(Of String)
+  inheritance:
+  - System.Object
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  implements:
+  - Orionsoft.PrismSharp.Highlighters.IHighlighter{System.String}
+  inheritedMembers:
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Tokenizer
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Result
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Theme
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Language
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Highlight(System.String,System.String)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(System.String)
+  - Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  id: WrapByPre
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: WrapByPre
+  nameWithType: HtmlHighlighter.WrapByPre
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: WrapByPre
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 22
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  summary: "\nIf set, the resulting html spans are enclosed in &lt;pre> tag\n"
+  example: []
+  syntax:
+    content: public bool WrapByPre { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property WrapByPre As Boolean
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  id: '#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer)'
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: HtmlHighlighter(Tokenizer)
+  nameWithType: HtmlHighlighter.HtmlHighlighter(Tokenizer)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.HtmlHighlighter(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  type: Constructor
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: .ctor
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 24
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: public HtmlHighlighter(Tokenizer tokenizer)
+    parameters:
+    - id: tokenizer
+      type: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    content.vb: Public Sub New(tokenizer As Tokenizer)
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  id: '#ctor'
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: HtmlHighlighter()
+  nameWithType: HtmlHighlighter.HtmlHighlighter()
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.HtmlHighlighter()
+  type: Constructor
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: .ctor
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 29
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: public HtmlHighlighter()
+    content.vb: Public Sub New
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  id: BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: BeginDocument(String, ThemeStyle)
+  nameWithType: HtmlHighlighter.BeginDocument(String, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: BeginDocument
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 34
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: protected override ThemeStyle BeginDocument(string language, ThemeStyle docStyle)
+    parameters:
+    - id: language
+      type: System.String
+    - id: docStyle
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    content.vb: Protected Overrides Function BeginDocument(language As String, docStyle As ThemeStyle) As ThemeStyle
+  overridden: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  id: EndDocument
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: EndDocument()
+  nameWithType: HtmlHighlighter.EndDocument()
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument()
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: EndDocument
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 44
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: protected override void EndDocument()
+    content.vb: Protected Overrides Sub
+  overridden: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.EndDocument
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  id: BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: BeginContainer(Token, ThemeStyle, ThemeStyle)
+  nameWithType: HtmlHighlighter.BeginContainer(Token, ThemeStyle, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: BeginContainer
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 54
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: protected override ThemeStyle BeginContainer(Token token, ThemeStyle style, ThemeStyle parentStyle)
+    parameters:
+    - id: token
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+    - id: style
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    - id: parentStyle
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    content.vb: Protected Overrides Function BeginContainer(token As Token, style As ThemeStyle, parentStyle As ThemeStyle) As ThemeStyle
+  overridden: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  id: EndContainer
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: EndContainer()
+  nameWithType: HtmlHighlighter.EndContainer()
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer()
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: EndContainer
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 60
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: protected override void EndContainer()
+    content.vb: Protected Overrides Sub
+  overridden: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.EndContainer
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  id: Encode(System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: Encode(String)
+  nameWithType: HtmlHighlighter.Encode(String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: Encode
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 88
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  summary: "\nEscapes the text to be HTMl compatible\n"
+  example: []
+  syntax:
+    content: public static string Encode(string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function Encode(text As String) As String
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  id: AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  langs:
+  - csharp
+  - vb
+  name: AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  nameWithType: HtmlHighlighter.AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/Html/HtmlHighlighter.cs
+    id: AddSpan
+    path: ../Highlighters/Html/HtmlHighlighter.cs
+    startLine: 93
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters.Html
+  syntax:
+    content: protected override void AddSpan(string text, Token token, ThemeStyle style, ThemeStyle parentStyle)
+    parameters:
+    - id: text
+      type: System.String
+    - id: token
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+    - id: style
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    - id: parentStyle
+      type: Orionsoft.PrismSharp.Themes.ThemeStyle
+    content.vb: Protected Overrides Sub AddSpan(text As String, token As Token, style As ThemeStyle, parentStyle As ThemeStyle)
+  overridden: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  overload: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Orionsoft.PrismSharp.Highlighters.Html
+  commentId: N:Orionsoft.PrismSharp.Highlighters.Html
+  name: Orionsoft.PrismSharp.Highlighters.Html
+  nameWithType: Orionsoft.PrismSharp.Highlighters.Html
+  fullName: Orionsoft.PrismSharp.Highlighters.Html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+  name: AbstractHighlighter<String>
+  nameWithType: AbstractHighlighter<String>
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>
+  nameWithType.vb: AbstractHighlighter(Of String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String)
+  name.vb: AbstractHighlighter(Of String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+    name: AbstractHighlighter
+    nameWithType: AbstractHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+    name: AbstractHighlighter
+    nameWithType: AbstractHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter{System.String}
+  commentId: T:Orionsoft.PrismSharp.Highlighters.IHighlighter{System.String}
+  parent: Orionsoft.PrismSharp.Highlighters
+  definition: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  name: IHighlighter<String>
+  nameWithType: IHighlighter<String>
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<System.String>
+  nameWithType.vb: IHighlighter(Of String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of System.String)
+  name.vb: IHighlighter(Of String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter
+    nameWithType: IHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter
+    nameWithType: IHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Tokenizer
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Tokenizer
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer
+  name: Tokenizer
+  nameWithType: AbstractHighlighter<String>.Tokenizer
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Tokenizer
+  nameWithType.vb: AbstractHighlighter(Of String).Tokenizer
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Tokenizer
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Result
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Result
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result
+  name: Result
+  nameWithType: AbstractHighlighter<String>.Result
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Result
+  nameWithType.vb: AbstractHighlighter(Of String).Result
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Result
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Theme
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Theme
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme
+  name: Theme
+  nameWithType: AbstractHighlighter<String>.Theme
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Theme
+  nameWithType.vb: AbstractHighlighter(Of String).Theme
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Theme
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Language
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Language
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language
+  name: Language
+  nameWithType: AbstractHighlighter<String>.Language
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Language
+  nameWithType.vb: AbstractHighlighter(Of String).Language
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Language
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Highlight(System.String,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Highlight(System.String,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+  name: Highlight(String, String)
+  nameWithType: AbstractHighlighter<String>.Highlight(String, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Highlight(System.String, System.String)
+  nameWithType.vb: AbstractHighlighter(Of String).Highlight(String, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Highlight(System.String, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter<String>.Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter(Of String).Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  name: Highlight(Token, String)
+  nameWithType: AbstractHighlighter<String>.Highlight(Token, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  nameWithType.vb: AbstractHighlighter(Of String).Highlight(Token, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter<String>.Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter(Of String).Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  name: HighlightRange(String, Int32, Int32, String)
+  nameWithType: AbstractHighlighter<String>.HighlightRange(String, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  nameWithType.vb: AbstractHighlighter(Of String).HighlightRange(String, Int32, Int32, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter<String>.HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter(Of String).HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  name: HighlightRange(Token, Int32, Int32, String)
+  nameWithType: AbstractHighlighter<String>.HighlightRange(Token, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  nameWithType.vb: AbstractHighlighter(Of String).HighlightRange(Token, Int32, Int32, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter<String>.HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter(Of String).HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  name: Construct(Theme)
+  nameWithType: AbstractHighlighter<String>.Construct(Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType.vb: AbstractHighlighter(Of String).Construct(Theme)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct(Orionsoft.PrismSharp.Themes.Theme)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter<String>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of String).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  name: Construct(Tokenizer, Theme)
+  nameWithType: AbstractHighlighter<String>.Construct(Tokenizer, Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType.vb: AbstractHighlighter(Of String).Construct(Tokenizer, Theme)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter<String>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of String).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Construct(ThemeNames)
+  nameWithType: AbstractHighlighter<String>.Construct(ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType.vb: AbstractHighlighter(Of String).Construct(ThemeNames)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter<String>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of String).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Construct(Tokenizer, ThemeNames)
+  nameWithType: AbstractHighlighter<String>.Construct(Tokenizer, ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType.vb: AbstractHighlighter(Of String).Construct(Tokenizer, ThemeNames)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter<String>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of String).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+  name: Construct(String)
+  nameWithType: AbstractHighlighter<String>.Construct(String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct(System.String)
+  nameWithType.vb: AbstractHighlighter(Of String).Construct(String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct(System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter<String>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of String).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  name: Construct(Tokenizer, String)
+  nameWithType: AbstractHighlighter<String>.Construct(Tokenizer, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  nameWithType.vb: AbstractHighlighter(Of String).Construct(Tokenizer, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter<String>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of String).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+  name: AbstractHighlighter<TResult>
+  nameWithType: AbstractHighlighter<TResult>
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>
+  nameWithType.vb: AbstractHighlighter(Of TResult)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult)
+  name.vb: AbstractHighlighter(Of TResult)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+    name: AbstractHighlighter
+    nameWithType: AbstractHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+    name: AbstractHighlighter
+    nameWithType: AbstractHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract
+  commentId: N:Orionsoft.PrismSharp.Highlighters.Abstract
+  name: Orionsoft.PrismSharp.Highlighters.Abstract
+  nameWithType: Orionsoft.PrismSharp.Highlighters.Abstract
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  commentId: T:Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  name: IHighlighter<TResult>
+  nameWithType: IHighlighter<TResult>
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>
+  nameWithType.vb: IHighlighter(Of TResult)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult)
+  name.vb: IHighlighter(Of TResult)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter
+    nameWithType: IHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter
+    nameWithType: IHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters
+  commentId: N:Orionsoft.PrismSharp.Highlighters
+  name: Orionsoft.PrismSharp.Highlighters
+  nameWithType: Orionsoft.PrismSharp.Highlighters
+  fullName: Orionsoft.PrismSharp.Highlighters
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer
+  name: Tokenizer
+  nameWithType: AbstractHighlighter<TResult>.Tokenizer
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Tokenizer
+  nameWithType.vb: AbstractHighlighter(Of TResult).Tokenizer
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Tokenizer
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result
+  name: Result
+  nameWithType: AbstractHighlighter<TResult>.Result
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Result
+  nameWithType.vb: AbstractHighlighter(Of TResult).Result
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Result
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme
+  name: Theme
+  nameWithType: AbstractHighlighter<TResult>.Theme
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Theme
+  nameWithType.vb: AbstractHighlighter(Of TResult).Theme
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Theme
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language
+  name: Language
+  nameWithType: AbstractHighlighter<TResult>.Language
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Language
+  nameWithType.vb: AbstractHighlighter(Of TResult).Language
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Language
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+  isExternal: true
+  name: Highlight(String, String)
+  nameWithType: AbstractHighlighter<TResult>.Highlight(String, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight(System.String, System.String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Highlight(String, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight(System.String, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter<TResult>.Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter(Of TResult).Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  isExternal: true
+  name: Highlight(Token, String)
+  nameWithType: AbstractHighlighter<TResult>.Highlight(Token, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Highlight(Token, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter<TResult>.Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+    name: Highlight
+    nameWithType: AbstractHighlighter(Of TResult).Highlight
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  isExternal: true
+  name: HighlightRange(String, Int32, Int32, String)
+  nameWithType: AbstractHighlighter<TResult>.HighlightRange(String, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).HighlightRange(String, Int32, Int32, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter<TResult>.HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter(Of TResult).HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  isExternal: true
+  name: HighlightRange(Token, Int32, Int32, String)
+  nameWithType: AbstractHighlighter<TResult>.HighlightRange(Token, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).HighlightRange(Token, Int32, Int32, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter<TResult>.HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+    name: HighlightRange
+    nameWithType: AbstractHighlighter(Of TResult).HighlightRange
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  name: Construct(Theme)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Theme)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Themes.Theme)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter<TResult>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of TResult).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  name: Construct(Tokenizer, Theme)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Tokenizer, Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Tokenizer, Theme)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter<TResult>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of TResult).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.Theme
+    name: Theme
+    nameWithType: Theme
+    fullName: Orionsoft.PrismSharp.Themes.Theme
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Construct(ThemeNames)
+  nameWithType: AbstractHighlighter<TResult>.Construct(ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(ThemeNames)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter<TResult>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of TResult).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Construct(Tokenizer, ThemeNames)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Tokenizer, ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Tokenizer, ThemeNames)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter<TResult>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of TResult).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeNames
+    name: ThemeNames
+    nameWithType: ThemeNames
+    fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+  isExternal: true
+  name: Construct(String)
+  nameWithType: AbstractHighlighter<TResult>.Construct(String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(System.String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter<TResult>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of TResult).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  isExternal: true
+  name: Construct(Tokenizer, String)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Tokenizer, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Tokenizer, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter<TResult>.Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+    name: Construct
+    nameWithType: AbstractHighlighter(Of TResult).Construct
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+    name: Tokenizer
+    nameWithType: Tokenizer
+    fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  name: WrapByPre
+  nameWithType: HtmlHighlighter.WrapByPre
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  name: HtmlHighlighter
+  nameWithType: HtmlHighlighter.HtmlHighlighter
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.HtmlHighlighter
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: Tokenizer
+  nameWithType: Tokenizer
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginDocument(String, ThemeStyle)
+  nameWithType: AbstractHighlighter<String>.BeginDocument(String, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of String).BeginDocument(String, ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginDocument
+    nameWithType: AbstractHighlighter<String>.BeginDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.BeginDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginDocument
+    nameWithType: AbstractHighlighter(Of String).BeginDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).BeginDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument
+  name: BeginDocument
+  nameWithType: HtmlHighlighter.BeginDocument
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeStyle
+  parent: Orionsoft.PrismSharp.Themes
+  name: ThemeStyle
+  nameWithType: ThemeStyle
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  isExternal: true
+  name: BeginDocument(String, ThemeStyle)
+  nameWithType: AbstractHighlighter<TResult>.BeginDocument(String, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of TResult).BeginDocument(String, ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginDocument
+    nameWithType: AbstractHighlighter<TResult>.BeginDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginDocument
+    nameWithType: AbstractHighlighter(Of TResult).BeginDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Themes
+  commentId: N:Orionsoft.PrismSharp.Themes
+  name: Orionsoft.PrismSharp.Themes
+  nameWithType: Orionsoft.PrismSharp.Themes
+  fullName: Orionsoft.PrismSharp.Themes
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.EndDocument
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.EndDocument
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+  name: EndDocument()
+  nameWithType: AbstractHighlighter<String>.EndDocument()
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.EndDocument()
+  nameWithType.vb: AbstractHighlighter(Of String).EndDocument()
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).EndDocument()
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+    name: EndDocument
+    nameWithType: AbstractHighlighter<String>.EndDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.EndDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+    name: EndDocument
+    nameWithType: AbstractHighlighter(Of String).EndDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).EndDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  name: EndDocument
+  nameWithType: HtmlHighlighter.EndDocument
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+  name: EndDocument()
+  nameWithType: AbstractHighlighter<TResult>.EndDocument()
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndDocument()
+  nameWithType.vb: AbstractHighlighter(Of TResult).EndDocument()
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndDocument()
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+    name: EndDocument
+    nameWithType: AbstractHighlighter<TResult>.EndDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+    name: EndDocument
+    nameWithType: AbstractHighlighter(Of TResult).EndDocument
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndDocument
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginContainer(Token, ThemeStyle, ThemeStyle)
+  nameWithType: AbstractHighlighter<String>.BeginContainer(Token, ThemeStyle, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of String).BeginContainer(Token, ThemeStyle, ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginContainer
+    nameWithType: AbstractHighlighter<String>.BeginContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.BeginContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginContainer
+    nameWithType: AbstractHighlighter(Of String).BeginContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).BeginContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer
+  name: BeginContainer
+  nameWithType: HtmlHighlighter.BeginContainer
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer
+- uid: Orionsoft.PrismSharp.Tokenizing.Token
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Token
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: Token
+  nameWithType: Token
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginContainer(Token, ThemeStyle, ThemeStyle)
+  nameWithType: AbstractHighlighter<TResult>.BeginContainer(Token, ThemeStyle, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of TResult).BeginContainer(Token, ThemeStyle, ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginContainer
+    nameWithType: AbstractHighlighter<TResult>.BeginContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: BeginContainer
+    nameWithType: AbstractHighlighter(Of TResult).BeginContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.EndContainer
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.EndContainer
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+  name: EndContainer()
+  nameWithType: AbstractHighlighter<String>.EndContainer()
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.EndContainer()
+  nameWithType.vb: AbstractHighlighter(Of String).EndContainer()
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).EndContainer()
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+    name: EndContainer
+    nameWithType: AbstractHighlighter<String>.EndContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.EndContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+    name: EndContainer
+    nameWithType: AbstractHighlighter(Of String).EndContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).EndContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  name: EndContainer
+  nameWithType: HtmlHighlighter.EndContainer
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+  name: EndContainer()
+  nameWithType: AbstractHighlighter<TResult>.EndContainer()
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndContainer()
+  nameWithType.vb: AbstractHighlighter(Of TResult).EndContainer()
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndContainer()
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+    name: EndContainer
+    nameWithType: AbstractHighlighter<TResult>.EndContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+    name: EndContainer
+    nameWithType: AbstractHighlighter(Of TResult).EndContainer
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndContainer
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode
+  name: Encode
+  nameWithType: HtmlHighlighter.Encode
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  parent: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter{System.String}
+  definition: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  nameWithType: AbstractHighlighter<String>.AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of String).AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: AddSpan
+    nameWithType: AbstractHighlighter<String>.AddSpan
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<System.String>.AddSpan
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: AddSpan
+    nameWithType: AbstractHighlighter(Of String).AddSpan
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of System.String).AddSpan
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan
+  name: AddSpan
+  nameWithType: HtmlHighlighter.AddSpan
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  isExternal: true
+  name: AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  nameWithType: AbstractHighlighter<TResult>.AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of TResult).AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: AddSpan
+    nameWithType: AbstractHighlighter<TResult>.AddSpan
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.AddSpan
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+    name: AddSpan
+    nameWithType: AbstractHighlighter(Of TResult).AddSpan
+    fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).AddSpan
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+    name: ThemeStyle
+    nameWithType: ThemeStyle
+    fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  - name: )
+    nameWithType: )
+    fullName: )

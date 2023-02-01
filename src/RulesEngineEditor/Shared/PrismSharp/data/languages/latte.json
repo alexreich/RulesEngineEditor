@@ -1,0 +1,404 @@
+{
+  "comment": "r:/^\\{\\*[\\s\\S]*/",
+  "latte-tag": {
+    "pattern": "r:/(^\\{(?:\\/(?=[a-z]))?)(?:[=_]|[a-z]\\w*\\b(?!\\())/i",
+    "lookbehind": true,
+    "alias": "s:important"
+  },
+  "delimiter": {
+    "pattern": "r:/^\\{\\/?|\\}(?:(?=\\r$)|$)/",
+    "alias": "s:punctuation"
+  },
+  "php": {
+    "pattern": "r:/\\S(?:[\\s\\S]*\\S)?/",
+    "alias": "s:language-php",
+    "inside": {
+      "delimiter": {
+        "pattern": "r:/\\?>(?:(?=\\r$)|$)|^<\\?(?:php(?=\\s)|=)?/i",
+        "alias": "s:important"
+      },
+      "comment": "r:/\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*|#(?!\\[)[^\\r\\n]*/",
+      "string": [
+        {
+          "pattern": "r:/<<<'([^']+)'[\\r\\n](?:[^\\r\\n]*[\\r\\n])*?\\1;/",
+          "alias": "s:nowdoc-string",
+          "greedy": true,
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^<<<'[^']+'|[a-z_]\\w*;(?:(?=\\r$)|$)/i",
+              "alias": "s:symbol",
+              "inside": {
+                "punctuation": "r:/^<<<'?|[';](?:(?=\\r$)|$)/"
+              }
+            }
+          }
+        },
+        {
+          "pattern": "r:/<<<(?:\"([^\"]+)\"[\\r\\n](?:[^\\r\\n]*[\\r\\n])*?\\1;|([a-z_]\\w*)[\\r\\n](?:[^\\r\\n]*[\\r\\n])*?\\2;)/i",
+          "alias": "s:heredoc-string",
+          "greedy": true,
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^<<<(?:\"[^\"]+\"|[a-z_]\\w*)|[a-z_]\\w*;(?:(?=\\r$)|$)/i",
+              "alias": "s:symbol",
+              "inside": {
+                "punctuation": "r:/^<<<\"?|[\";](?:(?=\\r$)|$)/"
+              }
+            },
+            "interpolation": {
+              "pattern": "r:/\\{\\$(?:\\{(?:\\{[^{}]+\\}|[^{}]+)\\}|[^{}])+\\}|(^|[^\\\\{])\\$+(?:\\w+(?:\\[[^\\r\\n\\[\\]]+\\]|->\\w+)?)/",
+              "lookbehind": true,
+              "inside": "s:[Circular ~.php.inside]"
+            }
+          }
+        },
+        {
+          "pattern": "r:/`(?:\\\\[\\s\\S]|[^\\\\`])*`/",
+          "alias": "s:backtick-quoted-string",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/'(?:\\\\[\\s\\S]|[^\\\\'])*'/",
+          "alias": "s:single-quoted-string",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/\"(?:\\\\[\\s\\S]|[^\\\\\"])*\"/",
+          "alias": "s:double-quoted-string",
+          "greedy": true,
+          "inside": {
+            "interpolation": {
+              "pattern": "r:/\\{\\$(?:\\{(?:\\{[^{}]+\\}|[^{}]+)\\}|[^{}])+\\}|(^|[^\\\\{])\\$+(?:\\w+(?:\\[[^\\r\\n\\[\\]]+\\]|->\\w+)?)/",
+              "lookbehind": true,
+              "inside": "s:[Circular ~.php.inside]"
+            }
+          }
+        }
+      ],
+      "attribute": {
+        "pattern": "r:/#\\[(?:[^\"'\\/#]|\\/(?![*/])|\\/\\/[^\\r\\n]*(?:(?=\\r$)|$)|#(?!\\[)[^\\r\\n]*(?:(?=\\r$)|$)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\"(?:\\\\[\\s\\S]|[^\\\\\"])*\"|'(?:\\\\[\\s\\S]|[^\\\\'])*')+\\](?=\\s*[a-z$#])/im",
+        "greedy": true,
+        "inside": {
+          "attribute-content": {
+            "pattern": "r:/^(#\\[)[\\s\\S]+(?=\\](?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": {
+              "comment": "r:/\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*|#(?!\\[)[^\\r\\n]*/",
+              "string": [
+                {
+                  "pattern": "r:/<<<'([^']+)'[\\r\\n](?:[^\\r\\n]*[\\r\\n])*?\\1;/",
+                  "alias": "s:nowdoc-string",
+                  "greedy": true,
+                  "inside": {
+                    "delimiter": {
+                      "pattern": "r:/^<<<'[^']+'|[a-z_]\\w*;(?:(?=\\r$)|$)/i",
+                      "alias": "s:symbol",
+                      "inside": {
+                        "punctuation": "r:/^<<<'?|[';](?:(?=\\r$)|$)/"
+                      }
+                    }
+                  }
+                },
+                {
+                  "pattern": "r:/<<<(?:\"([^\"]+)\"[\\r\\n](?:[^\\r\\n]*[\\r\\n])*?\\1;|([a-z_]\\w*)[\\r\\n](?:[^\\r\\n]*[\\r\\n])*?\\2;)/i",
+                  "alias": "s:heredoc-string",
+                  "greedy": true,
+                  "inside": {
+                    "delimiter": {
+                      "pattern": "r:/^<<<(?:\"[^\"]+\"|[a-z_]\\w*)|[a-z_]\\w*;(?:(?=\\r$)|$)/i",
+                      "alias": "s:symbol",
+                      "inside": {
+                        "punctuation": "r:/^<<<\"?|[\";](?:(?=\\r$)|$)/"
+                      }
+                    },
+                    "interpolation": {
+                      "pattern": "r:/\\{\\$(?:\\{(?:\\{[^{}]+\\}|[^{}]+)\\}|[^{}])+\\}|(^|[^\\\\{])\\$+(?:\\w+(?:\\[[^\\r\\n\\[\\]]+\\]|->\\w+)?)/",
+                      "lookbehind": true,
+                      "inside": "s:[Circular ~.php.inside]"
+                    }
+                  }
+                },
+                {
+                  "pattern": "r:/`(?:\\\\[\\s\\S]|[^\\\\`])*`/",
+                  "alias": "s:backtick-quoted-string",
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/'(?:\\\\[\\s\\S]|[^\\\\'])*'/",
+                  "alias": "s:single-quoted-string",
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/\"(?:\\\\[\\s\\S]|[^\\\\\"])*\"/",
+                  "alias": "s:double-quoted-string",
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/\\{\\$(?:\\{(?:\\{[^{}]+\\}|[^{}]+)\\}|[^{}])+\\}|(^|[^\\\\{])\\$+(?:\\w+(?:\\[[^\\r\\n\\[\\]]+\\]|->\\w+)?)/",
+                      "lookbehind": true,
+                      "inside": "s:[Circular ~.php.inside]"
+                    }
+                  }
+                }
+              ],
+              "attribute-class-name": [
+                {
+                  "pattern": "r:/([^:]|^)\\b[a-z_]\\w*(?!\\\\)\\b/i",
+                  "alias": "s:class-name",
+                  "greedy": true,
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/([^:]|^)(?:\\\\?\\b[a-z_]\\w*)+/i",
+                  "alias": [
+                    "s:class-name",
+                    "s:class-name-fully-qualified"
+                  ],
+                  "greedy": true,
+                  "lookbehind": true,
+                  "inside": {
+                    "punctuation": "r:/\\\\/"
+                  }
+                }
+              ],
+              "constant": [
+                {
+                  "pattern": "r:/\\b(?:false|true)\\b/i",
+                  "alias": "s:boolean"
+                },
+                {
+                  "pattern": "r:/(::\\s*)\\b[a-z_]\\w*\\b(?!\\s*\\()/i",
+                  "greedy": true,
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:case|const)\\s+)\\b[a-z_]\\w*(?=\\s*[;=])/i",
+                  "greedy": true,
+                  "lookbehind": true
+                },
+                "r:/\\b(?:null)\\b/i",
+                "r:/\\b[A-Z_][A-Z0-9_]*\\b(?!\\s*\\()/"
+              ],
+              "number": "r:/\\b0b[01]+(?:_[01]+)*\\b|\\b0o[0-7]+(?:_[0-7]+)*\\b|\\b0x[\\da-f]+(?:_[\\da-f]+)*\\b|(?:\\b\\d+(?:_\\d+)*\\.?(?:\\d+(?:_\\d+)*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+              "operator": "r:/<?=>|\\?\\?=?|\\.{3}|\\??->|[!=]=?=?|::|\\*\\*=?|--|\\+\\+|&&|\\|\\||<<|>>|[?~]|[/^|%*&<>.+-]=?/",
+              "punctuation": "r:/[{}\\[\\](),:;]/"
+            }
+          },
+          "delimiter": {
+            "pattern": "r:/^#\\[|\\](?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          }
+        }
+      },
+      "variable": "r:/\\$+(?:\\w+\\b|(?=\\{))/",
+      "package": {
+        "pattern": "r:/(namespace\\s+|use\\s+(?:function\\s+)?)(?:\\\\?\\b[a-z_]\\w*)+\\b(?!\\\\)/i",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\\\/"
+        }
+      },
+      "class-name-definition": {
+        "pattern": "r:/(\\b(?:class|enum|interface|trait)\\s+)\\b[a-z_]\\w*(?!\\\\)\\b/i",
+        "lookbehind": true,
+        "alias": "s:class-name"
+      },
+      "function-definition": {
+        "pattern": "r:/(\\bfunction\\s+)[a-z_]\\w*(?=\\s*\\()/i",
+        "lookbehind": true,
+        "alias": "s:function"
+      },
+      "keyword": [
+        {
+          "pattern": "r:/(\\(\\s*)\\b(?:array|bool|boolean|float|int|integer|object|string)\\b(?=\\s*\\))/i",
+          "alias": "s:type-casting",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/([(,?]\\s*)\\b(?:array(?!\\s*\\()|bool|callable|(?:false|null)(?=\\s*\\|)|float|int|iterable|mixed|object|self|static|string)\\b(?=\\s*\\$)/i",
+          "alias": "s:type-hint",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(\\)\\s*:\\s*(?:\\?\\s*)?)\\b(?:array(?!\\s*\\()|bool|callable|(?:false|null)(?=\\s*\\|)|float|int|iterable|mixed|object|self|static|string|void)\\b/i",
+          "alias": "s:return-type",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\\b(?:array(?!\\s*\\()|bool|float|int|iterable|mixed|object|string|void)\\b/i",
+          "alias": "s:type-declaration",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/(\\|\\s*)(?:false|null)\\b|\\b(?:false|null)(?=\\s*\\|)/i",
+          "alias": "s:type-declaration",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\\b(?:parent|self|static)(?=\\s*::)/i",
+          "alias": "s:static-context",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/(\\byield\\s+)from\\b/i",
+          "lookbehind": true
+        },
+        "r:/\\bclass\\b/i",
+        {
+          "pattern": "r:/((?:^|[^\\s>:]|(?:^|[^-])>|(?:^|[^:]):)\\s*)\\b(?:abstract|and|array|as|break|callable|case|catch|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|enum|eval|exit|extends|final|finally|fn|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|match|namespace|new|or|parent|print|private|protected|public|require|require_once|return|self|static|switch|throw|trait|try|unset|use|var|while|xor|yield|__halt_compiler)\\b/i",
+          "lookbehind": true
+        }
+      ],
+      "argument-name": {
+        "pattern": "r:/([(,]\\s+)\\b[a-z_]\\w*(?=\\s*:(?!:))/i",
+        "lookbehind": true
+      },
+      "class-name": [
+        {
+          "pattern": "r:/(\\b(?:extends|implements|instanceof|new(?!\\s+self|\\s+static))\\s+|\\bcatch\\s*\\()\\b[a-z_]\\w*(?!\\\\)\\b/i",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(\\|\\s*)\\b[a-z_]\\w*(?!\\\\)\\b/i",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\\b[a-z_]\\w*(?!\\\\)\\b(?=\\s*\\|)/i",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/(\\|\\s*)(?:\\\\?\\b[a-z_]\\w*)+\\b/i",
+          "alias": "s:class-name-fully-qualified",
+          "greedy": true,
+          "lookbehind": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        },
+        {
+          "pattern": "r:/(?:\\\\?\\b[a-z_]\\w*)+\\b(?=\\s*\\|)/i",
+          "alias": "s:class-name-fully-qualified",
+          "greedy": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        },
+        {
+          "pattern": "r:/(\\b(?:extends|implements|instanceof|new(?!\\s+self\\b|\\s+static\\b))\\s+|\\bcatch\\s*\\()(?:\\\\?\\b[a-z_]\\w*)+\\b(?!\\\\)/i",
+          "alias": "s:class-name-fully-qualified",
+          "greedy": true,
+          "lookbehind": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        },
+        {
+          "pattern": "r:/\\b[a-z_]\\w*(?=\\s*\\$)/i",
+          "alias": "s:type-declaration",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/(?:\\\\?\\b[a-z_]\\w*)+(?=\\s*\\$)/i",
+          "alias": [
+            "s:class-name-fully-qualified",
+            "s:type-declaration"
+          ],
+          "greedy": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        },
+        {
+          "pattern": "r:/\\b[a-z_]\\w*(?=\\s*::)/i",
+          "alias": "s:static-context",
+          "greedy": true
+        },
+        {
+          "pattern": "r:/(?:\\\\?\\b[a-z_]\\w*)+(?=\\s*::)/i",
+          "alias": [
+            "s:class-name-fully-qualified",
+            "s:static-context"
+          ],
+          "greedy": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        },
+        {
+          "pattern": "r:/([(,?]\\s*)[a-z_]\\w*(?=\\s*\\$)/i",
+          "alias": "s:type-hint",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/([(,?]\\s*)(?:\\\\?\\b[a-z_]\\w*)+(?=\\s*\\$)/i",
+          "alias": [
+            "s:class-name-fully-qualified",
+            "s:type-hint"
+          ],
+          "greedy": true,
+          "lookbehind": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        },
+        {
+          "pattern": "r:/(\\)\\s*:\\s*(?:\\?\\s*)?)\\b[a-z_]\\w*(?!\\\\)\\b/i",
+          "alias": "s:return-type",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(\\)\\s*:\\s*(?:\\?\\s*)?)(?:\\\\?\\b[a-z_]\\w*)+\\b(?!\\\\)/i",
+          "alias": [
+            "s:class-name-fully-qualified",
+            "s:return-type"
+          ],
+          "greedy": true,
+          "lookbehind": true,
+          "inside": {
+            "punctuation": "r:/\\\\/"
+          }
+        }
+      ],
+      "constant": [
+        {
+          "pattern": "r:/\\b(?:false|true)\\b/i",
+          "alias": "s:boolean"
+        },
+        {
+          "pattern": "r:/(::\\s*)\\b[a-z_]\\w*\\b(?!\\s*\\()/i",
+          "greedy": true,
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(\\b(?:case|const)\\s+)\\b[a-z_]\\w*(?=\\s*[;=])/i",
+          "greedy": true,
+          "lookbehind": true
+        },
+        "r:/\\b(?:null)\\b/i",
+        "r:/\\b[A-Z_][A-Z0-9_]*\\b(?!\\s*\\()/"
+      ],
+      "function": {
+        "pattern": "r:/(^|[^\\\\\\w])\\\\?[a-z_](?:[\\w\\\\]*\\w)?(?=\\s*\\()/i",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\\\/"
+        }
+      },
+      "property": {
+        "pattern": "r:/(->\\s*)\\w+/",
+        "lookbehind": true
+      },
+      "number": "r:/\\b0b[01]+(?:_[01]+)*\\b|\\b0o[0-7]+(?:_[0-7]+)*\\b|\\b0x[\\da-f]+(?:_[\\da-f]+)*\\b|(?:\\b\\d+(?:_\\d+)*\\.?(?:\\d+(?:_\\d+)*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+      "operator": "r:/<?=>|\\?\\?=?|\\.{3}|\\??->|[!=]=?=?|::|\\*\\*=?|--|\\+\\+|&&|\\|\\||<<|>>|[?~]|[/^|%*&<>.+-]=?/",
+      "punctuation": "r:/[{}\\[\\](),:;]/"
+    }
+  }
+}

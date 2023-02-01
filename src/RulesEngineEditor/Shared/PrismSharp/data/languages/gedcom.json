@@ -1,0 +1,26 @@
+{
+  "line-value": {
+    "pattern": "r:/(^[\\t ]*\\d+ +(?:@\\w[\\w!\"$%&'()*+,\\-./:;<=>?[\\\\\\]^`{|}~\\x80-\\xfe #]*@ +)?\\w+ )[^\\r\\n]+/m",
+    "lookbehind": true,
+    "inside": {
+      "pointer": {
+        "pattern": "r:/^@\\w[\\w!\"$%&'()*+,\\-./:;<=>?[\\\\\\]^`{|}~\\x80-\\xfe #]*@(?:(?=\\r$)|$)/",
+        "alias": "s:variable"
+      }
+    }
+  },
+  "tag": {
+    "pattern": "r:/(^[\\t ]*\\d+ +(?:@\\w[\\w!\"$%&'()*+,\\-./:;<=>?[\\\\\\]^`{|}~\\x80-\\xfe #]*@ +)?)\\w+/m",
+    "lookbehind": true,
+    "alias": "s:string"
+  },
+  "level": {
+    "pattern": "r:/(^[\\t ]*)\\d+/m",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "pointer": {
+    "pattern": "r:/@\\w[\\w!\"$%&'()*+,\\-./:;<=>?[\\\\\\]^`{|}~\\x80-\\xfe #]*@/",
+    "alias": "s:variable"
+  }
+}

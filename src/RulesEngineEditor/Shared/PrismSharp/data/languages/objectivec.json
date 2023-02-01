@@ -1,0 +1,68 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+    "greedy": true
+  },
+  "macro": {
+    "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property",
+    "inside": {
+      "string": [
+        {
+          "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+          "greedy": true
+        }
+      ],
+      "char": {
+        "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+        "greedy": true
+      },
+      "comment": {
+        "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+        "greedy": true
+      },
+      "macro-name": [
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+          "lookbehind": true,
+          "alias": "s:function"
+        }
+      ],
+      "directive": {
+        "pattern": "r:/^(#\\s*)[a-z]+/",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "directive-hash": "r:/^#/",
+      "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+      "expression": {
+        "pattern": "r:/\\S[\\s\\S]*/",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/@?\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "keyword": "r:/\\b(?:asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|in|inline|int|long|register|return|self|short|signed|sizeof|static|struct|super|switch|typedef|typeof|union|unsigned|void|volatile|while)\\b|(?:@interface|@end|@implementation|@protocol|@class|@public|@protected|@private|@property|@try|@catch|@finally|@throw|@synthesize|@dynamic|@selector)\\b/",
+  "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/(?:\\b0x(?:[\\da-f]+(?:\\.[\\da-f]*)?|\\.[\\da-f]+)(?:p[+-]?\\d+)?|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?)[ful]{0,4}/i",
+  "operator": "r:/-[->]?|\\+\\+?|!=?|<<?=?|>>?=?|==?|&&?|\\|\\|?|[~^%?*\\/@]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

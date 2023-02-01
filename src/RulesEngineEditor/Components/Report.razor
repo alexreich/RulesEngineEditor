@@ -1,0 +1,89 @@
+﻿@*
+    // Copyright (c) Alex Reich.
+    // Licensed under the CC BY 4.0 License.
+*@
+@using Orionsoft.PrismSharp.Highlighters.Html;
+@using RulesEngineEditor.Models
+@inject RulesEngineEditor.Services.WorkflowService WorkflowService
+
+@if (rules != null)
+{
+    <div style="zoom:70%" id="sp_grid_main">
+        <table class="table table-hover table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th>Rule Name</th>
+                    <th>Operator</th>
+                    <th>Success Event</th>
+                    <th>Error Message</th>
+                    <th>Expression</th>
+                    <th>Actions</th>
+                    <th>Enabled</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (RuleData rule in rules)
+                {
+                    <tr>
+                        <td class="border-white">@rule.RuleName.Trim()</td>
+                        <td>
+                            @rule.Operator
+                        </td>
+                        <td>
+                            @((MarkupString)(Highlighter(rule.SuccessEvent)))
+                        </td>
+                        <td>@rule.ErrorMessage</td>
+                        <td>
+                            @((MarkupString)(Highlighter(rule.Expression)))
+                        </td>
+                        <td>@rule.Actions</td>
+                        <td>@rule.Enabled</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+@code {
+    public static string Highlighter(string text)
+    {
+        if (text == null) return "";
+        var highlighter = new HtmlHighlighter
+            {
+                WrapByPre = false,
+            };
+        return highlighter.Highlight(text, "csharp");
+    }
+    public bool sort;
+    private List<RuleData> _rules;
+    [Parameter]
+    public List<RuleData> rules
+    {
+        get { return _rules; }
+        set { _rules = value; StateHasChanged(); }
+    }
+
+    [Parameter]
+    public EventCallback<List<RuleData>> RulesChanged { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+    }
+
+    private void DeleteRule(RuleData sp)
+    {
+        WorkflowService.DeleteRule(rules, sp);
+        RulesChanged.InvokeAsync(rules);
+    }
+
+    private void RuleDragEnd(RuleData sp)
+    {
+        WorkflowService.Sort(rules);
+        RulesChanged.InvokeAsync(rules);
+    }
+    public string IsPressed(bool state, string suffix)
+    {
+        return state ? "reeditor_" + suffix : "";
+    }
+}

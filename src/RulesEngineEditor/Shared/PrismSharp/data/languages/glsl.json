@@ -1,0 +1,72 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+    "greedy": true
+  },
+  "macro": {
+    "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property",
+    "inside": {
+      "string": [
+        {
+          "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+          "greedy": true
+        }
+      ],
+      "char": {
+        "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+        "greedy": true
+      },
+      "comment": {
+        "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+        "greedy": true
+      },
+      "macro-name": [
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+          "lookbehind": true,
+          "alias": "s:function"
+        }
+      ],
+      "directive": {
+        "pattern": "r:/^(#\\s*)[a-z]+/",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "directive-hash": "r:/^#/",
+      "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+      "expression": {
+        "pattern": "r:/\\S[\\s\\S]*/",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(\\b(?:enum|struct)\\s+(?:__attribute__\\s*\\(\\([\\s\\S]*?\\)\\)\\s*)?)\\w+|\\b[a-z]\\w*_t\\b/",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:active|asm|atomic_uint|attribute|[ibdu]?vec[234]|bool|break|buffer|case|cast|centroid|class|coherent|common|const|continue|d?mat[234](?:x[234])?|default|discard|do|double|else|enum|extern|external|false|filter|fixed|flat|float|for|fvec[234]|goto|half|highp|hvec[234]|[iu]?sampler2DMS(?:Array)?|[iu]?sampler2DRect|[iu]?samplerBuffer|[iu]?samplerCube|[iu]?samplerCubeArray|[iu]?sampler[123]D|[iu]?sampler[12]DArray|[iu]?image2DMS(?:Array)?|[iu]?image2DRect|[iu]?imageBuffer|[iu]?imageCube|[iu]?imageCubeArray|[iu]?image[123]D|[iu]?image[12]DArray|if|in|inline|inout|input|int|interface|invariant|layout|long|lowp|mediump|namespace|noinline|noperspective|out|output|partition|patch|precise|precision|public|readonly|resource|restrict|return|sample|sampler[12]DArrayShadow|sampler[12]DShadow|sampler2DRectShadow|sampler3DRect|samplerCubeArrayShadow|samplerCubeShadow|shared|short|sizeof|smooth|static|struct|subroutine|superp|switch|template|this|true|typedef|uint|uniform|union|unsigned|using|varying|void|volatile|while|writeonly)\\b/",
+  "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/(?:\\b0x(?:[\\da-f]+(?:\\.[\\da-f]*)?|\\.[\\da-f]+)(?:p[+-]?\\d+)?|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?)[ful]{0,4}/i",
+  "operator": "r:/>>=?|<<=?|->|([-+&|:])\\1|[?:~]|[-+*/%&|^!=<>]=?/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

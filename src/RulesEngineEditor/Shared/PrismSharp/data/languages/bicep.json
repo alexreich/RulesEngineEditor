@@ -1,0 +1,67 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "property": [
+    {
+      "pattern": "r:/([\\r\\n][ \\t]*)[a-z_]\\w*(?=[ \\t]*:)/i",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/([\\r\\n][ \\t]*)'(?:\\\\[^\\r\\n]|\\$(?!\\{)|[^'\\\\\\r\\n$])*'(?=[ \\t]*:)/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string": [
+    {
+      "pattern": "r:/'''[^'][\\s\\S]*?'''/",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\'])'(?:\\\\[^\\r\\n]|\\$(?!\\{)|[^'\\\\\\r\\n$])*'/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "interpolated-string": {
+    "pattern": "r:/(^|[^\\\\'])'(?:\\\\[^\\r\\n]|\\$(?:(?!\\{)|\\{[^{}\\r\\n]*\\})|[^'\\\\\\r\\n$])*'/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/\\$\\{[^{}\\r\\n]*\\}/",
+        "inside": {
+          "expression": {
+            "pattern": "r:/(^\\$\\{)[\\s\\S]+(?=\\}(?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": "s:[Circular ~]"
+          },
+          "punctuation": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/"
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "datatype": {
+    "pattern": "r:/(\\b(?:output|param)\\b[ \\t]+\\w+[ \\t]+)\\w+\\b/",
+    "lookbehind": true,
+    "alias": "s:class-name"
+  },
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "keyword": "r:/\\b(?:existing|for|if|in|module|null|output|param|resource|targetScope|var)\\b/",
+  "decorator": "r:/@\\w+\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=[ \\t]*\\()/i",
+  "number": "r:/(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:E[+-]?\\d+)?/i",
+  "operator": "r:/--|\\+\\+|\\*\\*=?|=>|&&=?|\\|\\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\.{3}|\\?\\?=?|\\?\\.?|[~:]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

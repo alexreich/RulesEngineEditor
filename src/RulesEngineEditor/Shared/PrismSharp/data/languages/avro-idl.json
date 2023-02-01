@@ -1,0 +1,41 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\])\"(?:[^\\r\\n\"\\\\]|\\\\[^\\r\\n])*\"/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "annotation": {
+    "pattern": "r:/@(?:[$\\w.-]|`[^\\r\\n`]+`)+/",
+    "greedy": true,
+    "alias": "s:function"
+  },
+  "function-identifier": {
+    "pattern": "r:/`[^\\r\\n`]+`(?=\\s*\\()/",
+    "greedy": true,
+    "alias": "s:function"
+  },
+  "identifier": {
+    "pattern": "r:/`[^\\r\\n`]+`/",
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(\\b(?:enum|error|protocol|record|throws)\\b\\s+)[$\\w]+/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "keyword": "r:/\\b(?:array|boolean|bytes|date|decimal|double|enum|error|false|fixed|float|idl|import|int|local_timestamp_ms|long|map|null|oneway|protocol|record|schema|string|throws|time_ms|timestamp_ms|true|union|uuid|void)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": [
+    {
+      "pattern": "r:/(^|[^\\w.])-?(?:(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?|0x(?:[a-f0-9]+(?:\\.[a-f0-9]*)?|\\.[a-f0-9]+)(?:p[+-]?\\d+)?)[dfl]?(?![\\w.])/i",
+      "lookbehind": true
+    },
+    "r:/-?\\b(?:Infinity|NaN)\\b/"
+  ],
+  "operator": "r:/=/",
+  "punctuation": "r:/[()\\[\\]{}<>.:,;-]/"
+}

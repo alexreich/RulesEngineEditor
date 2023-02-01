@@ -1,0 +1,22 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/[^\\r\\n]*/",
+    "greedy": true
+  },
+  "version": {
+    "pattern": "r:/(^|[\\s()[\\],])v\\d+\\.\\d+\\.\\d+(?:[+-][-+.\\w]*)?(?![^\\s()[\\],])/",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "go-version": {
+    "pattern": "r:/((?:^|\\s)go\\s+)\\d+(?:\\.\\d+){1,2}/",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "keyword": {
+    "pattern": "r:/^([ \\t]*)(?:exclude|go|module|replace|require|retract)\\b/m",
+    "lookbehind": true
+  },
+  "operator": "r:/=>/",
+  "punctuation": "r:/[()[\\],]/"
+}

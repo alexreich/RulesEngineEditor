@@ -1,0 +1,15 @@
+{
+  "comment": "r:/;[^\\r\\n]*|\\B\\([^\\r\\n]*?\\)\\B/",
+  "string": {
+    "pattern": "r:/\"(?:\"\"|[^\"])*\"/",
+    "greedy": true
+  },
+  "keyword": "r:/\\b[GM]\\d+(?:\\.\\d+)?\\b/",
+  "property": "r:/\\b[A-Z]/",
+  "checksum": {
+    "pattern": "r:/(\\*)\\d+/",
+    "lookbehind": true,
+    "alias": "s:number"
+  },
+  "punctuation": "r:/[:*]/"
+}

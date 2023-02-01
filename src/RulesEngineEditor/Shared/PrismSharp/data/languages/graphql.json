@@ -1,0 +1,60 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "description": {
+    "pattern": "r:/(?:\"\"\"(?:[^\"]|(?!\"\"\")\")*\"\"\"|\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\")(?=\\s*[a-z_])/i",
+    "greedy": true,
+    "alias": "s:string",
+    "inside": {
+      "language-markdown": {
+        "pattern": "r:/(^\"(?:\"\")?)(?!\\1)[\\s\\S]+(?=\\1(?:(?=\\r$)|$))/",
+        "lookbehind": true
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/\"\"\"(?:[^\"]|(?!\"\"\")\")*\"\"\"|\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"/",
+    "greedy": true
+  },
+  "number": "r:/(?:\\B-|\\b)\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?\\b/i",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "variable": "r:/\\$[a-z_]\\w*/i",
+  "directive": {
+    "pattern": "r:/@[a-z_]\\w*/i",
+    "alias": "s:function"
+  },
+  "attr-name": {
+    "pattern": "r:/\\b[a-z_]\\w*(?=\\s*(?:\\((?:[^()\"]|\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\")*\\))?:)/i",
+    "greedy": true
+  },
+  "atom-input": {
+    "pattern": "r:/\\b[A-Z]\\w*Input\\b/",
+    "alias": "s:class-name"
+  },
+  "scalar": "r:/\\b(?:Boolean|Float|ID|Int|String)\\b/",
+  "constant": "r:/\\b[A-Z][A-Z_\\d]*\\b/",
+  "class-name": {
+    "pattern": "r:/(\\b(?:enum|implements|interface|on|scalar|type|union)\\s+|&\\s*|:\\s*|\\[)[A-Z_]\\w*/",
+    "lookbehind": true
+  },
+  "fragment": {
+    "pattern": "r:/(\\bfragment\\s+|\\.{3}\\s*(?!on\\b))[a-zA-Z_]\\w*/",
+    "lookbehind": true,
+    "alias": "s:function"
+  },
+  "definition-mutation": {
+    "pattern": "r:/(\\bmutation\\s+)[a-zA-Z_]\\w*/",
+    "lookbehind": true,
+    "alias": "s:function"
+  },
+  "definition-query": {
+    "pattern": "r:/(\\bquery\\s+)[a-zA-Z_]\\w*/",
+    "lookbehind": true,
+    "alias": "s:function"
+  },
+  "keyword": "r:/\\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\\b/",
+  "operator": "r:/[!=|&]|\\.{3}/",
+  "property-query": "r:/\\w+(?=\\s*\\()/",
+  "object": "r:/\\w+(?=\\s*\\{)/",
+  "punctuation": "r:/[!(){}\\[\\]:=,]/",
+  "property": "r:/\\w+/"
+}

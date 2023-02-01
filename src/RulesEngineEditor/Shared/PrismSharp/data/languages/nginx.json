@@ -1,0 +1,45 @@
+{
+  "comment": {
+    "pattern": "r:/(^|[\\s{};])#[^\\r\\n]*/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "directive": {
+    "pattern": "r:/(^|\\s)\\w(?:[^;{}\"'\\\\\\s]|\\\\[^\\r\\n]|\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"|'(?:[^'\\\\]|\\\\[^\\r\\n])*'|\\s+(?:#[^\\r\\n]*(?![^\\r\\n])|(?![#\\s])))*?(?=\\s*[;{])/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "string": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\\\\\)*)(?:\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"|'(?:[^'\\\\]|\\\\[^\\r\\n])*')/",
+        "lookbehind": true,
+        "greedy": true,
+        "inside": {
+          "escape": {
+            "pattern": "r:/\\\\[\"'\\\\nrt]/",
+            "alias": "s:entity"
+          },
+          "variable": "r:/\\$(?:\\w[a-z\\d]*(?:_[^\\x00-\\x1F\\s\"'\\\\()$]*)?|\\{[^}\\s\"'\\\\]+\\})/i"
+        }
+      },
+      "comment": {
+        "pattern": "r:/(\\s)#[^\\r\\n]*/",
+        "lookbehind": true,
+        "greedy": true
+      },
+      "keyword": {
+        "pattern": "r:/^\\S+/",
+        "greedy": true
+      },
+      "boolean": {
+        "pattern": "r:/(\\s)(?:off|on)(?!\\S)/",
+        "lookbehind": true
+      },
+      "number": {
+        "pattern": "r:/(\\s)\\d+[a-z]*(?!\\S)/i",
+        "lookbehind": true
+      },
+      "variable": "r:/\\$(?:\\w[a-z\\d]*(?:_[^\\x00-\\x1F\\s\"'\\\\()$]*)?|\\{[^}\\s\"'\\\\]+\\})/i"
+    }
+  },
+  "punctuation": "r:/[{};]/"
+}

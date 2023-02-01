@@ -1,0 +1,534 @@
+{
+  "datalines": {
+    "pattern": "r:/^([ \\t]*)(?:cards|(?:data)?lines);[\\s\\S]+?^[ \\t]*;/im",
+    "lookbehind": true,
+    "alias": "s:string",
+    "inside": {
+      "keyword": {
+        "pattern": "r:/^(?:cards|(?:data)?lines)/i"
+      },
+      "punctuation": "r:/;/"
+    }
+  },
+  "proc-sql": {
+    "pattern": "r:/(^proc\\s+(?:fed)?sql(?:\\s+[\\w|=]+)?;)[\\s\\S]+?(?=^(?:proc\\s+\\w+|data|quit|run);|(?![\\s\\S]))/im",
+    "lookbehind": true,
+    "inside": {
+      "sql": {
+        "pattern": "r:/^[ \\t]*(?:select|alter\\s+table|(?:create|describe|drop)\\s+(?:index|table(?:\\s+constraints)?|view)|create\\s+unique\\s+index|insert\\s+into|update)(?:(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))|[^;\"'])+;/im",
+        "alias": "s:language-sql"
+      },
+      "global-statements": {
+        "pattern": "r:/((?:^|\\s)=?)(?:catname|checkpoint execute_always|dm|endsas|filename|footnote|%include|libname|%list|lock|missing|options|page|resetline|%run|sasfile|skip|sysecho|title\\d?)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "sql-statements": {
+        "pattern": "r:/(^|\\s)(?:disconnect\\s+from|begin|commit|exec(?:ute)?|reset|rollback|validate)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "proc-groovy": {
+    "pattern": "r:/(^proc\\s+groovy(?:\\s+[\\w|=]+)?;)[\\s\\S]+?(?=^(?:proc\\s+\\w+|data|quit|run);|(?![\\s\\S]))/im",
+    "lookbehind": true,
+    "inside": {
+      "comment": [
+        "r:/\\/\\*[\\s\\S]*?\\*\\//",
+        {
+          "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+          "lookbehind": true
+        }
+      ],
+      "groovy": {
+        "pattern": "r:/(^[ \\t]*submit(?:\\s+(?:load|norun|parseonly))?)(?:(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))|[^\"'])+?(?=endsubmit;)/im",
+        "lookbehind": true,
+        "alias": "s:language-groovy"
+      },
+      "keyword": {
+        "pattern": "r:/((?:^|\\s)=?)(?:after|analysis|and|array|barchart|barwidth|begingraph|by|call|cas|cbarline|cfill|class(?:lev)?|close|column|computed?|contains|continue|data(?==)|define|delete|describe|document|do\\s+over|do|dol|drop|dul|else|end(?:comp|source)?|entryTitle|eval(?:uate)?|exec(?:ute)?|exit|file(?:name)?|fill(?:attrs)?|flist|fnc|function(?:list)?|global|goto|group(?:by)?|headline|headskip|histogram|if|infile|keep|keylabel|keyword|label|layout|leave|legendlabel|length|libname|loadactionset|merge|midpoints|_?null_|name|noobs|nowd|ods|options|or|otherwise|out(?:put)?|over(?:lay)?|plot|print|put|raise|ranexp|rannor|rbreak|retain|return|select|session|sessref|set|source|statgraph|sum|summarize|table|temp|terminate|then\\s+do|then|title\\d?|to|var|when|where|xaxisopts|y2axisopts|yaxisopts)\\b/i",
+        "lookbehind": true
+      },
+      "submit-statement": {
+        "pattern": "r:/(^|\\s)(?:submit(?:\\s+(?:load|norun|parseonly))?|endsubmit)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "global-statements": {
+        "pattern": "r:/((?:^|\\s)=?)(?:catname|checkpoint execute_always|dm|endsas|filename|footnote|%include|libname|%list|lock|missing|options|page|resetline|%run|sasfile|skip|sysecho|title\\d?)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "proc-lua": {
+    "pattern": "r:/(^proc\\s+lua(?:\\s+[\\w|=]+)?;)[\\s\\S]+?(?=^(?:proc\\s+\\w+|data|quit|run);|(?![\\s\\S]))/im",
+    "lookbehind": true,
+    "inside": {
+      "comment": [
+        "r:/\\/\\*[\\s\\S]*?\\*\\//",
+        {
+          "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+          "lookbehind": true
+        }
+      ],
+      "lua": {
+        "pattern": "r:/(^[ \\t]*submit(?:\\s+(?:load|norun|parseonly))?)(?:(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))|[^\"'])+?(?=endsubmit;)/im",
+        "lookbehind": true,
+        "alias": "s:language-lua"
+      },
+      "keyword": {
+        "pattern": "r:/((?:^|\\s)=?)(?:after|analysis|and|array|barchart|barwidth|begingraph|by|call|cas|cbarline|cfill|class(?:lev)?|close|column|computed?|contains|continue|data(?==)|define|delete|describe|document|do\\s+over|do|dol|drop|dul|else|end(?:comp|source)?|entryTitle|eval(?:uate)?|exec(?:ute)?|exit|file(?:name)?|fill(?:attrs)?|flist|fnc|function(?:list)?|global|goto|group(?:by)?|headline|headskip|histogram|if|infile|keep|keylabel|keyword|label|layout|leave|legendlabel|length|libname|loadactionset|merge|midpoints|_?null_|name|noobs|nowd|ods|options|or|otherwise|out(?:put)?|over(?:lay)?|plot|print|put|raise|ranexp|rannor|rbreak|retain|return|select|session|sessref|set|source|statgraph|sum|summarize|table|temp|terminate|then\\s+do|then|title\\d?|to|var|when|where|xaxisopts|y2axisopts|yaxisopts)\\b/i",
+        "lookbehind": true
+      },
+      "submit-statement": {
+        "pattern": "r:/(^|\\s)(?:submit(?:\\s+(?:load|norun|parseonly))?|endsubmit)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "global-statements": {
+        "pattern": "r:/((?:^|\\s)=?)(?:catname|checkpoint execute_always|dm|endsas|filename|footnote|%include|libname|%list|lock|missing|options|page|resetline|%run|sasfile|skip|sysecho|title\\d?)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "proc-cas": {
+    "pattern": "r:/(^proc\\s+cas(?:\\s+[\\w|=]+)?;)[\\s\\S]+?(?=^(?:proc\\s+\\w+|quit|data);|(?![\\s\\S]))/im",
+    "lookbehind": true,
+    "inside": {
+      "comment": [
+        "r:/\\/\\*[\\s\\S]*?\\*\\//",
+        {
+          "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+          "lookbehind": true
+        }
+      ],
+      "statement-var": {
+        "pattern": "r:/((?:^|\\s)=?)saveresult\\s[^;]+/im",
+        "lookbehind": true,
+        "inside": {
+          "statement": {
+            "pattern": "r:/^saveresult\\s+\\S+/i",
+            "inside": {
+              "keyword": "r:/^(?:saveresult)/i"
+            }
+          },
+          "rest": {
+            "function": {
+              "pattern": "r:/%?\\b\\w+(?=\\()/",
+              "alias": "s:keyword"
+            },
+            "arg-value": {
+              "pattern": "r:/(=\\s*)[A-Z\\.]+/i",
+              "lookbehind": true
+            },
+            "operator": "r:/=/",
+            "macro-variable": {
+              "pattern": "r:/&[a-z_]\\w*/i"
+            },
+            "arg": {
+              "pattern": "r:/[A-Z]+/i",
+              "alias": "s:keyword"
+            },
+            "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+            "numeric-constant": {
+              "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+              "alias": "s:number"
+            },
+            "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+            "string": {
+              "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+              "greedy": true
+            }
+          }
+        }
+      },
+      "cas-actions": {
+        "pattern": "r:/(^|\\s)(?:action\\s+)?(?:aStore|accessControl|aggregation|audio|autotune|bayesianNetClassifier|bioMedImage|boolRule|builtins|cardinality|cdm|clustering|conditionalRandomFields|configuration|copula|countreg|dataDiscovery|dataPreprocess|dataSciencePilot|dataStep|decisionTree|deduplication|deepLearn|deepNeural|deepRnn|ds2|ecm|entityRes|espCluster|explainModel|factmac|fastKnn|fcmpact|fedSql|freqTab|gVarCluster|gam|gleam|graphSemiSupLearn|hiddenMarkovModel|hyperGroup|ica|image|iml|kernalPca|langModel|ldaTopic|loadStreams|mbc|mixed|mlTools|modelPublishing|network|neuralNet|nmf|nonParametricBayes|nonlinear|optNetwork|optimization|panel|pca|percentile|phreg|pls|qkb|qlim|quantreg|recommend|regression|reinforcementLearn|robustPca|ruleMining|sampling|sandwich|sccasl|search(?:Analytics)?|sentimentAnalysis|sequence|session(?:Prop)?|severity|simSystem|simple|smartData|sparkEmbeddedProcess|sparseML|spatialreg|spc|stabilityMonitoring|svDataDescription|svm|table|text(?:Filters|Frequency|Mining|Parse|Rule(?:Develop|Score)|Topic|Util)|timeData|transpose|tsInfo|tsReconcile|uniTimeSeries|varReduce)\\.[a-z]+\\b[^;]+/i",
+        "lookbehind": true,
+        "inside": {
+          "keyword": "r:/(?:aStore|accessControl|aggregation|audio|autotune|bayesianNetClassifier|bioMedImage|boolRule|builtins|cardinality|cdm|clustering|conditionalRandomFields|configuration|copula|countreg|dataDiscovery|dataPreprocess|dataSciencePilot|dataStep|decisionTree|deduplication|deepLearn|deepNeural|deepRnn|ds2|ecm|entityRes|espCluster|explainModel|factmac|fastKnn|fcmpact|fedSql|freqTab|gVarCluster|gam|gleam|graphSemiSupLearn|hiddenMarkovModel|hyperGroup|ica|image|iml|kernalPca|langModel|ldaTopic|loadStreams|mbc|mixed|mlTools|modelPublishing|network|neuralNet|nmf|nonParametricBayes|nonlinear|optNetwork|optimization|panel|pca|percentile|phreg|pls|qkb|qlim|quantreg|recommend|regression|reinforcementLearn|robustPca|ruleMining|sampling|sandwich|sccasl|search(?:Analytics)?|sentimentAnalysis|sequence|session(?:Prop)?|severity|simSystem|simple|smartData|sparkEmbeddedProcess|sparseML|spatialreg|spc|stabilityMonitoring|svDataDescription|svm|table|text(?:Filters|Frequency|Mining|Parse|Rule(?:Develop|Score)|Topic|Util)|timeData|transpose|tsInfo|tsReconcile|uniTimeSeries|varReduce)\\.[a-z]+\\b/i",
+          "action": {
+            "pattern": "r:/(?:action)/i",
+            "alias": "s:keyword"
+          },
+          "comment": [
+            "r:/\\/\\*[\\s\\S]*?\\*\\//",
+            {
+              "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+              "lookbehind": true
+            }
+          ],
+          "function": {
+            "pattern": "r:/%?\\b\\w+(?=\\()/",
+            "alias": "s:keyword"
+          },
+          "arg-value": {
+            "pattern": "r:/(=\\s*)[A-Z\\.]+/i",
+            "lookbehind": true
+          },
+          "operator": "r:/=/",
+          "argument": {
+            "pattern": "r:/[A-Z]+/i",
+            "alias": "s:keyword"
+          },
+          "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+          "numeric-constant": {
+            "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+            "alias": "s:number"
+          },
+          "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+          "string": {
+            "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+            "greedy": true
+          }
+        }
+      },
+      "statement": {
+        "pattern": "r:/((?:^|\\s)=?)(?:default|(?:un)?set|on|output|upload)[^;]+/im",
+        "lookbehind": true,
+        "inside": {
+          "function": {
+            "pattern": "r:/%?\\b\\w+(?=\\()/",
+            "alias": "s:keyword"
+          },
+          "arg-value": {
+            "pattern": "r:/(=\\s*)[A-Z\\.]+/i",
+            "lookbehind": true
+          },
+          "operator": "r:/=/",
+          "macro-variable": {
+            "pattern": "r:/&[a-z_]\\w*/i"
+          },
+          "arg": {
+            "pattern": "r:/[A-Z]+/i",
+            "alias": "s:keyword"
+          },
+          "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+          "numeric-constant": {
+            "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+            "alias": "s:number"
+          },
+          "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+          "string": {
+            "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+            "greedy": true
+          }
+        }
+      },
+      "step": {
+        "pattern": "r:/(^|\\s)(?:proc\\s+\\w+|data(?!=)|quit|run)\\b/i",
+        "alias": "s:keyword",
+        "lookbehind": true
+      },
+      "keyword": {
+        "pattern": "r:/((?:^|\\s)=?)(?:after|analysis|and|array|barchart|barwidth|begingraph|by|call|cas|cbarline|cfill|class(?:lev)?|close|column|computed?|contains|continue|data(?==)|define|delete|describe|document|do\\s+over|do|dol|drop|dul|else|end(?:comp|source)?|entryTitle|eval(?:uate)?|exec(?:ute)?|exit|file(?:name)?|fill(?:attrs)?|flist|fnc|function(?:list)?|global|goto|group(?:by)?|headline|headskip|histogram|if|infile|keep|keylabel|keyword|label|layout|leave|legendlabel|length|libname|loadactionset|merge|midpoints|_?null_|name|noobs|nowd|ods|options|or|otherwise|out(?:put)?|over(?:lay)?|plot|print|put|raise|ranexp|rannor|rbreak|retain|return|select|session|sessref|set|source|statgraph|sum|summarize|table|temp|terminate|then\\s+do|then|title\\d?|to|var|when|where|xaxisopts|y2axisopts|yaxisopts)\\b/i",
+        "lookbehind": true
+      },
+      "function": {
+        "pattern": "r:/%?\\b\\w+(?=\\()/",
+        "alias": "s:keyword"
+      },
+      "format": {
+        "pattern": "r:/\\b(?:format|put)\\b=?[\\w'$.]+/i",
+        "inside": {
+          "keyword": "r:/^(?:format|put)(?==)/i",
+          "equals": "r:/=/",
+          "format": {
+            "pattern": "r:/(?:\\w|\\$\\d)+\\.\\d?/",
+            "alias": "s:number"
+          }
+        }
+      },
+      "altformat": {
+        "pattern": "r:/\\b(?:format|put)\\s+[\\w']+(?:\\s+[$.\\w]+)+(?=;)/i",
+        "inside": {
+          "keyword": "r:/^(?:format|put)/i",
+          "format": {
+            "pattern": "r:/[\\w$]+\\.\\d?/",
+            "alias": "s:number"
+          }
+        }
+      },
+      "global-statements": {
+        "pattern": "r:/((?:^|\\s)=?)(?:catname|checkpoint execute_always|dm|endsas|filename|footnote|%include|libname|%list|lock|missing|options|page|resetline|%run|sasfile|skip|sysecho|title\\d?)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "proc-args": {
+    "pattern": "r:/(^proc\\s+\\w+\\s+)(?!\\s)(?:[^;\"']|(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!')))+;/im",
+    "lookbehind": true,
+    "inside": {
+      "function": {
+        "pattern": "r:/%?\\b\\w+(?=\\()/",
+        "alias": "s:keyword"
+      },
+      "arg-value": {
+        "pattern": "r:/(=\\s*)[A-Z\\.]+/i",
+        "lookbehind": true
+      },
+      "operator": "r:/=/",
+      "macro-variable": {
+        "pattern": "r:/&[a-z_]\\w*/i"
+      },
+      "arg": {
+        "pattern": "r:/[A-Z]+/i",
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "macro-keyword": {
+    "pattern": "r:/((?:^|\\s|=|\\())%(?:ABORT|BY|CMS|COPY|DISPLAY|DO|ELSE|END|EVAL|GLOBAL|GO|GOTO|IF|INC|INCLUDE|INDEX|INPUT|KTRIM|LENGTH|LET|LIST|LOCAL|PUT|QKTRIM|QSCAN|QSUBSTR|QSYSFUNC|QUPCASE|RETURN|RUN|SCAN|SUBSTR|SUPERQ|SYMDEL|SYMEXIST|SYMGLOBL|SYMLOCAL|SYSCALL|SYSEVALF|SYSEXEC|SYSFUNC|SYSGET|SYSRPUT|THEN|TO|TSO|UNQUOTE|UNTIL|UPCASE|WHILE|WINDOW)\\b/i",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "macro-variable": {
+    "pattern": "r:/&[a-z_]\\w*/i"
+  },
+  "macro-string-functions": {
+    "pattern": "r:/((?:^|\\s|=))%(?:BQUOTE|NRBQUOTE|NRQUOTE|NRSTR|QUOTE|STR)\\([^\\r\\n]*?(?:[^%]\\))/i",
+    "lookbehind": true,
+    "inside": {
+      "function": {
+        "pattern": "r:/%(?:BQUOTE|NRBQUOTE|NRQUOTE|NRSTR|QUOTE|STR)/i",
+        "alias": "s:keyword"
+      },
+      "macro-keyword": {
+        "pattern": "r:/((?:^|\\s|=|\\())%(?:ABORT|BY|CMS|COPY|DISPLAY|DO|ELSE|END|EVAL|GLOBAL|GO|GOTO|IF|INC|INCLUDE|INDEX|INPUT|KTRIM|LENGTH|LET|LIST|LOCAL|PUT|QKTRIM|QSCAN|QSUBSTR|QSYSFUNC|QUPCASE|RETURN|RUN|SCAN|SUBSTR|SUPERQ|SYMDEL|SYMEXIST|SYMGLOBL|SYMLOCAL|SYSCALL|SYSEVALF|SYSEXEC|SYSFUNC|SYSGET|SYSRPUT|THEN|TO|TSO|UNQUOTE|UNTIL|UPCASE|WHILE|WINDOW)\\b/i",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "macro-variable": {
+        "pattern": "r:/&[a-z_]\\w*/i"
+      },
+      "escaped-char": {
+        "pattern": "r:/%['\"()<>=¬^~;,#]/"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/"
+    }
+  },
+  "macro-declaration": {
+    "pattern": "r:/^%macro[^;]+(?=;)/im",
+    "inside": {
+      "keyword": "r:/%macro/i"
+    }
+  },
+  "macro-end": {
+    "pattern": "r:/^%mend[^;]+(?=;)/im",
+    "inside": {
+      "keyword": "r:/%mend/i"
+    }
+  },
+  "macro": {
+    "pattern": "r:/%_\\w+(?=\\()/",
+    "alias": "s:keyword"
+  },
+  "input": {
+    "pattern": "r:/\\binput\\s[-\\w\\s/*.$&]+;/i",
+    "inside": {
+      "input": {
+        "alias": "s:keyword",
+        "pattern": "r:/^input/i"
+      },
+      "comment": [
+        "r:/\\/\\*[\\s\\S]*?\\*\\//",
+        {
+          "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+          "lookbehind": true
+        }
+      ],
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      }
+    }
+  },
+  "options-args": {
+    "pattern": "r:/(^options)[-'\"|/\\\\<>*+=:()\\w\\s]*(?=;)/im",
+    "lookbehind": true,
+    "inside": {
+      "function": {
+        "pattern": "r:/%?\\b\\w+(?=\\()/",
+        "alias": "s:keyword"
+      },
+      "arg-value": {
+        "pattern": "r:/(=\\s*)[A-Z\\.]+/i",
+        "lookbehind": true
+      },
+      "operator": "r:/=/",
+      "macro-variable": {
+        "pattern": "r:/&[a-z_]\\w*/i"
+      },
+      "arg": {
+        "pattern": "r:/[A-Z]+/i",
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "cas-actions": {
+    "pattern": "r:/(^|\\s)(?:action\\s+)?(?:aStore|accessControl|aggregation|audio|autotune|bayesianNetClassifier|bioMedImage|boolRule|builtins|cardinality|cdm|clustering|conditionalRandomFields|configuration|copula|countreg|dataDiscovery|dataPreprocess|dataSciencePilot|dataStep|decisionTree|deduplication|deepLearn|deepNeural|deepRnn|ds2|ecm|entityRes|espCluster|explainModel|factmac|fastKnn|fcmpact|fedSql|freqTab|gVarCluster|gam|gleam|graphSemiSupLearn|hiddenMarkovModel|hyperGroup|ica|image|iml|kernalPca|langModel|ldaTopic|loadStreams|mbc|mixed|mlTools|modelPublishing|network|neuralNet|nmf|nonParametricBayes|nonlinear|optNetwork|optimization|panel|pca|percentile|phreg|pls|qkb|qlim|quantreg|recommend|regression|reinforcementLearn|robustPca|ruleMining|sampling|sandwich|sccasl|search(?:Analytics)?|sentimentAnalysis|sequence|session(?:Prop)?|severity|simSystem|simple|smartData|sparkEmbeddedProcess|sparseML|spatialreg|spc|stabilityMonitoring|svDataDescription|svm|table|text(?:Filters|Frequency|Mining|Parse|Rule(?:Develop|Score)|Topic|Util)|timeData|transpose|tsInfo|tsReconcile|uniTimeSeries|varReduce)\\.[a-z]+\\b[^;]+/i",
+    "lookbehind": true,
+    "inside": {
+      "keyword": "r:/(?:aStore|accessControl|aggregation|audio|autotune|bayesianNetClassifier|bioMedImage|boolRule|builtins|cardinality|cdm|clustering|conditionalRandomFields|configuration|copula|countreg|dataDiscovery|dataPreprocess|dataSciencePilot|dataStep|decisionTree|deduplication|deepLearn|deepNeural|deepRnn|ds2|ecm|entityRes|espCluster|explainModel|factmac|fastKnn|fcmpact|fedSql|freqTab|gVarCluster|gam|gleam|graphSemiSupLearn|hiddenMarkovModel|hyperGroup|ica|image|iml|kernalPca|langModel|ldaTopic|loadStreams|mbc|mixed|mlTools|modelPublishing|network|neuralNet|nmf|nonParametricBayes|nonlinear|optNetwork|optimization|panel|pca|percentile|phreg|pls|qkb|qlim|quantreg|recommend|regression|reinforcementLearn|robustPca|ruleMining|sampling|sandwich|sccasl|search(?:Analytics)?|sentimentAnalysis|sequence|session(?:Prop)?|severity|simSystem|simple|smartData|sparkEmbeddedProcess|sparseML|spatialreg|spc|stabilityMonitoring|svDataDescription|svm|table|text(?:Filters|Frequency|Mining|Parse|Rule(?:Develop|Score)|Topic|Util)|timeData|transpose|tsInfo|tsReconcile|uniTimeSeries|varReduce)\\.[a-z]+\\b/i",
+      "action": {
+        "pattern": "r:/(?:action)/i",
+        "alias": "s:keyword"
+      },
+      "comment": [
+        "r:/\\/\\*[\\s\\S]*?\\*\\//",
+        {
+          "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+          "lookbehind": true
+        }
+      ],
+      "function": {
+        "pattern": "r:/%?\\b\\w+(?=\\()/",
+        "alias": "s:keyword"
+      },
+      "arg-value": {
+        "pattern": "r:/(=\\s*)[A-Z\\.]+/i",
+        "lookbehind": true
+      },
+      "operator": "r:/=/",
+      "argument": {
+        "pattern": "r:/[A-Z]+/i",
+        "alias": "s:keyword"
+      },
+      "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+      "numeric-constant": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+        "alias": "s:number"
+      },
+      "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/",
+      "string": {
+        "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+        "greedy": true
+      }
+    }
+  },
+  "comment": [
+    "r:/\\/\\*[\\s\\S]*?\\*\\//",
+    {
+      "pattern": "r:/(^[ \\t]*|;\\s*)\\*[^;]*;/m",
+      "lookbehind": true
+    }
+  ],
+  "function": {
+    "pattern": "r:/%?\\b\\w+(?=\\()/",
+    "alias": "s:keyword"
+  },
+  "format": {
+    "pattern": "r:/\\b(?:format|put)\\b=?[\\w'$.]+/i",
+    "inside": {
+      "keyword": "r:/^(?:format|put)(?==)/i",
+      "equals": "r:/=/",
+      "format": {
+        "pattern": "r:/(?:\\w|\\$\\d)+\\.\\d?/",
+        "alias": "s:number"
+      }
+    }
+  },
+  "altformat": {
+    "pattern": "r:/\\b(?:format|put)\\s+[\\w']+(?:\\s+[$.\\w]+)+(?=;)/i",
+    "inside": {
+      "keyword": "r:/^(?:format|put)/i",
+      "format": {
+        "pattern": "r:/[\\w$]+\\.\\d?/",
+        "alias": "s:number"
+      }
+    }
+  },
+  "numeric-constant": {
+    "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))[bx]/",
+    "alias": "s:number"
+  },
+  "datetime": {
+    "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))(?:dt?|t)/",
+    "alias": "s:number"
+  },
+  "string": {
+    "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))/",
+    "greedy": true
+  },
+  "step": {
+    "pattern": "r:/(^|\\s)(?:proc\\s+\\w+|data(?!=)|quit|run)\\b/i",
+    "alias": "s:keyword",
+    "lookbehind": true
+  },
+  "keyword": {
+    "pattern": "r:/((?:^|\\s)=?)(?:after|analysis|and|array|barchart|barwidth|begingraph|by|call|cas|cbarline|cfill|class(?:lev)?|close|column|computed?|contains|continue|data(?==)|define|delete|describe|document|do\\s+over|do|dol|drop|dul|else|end(?:comp|source)?|entryTitle|eval(?:uate)?|exec(?:ute)?|exit|file(?:name)?|fill(?:attrs)?|flist|fnc|function(?:list)?|global|goto|group(?:by)?|headline|headskip|histogram|if|infile|keep|keylabel|keyword|label|layout|leave|legendlabel|length|libname|loadactionset|merge|midpoints|_?null_|name|noobs|nowd|ods|options|or|otherwise|out(?:put)?|over(?:lay)?|plot|print|put|raise|ranexp|rannor|rbreak|retain|return|select|session|sessref|set|source|statgraph|sum|summarize|table|temp|terminate|then\\s+do|then|title\\d?|to|var|when|where|xaxisopts|y2axisopts|yaxisopts)\\b/i",
+    "lookbehind": true
+  },
+  "operator-keyword": {
+    "pattern": "r:/\\b(?:eq|ge|gt|in|le|lt|ne|not)\\b/i",
+    "alias": "s:operator"
+  },
+  "number": "r:/\\b(?:\\d[\\da-f]*x|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+  "operator": "r:/\\*\\*?|\\|\\|?|!!?|¦¦?|<[>=]?|>[<=]?|[-+\\/=&]|[~¬^]=?/",
+  "punctuation": "r:/[$%@.(){}\\[\\];,\\\\]/"
+}

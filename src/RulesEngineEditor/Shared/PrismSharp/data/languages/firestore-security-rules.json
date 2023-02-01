@@ -1,0 +1,37 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "path": {
+    "pattern": "r:/(^|[\\s(),])(?:\\/(?:[\\w\\xA0-\\uFFFF]+|\\{[\\w\\xA0-\\uFFFF]+(?:=\\*\\*)?\\}|\\$\\([\\w\\xA0-\\uFFFF.]+\\)))+/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "variable": {
+        "pattern": "r:/\\{[\\w\\xA0-\\uFFFF]+(?:=\\*\\*)?\\}|\\$\\([\\w\\xA0-\\uFFFF.]+\\)/",
+        "inside": {
+          "operator": "r:/=/",
+          "keyword": "r:/\\*\\*/",
+          "punctuation": "r:/[.$(){}]/"
+        }
+      },
+      "punctuation": "r:/\\//"
+    }
+  },
+  "method": {
+    "pattern": "r:/(\\ballow\\s+)[a-z]+(?:\\s*,\\s*[a-z]+)*(?=\\s*[:;])/",
+    "lookbehind": true,
+    "alias": "s:builtin",
+    "inside": {
+      "punctuation": "r:/,/"
+    }
+  },
+  "keyword": "r:/\\b(?:allow|function|if|match|null|return|rules_version|service)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "operator": "r:/&&|\\|\\||[<>!=]=?|[-+*/%]|\\b(?:in|is)\\b/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

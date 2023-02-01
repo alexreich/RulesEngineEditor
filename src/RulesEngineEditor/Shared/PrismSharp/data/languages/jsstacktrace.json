@@ -1,0 +1,41 @@
+{
+  "error-message": {
+    "pattern": "r:/^\\S[^\\r\\n]*/m",
+    "alias": "s:string"
+  },
+  "stack-frame": {
+    "pattern": "r:/(^[ \\t]+)at[ \\t][^\\r\\n]*/m",
+    "lookbehind": true,
+    "inside": {
+      "not-my-code": {
+        "pattern": "r:/^at[ \\t]+(?!\\s)(?:node\\.js|<unknown>|[^\\r\\n]*(?:node_modules|\\(<anonymous>\\)|\\(<unknown>|<anonymous>(?:(?=\\r$)|$)|\\(internal\\/|\\(node\\.js))[^\\r\\n]*/m",
+        "alias": "s:comment"
+      },
+      "filename": {
+        "pattern": "r:/(\\bat\\s+(?!\\s)|\\()(?:[a-zA-Z]:)?[^():]+(?=:)/",
+        "lookbehind": true,
+        "alias": "s:url"
+      },
+      "function": {
+        "pattern": "r:/(\\bat\\s+(?:new\\s+)?)(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF<][.$\\w\\xA0-\\uFFFF<>]*/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\./"
+        }
+      },
+      "punctuation": "r:/[()]/",
+      "keyword": "r:/\\b(?:at|new)\\b/",
+      "alias": {
+        "pattern": "r:/\\[(?:as\\s+)?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF][$\\w\\xA0-\\uFFFF]*\\]/",
+        "alias": "s:variable"
+      },
+      "line-number": {
+        "pattern": "r:/:\\d+(?::\\d+)?\\b/",
+        "alias": "s:number",
+        "inside": {
+          "punctuation": "r:/:/"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/\\/\\/[/!][^\\r\\n]*/",
+      "alias": "s:doc-comment"
+    },
+    "r:/\\/{2}[^\\r\\n]*/"
+  ],
+  "string": [
+    {
+      "pattern": "r:/(^|[^\\\\@])c?\"(?:[^\"\\\\\\r\\n]|\\\\[^\\r\\n])*\"/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/([\\r\\n])([ \\t]+c?\\\\{2})[^\\r\\n]*(?:(?:\\r\\n?|\\n)\\2[^\\r\\n]*)*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "char": {
+    "pattern": "r:/(^|[^\\\\])'(?:[^'\\\\\\r\\n]|[\\uD800-\\uDFFF]{2}|\\\\(?:[^\\r\\n]|x[a-fA-F\\d]{2}|u\\{[a-fA-F\\d]{1,6}\\}))'/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "builtin": "r:/\\B@(?!\\d)\\w+(?=\\s*\\()/",
+  "label": {
+    "pattern": "r:/(\\b(?:break|continue)\\s*:\\s*)\\w+\\b|\\b(?!\\d)\\w+\\b(?=\\s*:\\s*(?:\\{|while\\b))/",
+    "lookbehind": true
+  },
+  "class-name": [
+    "r:/\\b(?!\\d)\\w+(?=\\s*=\\s*(?:(?:extern|packed)\\s+)?(?:enum|struct|union)\\s*[({])/",
+    {
+      "pattern": "r:/(:\\s*)(?!\\s)(?:!?\\s*(?:(?:\\?|\\bpromise->|(?:\\[[^[\\]]*\\]|\\*(?!\\*)|\\*\\*)(?:\\s*align\\s*\\((?:[^()]|\\([^()]*\\))*\\)|\\s*const\\b|\\s*volatile\\b|\\s*allowzero\\b)*)\\s*)*(?:\\bpromise\\b|(?:\\berror\\.)?\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b(?:\\.\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b)*(?!\\s+\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b)))+(?=\\s*(?:align\\s*\\((?:[^()]|\\([^()]*\\))*\\)\\s*)?[=;,)])|(?!\\s)(?:!?\\s*(?:(?:\\?|\\bpromise->|(?:\\[[^[\\]]*\\]|\\*(?!\\*)|\\*\\*)(?:\\s*align\\s*\\((?:[^()]|\\([^()]*\\))*\\)|\\s*const\\b|\\s*volatile\\b|\\s*allowzero\\b)*)\\s*)*(?:\\bpromise\\b|(?:\\berror\\.)?\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b(?:\\.\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b)*(?!\\s+\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b)))+(?=\\s*(?:align\\s*\\((?:[^()]|\\([^()]*\\))*\\)\\s*)?\\{)/",
+      "lookbehind": true,
+      "inside": "s:[Circular ~]"
+    },
+    {
+      "pattern": "r:/(\\)\\s*)(?!\\s)(?:!?\\s*(?:(?:\\?|\\bpromise->|(?:\\[[^[\\]]*\\]|\\*(?!\\*)|\\*\\*)(?:\\s*align\\s*\\((?:[^()]|\\([^()]*\\))*\\)|\\s*const\\b|\\s*volatile\\b|\\s*allowzero\\b)*)\\s*)*(?:\\bpromise\\b|(?:\\berror\\.)?\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b(?:\\.\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b)*(?!\\s+\\b(?!\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b)(?!\\d)\\w+\\b)))+(?=\\s*(?:align\\s*\\((?:[^()]|\\([^()]*\\))*\\)\\s*)?;)/",
+      "lookbehind": true,
+      "inside": "s:[Circular ~]"
+    }
+  ],
+  "builtin-type": {
+    "pattern": "r:/\\b(?:anyerror|bool|c_u?(?:int|long|longlong|short)|c_longdouble|c_void|comptime_(?:float|int)|f(?:16|32|64|128)|[iu](?:8|16|32|64|128|size)|noreturn|type|void)\\b/",
+    "alias": "s:keyword"
+  },
+  "keyword": "r:/\\b(?:align|allowzero|and|anyframe|anytype|asm|async|await|break|cancel|catch|comptime|const|continue|defer|else|enum|errdefer|error|export|extern|fn|for|if|inline|linksection|nakedcc|noalias|nosuspend|null|or|orelse|packed|promise|pub|resume|return|stdcallcc|struct|suspend|switch|test|threadlocal|try|undefined|union|unreachable|usingnamespace|var|volatile|while)\\b/",
+  "function": "r:/\\b(?!\\d)\\w+(?=\\s*\\()/",
+  "number": "r:/\\b(?:0b[01]+|0o[0-7]+|0x[a-fA-F\\d]+(?:\\.[a-fA-F\\d]*)?(?:[pP][+-]?[a-fA-F\\d]+)?|\\d+(?:\\.\\d*)?(?:[eE][+-]?\\d+)?)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "operator": "r:/\\.[*?]|\\.{2,3}|[-=]>|\\*\\*|\\+\\+|\\|\\||(?:<<|>>|[-+*]%|[-+*/%^&|<>!=])=?|[?~]/",
+  "punctuation": "r:/[.:,;(){}[\\]]/"
+}

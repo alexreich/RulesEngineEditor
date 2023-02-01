@@ -1,0 +1,15 @@
+{
+  "comment": "r:/^#[^\\r\\n]*/m",
+  "entry": {
+    "pattern": "r:/\\S(?:[^\\r\\n]*(?:(?:\\\\ )|\\S))?/",
+    "alias": "s:string",
+    "inside": {
+      "operator": "r:/^!|\\*\\*?|\\?/",
+      "regex": {
+        "pattern": "r:/(^|[^\\\\])\\[[^\\[\\]]*\\]/",
+        "lookbehind": true
+      },
+      "punctuation": "r:/\\//"
+    }
+  }
+}

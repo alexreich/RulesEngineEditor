@@ -1,0 +1,1379 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeNames
+  id: ThemeNames
+  parent: Orionsoft.PrismSharp.Themes
+  children:
+  - Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  - Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  - Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  - Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  - Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  - Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  - Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  - Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  - Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  - Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  - Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  - Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  - Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  - Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  - Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  - Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  - Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  langs:
+  - csharp
+  - vb
+  name: ThemeNames
+  nameWithType: ThemeNames
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  type: Enum
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: ThemeNames
+    path: ../Themes/ThemeNames.cs
+    startLine: 10
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  summary: "\nNames of built-in themes\n"
+  example: []
+  syntax:
+    content: public enum ThemeNames
+    content.vb: Public Enum ThemeNames
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  id: A11yDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: A11yDark
+  nameWithType: ThemeNames.A11yDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: A11yDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 12
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: A11yDark = 0
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  id: AtomDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: AtomDark
+  nameWithType: ThemeNames.AtomDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: AtomDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 13
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: AtomDark = 1
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  id: AteliersulphurpoolLight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: AteliersulphurpoolLight
+  nameWithType: ThemeNames.AteliersulphurpoolLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: AteliersulphurpoolLight
+    path: ../Themes/ThemeNames.cs
+    startLine: 14
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: AteliersulphurpoolLight = 2
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  id: Cb
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Cb
+  nameWithType: ThemeNames.Cb
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Cb
+    path: ../Themes/ThemeNames.cs
+    startLine: 15
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Cb = 3
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  id: ColdarkCold
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: ColdarkCold
+  nameWithType: ThemeNames.ColdarkCold
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: ColdarkCold
+    path: ../Themes/ThemeNames.cs
+    startLine: 16
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: ColdarkCold = 4
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  id: ColdarkDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: ColdarkDark
+  nameWithType: ThemeNames.ColdarkDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: ColdarkDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 17
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: ColdarkDark = 5
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  id: Coy
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Coy
+  nameWithType: ThemeNames.Coy
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Coy
+    path: ../Themes/ThemeNames.cs
+    startLine: 18
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Coy = 6
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  id: Darcula
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Darcula
+  nameWithType: ThemeNames.Darcula
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Darcula
+    path: ../Themes/ThemeNames.cs
+    startLine: 19
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Darcula = 7
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  id: Dark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Dark
+  nameWithType: ThemeNames.Dark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Dark
+    path: ../Themes/ThemeNames.cs
+    startLine: 20
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Dark = 8
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  id: Dracula
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Dracula
+  nameWithType: ThemeNames.Dracula
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Dracula
+    path: ../Themes/ThemeNames.cs
+    startLine: 21
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Dracula = 9
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  id: DuotoneDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: DuotoneDark
+  nameWithType: ThemeNames.DuotoneDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: DuotoneDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 22
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: DuotoneDark = 10
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  id: DuotoneEarth
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: DuotoneEarth
+  nameWithType: ThemeNames.DuotoneEarth
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: DuotoneEarth
+    path: ../Themes/ThemeNames.cs
+    startLine: 23
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: DuotoneEarth = 11
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  id: DuotoneForest
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: DuotoneForest
+  nameWithType: ThemeNames.DuotoneForest
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: DuotoneForest
+    path: ../Themes/ThemeNames.cs
+    startLine: 24
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: DuotoneForest = 12
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  id: DuotoneLight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: DuotoneLight
+  nameWithType: ThemeNames.DuotoneLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: DuotoneLight
+    path: ../Themes/ThemeNames.cs
+    startLine: 25
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: DuotoneLight = 13
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  id: DuotoneSea
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: DuotoneSea
+  nameWithType: ThemeNames.DuotoneSea
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: DuotoneSea
+    path: ../Themes/ThemeNames.cs
+    startLine: 26
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: DuotoneSea = 14
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  id: DuotoneSpace
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: DuotoneSpace
+  nameWithType: ThemeNames.DuotoneSpace
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: DuotoneSpace
+    path: ../Themes/ThemeNames.cs
+    startLine: 27
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: DuotoneSpace = 15
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  id: Funky
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Funky
+  nameWithType: ThemeNames.Funky
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Funky
+    path: ../Themes/ThemeNames.cs
+    startLine: 28
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Funky = 16
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  id: Ghcolors
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Ghcolors
+  nameWithType: ThemeNames.Ghcolors
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Ghcolors
+    path: ../Themes/ThemeNames.cs
+    startLine: 29
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Ghcolors = 17
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  id: GruvboxDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: GruvboxDark
+  nameWithType: ThemeNames.GruvboxDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: GruvboxDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 30
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: GruvboxDark = 18
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  id: GruvboxLight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: GruvboxLight
+  nameWithType: ThemeNames.GruvboxLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: GruvboxLight
+    path: ../Themes/ThemeNames.cs
+    startLine: 31
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: GruvboxLight = 19
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  id: HoliTheme
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: HoliTheme
+  nameWithType: ThemeNames.HoliTheme
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: HoliTheme
+    path: ../Themes/ThemeNames.cs
+    startLine: 32
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: HoliTheme = 20
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  id: Hopscotch
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Hopscotch
+  nameWithType: ThemeNames.Hopscotch
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Hopscotch
+    path: ../Themes/ThemeNames.cs
+    startLine: 33
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Hopscotch = 21
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  id: Lucario
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Lucario
+  nameWithType: ThemeNames.Lucario
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Lucario
+    path: ../Themes/ThemeNames.cs
+    startLine: 34
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Lucario = 22
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  id: MaterialDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: MaterialDark
+  nameWithType: ThemeNames.MaterialDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: MaterialDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 35
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: MaterialDark = 23
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  id: MaterialLight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: MaterialLight
+  nameWithType: ThemeNames.MaterialLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: MaterialLight
+    path: ../Themes/ThemeNames.cs
+    startLine: 36
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: MaterialLight = 24
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  id: MaterialOceanic
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: MaterialOceanic
+  nameWithType: ThemeNames.MaterialOceanic
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: MaterialOceanic
+    path: ../Themes/ThemeNames.cs
+    startLine: 37
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: MaterialOceanic = 25
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  id: NightOwl
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: NightOwl
+  nameWithType: ThemeNames.NightOwl
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: NightOwl
+    path: ../Themes/ThemeNames.cs
+    startLine: 38
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: NightOwl = 26
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  id: Nord
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Nord
+  nameWithType: ThemeNames.Nord
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Nord
+    path: ../Themes/ThemeNames.cs
+    startLine: 39
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Nord = 27
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  id: Okaidia
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Okaidia
+  nameWithType: ThemeNames.Okaidia
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Okaidia
+    path: ../Themes/ThemeNames.cs
+    startLine: 40
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Okaidia = 28
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  id: OneDark
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: OneDark
+  nameWithType: ThemeNames.OneDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: OneDark
+    path: ../Themes/ThemeNames.cs
+    startLine: 41
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: OneDark = 29
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  id: OneLight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: OneLight
+  nameWithType: ThemeNames.OneLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: OneLight
+    path: ../Themes/ThemeNames.cs
+    startLine: 42
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: OneLight = 30
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  id: Pojoaque
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Pojoaque
+  nameWithType: ThemeNames.Pojoaque
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Pojoaque
+    path: ../Themes/ThemeNames.cs
+    startLine: 43
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Pojoaque = 31
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  id: Prism
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Prism
+  nameWithType: ThemeNames.Prism
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Prism
+    path: ../Themes/ThemeNames.cs
+    startLine: 44
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Prism = 32
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  id: ShadesOfPurple
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: ShadesOfPurple
+  nameWithType: ThemeNames.ShadesOfPurple
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: ShadesOfPurple
+    path: ../Themes/ThemeNames.cs
+    startLine: 45
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: ShadesOfPurple = 33
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  id: SolarizedDarkAtom
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: SolarizedDarkAtom
+  nameWithType: ThemeNames.SolarizedDarkAtom
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: SolarizedDarkAtom
+    path: ../Themes/ThemeNames.cs
+    startLine: 46
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: SolarizedDarkAtom = 34
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  id: Solarizedlight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Solarizedlight
+  nameWithType: ThemeNames.Solarizedlight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Solarizedlight
+    path: ../Themes/ThemeNames.cs
+    startLine: 47
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Solarizedlight = 35
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  id: Synthwave84
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Synthwave84
+  nameWithType: ThemeNames.Synthwave84
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Synthwave84
+    path: ../Themes/ThemeNames.cs
+    startLine: 48
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Synthwave84 = 36
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  id: Tomorrow
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Tomorrow
+  nameWithType: ThemeNames.Tomorrow
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Tomorrow
+    path: ../Themes/ThemeNames.cs
+    startLine: 49
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Tomorrow = 37
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  id: Twilight
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Twilight
+  nameWithType: ThemeNames.Twilight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Twilight
+    path: ../Themes/ThemeNames.cs
+    startLine: 50
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Twilight = 38
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  id: Vs
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Vs
+  nameWithType: ThemeNames.Vs
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Vs
+    path: ../Themes/ThemeNames.cs
+    startLine: 51
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Vs = 39
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  id: VscDarkPlus
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: VscDarkPlus
+  nameWithType: ThemeNames.VscDarkPlus
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: VscDarkPlus
+    path: ../Themes/ThemeNames.cs
+    startLine: 52
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: VscDarkPlus = 40
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  id: Xonokai
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: Xonokai
+  nameWithType: ThemeNames.Xonokai
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: Xonokai
+    path: ../Themes/ThemeNames.cs
+    startLine: 53
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: Xonokai = 41
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  id: ZTouch
+  parent: Orionsoft.PrismSharp.Themes.ThemeNames
+  langs:
+  - csharp
+  - vb
+  name: ZTouch
+  nameWithType: ThemeNames.ZTouch
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  type: Field
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Themes/ThemeNames.cs
+    id: ZTouch
+    path: ../Themes/ThemeNames.cs
+    startLine: 54
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Themes
+  syntax:
+    content: ZTouch = 42
+    return:
+      type: Orionsoft.PrismSharp.Themes.ThemeNames
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: Orionsoft.PrismSharp.Themes
+  commentId: N:Orionsoft.PrismSharp.Themes
+  name: Orionsoft.PrismSharp.Themes
+  nameWithType: Orionsoft.PrismSharp.Themes
+  fullName: Orionsoft.PrismSharp.Themes
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeNames
+  parent: Orionsoft.PrismSharp.Themes
+  name: ThemeNames
+  nameWithType: ThemeNames
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames

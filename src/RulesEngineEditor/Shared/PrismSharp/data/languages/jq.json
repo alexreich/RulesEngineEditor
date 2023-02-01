@@ -1,0 +1,69 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "property": {
+    "pattern": "r:/(^|[^\\\\])\"(?:[^\"\\r\\n\\\\]|\\\\[^\\r\\n(]|\\\\\\((?:[^()]|\\([^()]*\\))*\\))*\"(?=\\s*:(?!:))/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\\\\\((?:[^()]|\\([^()]*\\))*\\)/",
+        "lookbehind": true,
+        "inside": {
+          "content": {
+            "pattern": "r:/^(\\\\\\()[\\s\\S]+(?=\\)(?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": "s:[Circular ~]"
+          },
+          "punctuation": "r:/^\\\\\\(|\\)(?:(?=\\r$)|$)/"
+        }
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\])\"(?:[^\"\\r\\n\\\\]|\\\\[^\\r\\n(]|\\\\\\((?:[^()]|\\([^()]*\\))*\\))*\"/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\\\\\((?:[^()]|\\([^()]*\\))*\\)/",
+        "lookbehind": true,
+        "inside": {
+          "content": {
+            "pattern": "r:/^(\\\\\\()[\\s\\S]+(?=\\)(?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": "s:[Circular ~]"
+          },
+          "punctuation": "r:/^\\\\\\(|\\)(?:(?=\\r$)|$)/"
+        }
+      }
+    }
+  },
+  "function": {
+    "pattern": "r:/(\\bdef\\s+)[a-z_]\\w+/i",
+    "lookbehind": true
+  },
+  "variable": "r:/\\B\\$\\w+/",
+  "property-literal": {
+    "pattern": "r:/\\b[a-z_]\\w*(?=\\s*:(?!:))/i",
+    "alias": "s:property"
+  },
+  "keyword": "r:/\\b(?:as|break|catch|def|elif|else|end|foreach|if|import|include|label|module|modulemeta|null|reduce|then|try|while)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": "r:/(?:\\b\\d+\\.|\\B\\.)?\\b\\d+(?:[eE][+-]?\\d+)?\\b/",
+  "operator": [
+    {
+      "pattern": "r:/\\|=?/",
+      "alias": "s:pipe"
+    },
+    "r:/\\.\\.|[!=<>]?=|\\?\\/\\/|\\/\\/=?|[-+*/%]=?|[<>?]|\\b(?:and|not|or)\\b/"
+  ],
+  "c-style-function": {
+    "pattern": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+    "alias": "s:function"
+  },
+  "punctuation": "r:/::|[()\\[\\]{},:;]|\\.(?=\\s*[\\[\\w$])/",
+  "dot": {
+    "pattern": "r:/\\./",
+    "alias": "s:important"
+  }
+}

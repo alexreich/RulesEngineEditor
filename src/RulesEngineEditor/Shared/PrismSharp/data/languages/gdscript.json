@@ -1,0 +1,22 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/@?(?:(\"|')(?:(?!\\1)[^\\n\\\\]|\\\\[\\s\\S])*\\1(?!\"|')|\"\"\"(?:[^\\\\]|\\\\[\\s\\S])*?\"\"\")/",
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(^(?:class|class_name|extends)[ \\t]+|^export\\([ \\t]*|\\bas[ \\t]+|(?:\\b(?:const|var)[ \\t]|[,(])[ \\t]*\\w+[ \\t]*:[ \\t]*|->[ \\t]*)[a-zA-Z_]\\w*/m",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:and|as|assert|break|breakpoint|class|class_name|const|continue|elif|else|enum|export|extends|for|func|if|in|is|master|mastersync|match|not|null|onready|or|pass|preload|puppet|puppetsync|remote|remotesync|return|self|setget|signal|static|tool|var|while|yield)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=[ \\t]*\\()/i",
+  "variable": "r:/\\$\\w+/",
+  "number": [
+    "r:/\\b0b[01_]+\\b|\\b0x[\\da-fA-F_]+\\b|(?:\\b\\d[\\d_]*(?:\\.[\\d_]*)?|\\B\\.[\\d_]+)(?:e[+-]?[\\d_]+)?\\b/",
+    "r:/\\b(?:INF|NAN|PI|TAU)\\b/"
+  ],
+  "constant": "r:/\\b[A-Z][A-Z_\\d]*\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "operator": "r:/->|:=|&&|\\|\\||<<|>>|[-+*/%&|!<>=]=?|[~^]/",
+  "punctuation": "r:/[.:,;()[\\]{}]/"
+}

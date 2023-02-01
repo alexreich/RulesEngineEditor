@@ -70,7 +70,10 @@
         </div>
         <div>
            @* <CodeSnippet>@((MarkupString)(UnescapeCodes(rule.Expression)))</CodeSnippet>*@
+                
+                @*<table id="tblExport" class="table table-hover table-responsive  table-striped">
                 @((MarkupString)(Highlighter(rule.Expression)))
+ </table>*@
             @*<code class="language-csharp">@((MarkupString)(UnescapeCodes(rule.Expression)))</code>*@
 
                     @*
@@ -84,9 +87,9 @@
 
             @*<InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />*@
         </div>
-       @* <div>
+        <div>
             <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-        </div>*@
+        </div>
         <div>
             <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
         </div>

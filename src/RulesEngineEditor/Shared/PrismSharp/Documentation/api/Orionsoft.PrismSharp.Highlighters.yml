@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Highlighters
+  commentId: N:Orionsoft.PrismSharp.Highlighters
+  id: Orionsoft.PrismSharp.Highlighters
+  children:
+  - Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  langs:
+  - csharp
+  - vb
+  name: Orionsoft.PrismSharp.Highlighters
+  nameWithType: Orionsoft.PrismSharp.Highlighters
+  fullName: Orionsoft.PrismSharp.Highlighters
+  type: Namespace
+  assemblies:
+  - PrismSharp
+references:
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  commentId: T:Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  name: IHighlighter<TResult>
+  nameWithType: IHighlighter<TResult>
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>
+  nameWithType.vb: IHighlighter(Of TResult)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult)
+  name.vb: IHighlighter(Of TResult)
+  spec.csharp:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter
+    nameWithType: IHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+    name: IHighlighter
+    nameWithType: IHighlighter
+    fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )

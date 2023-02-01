@@ -10,10 +10,11 @@
 
 <sp_grid_tabs>
     <div>
-        <button class="reeditor_menubutton @IsPressed(ShowWorkflows, "menubutton_depressed")" @onclick="(() => ShowWorkflows = true)">Workflows</button>
+        <button class="reeditor_menubutton @IsPressed(REEMode == Modes.Workflow, "menubutton_depressed")" @onclick="(() => REEMode = Modes.Workflow)">Workflows</button>
     </div><div>
-        <button class="reeditor_menubutton @IsPressed(!ShowWorkflows, "menubutton_depressed")" @onclick="(() => ShowWorkflows = false)">Input Rule Parameters</button>
+        <button class="reeditor_menubutton @IsPressed(REEMode == Modes.Input, "menubutton_depressed")" @onclick="(() => REEMode = Modes.Input)">Input Rule Parameters</button>
     </div>
+    <div><button class="reeditor_menubutton @IsPressed(REEMode == Modes.Report, "menubutton_depressed")" @onclick="(() => REEMode = Modes.Report)">Report</button></div>
 </sp_grid_tabs>
 <br />
 @functions {
@@ -32,7 +33,7 @@
         return workflows.ToArray();
     }
 }
-<div hidden="@(!ShowWorkflows)">
+<div hidden="@(REEMode != Modes.Workflow)">
     <EditForm Model="currentWorkflow" class="reeditor_button">
         <InputSelect @bind-Value="CurrentWorkflowName" class="reeditor_button" title="Current Workflow">
             @foreach (var wf in GetWorkflows())
@@ -80,7 +81,7 @@
 
 @if (WorkflowService.Workflows.Count > 0)
 {
-    <div id="sp_grid_main" class="sp_grid_main" hidden="@(!ShowWorkflows)">
+    <div class="sp_grid_main" hidden="@(REEMode != Modes.Workflow)">
         <div>
             @if (sort_wf)
             {
@@ -123,7 +124,10 @@
             <textarea @bind="WorkflowsJSON" class="jsonTextArea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
     </div>
-    <div hidden="@(ShowWorkflows)">
+    <div hidden="@(REEMode != Modes.Report)">
+        <Report rules="@WorkflowService.Workflows.FirstOrDefault().Rules" />
+    </div>
+    <div hidden="@(REEMode != Modes.Input)">
         @if (IsButtonEnabled("NewInputs"))
         {
             <button title="New Input" class="reeditor_button" @onclick="NewInputs">New</button>

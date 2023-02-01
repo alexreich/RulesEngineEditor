@@ -1,0 +1,36 @@
+{
+  "comment": "r:/\\(\\*(?:[^*(]|\\*(?!\\))|\\((?!\\*)|\\(\\*(?:[^*(]|\\*(?!\\))|\\((?!\\*))*\\*\\))*\\*\\)/",
+  "string": {
+    "pattern": "r:/#?\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/((?:^|[^:]):\\s*)(?:'[\\w']*|(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*|\\((?:[^()]|\\([^()]*\\))*\\)|\\{(?:[^{}]|\\{[^{}]*\\})*\\})(?:\\s+(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*)*(?:\\s*(?:(?:\\*|->)\\s*(?:'[\\w']*|(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*|\\((?:[^()]|\\([^()]*\\))*\\)|\\{(?:[^{}]|\\{[^{}]*\\})*\\})(?:\\s+(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*)*|,\\s*(?:'[\\w']*|(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*|\\((?:[^()]|\\([^()]*\\))*\\)|\\{(?:[^{}]|\\{[^{}]*\\})*\\})(?:\\s+(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*)*(?:(?=\\s*(?:[*,]|->))|(?!\\s*(?:[*,]|->))\\s+(?!\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b)[a-z\\d_][\\w'.]*)))*/i",
+      "lookbehind": true,
+      "greedy": true,
+      "inside": "s:[Circular ~]"
+    },
+    {
+      "pattern": "r:/((?:^|[^\\w'])(?:datatype|exception|functor|signature|structure|type)\\s+)[a-z_][\\w'.]*/i",
+      "lookbehind": true
+    }
+  ],
+  "function": {
+    "pattern": "r:/((?:^|[^\\w'])fun\\s+)[a-z_][\\w'.]*/i",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:abstype|and|andalso|as|case|datatype|do|else|end|eqtype|exception|fn|fun|functor|handle|if|in|include|infix|infixr|let|local|nonfix|of|op|open|orelse|raise|rec|sharing|sig|signature|struct|structure|then|type|val|where|while|with|withtype)\\b/i",
+  "variable": {
+    "pattern": "r:/(^|[^\\w'])'[\\w']*/",
+    "lookbehind": true
+  },
+  "number": "r:/~?\\b(?:\\d+(?:\\.\\d+)?(?:e~?\\d+)?|0x[\\da-f]+)\\b/i",
+  "word": {
+    "pattern": "r:/\\b0w(?:\\d+|x[\\da-f]+)\\b/i",
+    "alias": "s:constant"
+  },
+  "boolean": "r:/\\b(?:false|true)\\b/i",
+  "operator": "r:/\\.\\.\\.|:[>=:]|=>?|->|[<>]=?|[!+\\-*/^#|@~]/",
+  "punctuation": "r:/[(){}\\[\\].:,;]/"
+}

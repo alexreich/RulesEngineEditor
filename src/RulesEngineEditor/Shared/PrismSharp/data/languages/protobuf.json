@@ -1,0 +1,54 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\b(?:enum|extend|message|service)\\s+)[A-Za-z_]\\w*(?=\\s*\\{)/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(\\b(?:rpc\\s+\\w+|returns)\\s*\\(\\s*(?:stream\\s+)?)\\.?[A-Za-z_]\\w*(?:\\.[A-Za-z_]\\w*)*(?=\\s*\\))/",
+      "lookbehind": true
+    }
+  ],
+  "keyword": "r:/\\b(?:enum|extend|extensions|import|message|oneof|option|optional|package|public|repeated|required|reserved|returns|rpc(?=\\s+\\w)|service|stream|syntax|to)\\b(?!\\s*=\\s*\\d)/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "map": {
+    "pattern": "r:/\\bmap<\\s*[\\w.]+\\s*,\\s*[\\w.]+\\s*>(?=\\s+[a-z_]\\w*\\s*[=;])/i",
+    "alias": "s:class-name",
+    "inside": {
+      "punctuation": "r:/[<>.,]/",
+      "builtin": "r:/\\b(?:bool|bytes|double|s?fixed(?:32|64)|float|[su]?int(?:32|64)|string)\\b/"
+    }
+  },
+  "builtin": "r:/\\b(?:bool|bytes|double|s?fixed(?:32|64)|float|[su]?int(?:32|64)|string)\\b/",
+  "positional-class-name": {
+    "pattern": "r:/(?:\\b|\\B\\.)[a-z_]\\w*(?:\\.[a-z_]\\w*)*(?=\\s+[a-z_]\\w*\\s*[=;])/i",
+    "alias": "s:class-name",
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "annotation": {
+    "pattern": "r:/(\\[\\s*)[a-z_]\\w*(?=\\s*=)/i",
+    "lookbehind": true
+  },
+  "operator": "r:/[<>]=?|[!=]=?=?|--?|\\+\\+?|&&?|\\|\\|?|[?*/~^%]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

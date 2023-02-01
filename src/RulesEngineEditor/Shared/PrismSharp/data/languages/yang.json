@@ -1,0 +1,18 @@
+{
+  "comment": "r:/\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/\"(?:[^\\\\\"]|\\\\[^\\r\\n])*\"|'[^']*'/",
+    "greedy": true
+  },
+  "keyword": {
+    "pattern": "r:/(^|[{};\\r\\n][ \\t]*)[a-z_][\\w.-]*/i",
+    "lookbehind": true
+  },
+  "namespace": {
+    "pattern": "r:/(\\s)[a-z_][\\w.-]*(?=:)/i",
+    "lookbehind": true
+  },
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "operator": "r:/\\+/",
+  "punctuation": "r:/[{};:]/"
+}

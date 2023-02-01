@@ -1,0 +1,70 @@
+{
+  "comment": {
+    "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+    "lookbehind": true
+  },
+  "keyword": [
+    "r:/@(?:content|debug|each|else(?: if)?|extend|for|forward|function|if|import|include|mixin|return|use|warn|while)\\b/i",
+    {
+      "pattern": "r:/( )(?:from|through)(?= )/",
+      "lookbehind": true
+    }
+  ],
+  "atrule": {
+    "pattern": "r:/@[\\w-](?:\\([^()]+\\)|[^()\\s]|\\s+(?!\\s))*?(?=\\s+[{;])/",
+    "inside": {
+      "rule": "r:/@[\\w-]+/",
+      "rest": "s:[Circular ~]"
+    }
+  },
+  "url": "r:/(?:[-a-z]+-)?url(?=\\()/i",
+  "selector": {
+    "pattern": "r:/(?=\\S)[^@;{}()]?(?:[^@;{}()\\s]|\\s+(?!\\s)|#\\{\\$[-\\w]+\\})+(?=\\s*\\{(?:\\}|\\s|[^}][^:{}]*[:{][^}]))/",
+    "inside": {
+      "parent": {
+        "pattern": "r:/&/",
+        "alias": "s:important"
+      },
+      "placeholder": "r:/%[-\\w]+/",
+      "variable": "r:/\\$[-\\w]+|#\\{\\$[-\\w]+\\}/"
+    }
+  },
+  "string": {
+    "pattern": "r:/(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')/",
+    "greedy": true
+  },
+  "property": {
+    "pattern": "r:/(?:[-\\w]|\\$[-\\w]|#\\{\\$[-\\w]+\\})+(?=\\s*:)/",
+    "inside": {
+      "variable": "r:/\\$[-\\w]+|#\\{\\$[-\\w]+\\}/"
+    }
+  },
+  "variable": "r:/\\$[-\\w]+|#\\{\\$[-\\w]+\\}/",
+  "important": "r:/!important\\b/i",
+  "module-modifier": {
+    "pattern": "r:/\\b(?:as|hide|show|with)\\b/i",
+    "alias": "s:keyword"
+  },
+  "placeholder": {
+    "pattern": "r:/%[-\\w]+/",
+    "alias": "s:selector"
+  },
+  "statement": {
+    "pattern": "r:/\\B!(?:default|optional)\\b/i",
+    "alias": "s:keyword"
+  },
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "null": {
+    "pattern": "r:/\\bnull\\b/",
+    "alias": "s:keyword"
+  },
+  "operator": {
+    "pattern": "r:/(\\s)(?:[-+*\\/%]|[=!]=|<=?|>=?|and|not|or)(?=\\s)/",
+    "lookbehind": true
+  },
+  "function": {
+    "pattern": "r:/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
+    "lookbehind": true
+  },
+  "punctuation": "r:/[(){};:,]/"
+}

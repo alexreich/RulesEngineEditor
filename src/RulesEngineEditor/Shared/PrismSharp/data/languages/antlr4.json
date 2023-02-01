@@ -1,0 +1,68 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+  "string": {
+    "pattern": "r:/'(?:\\\\[^\\r\\n]|[^\\\\'\\r\\n])*'/",
+    "greedy": true
+  },
+  "character-class": {
+    "pattern": "r:/\\[(?:\\\\[^\\r\\n]|[^\\\\\\]\\r\\n])*\\]/",
+    "greedy": true,
+    "alias": "s:regex",
+    "inside": {
+      "range": {
+        "pattern": "r:/([^[]|(?:^|[^\\\\])(?:\\\\\\\\)*\\\\\\[)-(?!\\])/",
+        "lookbehind": true,
+        "alias": "s:punctuation"
+      },
+      "escape": "r:/\\\\(?:u(?:[a-fA-F\\d]{4}|\\{[a-fA-F\\d]+\\})|[pP]\\{[=\\w-]+\\}|[^\\r\\nupP])/",
+      "punctuation": "r:/[\\[\\]]/"
+    }
+  },
+  "action": {
+    "pattern": "r:/\\{(?:[^{}]|\\{(?:[^{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*\\})*\\}/",
+    "greedy": true,
+    "inside": {
+      "content": {
+        "pattern": "r:/(\\{)[\\s\\S]+(?=\\})/",
+        "lookbehind": true
+      },
+      "punctuation": "r:/[{}]/"
+    }
+  },
+  "command": {
+    "pattern": "r:/(->\\s*(?!\\s))(?:\\s*(?:,\\s*)?\\b[a-z]\\w*(?:\\s*\\([^()\\r\\n]*\\))?)+(?=\\s*;)/i",
+    "lookbehind": true,
+    "inside": {
+      "function": "r:/\\b\\w+(?=\\s*(?:[,(]|(?:(?=\\r$)|$)))/",
+      "punctuation": "r:/[,()]/"
+    }
+  },
+  "annotation": {
+    "pattern": "r:/@\\w+(?:::\\w+)*/",
+    "alias": "s:keyword"
+  },
+  "label": {
+    "pattern": "r:/#[ \\t]*\\w+/",
+    "alias": "s:punctuation"
+  },
+  "keyword": "r:/\\b(?:catch|channels|finally|fragment|grammar|import|lexer|locals|mode|options|parser|returns|throws|tokens)\\b/",
+  "definition": [
+    {
+      "pattern": "r:/\\b[a-z]\\w*(?=\\s*:)/",
+      "alias": [
+        "s:rule",
+        "s:class-name"
+      ]
+    },
+    {
+      "pattern": "r:/\\b[A-Z]\\w*(?=\\s*:)/",
+      "alias": [
+        "s:token",
+        "s:constant"
+      ]
+    }
+  ],
+  "constant": "r:/\\b[A-Z][A-Z_]*\\b/",
+  "operator": "r:/\\.\\.|->|[|~]|[*+?]\\??/",
+  "punctuation": "r:/[;:()=]/"
+}

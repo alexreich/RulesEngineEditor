@@ -1,0 +1,29 @@
+{
+  "comment": "r:/;[^\\r\\n]*/",
+  "directive": {
+    "pattern": "r:/\\.\\w+(?= )/",
+    "alias": "s:property"
+  },
+  "string": "r:/([\"'`])(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+  "op-code": {
+    "pattern": "r:/\\b(?:ADC|AND|ASL|BCC|BCS|BEQ|BIT|BMI|BNE|BPL|BRK|BVC|BVS|CLC|CLD|CLI|CLV|CMP|CPX|CPY|DEC|DEX|DEY|EOR|INC|INX|INY|JMP|JSR|LDA|LDX|LDY|LSR|NOP|ORA|PHA|PHP|PLA|PLP|ROL|ROR|RTI|RTS|SBC|SEC|SED|SEI|STA|STX|STY|TAX|TAY|TSX|TXA|TXS|TYA|adc|and|asl|bcc|bcs|beq|bit|bmi|bne|bpl|brk|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|jmp|jsr|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|rti|rts|sbc|sec|sed|sei|sta|stx|sty|tax|tay|tsx|txa|txs|tya)\\b/",
+    "alias": "s:keyword"
+  },
+  "hex-number": {
+    "pattern": "r:/#?\\$[\\da-f]{1,4}\\b/i",
+    "alias": "s:number"
+  },
+  "binary-number": {
+    "pattern": "r:/#?%[01]+\\b/",
+    "alias": "s:number"
+  },
+  "decimal-number": {
+    "pattern": "r:/#?\\b\\d+\\b/",
+    "alias": "s:number"
+  },
+  "register": {
+    "pattern": "r:/\\b[xya]\\b/i",
+    "alias": "s:variable"
+  },
+  "punctuation": "r:/[(),:]/"
+}

@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Tokenizer
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Tokenizer
+   ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer">
+  
+  
+  <h1 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer" class="text-break">Class Tokenizer
+  </h1>
+  <div class="markdown level0 summary"><p>Tokenizer engine converting the source code to a tree of tokens (code fractions with their logical meanings, e.g. foreach - keyword</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Tokenizer</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Orionsoft.PrismSharp.Tokenizing.html">Orionsoft.PrismSharp.Tokenizing</a></h6>
+  <h6><strong>Assembly</strong>: PrismSharp.dll</h6>
+  <h5 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Tokenizer</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Orionsoft_PrismSharp_Tokenizing_Tokenizer__ctor_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor*"></a>
+  <h4 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer__ctor" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor">Tokenizer()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tokenizer()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_GrammarDir_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir*"></a>
+  <h4 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_GrammarDir" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir">GrammarDir</h4>
+  <div class="markdown level1 summary"><p>Directory with language definitions, should it be changed from default path</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GrammarDir { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_LanguageList_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList*"></a>
+  <h4 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_LanguageList" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList">LanguageList</h4>
+  <div class="markdown level1 summary"><p>Returns list of supported languages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; LanguageList { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_Tokenize_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize*"></a>
+  <h4 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_Tokenize_System_String_System_String_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)">Tokenize(String, String)</h4>
+  <div class="markdown level1 summary"><p>Tokenizes the source code according to the language rules</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Token Tokenize(string code, string language)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td><p>source code to tokenize</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">language</span></td>
+        <td><p>programming language name or an alias</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Orionsoft.PrismSharp.Tokenizing.Token.html">Token</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange*"></a>
+  <h4 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_System_String_System_Int32_System_Int32_System_String_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)">TokenizeRange(String, Int32, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Tokenizes the specified range of the source code according to the language rules.
+Tokenization settings are loaded automatically according to the language param.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Token TokenizeRange(string code, int start, int length, string language)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td><p>source code to tokenize</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>starting position of the range within the code</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>length of the range</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">language</span></td>
+        <td><p>programming language name or an alias</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Orionsoft.PrismSharp.Tokenizing.Token.html">Token</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange*"></a>
+  <h4 id="Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_System_String_System_Int32_System_Int32_System_String_Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_" data-uid="Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)">TokenizeRange(String, Int32, Int32, String, RangeTokenizationSettings)</h4>
+  <div class="markdown level1 summary"><p>Tokenizes the specified range of the source code according to the language rules and provided settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Token TokenizeRange(string code, int start, int length, string language, RangeTokenizationSettings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td><p>source code to tokenize</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>starting position of the range within the code</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>length of the range</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">language</span></td>
+        <td><p>language name or an alias</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html">RangeTokenizationSettings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>custom range tokenization settings</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Orionsoft.PrismSharp.Tokenizing.Token.html">Token</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

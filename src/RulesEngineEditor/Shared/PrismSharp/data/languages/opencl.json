@@ -1,0 +1,81 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+    "greedy": true
+  },
+  "macro": {
+    "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property",
+    "inside": {
+      "string": [
+        {
+          "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+          "greedy": true
+        }
+      ],
+      "char": {
+        "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+        "greedy": true
+      },
+      "comment": {
+        "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+        "greedy": true
+      },
+      "macro-name": [
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+          "lookbehind": true,
+          "alias": "s:function"
+        }
+      ],
+      "directive": {
+        "pattern": "r:/^(#\\s*)[a-z]+/",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "directive-hash": "r:/^#/",
+      "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+      "expression": {
+        "pattern": "r:/\\S[\\s\\S]*/",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "builtin-type": {
+    "pattern": "r:/\\b(?:_cl_(?:command_queue|context|device_id|event|kernel|mem|platform_id|program|sampler)|cl_(?:image_format|mem_fence_flags)|clk_event_t|event_t|image(?:1d_(?:array_|buffer_)?t|2d_(?:array_(?:depth_|msaa_depth_|msaa_)?|depth_|msaa_depth_|msaa_)?t|3d_t)|intptr_t|ndrange_t|ptrdiff_t|queue_t|reserve_id_t|sampler_t|size_t|uintptr_t)\\b/",
+    "alias": "s:keyword"
+  },
+  "class-name": {
+    "pattern": "r:/(\\b(?:enum|struct)\\s+(?:__attribute__\\s*\\(\\([\\s\\S]*?\\)\\)\\s*)?)\\w+|\\b[a-z]\\w*_t\\b/",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:(?:__)?(?:constant|global|kernel|local|private|read_only|read_write|write_only)|__attribute__|auto|(?:bool|u?(?:char|int|long|short)|half|quad)(?:2|3|4|8|16)?|break|case|complex|const|continue|(?:double|float)(?:16(?:x(?:1|2|4|8|16))?|1x(?:1|2|4|8|16)|2(?:x(?:1|2|4|8|16))?|3|4(?:x(?:1|2|4|8|16))?|8(?:x(?:1|2|4|8|16))?)?|default|do|else|enum|extern|for|goto|if|imaginary|inline|packed|pipe|register|restrict|return|signed|sizeof|static|struct|switch|typedef|uniform|union|unsigned|void|volatile|while)\\b/",
+  "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/(?:\\b0x(?:[\\da-f]+(?:\\.[\\da-f]*)?|\\.[\\da-f]+)(?:p[+-]?\\d+)?|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?)[fuhl]{0,4}/i",
+  "operator": "r:/>>=?|<<=?|->|([-+&|:])\\1|[?:~]|[-+*/%&|^!=<>]=?/",
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "constant-opencl-kernel": {
+    "pattern": "r:/\\b(?:CHAR_(?:BIT|MAX|MIN)|CLK_(?:ADDRESS_(?:CLAMP(?:_TO_EDGE)?|NONE|REPEAT)|FILTER_(?:LINEAR|NEAREST)|(?:GLOBAL|LOCAL)_MEM_FENCE|NORMALIZED_COORDS_(?:FALSE|TRUE))|CL_(?:BGRA|(?:HALF_)?FLOAT|INTENSITY|LUMINANCE|A?R?G?B?[Ax]?|(?:(?:UN)?SIGNED|[US]NORM)_(?:INT(?:8|16|32))|UNORM_(?:INT_101010|SHORT_(?:555|565)))|(?:DBL|FLT|HALF)_(?:DIG|EPSILON|(?:MAX|MIN)(?:(?:_10)?_EXP)?|MANT_DIG)|FLT_RADIX|HUGE_VALF?|(?:INT|LONG|SCHAR|SHRT)_(?:MAX|MIN)|INFINITY|MAXFLOAT|M_(?:[12]_PI|2_SQRTPI|E|LN(?:2|10)|LOG(?:2|10)E?|PI(?:_[24])?|SQRT(?:1_2|2))(?:_F|_H)?|NAN|(?:UCHAR|UINT|ULONG|USHRT)_MAX)\\b/",
+    "alias": "s:constant"
+  }
+}

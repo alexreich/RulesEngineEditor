@@ -1,0 +1,918 @@
+{
+  "heading": {
+    "pattern": "r:/;;;[^\\r\\n]*/",
+    "alias": [
+      "s:comment",
+      "s:title"
+    ]
+  },
+  "comment": "r:/;[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+    "greedy": true,
+    "inside": {
+      "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+      "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+    }
+  },
+  "quoted-symbol": {
+    "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+    "alias": [
+      "s:variable",
+      "s:symbol"
+    ]
+  },
+  "lisp-property": {
+    "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+    "alias": "s:property"
+  },
+  "splice": {
+    "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+    "alias": [
+      "s:symbol",
+      "s:variable"
+    ]
+  },
+  "keyword": [
+    {
+      "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+      "lookbehind": true
+    }
+  ],
+  "declare": {
+    "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "interactive": {
+    "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "boolean": {
+    "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+    "lookbehind": true
+  },
+  "number": {
+    "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+    "lookbehind": true
+  },
+  "defvar": {
+    "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+    "lookbehind": true,
+    "inside": {
+      "keyword": "r:/^def[a-z]+/",
+      "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+    }
+  },
+  "defun": {
+    "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "keyword": "r:/^(?:cl-)?def\\S+/",
+      "arguments": {
+        "pattern": "r:/(\\()(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*(?=\\))/",
+        "lookbehind": true,
+        "inside": {
+          "rest-vars": {
+            "pattern": "r:/&(?:body|rest)\\s+\\S+(?:\\s+\\S+)*/",
+            "inside": {
+              "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+              "varform": {
+                "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                "inside": {
+                  "heading": {
+                    "pattern": "r:/;;;[^\\r\\n]*/",
+                    "alias": [
+                      "s:comment",
+                      "s:title"
+                    ]
+                  },
+                  "comment": "r:/;[^\\r\\n]*/",
+                  "string": {
+                    "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                    "greedy": true,
+                    "inside": {
+                      "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+                      "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+                    }
+                  },
+                  "quoted-symbol": {
+                    "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": [
+                      "s:variable",
+                      "s:symbol"
+                    ]
+                  },
+                  "lisp-property": {
+                    "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": "s:property"
+                  },
+                  "splice": {
+                    "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": [
+                      "s:symbol",
+                      "s:variable"
+                    ]
+                  },
+                  "keyword": [
+                    {
+                      "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+                      "lookbehind": true
+                    },
+                    {
+                      "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+                      "lookbehind": true
+                    }
+                  ],
+                  "declare": {
+                    "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "interactive": {
+                    "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "boolean": {
+                    "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+                    "lookbehind": true
+                  },
+                  "number": {
+                    "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+                    "lookbehind": true
+                  },
+                  "defvar": {
+                    "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true,
+                    "inside": {
+                      "keyword": "r:/^def[a-z]+/",
+                      "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+                    }
+                  },
+                  "defun": {
+                    "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/^(?:cl-)?def\\S+/",
+                      "arguments": null,
+                      "function": {
+                        "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                        "lookbehind": true
+                      },
+                      "punctuation": "r:/[()]/"
+                    }
+                  },
+                  "lambda": {
+                    "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/^lambda/",
+                      "arguments": "s:[Circular ~.defun.inside.arguments]",
+                      "punctuation": "r:/[()]/"
+                    }
+                  },
+                  "car": {
+                    "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true
+                  },
+                  "punctuation": [
+                    "r:/(?:['`,]?\\(|[)\\[\\]])/",
+                    {
+                      "pattern": "r:/(\\s)\\.(?=\\s)/",
+                      "lookbehind": true
+                    }
+                  ]
+                }
+              },
+              "argument": {
+                "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "lookbehind": true,
+                "alias": "s:variable"
+              },
+              "rest": {
+                "heading": {
+                  "pattern": "r:/;;;[^\\r\\n]*/",
+                  "alias": [
+                    "s:comment",
+                    "s:title"
+                  ]
+                },
+                "comment": "r:/;[^\\r\\n]*/",
+                "string": {
+                  "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                  "greedy": true,
+                  "inside": {
+                    "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+                    "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+                  }
+                },
+                "quoted-symbol": {
+                  "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": [
+                    "s:variable",
+                    "s:symbol"
+                  ]
+                },
+                "lisp-property": {
+                  "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": "s:property"
+                },
+                "splice": {
+                  "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": [
+                    "s:symbol",
+                    "s:variable"
+                  ]
+                },
+                "keyword": [
+                  {
+                    "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+                    "lookbehind": true
+                  },
+                  {
+                    "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+                    "lookbehind": true
+                  }
+                ],
+                "declare": {
+                  "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+                  "lookbehind": true,
+                  "alias": "s:keyword"
+                },
+                "interactive": {
+                  "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+                  "lookbehind": true,
+                  "alias": "s:keyword"
+                },
+                "boolean": {
+                  "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+                  "lookbehind": true
+                },
+                "number": {
+                  "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+                  "lookbehind": true
+                },
+                "defvar": {
+                  "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/^def[a-z]+/",
+                    "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+                  }
+                },
+                "defun": {
+                  "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "keyword": "r:/^(?:cl-)?def\\S+/",
+                    "arguments": null,
+                    "function": {
+                      "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                      "lookbehind": true
+                    },
+                    "punctuation": "r:/[()]/"
+                  }
+                },
+                "lambda": {
+                  "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "keyword": "r:/^lambda/",
+                    "arguments": "s:[Circular ~.defun.inside.arguments]",
+                    "punctuation": "r:/[()]/"
+                  }
+                },
+                "car": {
+                  "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "lookbehind": true
+                },
+                "punctuation": [
+                  "r:/(?:['`,]?\\(|[)\\[\\]])/",
+                  {
+                    "pattern": "r:/(\\s)\\.(?=\\s)/",
+                    "lookbehind": true
+                  }
+                ]
+              }
+            }
+          },
+          "other-marker-vars": {
+            "pattern": "r:/&(?:aux|optional)\\s+\\S+(?:\\s+\\S+)*/",
+            "inside": {
+              "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+              "varform": {
+                "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                "inside": {
+                  "heading": {
+                    "pattern": "r:/;;;[^\\r\\n]*/",
+                    "alias": [
+                      "s:comment",
+                      "s:title"
+                    ]
+                  },
+                  "comment": "r:/;[^\\r\\n]*/",
+                  "string": {
+                    "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                    "greedy": true,
+                    "inside": {
+                      "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+                      "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+                    }
+                  },
+                  "quoted-symbol": {
+                    "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": [
+                      "s:variable",
+                      "s:symbol"
+                    ]
+                  },
+                  "lisp-property": {
+                    "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": "s:property"
+                  },
+                  "splice": {
+                    "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": [
+                      "s:symbol",
+                      "s:variable"
+                    ]
+                  },
+                  "keyword": [
+                    {
+                      "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+                      "lookbehind": true
+                    },
+                    {
+                      "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+                      "lookbehind": true
+                    }
+                  ],
+                  "declare": {
+                    "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "interactive": {
+                    "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "boolean": {
+                    "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+                    "lookbehind": true
+                  },
+                  "number": {
+                    "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+                    "lookbehind": true
+                  },
+                  "defvar": {
+                    "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true,
+                    "inside": {
+                      "keyword": "r:/^def[a-z]+/",
+                      "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+                    }
+                  },
+                  "defun": {
+                    "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/^(?:cl-)?def\\S+/",
+                      "arguments": null,
+                      "function": {
+                        "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                        "lookbehind": true
+                      },
+                      "punctuation": "r:/[()]/"
+                    }
+                  },
+                  "lambda": {
+                    "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/^lambda/",
+                      "arguments": "s:[Circular ~.defun.inside.arguments]",
+                      "punctuation": "r:/[()]/"
+                    }
+                  },
+                  "car": {
+                    "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true
+                  },
+                  "punctuation": [
+                    "r:/(?:['`,]?\\(|[)\\[\\]])/",
+                    {
+                      "pattern": "r:/(\\s)\\.(?=\\s)/",
+                      "lookbehind": true
+                    }
+                  ]
+                }
+              },
+              "argument": {
+                "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "lookbehind": true,
+                "alias": "s:variable"
+              },
+              "rest": {
+                "heading": {
+                  "pattern": "r:/;;;[^\\r\\n]*/",
+                  "alias": [
+                    "s:comment",
+                    "s:title"
+                  ]
+                },
+                "comment": "r:/;[^\\r\\n]*/",
+                "string": {
+                  "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                  "greedy": true,
+                  "inside": {
+                    "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+                    "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+                  }
+                },
+                "quoted-symbol": {
+                  "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": [
+                    "s:variable",
+                    "s:symbol"
+                  ]
+                },
+                "lisp-property": {
+                  "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": "s:property"
+                },
+                "splice": {
+                  "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": [
+                    "s:symbol",
+                    "s:variable"
+                  ]
+                },
+                "keyword": [
+                  {
+                    "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+                    "lookbehind": true
+                  },
+                  {
+                    "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+                    "lookbehind": true
+                  }
+                ],
+                "declare": {
+                  "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+                  "lookbehind": true,
+                  "alias": "s:keyword"
+                },
+                "interactive": {
+                  "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+                  "lookbehind": true,
+                  "alias": "s:keyword"
+                },
+                "boolean": {
+                  "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+                  "lookbehind": true
+                },
+                "number": {
+                  "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+                  "lookbehind": true
+                },
+                "defvar": {
+                  "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/^def[a-z]+/",
+                    "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+                  }
+                },
+                "defun": {
+                  "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "keyword": "r:/^(?:cl-)?def\\S+/",
+                    "arguments": null,
+                    "function": {
+                      "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                      "lookbehind": true
+                    },
+                    "punctuation": "r:/[()]/"
+                  }
+                },
+                "lambda": {
+                  "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "keyword": "r:/^lambda/",
+                    "arguments": "s:[Circular ~.defun.inside.arguments]",
+                    "punctuation": "r:/[()]/"
+                  }
+                },
+                "car": {
+                  "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "lookbehind": true
+                },
+                "punctuation": [
+                  "r:/(?:['`,]?\\(|[)\\[\\]])/",
+                  {
+                    "pattern": "r:/(\\s)\\.(?=\\s)/",
+                    "lookbehind": true
+                  }
+                ]
+              }
+            }
+          },
+          "keys": {
+            "pattern": "r:/&key\\s+\\S+(?:\\s+\\S+)*(?:\\s+&allow-other-keys)?/",
+            "inside": {
+              "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+              "varform": {
+                "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                "inside": {
+                  "heading": {
+                    "pattern": "r:/;;;[^\\r\\n]*/",
+                    "alias": [
+                      "s:comment",
+                      "s:title"
+                    ]
+                  },
+                  "comment": "r:/;[^\\r\\n]*/",
+                  "string": {
+                    "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                    "greedy": true,
+                    "inside": {
+                      "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+                      "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+                    }
+                  },
+                  "quoted-symbol": {
+                    "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": [
+                      "s:variable",
+                      "s:symbol"
+                    ]
+                  },
+                  "lisp-property": {
+                    "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": "s:property"
+                  },
+                  "splice": {
+                    "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "alias": [
+                      "s:symbol",
+                      "s:variable"
+                    ]
+                  },
+                  "keyword": [
+                    {
+                      "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+                      "lookbehind": true
+                    },
+                    {
+                      "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+                      "lookbehind": true
+                    }
+                  ],
+                  "declare": {
+                    "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "interactive": {
+                    "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  },
+                  "boolean": {
+                    "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+                    "lookbehind": true
+                  },
+                  "number": {
+                    "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+                    "lookbehind": true
+                  },
+                  "defvar": {
+                    "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true,
+                    "inside": {
+                      "keyword": "r:/^def[a-z]+/",
+                      "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+                    }
+                  },
+                  "defun": {
+                    "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/^(?:cl-)?def\\S+/",
+                      "arguments": null,
+                      "function": {
+                        "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                        "lookbehind": true
+                      },
+                      "punctuation": "r:/[()]/"
+                    }
+                  },
+                  "lambda": {
+                    "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/^lambda/",
+                      "arguments": "s:[Circular ~.defun.inside.arguments]",
+                      "punctuation": "r:/[()]/"
+                    }
+                  },
+                  "car": {
+                    "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true
+                  },
+                  "punctuation": [
+                    "r:/(?:['`,]?\\(|[)\\[\\]])/",
+                    {
+                      "pattern": "r:/(\\s)\\.(?=\\s)/",
+                      "lookbehind": true
+                    }
+                  ]
+                }
+              },
+              "argument": {
+                "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "lookbehind": true,
+                "alias": "s:variable"
+              },
+              "rest": {
+                "heading": {
+                  "pattern": "r:/;;;[^\\r\\n]*/",
+                  "alias": [
+                    "s:comment",
+                    "s:title"
+                  ]
+                },
+                "comment": "r:/;[^\\r\\n]*/",
+                "string": {
+                  "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"/",
+                  "greedy": true,
+                  "inside": {
+                    "argument": "r:/[-A-Z]+(?=[.,\\s])/",
+                    "symbol": "r:/`(?!\\d)[-+*/~!@$%^=<>{}\\w]+'/"
+                  }
+                },
+                "quoted-symbol": {
+                  "pattern": "r:/#?'(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": [
+                    "s:variable",
+                    "s:symbol"
+                  ]
+                },
+                "lisp-property": {
+                  "pattern": "r:/:(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": "s:property"
+                },
+                "splice": {
+                  "pattern": "r:/,@?(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "alias": [
+                    "s:symbol",
+                    "s:variable"
+                  ]
+                },
+                "keyword": [
+                  {
+                    "pattern": "r:/(\\()(?:and|(?:cl-)?letf|cl-loop|cond|cons|error|if|(?:lexical-)?let\\*?|message|not|null|or|provide|require|setq|unless|use-package|when|while)(?=\\s)/",
+                    "lookbehind": true
+                  },
+                  {
+                    "pattern": "r:/(\\()(?:append|by|collect|concat|do|finally|for|in|return)(?=\\s)/",
+                    "lookbehind": true
+                  }
+                ],
+                "declare": {
+                  "pattern": "r:/(\\()(?:declare)(?=[\\s\\)])/",
+                  "lookbehind": true,
+                  "alias": "s:keyword"
+                },
+                "interactive": {
+                  "pattern": "r:/(\\()(?:interactive)(?=[\\s\\)])/",
+                  "lookbehind": true,
+                  "alias": "s:keyword"
+                },
+                "boolean": {
+                  "pattern": "r:/([\\s([])(?:nil|t)(?=[\\s)])/",
+                  "lookbehind": true
+                },
+                "number": {
+                  "pattern": "r:/([\\s([])(?:[-+]?\\d+(?:\\.\\d*)?)(?=[\\s)])/",
+                  "lookbehind": true
+                },
+                "defvar": {
+                  "pattern": "r:/(\\()def(?:const|custom|group|var)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/^def[a-z]+/",
+                    "variable": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/"
+                  }
+                },
+                "defun": {
+                  "pattern": "r:/(\\()(?:cl-)?(?:defmacro|defun\\*?)\\s+(?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "keyword": "r:/^(?:cl-)?def\\S+/",
+                    "arguments": null,
+                    "function": {
+                      "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                      "lookbehind": true
+                    },
+                    "punctuation": "r:/[()]/"
+                  }
+                },
+                "lambda": {
+                  "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "keyword": "r:/^lambda/",
+                    "arguments": "s:[Circular ~.defun.inside.arguments]",
+                    "punctuation": "r:/[()]/"
+                  }
+                },
+                "car": {
+                  "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "lookbehind": true
+                },
+                "punctuation": [
+                  "r:/(?:['`,]?\\(|[)\\[\\]])/",
+                  {
+                    "pattern": "r:/(\\s)\\.(?=\\s)/",
+                    "lookbehind": true
+                  }
+                ]
+              }
+            }
+          },
+          "argument": {
+            "pattern": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+            "alias": "s:variable"
+          },
+          "punctuation": "r:/[()]/",
+          "sublist": {
+            "pattern": "r:/(\\()(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*(?=\\))/",
+            "lookbehind": true,
+            "inside": {
+              "rest-vars": {
+                "pattern": "r:/&(?:body|rest)\\s+\\S+(?:\\s+\\S+)*/",
+                "inside": {
+                  "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "varform": {
+                    "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                    "inside": "s:[Circular ~]"
+                  },
+                  "argument": {
+                    "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true,
+                    "alias": "s:variable"
+                  },
+                  "rest": "s:[Circular ~]"
+                }
+              },
+              "other-marker-vars": {
+                "pattern": "r:/&(?:aux|optional)\\s+\\S+(?:\\s+\\S+)*/",
+                "inside": {
+                  "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "varform": {
+                    "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                    "inside": "s:[Circular ~]"
+                  },
+                  "argument": {
+                    "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true,
+                    "alias": "s:variable"
+                  },
+                  "rest": "s:[Circular ~]"
+                }
+              },
+              "keys": {
+                "pattern": "r:/&key\\s+\\S+(?:\\s+\\S+)*(?:\\s+&allow-other-keys)?/",
+                "inside": {
+                  "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                  "varform": {
+                    "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                    "inside": "s:[Circular ~]"
+                  },
+                  "argument": {
+                    "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                    "lookbehind": true,
+                    "alias": "s:variable"
+                  },
+                  "rest": "s:[Circular ~]"
+                }
+              },
+              "argument": {
+                "pattern": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "alias": "s:variable"
+              },
+              "punctuation": "r:/[()]/"
+            }
+          }
+        }
+      },
+      "function": {
+        "pattern": "r:/(^\\s)(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+        "lookbehind": true
+      },
+      "punctuation": "r:/[()]/"
+    }
+  },
+  "lambda": {
+    "pattern": "r:/(\\()lambda\\s+\\(\\s*(?:&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+(?:\\s+&?(?!\\d)[-+*/~!@$%^=<>{}\\w]+)*\\s*)?\\)/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "keyword": "r:/^lambda/",
+      "arguments": {
+        "pattern": "r:/(\\()(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*(?=\\))/",
+        "lookbehind": true,
+        "inside": {
+          "rest-vars": {
+            "pattern": "r:/&(?:body|rest)\\s+\\S+(?:\\s+\\S+)*/",
+            "inside": {
+              "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+              "varform": {
+                "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                "inside": "s:[Circular ~]"
+              },
+              "argument": {
+                "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "lookbehind": true,
+                "alias": "s:variable"
+              },
+              "rest": "s:[Circular ~]"
+            }
+          },
+          "other-marker-vars": {
+            "pattern": "r:/&(?:aux|optional)\\s+\\S+(?:\\s+\\S+)*/",
+            "inside": {
+              "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+              "varform": {
+                "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                "inside": "s:[Circular ~]"
+              },
+              "argument": {
+                "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "lookbehind": true,
+                "alias": "s:variable"
+              },
+              "rest": "s:[Circular ~]"
+            }
+          },
+          "keys": {
+            "pattern": "r:/&key\\s+\\S+(?:\\s+\\S+)*(?:\\s+&allow-other-keys)?/",
+            "inside": {
+              "lisp-marker": "r:/&(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+              "varform": {
+                "pattern": "r:/\\((?!\\d)[-+*/~!@$%^=<>{}\\w]+\\s+(?=\\S)(?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))*\\))*\\))*\\)/",
+                "inside": "s:[Circular ~]"
+              },
+              "argument": {
+                "pattern": "r:/(^|[\\s(])(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+                "lookbehind": true,
+                "alias": "s:variable"
+              },
+              "rest": "s:[Circular ~]"
+            }
+          },
+          "argument": {
+            "pattern": "r:/(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+            "alias": "s:variable"
+          },
+          "punctuation": "r:/[()]/"
+        }
+      },
+      "punctuation": "r:/[()]/"
+    }
+  },
+  "car": {
+    "pattern": "r:/(\\()(?!\\d)[-+*/~!@$%^=<>{}\\w]+/",
+    "lookbehind": true
+  },
+  "punctuation": [
+    "r:/(?:['`,]?\\(|[)\\[\\]])/",
+    {
+      "pattern": "r:/(\\s)\\.(?=\\s)/",
+      "lookbehind": true
+    }
+  ]
+}

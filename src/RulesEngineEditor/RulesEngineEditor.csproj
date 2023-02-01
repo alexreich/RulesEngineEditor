@@ -20,6 +20,13 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Shared\PrismSharp\**" />
+    <Content Remove="Shared\PrismSharp\**" />
+    <EmbeddedResource Remove="Shared\PrismSharp\**" />
+    <None Remove="Shared\PrismSharp\**" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -49,7 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\PrismSharp\PrismSharp\PrismSharp.csproj" />
+    <ProjectReference Include="Shared\PrismSharp\PrismSharp.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,78 @@
+{
+  "comment": {
+    "pattern": "r:/^([ \\t]*)\\/[\\/*][^\\r\\n]*(?:(?:\\r?\\n|\\r)\\1[ \\t][^\\r\\n]+)*/m",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "atrule-line": {
+    "pattern": "r:/^(?:[ \\t]*)[@+=][^\\r\\n]+/m",
+    "greedy": true,
+    "inside": {
+      "atrule": "r:/(?:@[\\w-]+|[+=])/"
+    }
+  },
+  "url": {
+    "pattern": "r:/\\burl\\((?:(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')|(?:[^\\\\\\r\\n()\"']|\\\\[\\s\\S])*)\\)/i",
+    "greedy": true,
+    "inside": {
+      "function": "r:/^url/i",
+      "punctuation": "r:/^\\(|\\)(?:(?=\\r$)|$)/",
+      "string": {
+        "pattern": "r:/^(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')(?:(?=\\r$)|$)/",
+        "alias": "s:url"
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')/",
+    "greedy": true
+  },
+  "variable-line": {
+    "pattern": "r:/^[ \\t]*\\$[^\\r\\n]+/m",
+    "greedy": true,
+    "inside": {
+      "punctuation": "r:/:/",
+      "variable": "r:/\\$[-\\w]+|#\\{\\$[-\\w]+\\}/",
+      "operator": [
+        "r:/[+*\\/%]|[=!]=|<=?|>=?|\\b(?:and|not|or)\\b/",
+        {
+          "pattern": "r:/(\\s)-(?=\\s)/",
+          "lookbehind": true
+        }
+      ]
+    }
+  },
+  "property-line": {
+    "pattern": "r:/^[ \\t]*(?:[^:\\s]+ *:[^\\r\\n]*|:[^:\\s][^\\r\\n]*)/m",
+    "greedy": true,
+    "inside": {
+      "property": [
+        "r:/[^:\\s]+(?=\\s*:)/",
+        {
+          "pattern": "r:/(:)[^:\\s]+/",
+          "lookbehind": true
+        }
+      ],
+      "punctuation": "r:/:/",
+      "variable": "r:/\\$[-\\w]+|#\\{\\$[-\\w]+\\}/",
+      "operator": [
+        "r:/[+*\\/%]|[=!]=|<=?|>=?|\\b(?:and|not|or)\\b/",
+        {
+          "pattern": "r:/(\\s)-(?=\\s)/",
+          "lookbehind": true
+        }
+      ],
+      "important": "r:/!important\\b/i"
+    }
+  },
+  "function": {
+    "pattern": "r:/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
+    "lookbehind": true
+  },
+  "selector": {
+    "pattern": "r:/^([ \\t]*)\\S(?:,[^,\\r\\n]+|[^,\\r\\n]*)(?:,[^,\\r\\n]+)*(?:,(?:\\r?\\n|\\r)\\1[ \\t]+\\S(?:,[^,\\r\\n]+|[^,\\r\\n]*)(?:,[^,\\r\\n]+)*)*/m",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "punctuation": "r:/[(){};:,]/"
+}

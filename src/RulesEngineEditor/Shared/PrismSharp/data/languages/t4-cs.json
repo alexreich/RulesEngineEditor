@@ -1,0 +1,855 @@
+{
+  "block": {
+    "pattern": "r:/<#[\\s\\S]+?#>/",
+    "inside": {
+      "directive": {
+        "pattern": "r:/<#@[\\s\\S]*?#>/",
+        "alias": "s:block",
+        "inside": {
+          "delimiter": {
+            "pattern": "r:/^<#@|#>(?:(?=\\r$)|$)/",
+            "alias": "s:important"
+          },
+          "content": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": {
+              "attr-value": {
+                "pattern": "r:/=(?:(\"|')(?:\\\\[\\s\\S]|(?!\\1)[^\\\\])*\\1|[^\\s'\">=]+)/",
+                "inside": {
+                  "punctuation": "r:/^=|^[\"']|[\"'](?:(?=\\r$)|$)/"
+                }
+              },
+              "keyword": "r:/\\b\\w+(?=\\s)/",
+              "attr-name": "r:/\\b\\w+/"
+            }
+          }
+        }
+      },
+      "expression": {
+        "pattern": "r:/<#=[\\s\\S]*?#>/",
+        "alias": "s:block",
+        "inside": {
+          "delimiter": {
+            "pattern": "r:/^<#=|#>(?:(?=\\r$)|$)/",
+            "alias": "s:important"
+          },
+          "content": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": {
+              "comment": [
+                {
+                  "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "interpolation-string": [
+                {
+                  "pattern": "r:/(^|[^\\\\])(?:\\$@|@\\$)\"(?:\"\"|\\\\[\\s\\S]|\\{\\{|(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})|[^\\\\{\"])*\"/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/((?:^|[^{])(?:\\{\\{)*)(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})/",
+                      "lookbehind": true,
+                      "inside": {
+                        "format-string": {
+                          "pattern": "r:/(^\\{(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*)(?::[^}\\r\\n]+)(?=\\}(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "inside": {
+                            "punctuation": "r:/^:/"
+                          }
+                        },
+                        "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                        "expression": {
+                          "pattern": "r:/[\\s\\S]+/",
+                          "alias": "s:language-csharp",
+                          "inside": "s:[Circular ~.block.inside.expression.inside.content.inside]"
+                        }
+                      }
+                    },
+                    "string": "r:/[\\s\\S]+/"
+                  }
+                },
+                {
+                  "pattern": "r:/(^|[^@\\\\])\\$\"(?:\\\\[^\\r\\n]|\\{\\{|(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})|[^\\\\\"{])*\"/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/((?:^|[^{])(?:\\{\\{)*)(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})/",
+                      "lookbehind": true,
+                      "inside": {
+                        "format-string": {
+                          "pattern": "r:/(^\\{(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*)(?::[^}\\r\\n]+)(?=\\}(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "inside": {
+                            "punctuation": "r:/^:/"
+                          }
+                        },
+                        "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                        "expression": {
+                          "pattern": "r:/[\\s\\S]+/",
+                          "alias": "s:language-csharp",
+                          "inside": "s:[Circular ~.block.inside.expression.inside.content.inside]"
+                        }
+                      }
+                    },
+                    "string": "r:/[\\s\\S]+/"
+                  }
+                }
+              ],
+              "char": {
+                "pattern": "r:/'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'/",
+                "greedy": true
+              },
+              "string": [
+                {
+                  "pattern": "r:/(^|[^$\\\\])(?:@\"(?:\"\"|\\\\[\\s\\S]|[^\\\\\"])*\"(?!\"))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^@$\\\\])(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\")/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "namespace": {
+                "pattern": "r:/(\\b(?:namespace|using)\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*\\.\\s*(?:@?\\b[A-Za-z_]\\w*\\b))*(?=\\s*[;{])/",
+                "lookbehind": true,
+                "inside": {
+                  "punctuation": "r:/\\./"
+                }
+              },
+              "type-expression": {
+                "pattern": "r:/(\\b(?:default|sizeof|typeof)\\s*\\(\\s*(?!\\s))(?:[^()\\s]|\\s(?!\\s)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\)))*(?=\\s*\\))/",
+                "lookbehind": true,
+                "alias": "s:class-name",
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                }
+              },
+              "return-type": {
+                "pattern": "r:/(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s+(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)\\s*(?:=>|[({]|\\.\\s*this\\s*\\[)|this\\s*\\[))/",
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                },
+                "alias": "s:class-name"
+              },
+              "constructor-invocation": {
+                "pattern": "r:/(\\bnew\\s+)(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s*[[({])/",
+                "lookbehind": true,
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                },
+                "alias": "s:class-name"
+              },
+              "generic-method": {
+                "pattern": "r:/(?:@?\\b[A-Za-z_]\\w*\\b)\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)(?=\\s*\\()/",
+                "inside": {
+                  "function": "r:/^(?:@?\\b[A-Za-z_]\\w*\\b)/",
+                  "generic": {
+                    "pattern": "r:/<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>/",
+                    "alias": "s:class-name",
+                    "inside": {
+                      "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                      "punctuation": "r:/[<>()?,.:[\\]]/"
+                    }
+                  }
+                }
+              },
+              "type-list": {
+                "pattern": "r:/\\b((?:(?:\\b(?:class|enum|interface|record|struct)\\b)\\s+(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)|record\\s+(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|where\\s+(?:@?\\b[A-Za-z_]\\w*\\b))\\s*:\\s*)(?:(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)|(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\bnew\\s*\\(\\s*\\)))(?:\\s*,\\s*(?:(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)|(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|(?:\\bnew\\s*\\(\\s*\\))))*(?=\\s*(?:where|[{;]|=>|(?:(?=\\r$)|$)))/",
+                "lookbehind": true,
+                "inside": {
+                  "record-arguments": {
+                    "pattern": "r:/(^(?!new\\s*\\()(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*)(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": "s:[Circular ~.block.inside.expression.inside.content.inside]"
+                  },
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "class-name": {
+                    "pattern": "r:/(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?/",
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                      "punctuation": "r:/[<>()?,.:[\\]]/"
+                    }
+                  },
+                  "punctuation": "r:/[,()]/"
+                }
+              },
+              "preprocessor": {
+                "pattern": "r:/(^[\\t ]*)#[^\\r\\n]*/m",
+                "lookbehind": true,
+                "alias": "s:property",
+                "inside": {
+                  "directive": {
+                    "pattern": "r:/(#)\\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\\b/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  }
+                }
+              },
+              "attribute": {
+                "pattern": "r:/((?:^|[^\\s\\w>)?])\\s*\\[\\s*)(?:(?:\\b(?:assembly|event|field|method|module|param|property|return|type)\\b)\\s*:\\s*)?(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\))?)(?:\\s*,\\s*(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\))?))*(?=\\s*\\])/",
+                "lookbehind": true,
+                "greedy": true,
+                "inside": {
+                  "target": {
+                    "pattern": "r:/^(?:\\b(?:assembly|event|field|method|module|param|property|return|type)\\b)(?=\\s*:)/",
+                    "alias": "s:keyword"
+                  },
+                  "attribute-arguments": {
+                    "pattern": "r:/\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\)/",
+                    "inside": "s:[Circular ~.block.inside.expression.inside.content.inside]"
+                  },
+                  "class-name": {
+                    "pattern": "r:/(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*/",
+                    "inside": {
+                      "punctuation": "r:/\\./"
+                    }
+                  },
+                  "punctuation": "r:/[:,]/"
+                }
+              },
+              "class-name": [
+                {
+                  "pattern": "r:/(\\busing\\s+static\\s+)(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?=\\s*;)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\busing\\s+(?:@?\\b[A-Za-z_]\\w*\\b)\\s*=\\s*)(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s*;)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\busing\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)(?=\\s*=)/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:\\b(?:class|enum|interface|record|struct)\\b)\\s+)(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\bcatch\\s*\\(\\s*)(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\bwhere\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:is(?:\\s+not)?|as)\\s+)(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/\\b(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s+(?!(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|with\\s*\\{)(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*[=,;:{)\\]]|\\s+(?:in|when)\\b))/",
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                }
+              ],
+              "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+              "boolean": "r:/\\b(?:false|true)\\b/",
+              "function": "r:/\\b\\w+(?=\\()/",
+              "range": {
+                "pattern": "r:/\\.\\./",
+                "alias": "s:operator"
+              },
+              "number": "r:/(?:\\b0(?:x[\\da-f_]*[\\da-f]|b[01_]*[01])|(?:\\B\\.\\d+(?:_+\\d+)*|\\b\\d+(?:_+\\d+)*(?:\\.\\d+(?:_+\\d+)*)?)(?:e[-+]?\\d+(?:_+\\d+)*)?)(?:[dflmu]|lu|ul)?\\b/i",
+              "operator": "r:/>>=?|<<=?|[-=]>|([-+&|])\\1|~|\\?\\?=?|[-+*/%&|^!=<>]=?/",
+              "named-parameter": {
+                "pattern": "r:/([(,]\\s*)(?:@?\\b[A-Za-z_]\\w*\\b)(?=\\s*:)/",
+                "lookbehind": true,
+                "alias": "s:punctuation"
+              },
+              "punctuation": "r:/\\?\\.?|::|[{}[\\];(),.:]/"
+            },
+            "alias": "s:language-csharp"
+          }
+        }
+      },
+      "class-feature": {
+        "pattern": "r:/<#\\+[\\s\\S]*?#>/",
+        "alias": "s:block",
+        "inside": {
+          "delimiter": {
+            "pattern": "r:/^<#\\+|#>(?:(?=\\r$)|$)/",
+            "alias": "s:important"
+          },
+          "content": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": {
+              "comment": [
+                {
+                  "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "interpolation-string": [
+                {
+                  "pattern": "r:/(^|[^\\\\])(?:\\$@|@\\$)\"(?:\"\"|\\\\[\\s\\S]|\\{\\{|(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})|[^\\\\{\"])*\"/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/((?:^|[^{])(?:\\{\\{)*)(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})/",
+                      "lookbehind": true,
+                      "inside": {
+                        "format-string": {
+                          "pattern": "r:/(^\\{(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*)(?::[^}\\r\\n]+)(?=\\}(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "inside": {
+                            "punctuation": "r:/^:/"
+                          }
+                        },
+                        "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                        "expression": {
+                          "pattern": "r:/[\\s\\S]+/",
+                          "alias": "s:language-csharp",
+                          "inside": "s:[Circular ~.block.inside.class-feature.inside.content.inside]"
+                        }
+                      }
+                    },
+                    "string": "r:/[\\s\\S]+/"
+                  }
+                },
+                {
+                  "pattern": "r:/(^|[^@\\\\])\\$\"(?:\\\\[^\\r\\n]|\\{\\{|(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})|[^\\\\\"{])*\"/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/((?:^|[^{])(?:\\{\\{)*)(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})/",
+                      "lookbehind": true,
+                      "inside": {
+                        "format-string": {
+                          "pattern": "r:/(^\\{(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*)(?::[^}\\r\\n]+)(?=\\}(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "inside": {
+                            "punctuation": "r:/^:/"
+                          }
+                        },
+                        "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                        "expression": {
+                          "pattern": "r:/[\\s\\S]+/",
+                          "alias": "s:language-csharp",
+                          "inside": "s:[Circular ~.block.inside.class-feature.inside.content.inside]"
+                        }
+                      }
+                    },
+                    "string": "r:/[\\s\\S]+/"
+                  }
+                }
+              ],
+              "char": {
+                "pattern": "r:/'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'/",
+                "greedy": true
+              },
+              "string": [
+                {
+                  "pattern": "r:/(^|[^$\\\\])(?:@\"(?:\"\"|\\\\[\\s\\S]|[^\\\\\"])*\"(?!\"))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^@$\\\\])(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\")/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "namespace": {
+                "pattern": "r:/(\\b(?:namespace|using)\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*\\.\\s*(?:@?\\b[A-Za-z_]\\w*\\b))*(?=\\s*[;{])/",
+                "lookbehind": true,
+                "inside": {
+                  "punctuation": "r:/\\./"
+                }
+              },
+              "type-expression": {
+                "pattern": "r:/(\\b(?:default|sizeof|typeof)\\s*\\(\\s*(?!\\s))(?:[^()\\s]|\\s(?!\\s)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\)))*(?=\\s*\\))/",
+                "lookbehind": true,
+                "alias": "s:class-name",
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                }
+              },
+              "return-type": {
+                "pattern": "r:/(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s+(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)\\s*(?:=>|[({]|\\.\\s*this\\s*\\[)|this\\s*\\[))/",
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                },
+                "alias": "s:class-name"
+              },
+              "constructor-invocation": {
+                "pattern": "r:/(\\bnew\\s+)(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s*[[({])/",
+                "lookbehind": true,
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                },
+                "alias": "s:class-name"
+              },
+              "generic-method": {
+                "pattern": "r:/(?:@?\\b[A-Za-z_]\\w*\\b)\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)(?=\\s*\\()/",
+                "inside": {
+                  "function": "r:/^(?:@?\\b[A-Za-z_]\\w*\\b)/",
+                  "generic": {
+                    "pattern": "r:/<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>/",
+                    "alias": "s:class-name",
+                    "inside": {
+                      "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                      "punctuation": "r:/[<>()?,.:[\\]]/"
+                    }
+                  }
+                }
+              },
+              "type-list": {
+                "pattern": "r:/\\b((?:(?:\\b(?:class|enum|interface|record|struct)\\b)\\s+(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)|record\\s+(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|where\\s+(?:@?\\b[A-Za-z_]\\w*\\b))\\s*:\\s*)(?:(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)|(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\bnew\\s*\\(\\s*\\)))(?:\\s*,\\s*(?:(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)|(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|(?:\\bnew\\s*\\(\\s*\\))))*(?=\\s*(?:where|[{;]|=>|(?:(?=\\r$)|$)))/",
+                "lookbehind": true,
+                "inside": {
+                  "record-arguments": {
+                    "pattern": "r:/(^(?!new\\s*\\()(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*)(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": "s:[Circular ~.block.inside.class-feature.inside.content.inside]"
+                  },
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "class-name": {
+                    "pattern": "r:/(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?/",
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                      "punctuation": "r:/[<>()?,.:[\\]]/"
+                    }
+                  },
+                  "punctuation": "r:/[,()]/"
+                }
+              },
+              "preprocessor": {
+                "pattern": "r:/(^[\\t ]*)#[^\\r\\n]*/m",
+                "lookbehind": true,
+                "alias": "s:property",
+                "inside": {
+                  "directive": {
+                    "pattern": "r:/(#)\\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\\b/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  }
+                }
+              },
+              "attribute": {
+                "pattern": "r:/((?:^|[^\\s\\w>)?])\\s*\\[\\s*)(?:(?:\\b(?:assembly|event|field|method|module|param|property|return|type)\\b)\\s*:\\s*)?(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\))?)(?:\\s*,\\s*(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\))?))*(?=\\s*\\])/",
+                "lookbehind": true,
+                "greedy": true,
+                "inside": {
+                  "target": {
+                    "pattern": "r:/^(?:\\b(?:assembly|event|field|method|module|param|property|return|type)\\b)(?=\\s*:)/",
+                    "alias": "s:keyword"
+                  },
+                  "attribute-arguments": {
+                    "pattern": "r:/\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\)/",
+                    "inside": "s:[Circular ~.block.inside.class-feature.inside.content.inside]"
+                  },
+                  "class-name": {
+                    "pattern": "r:/(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*/",
+                    "inside": {
+                      "punctuation": "r:/\\./"
+                    }
+                  },
+                  "punctuation": "r:/[:,]/"
+                }
+              },
+              "class-name": [
+                {
+                  "pattern": "r:/(\\busing\\s+static\\s+)(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?=\\s*;)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\busing\\s+(?:@?\\b[A-Za-z_]\\w*\\b)\\s*=\\s*)(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s*;)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\busing\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)(?=\\s*=)/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:\\b(?:class|enum|interface|record|struct)\\b)\\s+)(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\bcatch\\s*\\(\\s*)(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\bwhere\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:is(?:\\s+not)?|as)\\s+)(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/\\b(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s+(?!(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|with\\s*\\{)(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*[=,;:{)\\]]|\\s+(?:in|when)\\b))/",
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                }
+              ],
+              "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+              "boolean": "r:/\\b(?:false|true)\\b/",
+              "function": "r:/\\b\\w+(?=\\()/",
+              "range": {
+                "pattern": "r:/\\.\\./",
+                "alias": "s:operator"
+              },
+              "number": "r:/(?:\\b0(?:x[\\da-f_]*[\\da-f]|b[01_]*[01])|(?:\\B\\.\\d+(?:_+\\d+)*|\\b\\d+(?:_+\\d+)*(?:\\.\\d+(?:_+\\d+)*)?)(?:e[-+]?\\d+(?:_+\\d+)*)?)(?:[dflmu]|lu|ul)?\\b/i",
+              "operator": "r:/>>=?|<<=?|[-=]>|([-+&|])\\1|~|\\?\\?=?|[-+*/%&|^!=<>]=?/",
+              "named-parameter": {
+                "pattern": "r:/([(,]\\s*)(?:@?\\b[A-Za-z_]\\w*\\b)(?=\\s*:)/",
+                "lookbehind": true,
+                "alias": "s:punctuation"
+              },
+              "punctuation": "r:/\\?\\.?|::|[{}[\\];(),.:]/"
+            },
+            "alias": "s:language-csharp"
+          }
+        }
+      },
+      "standard": {
+        "pattern": "r:/<#[\\s\\S]*?#>/",
+        "alias": "s:block",
+        "inside": {
+          "delimiter": {
+            "pattern": "r:/^<#|#>(?:(?=\\r$)|$)/",
+            "alias": "s:important"
+          },
+          "content": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": {
+              "comment": [
+                {
+                  "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "interpolation-string": [
+                {
+                  "pattern": "r:/(^|[^\\\\])(?:\\$@|@\\$)\"(?:\"\"|\\\\[\\s\\S]|\\{\\{|(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})|[^\\\\{\"])*\"/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/((?:^|[^{])(?:\\{\\{)*)(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})/",
+                      "lookbehind": true,
+                      "inside": {
+                        "format-string": {
+                          "pattern": "r:/(^\\{(?:(?![}:])(?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*)(?::[^}\\r\\n]+)(?=\\}(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "inside": {
+                            "punctuation": "r:/^:/"
+                          }
+                        },
+                        "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                        "expression": {
+                          "pattern": "r:/[\\s\\S]+/",
+                          "alias": "s:language-csharp",
+                          "inside": "s:[Circular ~.block.inside.standard.inside.content.inside]"
+                        }
+                      }
+                    },
+                    "string": "r:/[\\s\\S]+/"
+                  }
+                },
+                {
+                  "pattern": "r:/(^|[^@\\\\])\\$\"(?:\\\\[^\\r\\n]|\\{\\{|(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})|[^\\\\\"{])*\"/",
+                  "lookbehind": true,
+                  "greedy": true,
+                  "inside": {
+                    "interpolation": {
+                      "pattern": "r:/((?:^|[^{])(?:\\{\\{)*)(?:\\{(?!\\{)(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*(?::[^}\\r\\n]+)?\\})/",
+                      "lookbehind": true,
+                      "inside": {
+                        "format-string": {
+                          "pattern": "r:/(^\\{(?:(?![}:])(?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\((?:[^\"'/()]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})')|\\([^\\s\\S]*\\))*\\))*\\))*\\)))*)(?::[^}\\r\\n]+)(?=\\}(?:(?=\\r$)|$))/",
+                          "lookbehind": true,
+                          "inside": {
+                            "punctuation": "r:/^:/"
+                          }
+                        },
+                        "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                        "expression": {
+                          "pattern": "r:/[\\s\\S]+/",
+                          "alias": "s:language-csharp",
+                          "inside": "s:[Circular ~.block.inside.standard.inside.content.inside]"
+                        }
+                      }
+                    },
+                    "string": "r:/[\\s\\S]+/"
+                  }
+                }
+              ],
+              "char": {
+                "pattern": "r:/'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'/",
+                "greedy": true
+              },
+              "string": [
+                {
+                  "pattern": "r:/(^|[^$\\\\])(?:@\"(?:\"\"|\\\\[\\s\\S]|[^\\\\\"])*\"(?!\"))/",
+                  "lookbehind": true,
+                  "greedy": true
+                },
+                {
+                  "pattern": "r:/(^|[^@$\\\\])(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\")/",
+                  "lookbehind": true,
+                  "greedy": true
+                }
+              ],
+              "namespace": {
+                "pattern": "r:/(\\b(?:namespace|using)\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*\\.\\s*(?:@?\\b[A-Za-z_]\\w*\\b))*(?=\\s*[;{])/",
+                "lookbehind": true,
+                "inside": {
+                  "punctuation": "r:/\\./"
+                }
+              },
+              "type-expression": {
+                "pattern": "r:/(\\b(?:default|sizeof|typeof)\\s*\\(\\s*(?!\\s))(?:[^()\\s]|\\s(?!\\s)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\)))*(?=\\s*\\))/",
+                "lookbehind": true,
+                "alias": "s:class-name",
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                }
+              },
+              "return-type": {
+                "pattern": "r:/(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s+(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)\\s*(?:=>|[({]|\\.\\s*this\\s*\\[)|this\\s*\\[))/",
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                },
+                "alias": "s:class-name"
+              },
+              "constructor-invocation": {
+                "pattern": "r:/(\\bnew\\s+)(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s*[[({])/",
+                "lookbehind": true,
+                "inside": {
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "punctuation": "r:/[<>()?,.:[\\]]/"
+                },
+                "alias": "s:class-name"
+              },
+              "generic-method": {
+                "pattern": "r:/(?:@?\\b[A-Za-z_]\\w*\\b)\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)(?=\\s*\\()/",
+                "inside": {
+                  "function": "r:/^(?:@?\\b[A-Za-z_]\\w*\\b)/",
+                  "generic": {
+                    "pattern": "r:/<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>/",
+                    "alias": "s:class-name",
+                    "inside": {
+                      "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                      "punctuation": "r:/[<>()?,.:[\\]]/"
+                    }
+                  }
+                }
+              },
+              "type-list": {
+                "pattern": "r:/\\b((?:(?:\\b(?:class|enum|interface|record|struct)\\b)\\s+(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)|record\\s+(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|where\\s+(?:@?\\b[A-Za-z_]\\w*\\b))\\s*:\\s*)(?:(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)|(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\bnew\\s*\\(\\s*\\)))(?:\\s*,\\s*(?:(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)|(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|(?:\\bnew\\s*\\(\\s*\\))))*(?=\\s*(?:where|[{;]|=>|(?:(?=\\r$)|$)))/",
+                "lookbehind": true,
+                "inside": {
+                  "record-arguments": {
+                    "pattern": "r:/(^(?!new\\s*\\()(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)\\s*)(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))/",
+                    "lookbehind": true,
+                    "greedy": true,
+                    "inside": "s:[Circular ~.block.inside.standard.inside.content.inside]"
+                  },
+                  "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                  "class-name": {
+                    "pattern": "r:/(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?/",
+                    "greedy": true,
+                    "inside": {
+                      "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                      "punctuation": "r:/[<>()?,.:[\\]]/"
+                    }
+                  },
+                  "punctuation": "r:/[,()]/"
+                }
+              },
+              "preprocessor": {
+                "pattern": "r:/(^[\\t ]*)#[^\\r\\n]*/m",
+                "lookbehind": true,
+                "alias": "s:property",
+                "inside": {
+                  "directive": {
+                    "pattern": "r:/(#)\\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\\b/",
+                    "lookbehind": true,
+                    "alias": "s:keyword"
+                  }
+                }
+              },
+              "attribute": {
+                "pattern": "r:/((?:^|[^\\s\\w>)?])\\s*\\[\\s*)(?:(?:\\b(?:assembly|event|field|method|module|param|property|return|type)\\b)\\s*:\\s*)?(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\))?)(?:\\s*,\\s*(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\))?))*(?=\\s*\\])/",
+                "lookbehind": true,
+                "greedy": true,
+                "inside": {
+                  "target": {
+                    "pattern": "r:/^(?:\\b(?:assembly|event|field|method|module|param|property|return|type)\\b)(?=\\s*:)/",
+                    "alias": "s:keyword"
+                  },
+                  "attribute-arguments": {
+                    "pattern": "r:/\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\((?:[^\"'/()]|(?:\\/(?![*/])|\\/\\/[^\\r\\n]*[\\r\\n]|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|'(?:[^\\r\\n'\\\\]|\\\\[^\\r\\n]|\\\\[Uux][\\da-fA-F]{1,8})'))|\\([^\\s\\S]*\\))*\\))*\\))*\\))*\\)/",
+                    "inside": "s:[Circular ~.block.inside.standard.inside.content.inside]"
+                  },
+                  "class-name": {
+                    "pattern": "r:/(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*/",
+                    "inside": {
+                      "punctuation": "r:/\\./"
+                    }
+                  },
+                  "punctuation": "r:/[:,]/"
+                }
+              },
+              "class-name": [
+                {
+                  "pattern": "r:/(\\busing\\s+static\\s+)(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?=\\s*;)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\busing\\s+(?:@?\\b[A-Za-z_]\\w*\\b)\\s*=\\s*)(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s*;)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\busing\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)(?=\\s*=)/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:\\b(?:class|enum|interface|record|struct)\\b)\\s+)(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\bcatch\\s*\\(\\s*)(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/(\\bwhere\\s+)(?:@?\\b[A-Za-z_]\\w*\\b)/",
+                  "lookbehind": true
+                },
+                {
+                  "pattern": "r:/(\\b(?:is(?:\\s+not)?|as)\\s+)(?:(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*)(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)/",
+                  "lookbehind": true,
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                },
+                {
+                  "pattern": "r:/\\b(?:(?:(?:\\((?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+(?:,(?:[^,()<>[\\];=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>)|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|(?:\\((?:[^()]|[^\\s\\S])*\\)))*\\)))*\\)))*\\))|(?:\\[\\s*(?:,\\s*)*\\]))+)+\\))|(?:(?!(?:\\b(?:class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b))(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?)(?:\\s*\\.\\s*(?:(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|(?:<(?:[^<>;=+\\-*/%&|^]|[^\\s\\S])*>))*>))*>))*>))?))*))(?:\\s*(?:\\?\\s*)?(?:\\[\\s*(?:,\\s*)*\\]))*(?:\\s*\\?)?)(?=\\s+(?!(?:\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b)|with\\s*\\{)(?:@?\\b[A-Za-z_]\\w*\\b)(?:\\s*[=,;:{)\\]]|\\s+(?:in|when)\\b))/",
+                  "inside": {
+                    "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+                    "punctuation": "r:/[<>()?,.:[\\]]/"
+                  }
+                }
+              ],
+              "keyword": "r:/\\b(?:bool|byte|char|decimal|double|dynamic|float|int|long|object|sbyte|short|string|uint|ulong|ushort|var|void|class|enum|interface|record|struct|add|alias|and|ascending|async|await|by|descending|from(?=\\s*(?:\\w|(?:(?=\\r$)|$)))|get|global|group|into|init(?=\\s*;)|join|let|nameof|not|notnull|on|or|orderby|partial|remove|select|set|unmanaged|value|when|where|with(?=\\s*{)|abstract|as|base|break|case|catch|checked|const|continue|default|delegate|do|else|event|explicit|extern|finally|fixed|for|foreach|goto|if|implicit|in|internal|is|lock|namespace|new|null|operator|out|override|params|private|protected|public|readonly|ref|return|sealed|sizeof|stackalloc|static|switch|this|throw|try|typeof|unchecked|unsafe|using|virtual|volatile|while|yield)\\b/",
+              "boolean": "r:/\\b(?:false|true)\\b/",
+              "function": "r:/\\b\\w+(?=\\()/",
+              "range": {
+                "pattern": "r:/\\.\\./",
+                "alias": "s:operator"
+              },
+              "number": "r:/(?:\\b0(?:x[\\da-f_]*[\\da-f]|b[01_]*[01])|(?:\\B\\.\\d+(?:_+\\d+)*|\\b\\d+(?:_+\\d+)*(?:\\.\\d+(?:_+\\d+)*)?)(?:e[-+]?\\d+(?:_+\\d+)*)?)(?:[dflmu]|lu|ul)?\\b/i",
+              "operator": "r:/>>=?|<<=?|[-=]>|([-+&|])\\1|~|\\?\\?=?|[-+*/%&|^!=<>]=?/",
+              "named-parameter": {
+                "pattern": "r:/([(,]\\s*)(?:@?\\b[A-Za-z_]\\w*\\b)(?=\\s*:)/",
+                "lookbehind": true,
+                "alias": "s:punctuation"
+              },
+              "punctuation": "r:/\\?\\.?|::|[{}[\\];(),.:]/"
+            },
+            "alias": "s:language-csharp"
+          }
+        }
+      }
+    }
+  }
+}

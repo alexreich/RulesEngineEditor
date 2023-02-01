@@ -1,0 +1,29 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/\"(?:[^\"\\\\\\r\\n]|\\\\[^\\r\\n])*\"|'(?:[^'\\\\\\r\\n]|\\\\[^\\r\\n])*'/",
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(:\\s*)(?:\\w+|`(?:[^`\\\\\\r\\n])*`)(?=\\s*[{):])/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "relationship": {
+    "pattern": "r:/(-\\[\\s*(?:\\w+\\s*|`(?:[^`\\\\\\r\\n])*`\\s*)?:\\s*|\\|\\s*:\\s*)(?:\\w+|`(?:[^`\\\\\\r\\n])*`)/",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property"
+  },
+  "identifier": {
+    "pattern": "r:/`(?:[^`\\\\\\r\\n])*`/",
+    "greedy": true
+  },
+  "variable": "r:/\\$\\w+/",
+  "keyword": "r:/\\b(?:ADD|ALL|AND|AS|ASC|ASCENDING|ASSERT|BY|CALL|CASE|COMMIT|CONSTRAINT|CONTAINS|CREATE|CSV|DELETE|DESC|DESCENDING|DETACH|DISTINCT|DO|DROP|ELSE|END|ENDS|EXISTS|FOR|FOREACH|IN|INDEX|IS|JOIN|KEY|LIMIT|LOAD|MANDATORY|MATCH|MERGE|NODE|NOT|OF|ON|OPTIONAL|OR|ORDER(?=\\s+BY)|PERIODIC|REMOVE|REQUIRE|RETURN|SCALAR|SCAN|SET|SKIP|START|STARTS|THEN|UNION|UNIQUE|UNWIND|USING|WHEN|WHERE|WITH|XOR|YIELD)\\b/i",
+  "function": "r:/\\b\\w+\\b(?=\\s*\\()/",
+  "boolean": "r:/\\b(?:false|null|true)\\b/i",
+  "number": "r:/\\b(?:0x[\\da-fA-F]+|\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\b/",
+  "operator": "r:/:|<--?|--?>?|<>|=~?|[<>]=?|[+*/%^|]|\\.\\.\\.?/",
+  "punctuation": "r:/[()[\\]{},;.]/"
+}

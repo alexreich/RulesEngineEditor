@@ -1,0 +1,15 @@
+{
+  "comment": [
+    "r:/%\\{[\\s\\S]*?\\}%/",
+    "r:/%[^\\r\\n]+/"
+  ],
+  "string": {
+    "pattern": "r:/\\B'(?:''|[^'\\r\\n])*'/",
+    "greedy": true
+  },
+  "number": "r:/(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:[eE][+-]?\\d+)?(?:[ij])?|\\b[ij]\\b/",
+  "keyword": "r:/\\b(?:NaN|break|case|catch|continue|else|elseif|end|for|function|if|inf|otherwise|parfor|pause|pi|return|switch|try|while)\\b/",
+  "function": "r:/\\b(?!\\d)\\w+(?=\\s*\\()/",
+  "operator": "r:/\\.?[*^\\/\\\\']|[+\\-:@]|[<>=~]=?|&&?|\\|\\|?/",
+  "punctuation": "r:/\\.{3}|[.,;\\[\\](){}!]/"
+}

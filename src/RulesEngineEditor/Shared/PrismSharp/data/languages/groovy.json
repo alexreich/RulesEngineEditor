@@ -1,0 +1,50 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "shebang": {
+    "pattern": "r:/#![^\\r\\n]+/",
+    "alias": "s:comment"
+  },
+  "string": [
+    {
+      "pattern": "r:/(\"\"\"|''')(?:[^\\\\]|\\\\[\\s\\S])*?\\1|\\$\\/(?:[^/$]|\\$(?:[/$]|(?![/$]))|\\/(?!\\$))*\\/\\$/",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/([\"'/])(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+      "greedy": true
+    }
+  ],
+  "class-name": {
+    "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/[.\\\\]/"
+    }
+  },
+  "keyword": "r:/\\b(?:abstract|as|assert|boolean|break|byte|case|catch|char|class|const|continue|def|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|in|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|trait|transient|try|void|volatile|while)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "annotation": {
+    "pattern": "r:/(^|[^.])@\\w+/",
+    "lookbehind": true,
+    "alias": "s:punctuation"
+  },
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": "r:/\\b(?:0b[01_]+|0x[\\da-f_]+(?:\\.[\\da-f_p\\-]+)?|[\\d_]+(?:\\.[\\d_]+)?(?:e[+-]?\\d+)?)[glidf]?\\b/i",
+  "operator": {
+    "pattern": "r:/(^|[^.])(?:~|==?~?|\\?[.:]?|\\*(?:[.=]|\\*=?)?|\\.[@&]|\\.\\.<|\\.\\.(?!\\.)|-[-=>]?|\\+[+=]?|!=?|<(?:<=?|=>?)?|>(?:>>?=?|=)?|&[&=]?|\\|[|=]?|\\/=?|\\^=?|%=?)/",
+    "lookbehind": true
+  },
+  "spock-block": "r:/\\b(?:and|cleanup|expect|given|setup|then|when|where):/",
+  "punctuation": "r:/\\.+|[{}[\\];(),:$]/"
+}

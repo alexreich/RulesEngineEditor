@@ -1,0 +1,22 @@
+{
+  "string": {
+    "pattern": "r:/\"[^\\r\\n\"]*\"|'[^\\r\\n']*'/"
+  },
+  "definition": {
+    "pattern": "r:/<[^<>\\r\\n\\t]+>(?=\\s*::=)/",
+    "alias": [
+      "s:rule",
+      "s:keyword"
+    ],
+    "inside": {
+      "punctuation": "r:/^<|>(?:(?=\\r$)|$)/"
+    }
+  },
+  "rule": {
+    "pattern": "r:/<[^<>\\r\\n\\t]+>/",
+    "inside": {
+      "punctuation": "r:/^<|>(?:(?=\\r$)|$)/"
+    }
+  },
+  "operator": "r:/::=|[|()[\\]{}*+?]|\\.{3}/"
+}

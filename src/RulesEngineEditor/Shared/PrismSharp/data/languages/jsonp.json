@@ -1,0 +1,25 @@
+{
+  "property": {
+    "pattern": "r:/(^|[^\\\\])\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"(?=\\s*:)/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\])\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"(?!\\s*:)/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "comment": {
+    "pattern": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+    "greedy": true
+  },
+  "number": "r:/-?\\b\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?\\b/i",
+  "function": "r:/(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*\\()/",
+  "punctuation": "r:/[{}[\\]();,.]/",
+  "operator": "r:/:/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "null": {
+    "pattern": "r:/\\bnull\\b/",
+    "alias": "s:keyword"
+  }
+}

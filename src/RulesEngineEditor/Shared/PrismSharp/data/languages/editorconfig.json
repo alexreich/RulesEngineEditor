@@ -1,0 +1,25 @@
+{
+  "comment": "r:/[;#][^\\r\\n]*/",
+  "section": {
+    "pattern": "r:/(^[ \\t]*)\\[[^\\r\\n]+\\]/m",
+    "lookbehind": true,
+    "alias": "s:keyword",
+    "inside": {
+      "regex": "r:/\\\\\\\\[\\[\\]{},!?.*]/",
+      "operator": "r:/[!?]|\\.\\.|\\*{1,2}/",
+      "punctuation": "r:/[\\[\\]{},]/"
+    }
+  },
+  "key": {
+    "pattern": "r:/(^[ \\t]*)[^\\s=]+(?=[ \\t]*=)/m",
+    "lookbehind": true,
+    "alias": "s:attr-name"
+  },
+  "value": {
+    "pattern": "r:/=[^\\r\\n]*/",
+    "alias": "s:attr-value",
+    "inside": {
+      "punctuation": "r:/^=/"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "comment": {
+    "pattern": "r:/\\bNB\\.[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/'(?:''|[^'\\r\\n])*'/",
+    "greedy": true
+  },
+  "keyword": "r:/\\b(?:(?:CR|LF|adverb|conjunction|def|define|dyad|monad|noun|verb)\\b|(?:assert|break|case|catch[dt]?|continue|do|else|elseif|end|fcase|for|for_\\w+|goto_\\w+|if|label_\\w+|return|select|throw|try|while|whilst)\\.)/",
+  "verb": {
+    "pattern": "r:/(?!\\^:|;\\.|[=!][.:])(?:\\{(?:\\.|::?)?|p(?:\\.\\.?|:)|[=!\\]]|[<>+*\\-%$|,#][.:]?|[?^]\\.?|[;\\[]:?|[~}\"i][.:]|[ACeEIjLor]\\.|(?:[_\\/\\\\qsux]|_?\\d):)/",
+    "alias": "s:keyword"
+  },
+  "number": "r:/\\b_?(?:(?!\\d:)\\d+(?:\\.\\d+)?(?:(?:ad|ar|[ejpx])_?\\d+(?:\\.\\d+)?)*(?:b_?[\\da-z]+(?:\\.[\\da-z]+)?)?|_\\b(?!\\.))/",
+  "adverb": {
+    "pattern": "r:/[~}]|[\\/\\\\]\\.?|[bfM]\\.|t[.:]/",
+    "alias": "s:builtin"
+  },
+  "operator": "r:/[=a][.:]|_\\./",
+  "conjunction": {
+    "pattern": "r:/&(?:\\.:?|:)?|[.:@][.:]?|[!D][.:]|[;dHT]\\.|`:?|[\\^LS]:|\"/",
+    "alias": "s:variable"
+  },
+  "punctuation": "r:/[()]/"
+}

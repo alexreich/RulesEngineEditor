@@ -1,0 +1,49 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/^\\s*#![^\\r\\n]+/",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\])(?:\\/\\+(?:\\/\\+(?:[^+]|\\+(?!\\/))*\\+\\/|(?!\\/\\+)[\\s\\S])*?\\+\\/|\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\/)/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "char": "r:/'(?:\\\\(?:\\W|\\w+)|[^\\\\])'/",
+  "string": [
+    {
+      "pattern": "r:/\\b[rx]\"(?:\\\\[\\s\\S]|[^\\\\\"])*\"[cwd]?|\\bq\"(?:\\[[\\s\\S]*?\\]|\\([\\s\\S]*?\\)|<[\\s\\S]*?>|\\{[\\s\\S]*?\\})\"|\\bq\"((?!\\d)\\w+)(?:(?=\\r$)|$)[\\s\\S]*?^\\1\"|\\bq\"([^\\r\\n])[\\s\\S]*?\\2\"|([\"`])(?:\\\\[\\s\\S]|(?!\\3)[^\\\\])*\\3[cwd]?/m",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/\\bq\\{(?:\\{[^{}]*\\}|[^{}])*\\}/",
+      "greedy": true,
+      "alias": "s:token-string"
+    }
+  ],
+  "class-name": {
+    "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/[.\\\\]/"
+    }
+  },
+  "property": "r:/\\B@\\w*/",
+  "keyword": "r:/\\$|\\b(?:__(?:(?:DATE|EOF|FILE|FUNCTION|LINE|MODULE|PRETTY_FUNCTION|TIMESTAMP|TIME|VENDOR|VERSION)__|gshared|parameters|traits|vector)|abstract|alias|align|asm|assert|auto|body|bool|break|byte|case|cast|catch|cdouble|cent|cfloat|char|class|const|continue|creal|dchar|debug|default|delegate|delete|deprecated|do|double|dstring|else|enum|export|extern|false|final|finally|float|for|foreach|foreach_reverse|function|goto|idouble|if|ifloat|immutable|import|inout|int|interface|invariant|ireal|lazy|long|macro|mixin|module|new|nothrow|null|out|override|package|pragma|private|protected|ptrdiff_t|public|pure|real|ref|return|scope|shared|short|size_t|static|string|struct|super|switch|synchronized|template|this|throw|true|try|typedef|typeid|typeof|ubyte|ucent|uint|ulong|union|unittest|ushort|version|void|volatile|wchar|while|with|wstring)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "register": {
+    "pattern": "r:/\\b(?:[ABCD][LHX]|E?(?:BP|DI|SI|SP)|[BS]PL|[ECSDGF]S|CR[0234]|[DS]IL|DR[012367]|E[ABCD]X|X?MM[0-7]|R(?:1[0-5]|[89])[BWD]?|R[ABCD]X|R[BS]P|R[DS]I|TR[3-7]|XMM(?:1[0-5]|[89])|YMM(?:1[0-5]|\\d))\\b|\\bST(?:\\([0-7]\\)|\\b)/",
+    "alias": "s:variable"
+  },
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": [
+    "r:/\\b0x\\.?[a-f\\d_]+(?:(?!\\.\\.)\\.[a-f\\d_]*)?(?:p[+-]?[a-f\\d_]+)?[ulfi]{0,4}/i",
+    {
+      "pattern": "r:/((?:\\.\\.)?)(?:\\b0b\\.?|\\b|\\.)\\d[\\d_]*(?:(?!\\.\\.)\\.[\\d_]*)?(?:e[+-]?\\d[\\d_]*)?[ulfi]{0,4}/i",
+      "lookbehind": true
+    }
+  ],
+  "operator": "r:/\\|[|=]?|&[&=]?|\\+[+=]?|-[-=]?|\\.?\\.\\.|=[>=]?|!(?:i[ns]\\b|<>?=?|>=?|=)?|\\bi[ns]\\b|(?:<[<>]?|>>?>?|\\^\\^|[*\\/%^~])=?/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

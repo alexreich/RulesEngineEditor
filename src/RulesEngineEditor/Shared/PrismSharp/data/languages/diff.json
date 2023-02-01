@@ -1,0 +1,101 @@
+{
+  "coord": [
+    "r:/^(?:\\*{3}|-{3}|\\+{3})[^\\r\\n]*(?:(?=\\r$)|$)/m",
+    "r:/^@@[^\\r\\n]*@@(?:(?=\\r$)|$)/m",
+    "r:/^\\d[^\\r\\n]*(?:(?=\\r$)|$)/m"
+  ],
+  "deleted-sign": {
+    "pattern": "r:/^(?:[-][^\\r\\n]*(?:\\r\\n?|\\n|(?![\\s\\S])))+/m",
+    "alias": [
+      "s:deleted"
+    ],
+    "inside": {
+      "line": {
+        "pattern": "r:/([^\\r\\n])(?=[\\s\\S])[^\\r\\n]*(?:\\r\\n?|\\n)?/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]/",
+        "alias": "s:deleted"
+      }
+    }
+  },
+  "deleted-arrow": {
+    "pattern": "r:/^(?:[<][^\\r\\n]*(?:\\r\\n?|\\n|(?![\\s\\S])))+/m",
+    "alias": [
+      "s:deleted"
+    ],
+    "inside": {
+      "line": {
+        "pattern": "r:/([^\\r\\n])(?=[\\s\\S])[^\\r\\n]*(?:\\r\\n?|\\n)?/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]/",
+        "alias": "s:deleted"
+      }
+    }
+  },
+  "inserted-sign": {
+    "pattern": "r:/^(?:[+][^\\r\\n]*(?:\\r\\n?|\\n|(?![\\s\\S])))+/m",
+    "alias": [
+      "s:inserted"
+    ],
+    "inside": {
+      "line": {
+        "pattern": "r:/([^\\r\\n])(?=[\\s\\S])[^\\r\\n]*(?:\\r\\n?|\\n)?/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]/",
+        "alias": "s:inserted"
+      }
+    }
+  },
+  "inserted-arrow": {
+    "pattern": "r:/^(?:[>][^\\r\\n]*(?:\\r\\n?|\\n|(?![\\s\\S])))+/m",
+    "alias": [
+      "s:inserted"
+    ],
+    "inside": {
+      "line": {
+        "pattern": "r:/([^\\r\\n])(?=[\\s\\S])[^\\r\\n]*(?:\\r\\n?|\\n)?/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]/",
+        "alias": "s:inserted"
+      }
+    }
+  },
+  "unchanged": {
+    "pattern": "r:/^(?:[ ][^\\r\\n]*(?:\\r\\n?|\\n|(?![\\s\\S])))+/m",
+    "alias": [],
+    "inside": {
+      "line": {
+        "pattern": "r:/([^\\r\\n])(?=[\\s\\S])[^\\r\\n]*(?:\\r\\n?|\\n)?/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]/",
+        "alias": "s:unchanged"
+      }
+    }
+  },
+  "diff": {
+    "pattern": "r:/^(?:[!][^\\r\\n]*(?:\\r\\n?|\\n|(?![\\s\\S])))+/m",
+    "alias": [
+      "s:bold"
+    ],
+    "inside": {
+      "line": {
+        "pattern": "r:/([^\\r\\n])(?=[\\s\\S])[^\\r\\n]*(?:\\r\\n?|\\n)?/",
+        "lookbehind": true
+      },
+      "prefix": {
+        "pattern": "r:/[\\s\\S]/",
+        "alias": "s:diff"
+      }
+    }
+  }
+}

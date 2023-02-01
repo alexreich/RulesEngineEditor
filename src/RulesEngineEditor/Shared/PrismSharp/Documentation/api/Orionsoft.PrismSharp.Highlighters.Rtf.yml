@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf
+  commentId: N:Orionsoft.PrismSharp.Highlighters.Rtf
+  id: Orionsoft.PrismSharp.Highlighters.Rtf
+  children:
+  - Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+  langs:
+  - csharp
+  - vb
+  name: Orionsoft.PrismSharp.Highlighters.Rtf
+  nameWithType: Orionsoft.PrismSharp.Highlighters.Rtf
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf
+  type: Namespace
+  assemblies:
+  - PrismSharp
+references:
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+  name: RtfHighlighter
+  nameWithType: RtfHighlighter
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter

@@ -1,0 +1,34 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "string": {
+    "pattern": "r:/r?(\"|')(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\])*\\1/",
+    "greedy": true
+  },
+  "class-name": [
+    "r:/\\b[A-Z](?:[\\d_]*[a-zA-Z]\\w*)?\\b/",
+    "r:/\\b(?:[A-Z]\\w*|(?!(?:var|void)\\b)[a-z]\\w*)(?=\\s+\\w+\\s*[;,=()])/"
+  ],
+  "keyword": "r:/\\b(?:assert|break|case|class|const|default|else|enum|final|follows|for|grab|if|nest|new|next|noSeeb|return|static|switch|throw|var|void|while)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "metadata": {
+    "pattern": "r:/<\\w+>/",
+    "greedy": true,
+    "alias": "s:symbol"
+  },
+  "function": "r:/\\b\\w+(?=\\()/",
+  "number": "r:/\\b0x[\\da-f]+\\b|(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i",
+  "operator": "r:/\\+\\+|--|&&|\\|\\||<<=?|>>=?|~(?:\\/=?)?|[+\\-*\\/%&^|=!<>]=?|\\?|:/",
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "variable": "r:/\\b[a-z_]\\w*\\b/"
+}

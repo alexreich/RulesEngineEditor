@@ -1,0 +1,59 @@
+{
+  "comment": {
+    "pattern": "r:/(^[ \\t]*)#[^\\r\\n]*/m",
+    "lookbehind": true
+  },
+  "vector-match": {
+    "pattern": "r:/((?:on|ignoring|group_right|group_left|by|without)\\s*)\\([^)]*\\)/",
+    "lookbehind": true,
+    "inside": {
+      "label-key": {
+        "pattern": "r:/\\b[^,]+\\b/",
+        "alias": "s:attr-name"
+      },
+      "punctuation": "r:/[(),]/"
+    }
+  },
+  "context-labels": {
+    "pattern": "r:/\\{[^{}]*\\}/",
+    "inside": {
+      "label-key": {
+        "pattern": "r:/\\b[a-z_]\\w*(?=\\s*(?:=|![=~]))/",
+        "alias": "s:attr-name"
+      },
+      "label-value": {
+        "pattern": "r:/([\"'`])(?:\\\\[\\s\\S]|(?!\\1)[^\\\\])*\\1/",
+        "greedy": true,
+        "alias": "s:attr-value"
+      },
+      "punctuation": "r:/\\{|\\}|=~?|![=~]|,/"
+    }
+  },
+  "context-range": [
+    {
+      "pattern": "r:/\\[[\\w\\s:]+\\]/",
+      "inside": {
+        "punctuation": "r:/\\[|\\]|:/",
+        "range-duration": {
+          "pattern": "r:/\\b(?:\\d+(?:[smhdwy]|ms))+\\b/i",
+          "alias": "s:number"
+        }
+      }
+    },
+    {
+      "pattern": "r:/(\\boffset\\s+)\\w+/",
+      "lookbehind": true,
+      "inside": {
+        "range-duration": {
+          "pattern": "r:/\\b(?:\\d+(?:[smhdwy]|ms))+\\b/i",
+          "alias": "s:number"
+        }
+      }
+    }
+  ],
+  "keyword": "r:/\\b(?:sum|min|max|avg|group|stddev|stdvar|count|count_values|bottomk|topk|quantile|on|ignoring|group_right|group_left|by|without|offset)\\b/i",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/[-+]?(?:(?:\\b\\d+(?:\\.\\d+)?|\\B\\.\\d+)(?:e[-+]?\\d+)?\\b|\\b(?:0x[0-9a-f]+|nan|inf)\\b)/i",
+  "operator": "r:/[\\^*/%+-]|==|!=|<=|<|>=|>|\\b(?:and|or|unless)\\b/i",
+  "punctuation": "r:/[{};()`,.[\\]]/"
+}

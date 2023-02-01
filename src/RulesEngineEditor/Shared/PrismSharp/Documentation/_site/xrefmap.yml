@@ -1,0 +1,1454 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Orionsoft.PrismSharp.Highlighters
+  name: Orionsoft.PrismSharp.Highlighters
+  href: api/Orionsoft.PrismSharp.Highlighters.html
+  commentId: N:Orionsoft.PrismSharp.Highlighters
+  fullName: Orionsoft.PrismSharp.Highlighters
+  nameWithType: Orionsoft.PrismSharp.Highlighters
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract
+  name: Orionsoft.PrismSharp.Highlighters.Abstract
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.html
+  commentId: N:Orionsoft.PrismSharp.Highlighters.Abstract
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract
+  nameWithType: Orionsoft.PrismSharp.Highlighters.Abstract
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+  name: AbstractHighlighter<TResult>
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1
+  name.vb: AbstractHighlighter(Of TResult)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult)
+  nameWithType: AbstractHighlighter<TResult>
+  nameWithType.vb: AbstractHighlighter(Of TResult)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_AddSpan_System_String_Orionsoft_PrismSharp_Tokenizing_Token_Orionsoft_PrismSharp_Themes_ThemeStyle_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: AbstractHighlighter<TResult>.AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of TResult).AddSpan(String, Token, ThemeStyle, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan*
+  name: AddSpan
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_AddSpan_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.AddSpan
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).AddSpan
+  nameWithType: AbstractHighlighter<TResult>.AddSpan
+  nameWithType.vb: AbstractHighlighter(Of TResult).AddSpan
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginContainer(Token, ThemeStyle, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_BeginContainer_Orionsoft_PrismSharp_Tokenizing_Token_Orionsoft_PrismSharp_Themes_ThemeStyle_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: AbstractHighlighter<TResult>.BeginContainer(Token, ThemeStyle, ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of TResult).BeginContainer(Token, ThemeStyle, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer*
+  name: BeginContainer
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_BeginContainer_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginContainer
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginContainer
+  nameWithType: AbstractHighlighter<TResult>.BeginContainer
+  nameWithType.vb: AbstractHighlighter(Of TResult).BeginContainer
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginDocument(String, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_BeginDocument_System_String_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: AbstractHighlighter<TResult>.BeginDocument(String, ThemeStyle)
+  nameWithType.vb: AbstractHighlighter(Of TResult).BeginDocument(String, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument*
+  name: BeginDocument
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_BeginDocument_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.BeginDocument
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).BeginDocument
+  nameWithType: AbstractHighlighter<TResult>.BeginDocument
+  nameWithType.vb: AbstractHighlighter(Of TResult).BeginDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  name: Construct(Theme)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_Orionsoft_PrismSharp_Themes_Theme_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Themes.Theme)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Theme)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Theme)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Construct(ThemeNames)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_Orionsoft_PrismSharp_Themes_ThemeNames_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType: AbstractHighlighter<TResult>.Construct(ThemeNames)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(ThemeNames)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  name: Construct(Tokenizer, Theme)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_Orionsoft_PrismSharp_Tokenizing_Tokenizer_Orionsoft_PrismSharp_Themes_Theme_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Tokenizer, Theme)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Tokenizer, Theme)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Construct(Tokenizer, ThemeNames)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_Orionsoft_PrismSharp_Tokenizing_Tokenizer_Orionsoft_PrismSharp_Themes_ThemeNames_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Tokenizer, ThemeNames)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Tokenizer, ThemeNames)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  name: Construct(Tokenizer, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_Orionsoft_PrismSharp_Tokenizing_Tokenizer_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  nameWithType: AbstractHighlighter<TResult>.Construct(Tokenizer, String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(Tokenizer, String)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+  name: Construct(String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct(System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct(System.String)
+  nameWithType: AbstractHighlighter<TResult>.Construct(String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct(String)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct*
+  name: Construct
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Construct_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Construct
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Construct
+  nameWithType: AbstractHighlighter<TResult>.Construct
+  nameWithType.vb: AbstractHighlighter(Of TResult).Construct
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+  name: EndContainer()
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_EndContainer
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndContainer()
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndContainer()
+  nameWithType: AbstractHighlighter<TResult>.EndContainer()
+  nameWithType.vb: AbstractHighlighter(Of TResult).EndContainer()
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer*
+  name: EndContainer
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_EndContainer_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndContainer
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndContainer
+  nameWithType: AbstractHighlighter<TResult>.EndContainer
+  nameWithType.vb: AbstractHighlighter(Of TResult).EndContainer
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+  name: EndDocument()
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_EndDocument
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndDocument()
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndDocument()
+  nameWithType: AbstractHighlighter<TResult>.EndDocument()
+  nameWithType.vb: AbstractHighlighter(Of TResult).EndDocument()
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument*
+  name: EndDocument
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_EndDocument_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.EndDocument
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).EndDocument
+  nameWithType: AbstractHighlighter<TResult>.EndDocument
+  nameWithType.vb: AbstractHighlighter(Of TResult).EndDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  name: Highlight(Token, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Highlight_Orionsoft_PrismSharp_Tokenizing_Token_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  nameWithType: AbstractHighlighter<TResult>.Highlight(Token, String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Highlight(Token, String)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+  name: Highlight(String, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Highlight_System_String_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight(System.String,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight(System.String, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight(System.String, System.String)
+  nameWithType: AbstractHighlighter<TResult>.Highlight(String, String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).Highlight(String, String)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight*
+  name: Highlight
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Highlight_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Highlight
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Highlight
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Highlight
+  nameWithType: AbstractHighlighter<TResult>.Highlight
+  nameWithType.vb: AbstractHighlighter(Of TResult).Highlight
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  name: HighlightRange(Token, Int32, Int32, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_HighlightRange_Orionsoft_PrismSharp_Tokenizing_Token_System_Int32_System_Int32_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  nameWithType: AbstractHighlighter<TResult>.HighlightRange(Token, Int32, Int32, String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).HighlightRange(Token, Int32, Int32, String)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  name: HighlightRange(String, Int32, Int32, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_HighlightRange_System_String_System_Int32_System_Int32_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  nameWithType: AbstractHighlighter<TResult>.HighlightRange(String, Int32, Int32, String)
+  nameWithType.vb: AbstractHighlighter(Of TResult).HighlightRange(String, Int32, Int32, String)
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange*
+  name: HighlightRange
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_HighlightRange_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.HighlightRange
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.HighlightRange
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).HighlightRange
+  nameWithType: AbstractHighlighter<TResult>.HighlightRange
+  nameWithType.vb: AbstractHighlighter(Of TResult).HighlightRange
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language
+  name: Language
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Language
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Language
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Language
+  nameWithType: AbstractHighlighter<TResult>.Language
+  nameWithType.vb: AbstractHighlighter(Of TResult).Language
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language*
+  name: Language
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Language_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Language
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Language
+  nameWithType: AbstractHighlighter<TResult>.Language
+  nameWithType.vb: AbstractHighlighter(Of TResult).Language
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result
+  name: Result
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Result
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Result
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Result
+  nameWithType: AbstractHighlighter<TResult>.Result
+  nameWithType.vb: AbstractHighlighter(Of TResult).Result
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result*
+  name: Result
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Result_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Result
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Result
+  nameWithType: AbstractHighlighter<TResult>.Result
+  nameWithType.vb: AbstractHighlighter(Of TResult).Result
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme
+  name: Theme
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Theme
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Theme
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Theme
+  nameWithType: AbstractHighlighter<TResult>.Theme
+  nameWithType.vb: AbstractHighlighter(Of TResult).Theme
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme*
+  name: Theme
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Theme_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Theme
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Theme
+  nameWithType: AbstractHighlighter<TResult>.Theme
+  nameWithType.vb: AbstractHighlighter(Of TResult).Theme
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer
+  name: Tokenizer
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Tokenizer
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Tokenizer
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Tokenizer
+  nameWithType: AbstractHighlighter<TResult>.Tokenizer
+  nameWithType.vb: AbstractHighlighter(Of TResult).Tokenizer
+- uid: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer*
+  name: Tokenizer
+  href: api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_Abstract_AbstractHighlighter_1_Tokenizer_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter<TResult>.Tokenizer
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter(Of TResult).Tokenizer
+  nameWithType: AbstractHighlighter<TResult>.Tokenizer
+  nameWithType.vb: AbstractHighlighter(Of TResult).Tokenizer
+- uid: Orionsoft.PrismSharp.Highlighters.Html
+  name: Orionsoft.PrismSharp.Highlighters.Html
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.html
+  commentId: N:Orionsoft.PrismSharp.Highlighters.Html
+  fullName: Orionsoft.PrismSharp.Highlighters.Html
+  nameWithType: Orionsoft.PrismSharp.Highlighters.Html
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  name: HtmlHighlighter
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter
+  nameWithType: HtmlHighlighter
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  name: HtmlHighlighter()
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter__ctor
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.HtmlHighlighter()
+  nameWithType: HtmlHighlighter.HtmlHighlighter()
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  name: HtmlHighlighter(Tokenizer)
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter__ctor_Orionsoft_PrismSharp_Tokenizing_Tokenizer_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.HtmlHighlighter(Orionsoft.PrismSharp.Tokenizing.Tokenizer)
+  nameWithType: HtmlHighlighter.HtmlHighlighter(Tokenizer)
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor*
+  name: HtmlHighlighter
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter__ctor_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.#ctor
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.HtmlHighlighter
+  nameWithType: HtmlHighlighter.HtmlHighlighter
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_AddSpan_System_String_Orionsoft_PrismSharp_Tokenizing_Token_Orionsoft_PrismSharp_Themes_ThemeStyle_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: HtmlHighlighter.AddSpan(String, Token, ThemeStyle, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan*
+  name: AddSpan
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_AddSpan_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.AddSpan
+  nameWithType: HtmlHighlighter.AddSpan
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginContainer(Token, ThemeStyle, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_BeginContainer_Orionsoft_PrismSharp_Tokenizing_Token_Orionsoft_PrismSharp_Themes_ThemeStyle_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: HtmlHighlighter.BeginContainer(Token, ThemeStyle, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer*
+  name: BeginContainer
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_BeginContainer_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginContainer
+  nameWithType: HtmlHighlighter.BeginContainer
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginDocument(String, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_BeginDocument_System_String_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: HtmlHighlighter.BeginDocument(String, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument*
+  name: BeginDocument
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_BeginDocument_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.BeginDocument
+  nameWithType: HtmlHighlighter.BeginDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  name: Encode(String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_Encode_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)
+  nameWithType: HtmlHighlighter.Encode(String)
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode*
+  name: Encode
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_Encode_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode
+  nameWithType: HtmlHighlighter.Encode
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  name: EndContainer()
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_EndContainer
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer()
+  nameWithType: HtmlHighlighter.EndContainer()
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer*
+  name: EndContainer
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_EndContainer_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndContainer
+  nameWithType: HtmlHighlighter.EndContainer
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  name: EndDocument()
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_EndDocument
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument()
+  nameWithType: HtmlHighlighter.EndDocument()
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument*
+  name: EndDocument
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_EndDocument_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.EndDocument
+  nameWithType: HtmlHighlighter.EndDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  name: WrapByPre
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_WrapByPre
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  nameWithType: HtmlHighlighter.WrapByPre
+- uid: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre*
+  name: WrapByPre
+  href: api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html#Orionsoft_PrismSharp_Highlighters_Html_HtmlHighlighter_WrapByPre_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre
+  nameWithType: HtmlHighlighter.WrapByPre
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  name: IHighlighter<TResult>
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html
+  commentId: T:Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  name.vb: IHighlighter(Of TResult)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult)
+  nameWithType: IHighlighter<TResult>
+  nameWithType.vb: IHighlighter(Of TResult)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  name: Highlight(Token, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_IHighlighter_1_Highlight_Orionsoft_PrismSharp_Tokenizing_Token_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  nameWithType: IHighlighter<TResult>.Highlight(Token, String)
+  nameWithType.vb: IHighlighter(Of TResult).Highlight(Token, String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(System.String,System.String)
+  name: Highlight(String, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_IHighlighter_1_Highlight_System_String_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(System.String,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.Highlight(System.String, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).Highlight(System.String, System.String)
+  nameWithType: IHighlighter<TResult>.Highlight(String, String)
+  nameWithType.vb: IHighlighter(Of TResult).Highlight(String, String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight*
+  name: Highlight
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_IHighlighter_1_Highlight_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.Highlight
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).Highlight
+  nameWithType: IHighlighter<TResult>.Highlight
+  nameWithType.vb: IHighlighter(Of TResult).Highlight
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  name: HighlightRange(Token, Int32, Int32, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_IHighlighter_1_HighlightRange_Orionsoft_PrismSharp_Tokenizing_Token_System_Int32_System_Int32_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  nameWithType: IHighlighter<TResult>.HighlightRange(Token, Int32, Int32, String)
+  nameWithType.vb: IHighlighter(Of TResult).HighlightRange(Token, Int32, Int32, String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  name: HighlightRange(String, Int32, Int32, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_IHighlighter_1_HighlightRange_System_String_System_Int32_System_Int32_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  nameWithType: IHighlighter<TResult>.HighlightRange(String, Int32, Int32, String)
+  nameWithType.vb: IHighlighter(Of TResult).HighlightRange(String, Int32, Int32, String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange*
+  name: HighlightRange
+  href: api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html#Orionsoft_PrismSharp_Highlighters_IHighlighter_1_HighlightRange_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.HighlightRange
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).HighlightRange
+  nameWithType: IHighlighter<TResult>.HighlightRange
+  nameWithType.vb: IHighlighter(Of TResult).HighlightRange
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf
+  name: Orionsoft.PrismSharp.Highlighters.Rtf
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.html
+  commentId: N:Orionsoft.PrismSharp.Highlighters.Rtf
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf
+  nameWithType: Orionsoft.PrismSharp.Highlighters.Rtf
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+  name: RtfHighlighter
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html
+  commentId: T:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter
+  nameWithType: RtfHighlighter
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Themes.Theme)
+  name: RtfHighlighter(Theme)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_Orionsoft_PrismSharp_Themes_Theme_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Themes.Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter(Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType: RtfHighlighter.RtfHighlighter(Theme)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: RtfHighlighter(ThemeNames)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_Orionsoft_PrismSharp_Themes_ThemeNames_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter(Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType: RtfHighlighter.RtfHighlighter(ThemeNames)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  name: RtfHighlighter(Tokenizer, Theme)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_Orionsoft_PrismSharp_Tokenizing_Tokenizer_Orionsoft_PrismSharp_Themes_Theme_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.Theme)
+  nameWithType: RtfHighlighter.RtfHighlighter(Tokenizer, Theme)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: RtfHighlighter(Tokenizer, ThemeNames)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_Orionsoft_PrismSharp_Tokenizing_Tokenizer_Orionsoft_PrismSharp_Themes_ThemeNames_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter(Orionsoft.PrismSharp.Tokenizing.Tokenizer, Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType: RtfHighlighter.RtfHighlighter(Tokenizer, ThemeNames)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  name: RtfHighlighter(Tokenizer, String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_Orionsoft_PrismSharp_Tokenizing_Tokenizer_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter(Orionsoft.PrismSharp.Tokenizing.Tokenizer, System.String)
+  nameWithType: RtfHighlighter.RtfHighlighter(Tokenizer, String)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(System.String)
+  name: RtfHighlighter(String)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_System_String_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor(System.String)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter(System.String)
+  nameWithType: RtfHighlighter.RtfHighlighter(String)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor*
+  name: RtfHighlighter
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter__ctor_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.#ctor
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.RtfHighlighter
+  nameWithType: RtfHighlighter.RtfHighlighter
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: AddSpan(String, Token, ThemeStyle, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_AddSpan_System_String_Orionsoft_PrismSharp_Tokenizing_Token_Orionsoft_PrismSharp_Themes_ThemeStyle_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.AddSpan(System.String, Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: RtfHighlighter.AddSpan(String, Token, ThemeStyle, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.AddSpan*
+  name: AddSpan
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_AddSpan_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.AddSpan
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.AddSpan
+  nameWithType: RtfHighlighter.AddSpan
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginContainer(Token, ThemeStyle, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_BeginContainer_Orionsoft_PrismSharp_Tokenizing_Token_Orionsoft_PrismSharp_Themes_ThemeStyle_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token, Orionsoft.PrismSharp.Themes.ThemeStyle, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: RtfHighlighter.BeginContainer(Token, ThemeStyle, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginContainer*
+  name: BeginContainer
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_BeginContainer_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginContainer
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginContainer
+  nameWithType: RtfHighlighter.BeginContainer
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: BeginDocument(String, ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_BeginDocument_System_String_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginDocument(System.String, Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: RtfHighlighter.BeginDocument(String, ThemeStyle)
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginDocument*
+  name: BeginDocument
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_BeginDocument_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginDocument
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.BeginDocument
+  nameWithType: RtfHighlighter.BeginDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.EndDocument
+  name: EndDocument()
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_EndDocument
+  commentId: M:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.EndDocument
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.EndDocument()
+  nameWithType: RtfHighlighter.EndDocument()
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.EndDocument*
+  name: EndDocument
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_EndDocument_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.EndDocument
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.EndDocument
+  nameWithType: RtfHighlighter.EndDocument
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font
+  name: Font
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_Font
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font
+  nameWithType: RtfHighlighter.Font
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font*
+  name: Font
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_Font_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font
+  nameWithType: RtfHighlighter.Font
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize
+  name: FontSize
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_FontSize
+  commentId: P:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize
+  nameWithType: RtfHighlighter.FontSize
+- uid: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize*
+  name: FontSize
+  href: api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html#Orionsoft_PrismSharp_Highlighters_Rtf_RtfHighlighter_FontSize_
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize
+  nameWithType: RtfHighlighter.FontSize
+- uid: Orionsoft.PrismSharp.Themes
+  name: Orionsoft.PrismSharp.Themes
+  href: api/Orionsoft.PrismSharp.Themes.html
+  commentId: N:Orionsoft.PrismSharp.Themes
+  fullName: Orionsoft.PrismSharp.Themes
+  nameWithType: Orionsoft.PrismSharp.Themes
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor
+  name: RgbaColor
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html
+  commentId: T:Orionsoft.PrismSharp.Themes.RgbaColor
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor
+  nameWithType: RgbaColor
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.#ctor
+  name: RgbaColor()
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor__ctor
+  commentId: M:Orionsoft.PrismSharp.Themes.RgbaColor.#ctor
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.RgbaColor()
+  nameWithType: RgbaColor.RgbaColor()
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.#ctor*
+  name: RgbaColor
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor__ctor_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.#ctor
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.RgbaColor
+  nameWithType: RgbaColor.RgbaColor
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.A
+  name: A
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_A
+  commentId: P:Orionsoft.PrismSharp.Themes.RgbaColor.A
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.A
+  nameWithType: RgbaColor.A
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.A*
+  name: A
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_A_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.A
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.A
+  nameWithType: RgbaColor.A
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha(Orionsoft.PrismSharp.Themes.RgbaColor)
+  name: ApplyAlpha(RgbaColor)
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_ApplyAlpha_Orionsoft_PrismSharp_Themes_RgbaColor_
+  commentId: M:Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha(Orionsoft.PrismSharp.Themes.RgbaColor)
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha(Orionsoft.PrismSharp.Themes.RgbaColor)
+  nameWithType: RgbaColor.ApplyAlpha(RgbaColor)
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha*
+  name: ApplyAlpha
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_ApplyAlpha_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha
+  nameWithType: RgbaColor.ApplyAlpha
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.B
+  name: B
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_B
+  commentId: P:Orionsoft.PrismSharp.Themes.RgbaColor.B
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.B
+  nameWithType: RgbaColor.B
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.B*
+  name: B
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_B_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.B
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.B
+  nameWithType: RgbaColor.B
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.Clone
+  name: Clone()
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_Clone
+  commentId: M:Orionsoft.PrismSharp.Themes.RgbaColor.Clone
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.Clone()
+  nameWithType: RgbaColor.Clone()
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.Clone*
+  name: Clone
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_Clone_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.Clone
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.Clone
+  nameWithType: RgbaColor.Clone
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.G
+  name: G
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_G
+  commentId: P:Orionsoft.PrismSharp.Themes.RgbaColor.G
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.G
+  nameWithType: RgbaColor.G
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.G*
+  name: G
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_G_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.G
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.G
+  nameWithType: RgbaColor.G
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.R
+  name: R
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_R
+  commentId: P:Orionsoft.PrismSharp.Themes.RgbaColor.R
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.R
+  nameWithType: RgbaColor.R
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.R*
+  name: R
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_R_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.R
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.R
+  nameWithType: RgbaColor.R
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString
+  name: ToColorString()
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_ToColorString
+  commentId: M:Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString()
+  nameWithType: RgbaColor.ToColorString()
+- uid: Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString*
+  name: ToColorString
+  href: api/Orionsoft.PrismSharp.Themes.RgbaColor.html#Orionsoft_PrismSharp_Themes_RgbaColor_ToColorString_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString
+  nameWithType: RgbaColor.ToColorString
+- uid: Orionsoft.PrismSharp.Themes.Theme
+  name: Theme
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html
+  commentId: T:Orionsoft.PrismSharp.Themes.Theme
+  fullName: Orionsoft.PrismSharp.Themes.Theme
+  nameWithType: Theme
+- uid: Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle(System.String)
+  name: GetDocumentStyle(String)
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_GetDocumentStyle_System_String_
+  commentId: M:Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle(System.String)
+  fullName: Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle(System.String)
+  nameWithType: Theme.GetDocumentStyle(String)
+- uid: Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle*
+  name: GetDocumentStyle
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_GetDocumentStyle_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle
+  nameWithType: Theme.GetDocumentStyle
+- uid: Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  name: GetTokenStyle(Token, String)
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_GetTokenStyle_Orionsoft_PrismSharp_Tokenizing_Token_System_String_
+  commentId: M:Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  fullName: Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  nameWithType: Theme.GetTokenStyle(Token, String)
+- uid: Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle*
+  name: GetTokenStyle
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_GetTokenStyle_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle
+  nameWithType: Theme.GetTokenStyle
+- uid: Orionsoft.PrismSharp.Themes.Theme.Load(Orionsoft.PrismSharp.Themes.ThemeNames)
+  name: Load(ThemeNames)
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_Load_Orionsoft_PrismSharp_Themes_ThemeNames_
+  commentId: M:Orionsoft.PrismSharp.Themes.Theme.Load(Orionsoft.PrismSharp.Themes.ThemeNames)
+  fullName: Orionsoft.PrismSharp.Themes.Theme.Load(Orionsoft.PrismSharp.Themes.ThemeNames)
+  nameWithType: Theme.Load(ThemeNames)
+- uid: Orionsoft.PrismSharp.Themes.Theme.Load*
+  name: Load
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_Load_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.Theme.Load
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.Theme.Load
+  nameWithType: Theme.Load
+- uid: Orionsoft.PrismSharp.Themes.Theme.LoadFromFile(System.String)
+  name: LoadFromFile(String)
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_LoadFromFile_System_String_
+  commentId: M:Orionsoft.PrismSharp.Themes.Theme.LoadFromFile(System.String)
+  fullName: Orionsoft.PrismSharp.Themes.Theme.LoadFromFile(System.String)
+  nameWithType: Theme.LoadFromFile(String)
+- uid: Orionsoft.PrismSharp.Themes.Theme.LoadFromFile*
+  name: LoadFromFile
+  href: api/Orionsoft.PrismSharp.Themes.Theme.html#Orionsoft_PrismSharp_Themes_Theme_LoadFromFile_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.Theme.LoadFromFile
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.Theme.LoadFromFile
+  nameWithType: Theme.LoadFromFile
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames
+  name: ThemeNames
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeNames
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames
+  nameWithType: ThemeNames
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  name: A11yDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_A11yDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.A11yDark
+  nameWithType: ThemeNames.A11yDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  name: AteliersulphurpoolLight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_AteliersulphurpoolLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.AteliersulphurpoolLight
+  nameWithType: ThemeNames.AteliersulphurpoolLight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  name: AtomDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_AtomDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.AtomDark
+  nameWithType: ThemeNames.AtomDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  name: Cb
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Cb
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Cb
+  nameWithType: ThemeNames.Cb
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  name: ColdarkCold
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_ColdarkCold
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkCold
+  nameWithType: ThemeNames.ColdarkCold
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  name: ColdarkDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_ColdarkDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ColdarkDark
+  nameWithType: ThemeNames.ColdarkDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  name: Coy
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Coy
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Coy
+  nameWithType: ThemeNames.Coy
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  name: Darcula
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Darcula
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Darcula
+  nameWithType: ThemeNames.Darcula
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  name: Dark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Dark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Dark
+  nameWithType: ThemeNames.Dark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  name: Dracula
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Dracula
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Dracula
+  nameWithType: ThemeNames.Dracula
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  name: DuotoneDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_DuotoneDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneDark
+  nameWithType: ThemeNames.DuotoneDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  name: DuotoneEarth
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_DuotoneEarth
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneEarth
+  nameWithType: ThemeNames.DuotoneEarth
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  name: DuotoneForest
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_DuotoneForest
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneForest
+  nameWithType: ThemeNames.DuotoneForest
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  name: DuotoneLight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_DuotoneLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneLight
+  nameWithType: ThemeNames.DuotoneLight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  name: DuotoneSea
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_DuotoneSea
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSea
+  nameWithType: ThemeNames.DuotoneSea
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  name: DuotoneSpace
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_DuotoneSpace
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.DuotoneSpace
+  nameWithType: ThemeNames.DuotoneSpace
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  name: Funky
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Funky
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Funky
+  nameWithType: ThemeNames.Funky
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  name: Ghcolors
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Ghcolors
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Ghcolors
+  nameWithType: ThemeNames.Ghcolors
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  name: GruvboxDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_GruvboxDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxDark
+  nameWithType: ThemeNames.GruvboxDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  name: GruvboxLight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_GruvboxLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.GruvboxLight
+  nameWithType: ThemeNames.GruvboxLight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  name: HoliTheme
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_HoliTheme
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.HoliTheme
+  nameWithType: ThemeNames.HoliTheme
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  name: Hopscotch
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Hopscotch
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Hopscotch
+  nameWithType: ThemeNames.Hopscotch
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  name: Lucario
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Lucario
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Lucario
+  nameWithType: ThemeNames.Lucario
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  name: MaterialDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_MaterialDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialDark
+  nameWithType: ThemeNames.MaterialDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  name: MaterialLight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_MaterialLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialLight
+  nameWithType: ThemeNames.MaterialLight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  name: MaterialOceanic
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_MaterialOceanic
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.MaterialOceanic
+  nameWithType: ThemeNames.MaterialOceanic
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  name: NightOwl
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_NightOwl
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.NightOwl
+  nameWithType: ThemeNames.NightOwl
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  name: Nord
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Nord
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Nord
+  nameWithType: ThemeNames.Nord
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  name: Okaidia
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Okaidia
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Okaidia
+  nameWithType: ThemeNames.Okaidia
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  name: OneDark
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_OneDark
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.OneDark
+  nameWithType: ThemeNames.OneDark
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  name: OneLight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_OneLight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.OneLight
+  nameWithType: ThemeNames.OneLight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  name: Pojoaque
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Pojoaque
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Pojoaque
+  nameWithType: ThemeNames.Pojoaque
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  name: Prism
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Prism
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Prism
+  nameWithType: ThemeNames.Prism
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  name: ShadesOfPurple
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_ShadesOfPurple
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ShadesOfPurple
+  nameWithType: ThemeNames.ShadesOfPurple
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  name: SolarizedDarkAtom
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_SolarizedDarkAtom
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.SolarizedDarkAtom
+  nameWithType: ThemeNames.SolarizedDarkAtom
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  name: Solarizedlight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Solarizedlight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Solarizedlight
+  nameWithType: ThemeNames.Solarizedlight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  name: Synthwave84
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Synthwave84
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Synthwave84
+  nameWithType: ThemeNames.Synthwave84
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  name: Tomorrow
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Tomorrow
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Tomorrow
+  nameWithType: ThemeNames.Tomorrow
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  name: Twilight
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Twilight
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Twilight
+  nameWithType: ThemeNames.Twilight
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  name: Vs
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Vs
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Vs
+  nameWithType: ThemeNames.Vs
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  name: VscDarkPlus
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_VscDarkPlus
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.VscDarkPlus
+  nameWithType: ThemeNames.VscDarkPlus
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  name: Xonokai
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_Xonokai
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.Xonokai
+  nameWithType: ThemeNames.Xonokai
+- uid: Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  name: ZTouch
+  href: api/Orionsoft.PrismSharp.Themes.ThemeNames.html#Orionsoft_PrismSharp_Themes_ThemeNames_ZTouch
+  commentId: F:Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  fullName: Orionsoft.PrismSharp.Themes.ThemeNames.ZTouch
+  nameWithType: ThemeNames.ZTouch
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle
+  name: ThemeStyle
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html
+  commentId: T:Orionsoft.PrismSharp.Themes.ThemeStyle
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle
+  nameWithType: ThemeStyle
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  name: Background
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Background
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  nameWithType: ThemeStyle.Background
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Background*
+  name: Background
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Background_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Background
+  nameWithType: ThemeStyle.Background
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  name: Bold
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Bold
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  nameWithType: ThemeStyle.Bold
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold*
+  name: Bold
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Bold_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Bold
+  nameWithType: ThemeStyle.Bold
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  name: Clone()
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Clone
+  commentId: M:Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone()
+  nameWithType: ThemeStyle.Clone()
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone*
+  name: Clone
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Clone_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Clone
+  nameWithType: ThemeStyle.Clone
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  name: Color
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Color
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  nameWithType: ThemeStyle.Color
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Color*
+  name: Color
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Color_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Color
+  nameWithType: ThemeStyle.Color
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  name: Italic
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Italic
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  nameWithType: ThemeStyle.Italic
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic*
+  name: Italic
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Italic_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Italic
+  nameWithType: ThemeStyle.Italic
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  name: Language
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Language
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  nameWithType: ThemeStyle.Language
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Language*
+  name: Language
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Language_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Language
+  nameWithType: ThemeStyle.Language
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  name: MergeWith(ThemeStyle)
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_MergeWith_Orionsoft_PrismSharp_Themes_ThemeStyle_
+  commentId: M:Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)
+  nameWithType: ThemeStyle.MergeWith(ThemeStyle)
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith*
+  name: MergeWith
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_MergeWith_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith
+  nameWithType: ThemeStyle.MergeWith
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  name: Opacity
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Opacity
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  nameWithType: ThemeStyle.Opacity
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity*
+  name: Opacity
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Opacity_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Opacity
+  nameWithType: ThemeStyle.Opacity
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  name: Type
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Type
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  nameWithType: ThemeStyle.Type
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Type*
+  name: Type
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Type_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Type
+  nameWithType: ThemeStyle.Type
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  name: Underline
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Underline
+  commentId: P:Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  nameWithType: ThemeStyle.Underline
+- uid: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline*
+  name: Underline
+  href: api/Orionsoft.PrismSharp.Themes.ThemeStyle.html#Orionsoft_PrismSharp_Themes_ThemeStyle_Underline_
+  commentId: Overload:Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Themes.ThemeStyle.Underline
+  nameWithType: ThemeStyle.Underline
+- uid: Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  href: api/Orionsoft.PrismSharp.Tokenizing.html
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  name: RangeTokenizationSettings
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  nameWithType: RangeTokenizationSettings
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  name: PostRange
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_PostRange
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  nameWithType: RangeTokenizationSettings.PostRange
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange*
+  name: PostRange
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_PostRange_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  nameWithType: RangeTokenizationSettings.PostRange
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  name: PreRange
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_PreRange
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  nameWithType: RangeTokenizationSettings.PreRange
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange*
+  name: PreRange
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_PreRange_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  nameWithType: RangeTokenizationSettings.PreRange
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  name: SafePointAdjuster
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_SafePointAdjuster
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  nameWithType: RangeTokenizationSettings.SafePointAdjuster
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster*
+  name: SafePointAdjuster
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_SafePointAdjuster_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  nameWithType: RangeTokenizationSettings.SafePointAdjuster
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  name: SafePointAdjusterName
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_SafePointAdjusterName
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  nameWithType: RangeTokenizationSettings.SafePointAdjusterName
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName*
+  name: SafePointAdjusterName
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_SafePointAdjusterName_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  nameWithType: RangeTokenizationSettings.SafePointAdjusterName
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  name: SafePoints
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_SafePoints
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  nameWithType: RangeTokenizationSettings.SafePoints
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints*
+  name: SafePoints
+  href: api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html#Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_SafePoints_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  nameWithType: RangeTokenizationSettings.SafePoints
+- uid: Orionsoft.PrismSharp.Tokenizing.Token
+  name: Token
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Token
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  nameWithType: Token
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  name: AbsolutePos
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_AbsolutePos
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  nameWithType: Token.AbsolutePos
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos*
+  name: AbsolutePos
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_AbsolutePos_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  nameWithType: Token.AbsolutePos
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  name: Aliases
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Aliases
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  nameWithType: Token.Aliases
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Aliases*
+  name: Aliases
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Aliases_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  nameWithType: Token.Aliases
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  name: Pos
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Pos
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  nameWithType: Token.Pos
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Pos*
+  name: Pos
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Pos_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  nameWithType: Token.Pos
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Text
+  name: Text
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Text
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Text
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Text
+  nameWithType: Token.Text
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Text*
+  name: Text
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Text_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Text
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Text
+  nameWithType: Token.Text
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  name: Tokens
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Tokens
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  nameWithType: Token.Tokens
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Tokens*
+  name: Tokens
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Tokens_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  nameWithType: Token.Tokens
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  name: ToString()
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_ToString
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.ToString()
+  nameWithType: Token.ToString()
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.ToString*
+  name: ToString
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_ToString_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  nameWithType: Token.ToString
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Type
+  name: Type
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Type
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Type
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Type
+  nameWithType: Token.Type
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Type*
+  name: Type
+  href: api/Orionsoft.PrismSharp.Tokenizing.Token.html#Orionsoft_PrismSharp_Tokenizing_Token_Type_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Type
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Type
+  nameWithType: Token.Type
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  name: Tokenizer
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer
+  nameWithType: Tokenizer
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  name: Tokenizer()
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer__ctor
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenizer()
+  nameWithType: Tokenizer.Tokenizer()
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor*
+  name: Tokenizer
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer__ctor_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.#ctor
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenizer
+  nameWithType: Tokenizer.Tokenizer
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  name: GrammarDir
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_GrammarDir
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  nameWithType: Tokenizer.GrammarDir
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir*
+  name: GrammarDir
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_GrammarDir_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir
+  nameWithType: Tokenizer.GrammarDir
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  name: LanguageList
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_LanguageList
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  nameWithType: Tokenizer.LanguageList
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList*
+  name: LanguageList
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_LanguageList_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList
+  nameWithType: Tokenizer.LanguageList
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)
+  name: Tokenize(String, String)
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_Tokenize_System_String_System_String_
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String, System.String)
+  nameWithType: Tokenizer.Tokenize(String, String)
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize*
+  name: Tokenize
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_Tokenize_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize
+  nameWithType: Tokenizer.Tokenize
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)
+  name: TokenizeRange(String, Int32, Int32, String)
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_System_String_System_Int32_System_Int32_System_String_
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String, System.Int32, System.Int32, System.String)
+  nameWithType: Tokenizer.TokenizeRange(String, Int32, Int32, String)
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  name: TokenizeRange(String, Int32, Int32, String, RangeTokenizationSettings)
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_System_String_System_Int32_System_Int32_System_String_Orionsoft_PrismSharp_Tokenizing_RangeTokenizationSettings_
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String, System.Int32, System.Int32, System.String, Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)
+  nameWithType: Tokenizer.TokenizeRange(String, Int32, Int32, String, RangeTokenizationSettings)
+- uid: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange*
+  name: TokenizeRange
+  href: api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html#Orionsoft_PrismSharp_Tokenizing_Tokenizer_TokenizeRange_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange
+  nameWithType: Tokenizer.TokenizeRange
+- uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException
+  name: TokenizerException
+  href: api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.html
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.TokenizerException
+  fullName: Orionsoft.PrismSharp.Tokenizing.TokenizerException
+  nameWithType: TokenizerException
+- uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor
+  name: TokenizerException()
+  href: api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.html#Orionsoft_PrismSharp_Tokenizing_TokenizerException__ctor
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor
+  fullName: Orionsoft.PrismSharp.Tokenizing.TokenizerException.TokenizerException()
+  nameWithType: TokenizerException.TokenizerException()
+- uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor(System.String)
+  name: TokenizerException(String)
+  href: api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.html#Orionsoft_PrismSharp_Tokenizing_TokenizerException__ctor_System_String_
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor(System.String)
+  fullName: Orionsoft.PrismSharp.Tokenizing.TokenizerException.TokenizerException(System.String)
+  nameWithType: TokenizerException.TokenizerException(String)
+- uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor(System.String,System.Exception)
+  name: TokenizerException(String, Exception)
+  href: api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.html#Orionsoft_PrismSharp_Tokenizing_TokenizerException__ctor_System_String_System_Exception_
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor(System.String,System.Exception)
+  fullName: Orionsoft.PrismSharp.Tokenizing.TokenizerException.TokenizerException(System.String, System.Exception)
+  nameWithType: TokenizerException.TokenizerException(String, Exception)
+- uid: Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor*
+  name: TokenizerException
+  href: api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.html#Orionsoft_PrismSharp_Tokenizing_TokenizerException__ctor_
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.TokenizerException.#ctor
+  isSpec: "True"
+  fullName: Orionsoft.PrismSharp.Tokenizing.TokenizerException.TokenizerException
+  nameWithType: TokenizerException.TokenizerException

@@ -1,0 +1,48 @@
+{
+  "comment": "r:/%[^\\r\\n]*/",
+  "cdata": {
+    "pattern": "r:/(\\\\begin\\{((?:lstlisting|verbatim)\\*?)\\})[\\s\\S]*?(?=\\\\end\\{\\2\\})/",
+    "lookbehind": true
+  },
+  "equation": [
+    {
+      "pattern": "r:/\\$\\$(?:\\\\[\\s\\S]|[^\\\\$])+\\$\\$|\\$(?:\\\\[\\s\\S]|[^\\\\$])+\\$|\\\\\\([\\s\\S]*?\\\\\\)|\\\\\\[[\\s\\S]*?\\\\\\]/",
+      "inside": {
+        "equation-command": {
+          "pattern": "r:/\\\\(?:[^a-z()[\\]]|[a-z*]+)/i",
+          "alias": "s:regex"
+        }
+      },
+      "alias": "s:string"
+    },
+    {
+      "pattern": "r:/(\\\\begin\\{((?:align|eqnarray|equation|gather|math|multline)\\*?)\\})[\\s\\S]*?(?=\\\\end\\{\\2\\})/",
+      "lookbehind": true,
+      "inside": {
+        "equation-command": {
+          "pattern": "r:/\\\\(?:[^a-z()[\\]]|[a-z*]+)/i",
+          "alias": "s:regex"
+        }
+      },
+      "alias": "s:string"
+    }
+  ],
+  "keyword": {
+    "pattern": "r:/(\\\\(?:begin|cite|documentclass|end|label|ref|usepackage)(?:\\[[^\\]]+\\])?\\{)[^}]+(?=\\})/",
+    "lookbehind": true
+  },
+  "url": {
+    "pattern": "r:/(\\\\url\\{)[^}]+(?=\\})/",
+    "lookbehind": true
+  },
+  "headline": {
+    "pattern": "r:/(\\\\(?:chapter|frametitle|paragraph|part|section|subparagraph|subsection|subsubparagraph|subsubsection|subsubsubparagraph)\\*?(?:\\[[^\\]]+\\])?\\{)[^}]+(?=\\})/",
+    "lookbehind": true,
+    "alias": "s:class-name"
+  },
+  "function": {
+    "pattern": "r:/\\\\(?:[^a-z()[\\]]|[a-z*]+)/i",
+    "alias": "s:selector"
+  },
+  "punctuation": "r:/[[\\]{}&]/"
+}

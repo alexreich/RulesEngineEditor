@@ -1,0 +1,25 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "property": {
+    "pattern": "r:/(^|[^\\\\.])(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|`[^`]*`|\\b[a-z_]\\w*\\b)(?=\\s*:(?!=))/i",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/(^|[^\\\\])\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"|`[^`]*`/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "keyword": "r:/\\b(?:as|default|else|import|not|null|package|set(?=\\s*\\()|some|with)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": {
+    "pattern": "r:/\\b[a-z_]\\w*\\b(?:\\s*\\.\\s*\\b[a-z_]\\w*\\b)*(?=\\s*\\()/i",
+    "inside": {
+      "namespace": "r:/\\b\\w+\\b(?=\\s*\\.)/",
+      "punctuation": "r:/\\./"
+    }
+  },
+  "number": "r:/-?\\b\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?\\b/i",
+  "operator": "r:/[-+*/%|&]|[<>:=]=?|!=|\\b_\\b/",
+  "punctuation": "r:/[,;.\\[\\]{}()]/"
+}

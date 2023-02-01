@@ -1,0 +1,77 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/\"(?:[^\\r\\n\\\\\"]|\\\\[^\\r\\n])*\"|'(?:[^\\r\\n\\\\']|\\\\(?:[^\\r\\n]|u[\\da-fA-F]{4}))'/",
+    "greedy": true
+  },
+  "class-name": {
+    "pattern": "r:/(^|[^L])L(?:(?:\\w+|`[^`\\r\\n]*`)\\/)*(?:[\\w$]+|`[^`\\r\\n]*`)(?=\\s*;)/",
+    "lookbehind": true,
+    "inside": {
+      "class-name": {
+        "pattern": "r:/(^L|\\/)(?:[\\w$]+|`[^`\\r\\n]*`)(?:(?=\\r$)|$)/",
+        "lookbehind": true
+      },
+      "namespace": {
+        "pattern": "r:/^(L)(?:(?:\\w+|`[^`\\r\\n]*`)\\/)+/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\//"
+        }
+      },
+      "builtin": "r:/^L/"
+    }
+  },
+  "builtin": [
+    {
+      "pattern": "r:/([();\\[])[BCDFIJSVZ]+/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/([\\w$>]:)[BCDFIJSVZ]/",
+      "lookbehind": true
+    }
+  ],
+  "keyword": [
+    {
+      "pattern": "r:/(\\.end\\s+)[\\w-]+/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^\\w.-])\\.(?!\\d)[\\w-]+/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^\\w.-])(?:abstract|annotation|bridge|constructor|enum|final|interface|private|protected|public|runtime|static|synthetic|system|transient)(?![\\w.-])/",
+      "lookbehind": true
+    }
+  ],
+  "function": {
+    "pattern": "r:/(^|[^\\w.-])(?:\\w+|<[\\w$-]+>)(?=\\()/",
+    "lookbehind": true
+  },
+  "field": {
+    "pattern": "r:/[\\w$]+(?=:)/",
+    "alias": "s:variable"
+  },
+  "register": {
+    "pattern": "r:/(^|[^\\w.-])[vp]\\d(?![\\w.-])/",
+    "lookbehind": true,
+    "alias": "s:variable"
+  },
+  "boolean": {
+    "pattern": "r:/(^|[^\\w.-])(?:false|true)(?![\\w.-])/",
+    "lookbehind": true
+  },
+  "number": {
+    "pattern": "r:/(^|[^/\\w.-])-?(?:NAN|INFINITY|0x(?:[\\dA-F]+(?:\\.[\\dA-F]*)?|\\.[\\dA-F]+)(?:p[+-]?[\\dA-F]+)?|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?)[dflst]?(?![\\w.-])/i",
+    "lookbehind": true
+  },
+  "label": {
+    "pattern": "r:/(:)\\w+/",
+    "lookbehind": true,
+    "alias": "s:property"
+  },
+  "operator": "r:/->|\\.\\.|[\\[=]/",
+  "punctuation": "r:/[{}(),;:]/"
+}

@@ -1,0 +1,615 @@
+{
+  "atrule-declaration": {
+    "pattern": "r:/(^[ \\t]*)@[^\\r\\n]+/m",
+    "lookbehind": true,
+    "inside": {
+      "atrule": "r:/^@[\\w-]+/",
+      "rest": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+          "lookbehind": true
+        },
+        "url": {
+          "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+          "greedy": true
+        },
+        "interpolation": {
+          "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+          "alias": "s:variable",
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+              "alias": "s:punctuation"
+            },
+            "rest": "s:[Circular ~.atrule-declaration.inside.rest]"
+          }
+        },
+        "func": {
+          "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+          "inside": {
+            "function": "r:/^[^(]+/",
+            "rest": "s:[Circular ~.atrule-declaration.inside.rest]"
+          }
+        },
+        "important": "r:/\\B!(?:important|optional)\\b/i",
+        "keyword": {
+          "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+          "lookbehind": true
+        },
+        "hexcode": "r:/#[\\da-f]{3,6}/i",
+        "color": [
+          "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+          {
+            "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+            "inside": {
+              "unit": {
+                "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                "lookbehind": true
+              },
+              "number": {
+                "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                "lookbehind": true
+              },
+              "function": "r:/[\\w-]+(?=\\()/",
+              "punctuation": "r:/[(),]/"
+            }
+          }
+        ],
+        "entity": "r:/\\\\[\\da-f]{1,8}/i",
+        "unit": {
+          "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+          "lookbehind": true
+        },
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "operator": [
+          "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+        ],
+        "number": {
+          "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+          "lookbehind": true
+        },
+        "punctuation": "r:/[{}()\\[\\];:,]/"
+      }
+    }
+  },
+  "variable-declaration": {
+    "pattern": "r:/(^[ \\t]*)[\\w$-]+\\s*[^\\r\\n]?=[ \\t]*(?:\\{[^{}]*\\}|\\S[^\\r\\n]*|(?:(?=\\r$)|$))/m",
+    "lookbehind": true,
+    "inside": {
+      "variable": "r:/^\\S+/",
+      "rest": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+          "lookbehind": true
+        },
+        "url": {
+          "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+          "greedy": true
+        },
+        "interpolation": {
+          "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+          "alias": "s:variable",
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+              "alias": "s:punctuation"
+            },
+            "rest": "s:[Circular ~.variable-declaration.inside.rest]"
+          }
+        },
+        "func": {
+          "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+          "inside": {
+            "function": "r:/^[^(]+/",
+            "rest": "s:[Circular ~.variable-declaration.inside.rest]"
+          }
+        },
+        "important": "r:/\\B!(?:important|optional)\\b/i",
+        "keyword": {
+          "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+          "lookbehind": true
+        },
+        "hexcode": "r:/#[\\da-f]{3,6}/i",
+        "color": [
+          "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+          {
+            "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+            "inside": {
+              "unit": {
+                "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                "lookbehind": true
+              },
+              "number": {
+                "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                "lookbehind": true
+              },
+              "function": "r:/[\\w-]+(?=\\()/",
+              "punctuation": "r:/[(),]/"
+            }
+          }
+        ],
+        "entity": "r:/\\\\[\\da-f]{1,8}/i",
+        "unit": {
+          "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+          "lookbehind": true
+        },
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "operator": [
+          "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+        ],
+        "number": {
+          "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+          "lookbehind": true
+        },
+        "punctuation": "r:/[{}()\\[\\];:,]/"
+      }
+    }
+  },
+  "statement": {
+    "pattern": "r:/(^[ \\t]*)(?:else|for|if|return|unless)[ \\t][^\\r\\n]+/m",
+    "lookbehind": true,
+    "inside": {
+      "keyword": "r:/^\\S+/",
+      "rest": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+          "lookbehind": true
+        },
+        "url": {
+          "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+          "greedy": true
+        },
+        "interpolation": {
+          "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+          "alias": "s:variable",
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+              "alias": "s:punctuation"
+            },
+            "rest": "s:[Circular ~.statement.inside.rest]"
+          }
+        },
+        "func": {
+          "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+          "inside": {
+            "function": "r:/^[^(]+/",
+            "rest": "s:[Circular ~.statement.inside.rest]"
+          }
+        },
+        "important": "r:/\\B!(?:important|optional)\\b/i",
+        "keyword": {
+          "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+          "lookbehind": true
+        },
+        "hexcode": "r:/#[\\da-f]{3,6}/i",
+        "color": [
+          "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+          {
+            "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+            "inside": {
+              "unit": {
+                "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                "lookbehind": true
+              },
+              "number": {
+                "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                "lookbehind": true
+              },
+              "function": "r:/[\\w-]+(?=\\()/",
+              "punctuation": "r:/[(),]/"
+            }
+          }
+        ],
+        "entity": "r:/\\\\[\\da-f]{1,8}/i",
+        "unit": {
+          "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+          "lookbehind": true
+        },
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "operator": [
+          "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+        ],
+        "number": {
+          "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+          "lookbehind": true
+        },
+        "punctuation": "r:/[{}()\\[\\];:,]/"
+      }
+    }
+  },
+  "property-declaration": {
+    "pattern": "r:/((?:^|\\{)([ \\t]*))(?:[\\w-]|\\{[^}\\r\\n]+\\})+(?:\\s*:\\s*|[ \\t]+)(?!\\s)[^{\\r\\n]*(?:;|[^{\\r\\n,](?:(?=\\r$)|$)(?!(?:\\r?\\n|\\r)(?:\\{|\\2[ \\t])))/m",
+    "lookbehind": true,
+    "inside": {
+      "property": {
+        "pattern": "r:/^[^\\s:]+/",
+        "inside": {
+          "interpolation": {
+            "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+            "alias": "s:variable",
+            "inside": {
+              "delimiter": {
+                "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+                "alias": "s:punctuation"
+              },
+              "rest": {
+                "comment": {
+                  "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+                  "lookbehind": true
+                },
+                "url": {
+                  "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+                  "greedy": true
+                },
+                "string": {
+                  "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+                  "greedy": true
+                },
+                "interpolation": "s:[Circular ~.property-declaration.inside.property.inside.interpolation]",
+                "func": {
+                  "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+                  "inside": {
+                    "function": "r:/^[^(]+/",
+                    "rest": "s:[Circular ~.property-declaration.inside.property.inside.interpolation.inside.rest]"
+                  }
+                },
+                "important": "r:/\\B!(?:important|optional)\\b/i",
+                "keyword": {
+                  "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+                  "lookbehind": true
+                },
+                "hexcode": "r:/#[\\da-f]{3,6}/i",
+                "color": [
+                  "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+                  {
+                    "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+                    "inside": {
+                      "unit": {
+                        "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                        "lookbehind": true
+                      },
+                      "number": {
+                        "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                        "lookbehind": true
+                      },
+                      "function": "r:/[\\w-]+(?=\\()/",
+                      "punctuation": "r:/[(),]/"
+                    }
+                  }
+                ],
+                "entity": "r:/\\\\[\\da-f]{1,8}/i",
+                "unit": {
+                  "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                  "lookbehind": true
+                },
+                "boolean": "r:/\\b(?:false|true)\\b/",
+                "operator": [
+                  "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+                ],
+                "number": {
+                  "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                  "lookbehind": true
+                },
+                "punctuation": "r:/[{}()\\[\\];:,]/"
+              }
+            }
+          }
+        }
+      },
+      "rest": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+          "lookbehind": true
+        },
+        "url": {
+          "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+          "greedy": true
+        },
+        "interpolation": {
+          "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+          "alias": "s:variable",
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+              "alias": "s:punctuation"
+            },
+            "rest": "s:[Circular ~.property-declaration.inside.rest]"
+          }
+        },
+        "func": {
+          "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+          "inside": {
+            "function": "r:/^[^(]+/",
+            "rest": "s:[Circular ~.property-declaration.inside.rest]"
+          }
+        },
+        "important": "r:/\\B!(?:important|optional)\\b/i",
+        "keyword": {
+          "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+          "lookbehind": true
+        },
+        "hexcode": "r:/#[\\da-f]{3,6}/i",
+        "color": [
+          "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+          {
+            "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+            "inside": {
+              "unit": {
+                "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                "lookbehind": true
+              },
+              "number": {
+                "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                "lookbehind": true
+              },
+              "function": "r:/[\\w-]+(?=\\()/",
+              "punctuation": "r:/[(),]/"
+            }
+          }
+        ],
+        "entity": "r:/\\\\[\\da-f]{1,8}/i",
+        "unit": {
+          "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+          "lookbehind": true
+        },
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "operator": [
+          "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+        ],
+        "number": {
+          "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+          "lookbehind": true
+        },
+        "punctuation": "r:/[{}()\\[\\];:,]/"
+      }
+    }
+  },
+  "selector": {
+    "pattern": "r:/(^[ \\t]*)(?:(?=\\S)(?:[^{}\\r\\n:()]|::?[\\w-]+(?:\\([^)\\r\\n]*\\)|(?![\\w-]))|\\{[^}\\r\\n]+\\})+)(?:(?:\\r?\\n|\\r)(?:\\1(?:(?=\\S)(?:[^{}\\r\\n:()]|::?[\\w-]+(?:\\([^)\\r\\n]*\\)|(?![\\w-]))|\\{[^}\\r\\n]+\\})+)))*(?:,(?:(?=\\r$)|$)|\\{|(?=(?:\\r?\\n|\\r)(?:\\{|\\1[ \\t])))/m",
+    "lookbehind": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+        "alias": "s:variable",
+        "inside": {
+          "delimiter": {
+            "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          },
+          "rest": {
+            "comment": {
+              "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+              "lookbehind": true
+            },
+            "url": {
+              "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+              "greedy": true
+            },
+            "string": {
+              "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+              "greedy": true
+            },
+            "interpolation": "s:[Circular ~.selector.inside.interpolation]",
+            "func": {
+              "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+              "inside": {
+                "function": "r:/^[^(]+/",
+                "rest": "s:[Circular ~.selector.inside.interpolation.inside.rest]"
+              }
+            },
+            "important": "r:/\\B!(?:important|optional)\\b/i",
+            "keyword": {
+              "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+              "lookbehind": true
+            },
+            "hexcode": "r:/#[\\da-f]{3,6}/i",
+            "color": [
+              "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+              {
+                "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+                "inside": {
+                  "unit": {
+                    "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                    "lookbehind": true
+                  },
+                  "number": {
+                    "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                    "lookbehind": true
+                  },
+                  "function": "r:/[\\w-]+(?=\\()/",
+                  "punctuation": "r:/[(),]/"
+                }
+              }
+            ],
+            "entity": "r:/\\\\[\\da-f]{1,8}/i",
+            "unit": {
+              "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+              "lookbehind": true
+            },
+            "boolean": "r:/\\b(?:false|true)\\b/",
+            "operator": [
+              "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+            ],
+            "number": {
+              "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+              "lookbehind": true
+            },
+            "punctuation": "r:/[{}()\\[\\];:,]/"
+          }
+        }
+      },
+      "comment": {
+        "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+        "lookbehind": true
+      },
+      "punctuation": "r:/[{},]/"
+    }
+  },
+  "func": {
+    "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+    "inside": {
+      "function": "r:/^[^(]+/",
+      "rest": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+          "lookbehind": true
+        },
+        "url": {
+          "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+          "greedy": true
+        },
+        "interpolation": {
+          "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+          "alias": "s:variable",
+          "inside": {
+            "delimiter": {
+              "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+              "alias": "s:punctuation"
+            },
+            "rest": "s:[Circular ~.func.inside.rest]"
+          }
+        },
+        "func": "s:[Circular ~.func]",
+        "important": "r:/\\B!(?:important|optional)\\b/i",
+        "keyword": {
+          "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+          "lookbehind": true
+        },
+        "hexcode": "r:/#[\\da-f]{3,6}/i",
+        "color": [
+          "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+          {
+            "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+            "inside": {
+              "unit": {
+                "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                "lookbehind": true
+              },
+              "number": {
+                "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                "lookbehind": true
+              },
+              "function": "r:/[\\w-]+(?=\\()/",
+              "punctuation": "r:/[(),]/"
+            }
+          }
+        ],
+        "entity": "r:/\\\\[\\da-f]{1,8}/i",
+        "unit": {
+          "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+          "lookbehind": true
+        },
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "operator": [
+          "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+        ],
+        "number": {
+          "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+          "lookbehind": true
+        },
+        "punctuation": "r:/[{}()\\[\\];:,]/"
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+    "greedy": true
+  },
+  "comment": {
+    "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "interpolation": {
+    "pattern": "r:/\\{[^\\r\\n}:]+\\}/",
+    "alias": "s:variable",
+    "inside": {
+      "delimiter": {
+        "pattern": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+        "alias": "s:punctuation"
+      },
+      "rest": {
+        "comment": {
+          "pattern": "r:/(^|[^\\\\])(?:\\/\\*[\\s\\S]*?\\*\\/|\\/\\/[^\\r\\n]*)/",
+          "lookbehind": true
+        },
+        "url": {
+          "pattern": "r:/\\burl\\(([\"']?)[^\\r\\n]*?\\1\\)/i",
+          "greedy": true
+        },
+        "string": {
+          "pattern": "r:/(\"|')(?:(?!\\1)[^\\\\\\r\\n]|\\\\(?:\\r\\n|[\\s\\S]))*\\1/",
+          "greedy": true
+        },
+        "interpolation": "s:[Circular ~.interpolation]",
+        "func": {
+          "pattern": "r:/[\\w-]+\\([^)]*\\)[^\\r\\n]*/",
+          "inside": {
+            "function": "r:/^[^(]+/",
+            "rest": "s:[Circular ~.interpolation.inside.rest]"
+          }
+        },
+        "important": "r:/\\B!(?:important|optional)\\b/i",
+        "keyword": {
+          "pattern": "r:/(^|\\s+)(?:(?:else|for|if|return|unless)(?=\\s|(?:(?=\\r$)|$))|@[\\w-]+)/",
+          "lookbehind": true
+        },
+        "hexcode": "r:/#[\\da-f]{3,6}/i",
+        "color": [
+          "r:/\\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\\b/i",
+          {
+            "pattern": "r:/\\b(?:hsl|rgb)\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*\\)\\B|\\b(?:hsl|rgb)a\\(\\s*\\d{1,3}\\s*,\\s*\\d{1,3}%?\\s*,\\s*\\d{1,3}%?\\s*,\\s*(?:0|0?\\.\\d+|1)\\s*\\)\\B/i",
+            "inside": {
+              "unit": {
+                "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+                "lookbehind": true
+              },
+              "number": {
+                "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+                "lookbehind": true
+              },
+              "function": "r:/[\\w-]+(?=\\()/",
+              "punctuation": "r:/[(),]/"
+            }
+          }
+        ],
+        "entity": "r:/\\\\[\\da-f]{1,8}/i",
+        "unit": {
+          "pattern": "r:/(\\b\\d+)(?:%|[a-z]+)/",
+          "lookbehind": true
+        },
+        "boolean": "r:/\\b(?:false|true)\\b/",
+        "operator": [
+          "r:/~|[+!\\/%<>?=]=?|[-:]=|\\*[*=]?|\\.{2,3}|&&|\\|\\||\\B-\\B|\\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\\b/"
+        ],
+        "number": {
+          "pattern": "r:/(^|[^\\w.-])-?(?:\\d+(?:\\.\\d+)?|\\.\\d+)/",
+          "lookbehind": true
+        },
+        "punctuation": "r:/[{}()\\[\\];:,]/"
+      }
+    }
+  },
+  "punctuation": "r:/[{}()\\[\\];:.]/"
+}

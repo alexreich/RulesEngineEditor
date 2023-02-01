@@ -1,0 +1,28 @@
+{
+  "comment": {
+    "pattern": "r:/^#Rem\\s[\\s\\S]*?^#End|'[^\\r\\n]+/im",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"[^\"\\r\\n]*\"/",
+    "greedy": true
+  },
+  "preprocessor": {
+    "pattern": "r:/(^[ \\t]*)#[^\\r\\n]+/m",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property"
+  },
+  "function": "r:/\\b\\w+(?=\\()/",
+  "type-char": {
+    "pattern": "r:/\\b[?%#$]/",
+    "alias": "s:class-name"
+  },
+  "number": {
+    "pattern": "r:/((?:\\.\\.)?)(?:(?:\\b|\\B-\\.?|\\B\\.)\\d+(?:(?!\\.\\.)\\.\\d*)?|\\$[\\da-f]+)/i",
+    "lookbehind": true
+  },
+  "keyword": "r:/\\b(?:Abstract|Array|Bool|Case|Catch|Class|Const|Continue|Default|Eachin|Else|ElseIf|End|EndIf|Exit|Extends|Extern|False|Field|Final|Float|For|Forever|Function|Global|If|Implements|Import|Inline|Int|Interface|Local|Method|Module|New|Next|Null|Object|Private|Property|Public|Repeat|Return|Select|Self|Step|Strict|String|Super|Then|Throw|To|True|Try|Until|Void|Wend|While)\\b/i",
+  "operator": "r:/\\.\\.|<[=>]?|>=?|:?=|(?:[+\\-*\\/&~|]|\\b(?:Mod|Shl|Shr)\\b)=?|\\b(?:And|Not|Or)\\b/i",
+  "punctuation": "r:/[.,:;()\\[\\]]/"
+}

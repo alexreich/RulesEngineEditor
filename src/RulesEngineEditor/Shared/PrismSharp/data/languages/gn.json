@@ -1,0 +1,41 @@
+{
+  "comment": {
+    "pattern": "r:/#[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string-literal": {
+    "pattern": "r:/(^|[^\\\\\"])\"(?:[^\\r\\n\"\\\\]|\\\\[^\\r\\n])*\"/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$(?:\\{[\\s\\S]*?\\}|[a-zA-Z_]\\w*|0x[a-fA-F0-9]{2})/",
+        "lookbehind": true,
+        "inside": {
+          "number": "r:/^\\$0x[\\s\\S]{2}(?:(?=\\r$)|$)/",
+          "variable": "r:/^\\$\\w+(?:(?=\\r$)|$)/",
+          "interpolation-punctuation": {
+            "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          },
+          "expression": {
+            "pattern": "r:/[\\s\\S]+/",
+            "inside": "s:[Circular ~]"
+          }
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "keyword": "r:/\\b(?:else|if)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "builtin-function": {
+    "pattern": "r:/\\b(?:assert|defined|foreach|import|pool|print|template|tool|toolchain)(?=\\s*\\()/i",
+    "alias": "s:keyword"
+  },
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "constant": "r:/\\b(?:current_cpu|current_os|current_toolchain|default_toolchain|host_cpu|host_os|root_build_dir|root_gen_dir|root_out_dir|target_cpu|target_gen_dir|target_os|target_out_dir)\\b/",
+  "number": "r:/-?\\b\\d+\\b/",
+  "operator": "r:/[-+!=<>]=?|&&|\\|\\|/",
+  "punctuation": "r:/[(){}[\\],.]/"
+}

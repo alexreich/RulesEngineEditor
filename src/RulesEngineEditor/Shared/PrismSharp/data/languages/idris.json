@@ -1,0 +1,46 @@
+{
+  "comment": {
+    "pattern": "r:/(?:(?:--|\\|\\|\\|)[^\\r\\n]*(?:(?=\\r$)|$)|\\{-[\\s\\S]*?-\\})/m"
+  },
+  "char": {
+    "pattern": "r:/'(?:[^\\\\']|\\\\(?:[abfnrtv\\\\\"'&]|\\^[A-Z@[\\]^_]|ACK|BEL|BS|CAN|CR|DC1|DC2|DC3|DC4|DEL|DLE|EM|ENQ|EOT|ESC|ETB|ETX|FF|FS|GS|HT|LF|NAK|NUL|RS|SI|SO|SOH|SP|STX|SUB|SYN|US|VT|\\d+|o[0-7]+|x[0-9a-fA-F]+))'/",
+    "alias": "s:string"
+  },
+  "string": {
+    "pattern": "r:/\"(?:[^\\\\\"]|\\\\(?:\\S|\\s+\\\\))*\"/",
+    "greedy": true
+  },
+  "import-statement": {
+    "pattern": "r:/(^\\s*import\\s+)(?:[A-Z][\\w']*)(?:\\.[A-Z][\\w']*)*/m",
+    "lookbehind": true,
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "keyword": "r:/\\b(?:Type|case|class|codata|constructor|corecord|data|do|dsl|else|export|if|implementation|implicit|import|impossible|in|infix|infixl|infixr|instance|interface|let|module|mutual|namespace|of|parameters|partial|postulate|private|proof|public|quoteGoal|record|rewrite|syntax|then|total|using|where|with)\\b/",
+  "number": "r:/\\b(?:\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?|0o[0-7]+|0x[0-9a-f]+)\\b/i",
+  "operator": [
+    {
+      "pattern": "r:/`(?:[A-Z][\\w']*\\.)*[_a-z][\\w']*`/",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(\\s)\\.(?=\\s)/",
+      "lookbehind": true
+    },
+    "r:/[-!#$%*+=?&@|~:<>^\\\\\\/][-!#$%*+=?&@|~.:<>^\\\\\\/]*|\\.[-!#$%*+=?&@|~.:<>^\\\\\\/]+/"
+  ],
+  "hvariable": {
+    "pattern": "r:/\\b(?:[A-Z][\\w']*\\.)*[_a-z][\\w']*/",
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "constant": {
+    "pattern": "r:/\\b(?:[A-Z][\\w']*\\.)*[A-Z][\\w']*/",
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

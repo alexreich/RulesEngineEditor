@@ -1,0 +1,53 @@
+{
+  "comment": "r:/--[^\\r\\n]*|\\{-(?:[^-{]|-(?!\\})|\\{(?!-)|\\{-(?:[^-{]|-(?!\\})|\\{(?!-))*-\\})*-\\}/",
+  "string": {
+    "pattern": "r:/\"(?:[^\"\\\\]|\\\\[^\\r\\n])*\"|''(?:[^']|'(?!')|'''|''\\$\\{)*''(?!'|\\$)/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/\\$\\{[^{}]*\\}/",
+        "inside": {
+          "expression": {
+            "pattern": "r:/(^\\$\\{)[\\s\\S]+(?=\\}(?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "alias": "s:language-dhall",
+            "inside": "s:[Circular ~]"
+          },
+          "punctuation": "r:/\\$\\{|\\}/"
+        }
+      }
+    }
+  },
+  "label": {
+    "pattern": "r:/`[^`]*`/",
+    "greedy": true
+  },
+  "url": {
+    "pattern": "r:/\\bhttps?:\\/\\/[\\w.:%!$&'*+;=@~-]+(?:\\/[\\w.:%!$&'*+;=@~-]*)*(?:\\?[/?\\w.:%!$&'*+;=@~-]*)?/",
+    "greedy": true
+  },
+  "env": {
+    "pattern": "r:/\\benv:(?:(?!\\d)\\w+|\"(?:[^\"\\\\=]|\\\\[^\\r\\n])*\")/",
+    "greedy": true,
+    "inside": {
+      "function": "r:/^env/",
+      "operator": "r:/^:/",
+      "variable": "r:/[\\s\\S]+/"
+    }
+  },
+  "hash": {
+    "pattern": "r:/\\bsha256:[\\da-fA-F]{64}\\b/",
+    "inside": {
+      "function": "r:/sha256/",
+      "operator": "r:/:/",
+      "number": "r:/[\\da-fA-F]{64}/"
+    }
+  },
+  "keyword": "r:/\\b(?:as|assert|else|forall|if|in|let|merge|missing|then|toMap|using|with)\\b|\\u2200/",
+  "builtin": "r:/\\b(?:None|Some)\\b/",
+  "boolean": "r:/\\b(?:False|True)\\b/",
+  "number": "r:/\\bNaN\\b|-?\\bInfinity\\b|[+-]?\\b(?:0x[\\da-fA-F]+|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/",
+  "operator": "r:/\\/\\\\|\\/\\/\\\\\\\\|&&|\\|\\||===|[!=]=|\\/\\/|->|\\+\\+|::|[+*#@=:?<>|\\\\\\u2227\\u2a53\\u2261\\u2afd\\u03bb\\u2192]/",
+  "punctuation": "r:/\\.\\.|[{}\\[\\](),./]/",
+  "class-name": "r:/\\b[A-Z]\\w*\\b/"
+}

@@ -1,0 +1,20 @@
+{
+  "pointer": {
+    "pattern": "r:/<|>/",
+    "alias": "s:keyword"
+  },
+  "increment": {
+    "pattern": "r:/\\+/",
+    "alias": "s:inserted"
+  },
+  "decrement": {
+    "pattern": "r:/-/",
+    "alias": "s:deleted"
+  },
+  "branching": {
+    "pattern": "r:/\\[|\\]/",
+    "alias": "s:important"
+  },
+  "operator": "r:/[.,]/",
+  "comment": "r:/\\S+/"
+}

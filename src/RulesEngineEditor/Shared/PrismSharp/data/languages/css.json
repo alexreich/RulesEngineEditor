@@ -1,0 +1,49 @@
+{
+  "comment": "r:/\\/\\*[\\s\\S]*?\\*\\//",
+  "atrule": {
+    "pattern": "r:/@[\\w-](?:[^;{\\s]|\\s+(?![\\s{]))*(?:;|(?=\\s*\\{))/",
+    "inside": {
+      "rule": "r:/^@[\\w-]+/",
+      "selector-function-argument": {
+        "pattern": "r:/(\\bselector\\s*\\(\\s*(?![\\s)]))(?:[^()\\s]|\\s+(?![\\s)])|\\((?:[^()]|\\([^()]*\\))*\\))+(?=\\s*\\))/",
+        "lookbehind": true,
+        "alias": "s:selector"
+      },
+      "keyword": {
+        "pattern": "r:/(^|[^\\w-])(?:and|not|only|or)(?![\\w-])/",
+        "lookbehind": true
+      },
+      "rest": "s:[Circular ~]"
+    }
+  },
+  "url": {
+    "pattern": "r:/\\burl\\((?:(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')|(?:[^\\\\\\r\\n()\"']|\\\\[\\s\\S])*)\\)/i",
+    "greedy": true,
+    "inside": {
+      "function": "r:/^url/i",
+      "punctuation": "r:/^\\(|\\)(?:(?=\\r$)|$)/",
+      "string": {
+        "pattern": "r:/^(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')(?:(?=\\r$)|$)/",
+        "alias": "s:url"
+      }
+    }
+  },
+  "selector": {
+    "pattern": "r:/(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*'))*(?=\\s*\\{)/",
+    "lookbehind": true
+  },
+  "string": {
+    "pattern": "r:/(?:\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"|'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n])*')/",
+    "greedy": true
+  },
+  "property": {
+    "pattern": "r:/(^|[^-\\w\\xA0-\\uFFFF])(?!\\s)[-_a-z\\xA0-\\uFFFF](?:(?!\\s)[-\\w\\xA0-\\uFFFF])*(?=\\s*:)/i",
+    "lookbehind": true
+  },
+  "important": "r:/!important\\b/i",
+  "function": {
+    "pattern": "r:/(^|[^-a-z0-9])[-a-z0-9]+(?=\\()/i",
+    "lookbehind": true
+  },
+  "punctuation": "r:/[(){};:,]/"
+}

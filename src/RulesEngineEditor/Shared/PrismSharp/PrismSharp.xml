@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PrismSharp</name>
+    </assembly>
+    <members>
+        <member name="T:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1">
+            <summary>
+            An abstract base class making it easy to implement a custom higlighter creating virtually any output format
+            </summary>
+            <typeparam name="TResult">type of the highlighting output, e.h. string</typeparam>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Tokenizer">
+            <summary>
+            Instance of tokenizer in use
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Result">
+            <summary>
+            Output of the highlighting
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Theme">
+            <summary>
+            Currently used theme, if any
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Language">
+            <summary>
+            Name of programming language used for highlighting
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Themes.Theme)">
+            <summary>
+            Serves as a base constructor (as it is an abstract class without constructors)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.Theme)">
+            <summary>
+            Serves as a base constructor (as it is an abstract class without constructors)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,Orionsoft.PrismSharp.Themes.ThemeNames)">
+            <summary>
+            Serves as a base constructor (as it is an abstract class without constructors)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(System.String)">
+            <summary>
+            Serves as a base constructor (as it is an abstract class without constructors)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.Construct(Orionsoft.PrismSharp.Tokenizing.Tokenizer,System.String)">
+            <summary>
+            Serves as a base constructor (as it is an abstract class without constructors)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginDocument(System.String,Orionsoft.PrismSharp.Themes.ThemeStyle)">
+            <summary>
+            Method invoked before highlighting. It should prepare the output
+            </summary>
+            <param name="language"></param>
+            <param name="docStyle"></param>
+            <returns>style to be used as a parent for nested objects. If not modified return docStyle</returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndDocument">
+            <summary>
+            Methode invoked after highlighting. It should finalize output in Result
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.BeginContainer(Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)">
+            <summary>
+            Method invoked before highlighting a nested token
+            </summary>
+            <param name="token"></param>
+            <param name="style">resolved style for this token</param>
+            <param name="parentStyle">style of the parent objectt</param>
+            <returns>style to be used as a parent for nested objects. If not modified return style</returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.EndContainer">
+            <summary>
+            Method invoked after highlighting a nested token
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter`1.AddSpan(System.String,Orionsoft.PrismSharp.Tokenizing.Token,Orionsoft.PrismSharp.Themes.ThemeStyle,Orionsoft.PrismSharp.Themes.ThemeStyle)">
+            <summary>
+            Method invoked to render a text span to the output
+            </summary>
+            <param name="text">Actual text to output</param>
+            <param name="token"></param>
+            <param name="style">resolved style for this token</param>
+            <param name="parentStyle">style of the parent objectt</param>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter">
+            <summary>
+            Highlighter creating output in html format (just HTML spans or a pre block). A PrismJS css theme must be included in the html document.
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.WrapByPre">
+            <summary>
+            If set, the resulting html spans are enclosed in &lt;pre&gt; tag
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.Encode(System.String)">
+            <summary>
+            Escapes the text to be HTMl compatible
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Highlighters.IHighlighter`1">
+            <summary>
+            Interface used by all highlighters
+            </summary>
+            <typeparam name="TResult">type of the result of highlighting, e.g. string</typeparam>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(System.String,System.String)">
+            <summary>
+            Tokenizes and highlights a block of code
+            </summary>
+            <param name="language">name of programming language</param>
+            <param name="code">source code to highlight</param>
+            <returns></returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)">
+            <summary>
+            Highlights a block of already tokenized code
+            </summary>
+            <param name="language">name of programming language</param>
+            <param name="tokenizedCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Tokenizes and highlights a part of the code
+            </summary>
+            <param name="start">offset in characters from the beginning of the source code</param>
+            <param name="length">length of the block to be higlighted in characters</param>
+            <param name="language">name of programming language</param>
+            <param name="code">source code to highlight</param>
+            <returns></returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)">
+            <summary>
+            Highlights a part of already tokenized code
+            </summary>
+            <param name="start">offset in characters from the beginning of the source code</param>
+            <param name="length">length of the block to be higlighted in characters</param>
+            <param name="language">name of programming language</param>
+            <param name="tokenizedCode"></param>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter">
+            <summary>
+            Highlighter creating output in RTF format. Can be used in GUI componets like RichBox
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.Font">
+            <summary>
+            Name of font to use, otherwise the default font is used
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.FontSize">
+            <summary>
+            Size of font to use, otherwise the default font size is used
+            </summary>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Themes.RgbaColor">
+            <summary>
+            RGB color with an alpha channel (opacity)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.RgbaColor.ToColorString">
+            <summary>
+            Returns the color in css-like string: rgba(r, g, b, a)
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.RgbaColor.ApplyAlpha(Orionsoft.PrismSharp.Themes.RgbaColor)">
+            <summary>
+            Adjusts the color so that it is mixed with the background color according to the alpha channel level.
+            </summary>
+            <param name="background"></param>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Themes.Theme">
+            <summary>
+            Object containing styling for tokens based on currently loaded theme
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.Theme.Load(Orionsoft.PrismSharp.Themes.ThemeNames)">
+            <summary>
+            Loads built-in theme by provided name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.Theme.LoadFromFile(System.String)">
+            <summary>
+            Loads custom theme from file. Only use for own themes, not for the built-in ones.
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.Theme.GetTokenStyle(Orionsoft.PrismSharp.Tokenizing.Token,System.String)">
+            <summary>
+            Gets styling for the token, according to the used language
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.Theme.GetDocumentStyle(System.String)">
+            <summary>
+            Gets styling for the entire highlighted source code, according to the used language
+            </summary>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Themes.ThemeNames">
+            <summary>
+            Names of built-in themes
+            </summary>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Themes.ThemeStyle">
+            <summary>
+            Styling of a token or an entire block of code
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Themes.ThemeStyle.Type">
+            <summary>
+            Token type, eg. keyword
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Themes.ThemeStyle.Language">
+            <summary>
+            Language, if the styling applies only to this language
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Themes.ThemeStyle.Color">
+            <summary>
+            Foreground color
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Themes.ThemeStyle.Background">
+            <summary>
+             Background color
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Themes.ThemeStyle.MergeWith(Orionsoft.PrismSharp.Themes.ThemeStyle)">
+            <summary>
+            Merges this styling with another that is used as a base style and undefined values are taken from this base style.
+            </summary>
+            <param name="baseStyle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Tokenizing.Grammar.Parse">
+            <summary>
+            Parses the language definition to a usable form
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Tokenizing.GrammarPattern.Translate(System.String,System.String)">
+            <summary>
+            Converter of js regex. Currently not used as it is ported to jsTools and regexes are translated during language exports for performance reasons
+            </summary>
+            <param name="pattern"></param>
+            <param name="flags"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings">
+            <summary>
+            Settings describing how to tokenize a range of code, to avoid things like incorrectly tokenizing parts of a long preceding comment or string as a code, etc
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints">
+            <summary>
+            Array of relatively safe points to start/end tokenization. Typically a new line
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName">
+            <summary>
+            A custom method name to find a safe point to start. For c-like languages it is "clike" and is automatically used
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange">
+            <summary>
+            Tokenization can start x characters before the actual range, to provide a safety pillow
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange">
+            <summary>
+            Tokenization can end x characters after the actual range, to provide a safety pillow
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster">
+            <summary>
+            A method delegate provided to find a safe point to start.
+            </summary>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Tokenizing.Token">
+            <summary>
+            Object representing a token consisting of a source code text span or an array of nested tokens and a token type. It is returned by the tokenizer.
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Token.Text">
+            <summary>
+            Text representation of the token in the source code
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Token.Type">
+            <summary>
+            Token type (if any), eg. keyword, punctuation, atc.
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Token.Tokens">
+            <summary>
+            Nested tokens, if the token has logical sub-sections
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Token.Pos">
+            <summary>
+            position of the token text relative to the beginning of a parent token
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos">
+            <summary>
+            position of the token text relative to the beginning of a the tokenized document
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Token.Aliases">
+            <summary>
+            Aliases of the token type that are less specific. They are used by the highlighter, if the highlighter does not now the token type
+            </summary>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Tokenizing.Tokenizer">
+            <summary>
+            Tokenizer engine converting the source code to a tree of tokens (code fractions with their logical meanings, e.g. foreach - keyword
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Tokenizer.LanguageList">
+            <summary>
+            Returns list of supported languages
+            </summary>
+        </member>
+        <member name="P:Orionsoft.PrismSharp.Tokenizing.Tokenizer.GrammarDir">
+            <summary>
+            Directory with language definitions, should it be changed from default path
+            </summary>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.Tokenize(System.String,System.String)">
+            <summary>
+            Tokenizes the source code according to the language rules
+            </summary>
+            <param name="code">source code to tokenize</param>
+            <param name="language">programming language name or an alias</param>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Tokenizes the specified range of the source code according to the language rules.
+            Tokenization settings are loaded automatically according to the language param.
+            </summary>
+            <param name="code">source code to tokenize</param>
+            <param name="language">programming language name or an alias</param>
+            <param name="start"> starting position of the range within the code</param>
+            <param name="length"> length of the range</param>
+        </member>
+        <member name="M:Orionsoft.PrismSharp.Tokenizing.Tokenizer.TokenizeRange(System.String,System.Int32,System.Int32,System.String,Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings)">
+            <summary>
+            Tokenizes the specified range of the source code according to the language rules and provided settings
+            </summary>
+            <param name="code">source code to tokenize</param>
+            <param name="language">language name or an alias</param>
+            <param name="start"> starting position of the range within the code</param>
+            <param name="length"> length of the range</param>
+            <param name="settings">custom range tokenization settings</param>
+        </member>
+        <member name="T:Orionsoft.PrismSharp.Tokenizing.TokenizerException">
+            <summary>
+            Exception that is thrown when a tokenizing error ocurs
+            </summary>
+        </member>
+    </members>
+</doc>

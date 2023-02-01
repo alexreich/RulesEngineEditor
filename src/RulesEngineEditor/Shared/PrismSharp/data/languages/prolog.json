@@ -1,0 +1,15 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\*[\\s\\S]*?\\*\\/|%[^\\r\\n]*/",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\1\\1|\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1(?!\\1)/",
+    "greedy": true
+  },
+  "builtin": "r:/\\b(?:fx|fy|xf[xy]?|yfx?)\\b/",
+  "function": "r:/\\b[a-z]\\w*(?:(?=\\()|\\/\\d+)/",
+  "number": "r:/\\b\\d+(?:\\.\\d*)?/",
+  "operator": "r:/[:\\\\=><\\-?*@\\/;+^|!$.]+|\\b(?:is|mod|not|xor)\\b/",
+  "punctuation": "r:/[(){}\\[\\],]/"
+}

@@ -1,0 +1,63 @@
+{
+  "comment": "r:/(?:\\/\\/|#)[^\\r\\n]*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+  "heredoc": {
+    "pattern": "r:/<<-?(\\w+\\b)[\\s\\S]*?^[ \\t]*\\1/m",
+    "greedy": true,
+    "alias": "s:string"
+  },
+  "keyword": [
+    {
+      "pattern": "r:/(?:data|resource)\\s+(?:\"(?:\\\\[\\s\\S]|[^\\\\\"])*\")(?=\\s+\"[\\w-]+\"\\s+\\{)/i",
+      "inside": {
+        "type": {
+          "pattern": "r:/(resource|data|\\s+)(?:\"(?:\\\\[\\s\\S]|[^\\\\\"])*\")/i",
+          "lookbehind": true,
+          "alias": "s:variable"
+        }
+      }
+    },
+    {
+      "pattern": "r:/(?:backend|module|output|provider|provisioner|variable)\\s+(?:[\\w-]+|\"(?:\\\\[\\s\\S]|[^\\\\\"])*\")\\s+(?=\\{)/i",
+      "inside": {
+        "type": {
+          "pattern": "r:/(backend|module|output|provider|provisioner|variable)\\s+(?:[\\w-]+|\"(?:\\\\[\\s\\S]|[^\\\\\"])*\")\\s+/i",
+          "lookbehind": true,
+          "alias": "s:variable"
+        }
+      }
+    },
+    "r:/[\\w-]+(?=\\s+\\{)/"
+  ],
+  "property": [
+    "r:/[-\\w\\.]+(?=\\s*=(?!=))/",
+    "r:/\"(?:\\\\[\\s\\S]|[^\\\\\"])+\"(?=\\s*[:=])/"
+  ],
+  "string": {
+    "pattern": "r:/\"(?:[^\\\\$\"]|\\\\[\\s\\S]|\\$(?:(?=\")|\\$+(?!\\$)|[^\"${])|\\$\\{(?:[^{}\"]|\"(?:[^\\\\\"]|\\\\[\\s\\S])*\")*\\})*\"/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/(^|[^$])\\$\\{(?:[^{}\"]|\"(?:[^\\\\\"]|\\\\[\\s\\S])*\")*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "type": {
+            "pattern": "r:/(\\b(?:count|data|local|module|path|self|terraform|var)\\b\\.)[\\w\\*]+/i",
+            "lookbehind": true,
+            "alias": "s:variable"
+          },
+          "keyword": "r:/\\b(?:count|data|local|module|path|self|terraform|var)\\b/i",
+          "function": "r:/\\w+(?=\\()/",
+          "string": {
+            "pattern": "r:/\"(?:\\\\[\\s\\S]|[^\\\\\"])*\"/",
+            "greedy": true
+          },
+          "number": "r:/\\b0x[\\da-f]+\\b|\\b\\d+(?:\\.\\d*)?(?:e[+-]?\\d+)?/i",
+          "punctuation": "r:/[!\\$#%&'()*+,.\\/;<=>@\\[\\\\\\]^`{|}~?:]/"
+        }
+      }
+    }
+  },
+  "number": "r:/\\b0x[\\da-f]+\\b|\\b\\d+(?:\\.\\d*)?(?:e[+-]?\\d+)?/i",
+  "boolean": "r:/\\b(?:false|true)\\b/i",
+  "punctuation": "r:/[=\\[\\]{}]/"
+}

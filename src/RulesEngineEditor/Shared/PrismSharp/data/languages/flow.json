@@ -1,0 +1,124 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "hashbang": {
+    "pattern": "r:/^#![^\\r\\n]*/",
+    "greedy": true,
+    "alias": "s:comment"
+  },
+  "template-string": {
+    "pattern": "r:/`(?:\\\\[\\s\\S]|\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}|(?!\\$\\{)[^\\\\`])*`/",
+    "greedy": true,
+    "inside": {
+      "template-punctuation": {
+        "pattern": "r:/^`|`(?:(?=\\r$)|$)/",
+        "alias": "s:string"
+      },
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)\\$\\{(?:[^{}]|\\{(?:[^{}]|\\{[^}]*\\})*\\})+\\}/",
+        "lookbehind": true,
+        "inside": {
+          "interpolation-punctuation": {
+            "pattern": "r:/^\\$\\{|\\}(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          },
+          "rest": "s:[Circular ~]"
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "string-property": {
+    "pattern": "r:/((?:^|[,{])[ \\t]*)([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\2)[^\\\\\\r\\n])*\\2(?=\\s*:)/m",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property"
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\b(?:class|extends|implements|instanceof|interface|new)\\s+)[\\w.\\\\]+/",
+      "lookbehind": true,
+      "inside": {
+        "punctuation": "r:/[.\\\\]/"
+      }
+    },
+    {
+      "pattern": "r:/(^|[^$\\w\\xA0-\\uFFFF])(?!\\s)[_$A-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\.(?:constructor|prototype))/",
+      "lookbehind": true
+    }
+  ],
+  "regex": {
+    "pattern": "r:/((?:^|[^$\\w\\xA0-\\uFFFF.\"'\\])\\s]|\\b(?:return|yield))\\s*)\\/(?:\\[(?:[^\\]\\\\\\r\\n]|\\\\[^\\r\\n])*\\]|\\\\[^\\r\\n]|[^/\\\\\\[\\r\\n])+\\/[dgimyus]{0,7}(?=(?:\\s|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/)*(?:(?:(?=\\r$)|$)|[\\r\\n,.;:})\\]]|\\/\\/))/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "regex-source": {
+        "pattern": "r:/^(\\/)[\\s\\S]+(?=\\/[a-z]*(?:(?=\\r$)|$))/",
+        "lookbehind": true,
+        "alias": "s:language-regex"
+      },
+      "regex-delimiter": "r:/^\\/|\\/(?:(?=\\r$)|$)/",
+      "regex-flags": "r:/^[a-z]+(?:(?=\\r$)|$)/"
+    }
+  },
+  "function-variable": {
+    "pattern": "r:/(?!\\s)[_$a-z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*=\\s*(?:function\\b|(?:\\([^()]*\\)(?:\\s*:\\s*\\w+)?|(?!\\s)[_$a-z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*)\\s*=>))/i",
+    "alias": "s:function"
+  },
+  "constant": "r:/\\b[A-Z](?:[A-Z_]|\\dx?)*\\b/",
+  "type": [
+    {
+      "pattern": "r:/\\b(?:[Bb]oolean|Function|[Nn]umber|[Ss]tring|any|mixed|null|void)\\b/",
+      "alias": "s:tag"
+    }
+  ],
+  "keyword": [
+    {
+      "pattern": "r:/(^|[^$]\\b)(?:Class|declare|opaque|type)\\b(?!\\$)/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^$]\\B)\\$(?:Diff|Enum|Exact|Keys|ObjMap|PropertyType|Record|Shape|Subtype|Supertype|await)\\b(?!\\$)/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/((?:^|\\})\\s*)catch\\b/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^.]|\\.\\.\\.\\s*)\\b(?:as|assert(?=\\s*\\{)|async(?=\\s*(?:function\\b|\\(|[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\\s*(?:\\{|(?:(?=\\r$)|$)))|for|from(?=\\s*(?:['\"]|(?:(?=\\r$)|$)))|function|(?:get|set)(?=\\s*(?:[#\\[$\\w\\xA0-\\uFFFF]|(?:(?=\\r$)|$)))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\\b/",
+      "lookbehind": true
+    }
+  ],
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/#?(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*(?:\\.\\s*(?:apply|bind|call)\\s*)?\\()/",
+  "number": {
+    "pattern": "r:/(^|[^\\w$])(?:NaN|Infinity|0[bB][01]+(?:_[01]+)*n?|0[oO][0-7]+(?:_[0-7]+)*n?|0[xX][\\dA-Fa-f]+(?:_[\\dA-Fa-f]+)*n?|\\d+(?:_\\d+)*n|(?:\\d+(?:_\\d+)*(?:\\.(?:\\d+(?:_\\d+)*)?)?|\\.\\d+(?:_\\d+)*)(?:[Ee][+-]?\\d+(?:_\\d+)*)?)(?![\\w$])/",
+    "lookbehind": true
+  },
+  "literal-property": {
+    "pattern": "r:/((?:^|[,{])[ \\t]*)(?!\\s)[_$a-zA-Z\\xA0-\\uFFFF](?:(?!\\s)[$\\w\\xA0-\\uFFFF])*(?=\\s*:)/m",
+    "lookbehind": true,
+    "alias": "s:property"
+  },
+  "flow-punctuation": {
+    "pattern": "r:/\\{\\||\\|\\}/",
+    "alias": "s:punctuation"
+  },
+  "operator": "r:/--|\\+\\+|\\*\\*=?|=>|&&=?|\\|\\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\\.{3}|\\?\\?=?|\\?\\.?|[~:]/",
+  "punctuation": "r:/[{}[\\];(),.:]/"
+}

@@ -1,0 +1,20 @@
+{
+  "comment": "r:/#[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/(['\"])(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "percent-operator": {
+    "pattern": "r:/%[^%\\s]*%/",
+    "alias": "s:operator"
+  },
+  "boolean": "r:/\\b(?:FALSE|TRUE)\\b/",
+  "ellipsis": "r:/\\.\\.(?:\\.|\\d+)/",
+  "number": [
+    "r:/\\b(?:Inf|NaN)\\b/",
+    "r:/(?:\\b0x[\\dA-Fa-f]+(?:\\.\\d*)?|\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:[EePp][+-]?\\d+)?[iL]?/"
+  ],
+  "keyword": "r:/\\b(?:NA|NA_character_|NA_complex_|NA_integer_|NA_real_|NULL|break|else|for|function|if|in|next|repeat|while)\\b/",
+  "operator": "r:/->?>?|<(?:=|<?-)?|[>=!]=?|::?|&&?|\\|\\|?|[+*\\/^$@~]/",
+  "punctuation": "r:/[(){}\\[\\],;]/"
+}

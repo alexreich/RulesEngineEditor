@@ -1,0 +1,21 @@
+{
+  "parameter": {
+    "pattern": "r:/(@(?:global|param|property(?:-read|-write)?|var)\\s+(?:(?:\\b[a-zA-Z]\\w*|[|\\\\[\\]])+\\s+)?)\\$\\w+/",
+    "lookbehind": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(@(?:global|package|param|property(?:-read|-write)?|return|subpackage|throws|var)\\s+)(?:\\b[a-zA-Z]\\w*|[|\\\\[\\]])+/",
+      "lookbehind": true,
+      "inside": {
+        "keyword": "r:/\\b(?:array|bool|boolean|callback|double|false|float|int|integer|mixed|null|object|resource|self|string|true|void)\\b/",
+        "punctuation": "r:/[|\\\\[\\]()]/"
+      }
+    }
+  ],
+  "keyword": {
+    "pattern": "r:/(^[\\t ]*(?:\\/{3}|\\*|\\/\\*\\*)\\s*|\\{)@[a-z][a-zA-Z-]+\\b/m",
+    "lookbehind": true
+  },
+  "punctuation": "r:/[{}]/"
+}

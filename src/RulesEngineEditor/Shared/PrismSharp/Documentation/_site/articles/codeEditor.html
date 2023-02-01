@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Implementing code editor </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Implementing code editor ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="implementing-code-editor">Implementing code editor</h1>
+
+<p>The easiest (and limited) way to implement a code editor is to use a RichBox component in WinForms or WPF and replace the content by a highlighted RTF every time the text in the control changes. Something like this:</p>
+<pre><code class="lang-csharp">public partial class Form1 : Form
+    {
+        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto, SetLastError = true)]
+        internal static extern int SendMessage(IntPtr hWnd, uint uMsg, int wParam, int lParam);
+
+        [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto)]
+        private static extern int GetScrollPos(int hWnd, int nBar);
+
+        [DllImport(&quot;user32.dll&quot;)]
+        public static extern int SetScrollPos(IntPtr hWnd, System.Windows.Forms.Orientation nBar, int nPos, bool bRedraw);
+
+        private const uint WM_VSCROLL = 0x0115;
+        private const uint WM_HSCROLL = 0x0114;
+        private const int SB_THUMBPOSITION = 4;
+        private const int WM_USER = 0x0400;
+        private const int EM_SETEVENTMASK = (WM_USER + 69);
+        private const int WM_SETREDRAW = 0x0b;
+        private int OldEventMask;
+
+        private readonly RtfHighlighter highlighter;
+
+        public void BeginUpdate()
+        {
+            SendMessage(this.Handle, WM_SETREDRAW, 0, 0);
+            OldEventMask = SendMessage(this.Handle, EM_SETEVENTMASK, 0, 0);
+        }
+
+        public void EndUpdate()
+        {
+            SendMessage(this.Handle, WM_SETREDRAW, 1, 0);
+            SendMessage(this.Handle, EM_SETEVENTMASK, 0, OldEventMask);
+            editor.Invalidate();
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            highlighter = new RtfHighlighter(new Orionsoft.PrismSharp.Tokenizing.Tokenizer(), Theme.Load(ThemeNames.Vs))
+            {
+                Font = &quot;Consolas&quot;
+            };
+        }
+
+        private void editor_TextChanged(object sender, EventArgs e)
+        {
+            var vertPos = GetScrollPos((int)editor.Handle, (int)Orientation.Vertical);
+            var horizPos = GetScrollPos((int)editor.Handle, (int)Orientation.Horizontal);
+            BeginUpdate();
+
+            int i = editor.SelectionStart;
+            var hl = highlighter.Highlight(editor.Text + &quot;\n&quot;, &quot;csharp&quot;);
+
+            var stream = new MemoryStream(ASCIIEncoding.Default.GetBytes(hl));
+            this.editor.LoadFile(stream, RichTextBoxStreamType.RichText);
+
+            SendMessage(editor.Handle, WM_VSCROLL, vertPos &lt;&lt; 16 | SB_THUMBPOSITION, 0);
+            SendMessage(editor.Handle, WM_HSCROLL, horizPos &lt;&lt; 16 | SB_THUMBPOSITION, 0);
+            SetScrollPos(editor.Handle, Orientation.Vertical, vertPos, true);
+            SetScrollPos(editor.Handle, Orientation.Horizontal, horizPos, true);
+            editor.SelectionStart = i;
+
+            EndUpdate();
+        }
+    }
+}
+</code></pre>
+<p>However, this works fine only with shorter texts, because RichBox (especially WPF RichBox) gets pretty slow with long texts.</p>
+<p>If you need a code editor working well with long source codes, you need to create a custom control that renders (and tokenizes) only the visible part of the code. You can use <code>TokenizeRange</code> or <code>HighlightRange</code> methods for this purpose. Still, implementing of the custom control must be done. A good starter could be the <a href="https://www.codeproject.com/Articles/35413/CodeBox-2-An-Extended-and-Improved-Version-of-the">CodeBox 2</a> that handles this issue.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

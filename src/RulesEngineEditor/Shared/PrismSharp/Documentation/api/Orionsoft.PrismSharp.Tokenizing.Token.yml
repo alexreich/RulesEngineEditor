@@ -1,0 +1,773 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Tokenizing.Token
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Token
+  id: Token
+  parent: Orionsoft.PrismSharp.Tokenizing
+  children:
+  - Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  - Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  - Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  - Orionsoft.PrismSharp.Tokenizing.Token.Text
+  - Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  - Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  - Orionsoft.PrismSharp.Tokenizing.Token.Type
+  langs:
+  - csharp
+  - vb
+  name: Token
+  nameWithType: Token
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  type: Class
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: Token
+    path: ../Tokenizing/Token.cs
+    startLine: 16
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nObject representing a token consisting of a source code text span or an array of nested tokens and a token type. It is returned by the tokenizer.\n"
+  example: []
+  syntax:
+    content: public sealed class Token
+    content.vb: Public NotInheritable Class Token
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Text
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Text
+  id: Text
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: Text
+  nameWithType: Token.Text
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Text
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: Text
+    path: ../Tokenizing/Token.cs
+    startLine: 23
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nText representation of the token in the source code\n"
+  example: []
+  syntax:
+    content: public string Text { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Text As String
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.Text*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Type
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Type
+  id: Type
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: Token.Type
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Type
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: Type
+    path: ../Tokenizing/Token.cs
+    startLine: 28
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nToken type (if any), eg. keyword, punctuation, atc.\n"
+  example: []
+  syntax:
+    content: public string Type { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Type As String
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.Type*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  id: Tokens
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: Tokens
+  nameWithType: Token.Tokens
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: Tokens
+    path: ../Tokenizing/Token.cs
+    startLine: 33
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nNested tokens, if the token has logical sub-sections\n"
+  example: []
+  syntax:
+    content: public List<Token> Tokens { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Orionsoft.PrismSharp.Tokenizing.Token}
+    content.vb: Public ReadOnly Property Tokens As List(Of Token)
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.Tokens*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  id: Pos
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: Pos
+  nameWithType: Token.Pos
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: Pos
+    path: ../Tokenizing/Token.cs
+    startLine: 38
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nposition of the token text relative to the beginning of a parent token\n"
+  example: []
+  syntax:
+    content: public int Pos { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Pos As Integer
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.Pos*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  id: AbsolutePos
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: AbsolutePos
+  nameWithType: Token.AbsolutePos
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: AbsolutePos
+    path: ../Tokenizing/Token.cs
+    startLine: 43
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nposition of the token text relative to the beginning of a the tokenized document\n"
+  example: []
+  syntax:
+    content: public int AbsolutePos { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property AbsolutePos As Integer
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  id: Aliases
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: Aliases
+  nameWithType: Token.Aliases
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: Aliases
+    path: ../Tokenizing/Token.cs
+    startLine: 48
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nAliases of the token type that are less specific. They are used by the highlighter, if the highlighter does not now the token type\n"
+  example: []
+  syntax:
+    content: public List<string> Aliases { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public ReadOnly Property Aliases As List(Of String)
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.Aliases*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  commentId: M:Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  id: ToString
+  parent: Orionsoft.PrismSharp.Tokenizing.Token
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Token.ToString()
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.ToString()
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/Token.cs
+    id: ToString
+    path: ../Tokenizing/Token.cs
+    startLine: 64
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: Orionsoft.PrismSharp.Tokenizing.Token.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Text*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Text
+  name: Text
+  nameWithType: Token.Text
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Text
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Type*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Type
+  name: Type
+  nameWithType: Token.Type
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Type
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Tokens*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+  name: Tokens
+  nameWithType: Token.Tokens
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Tokens
+- uid: System.Collections.Generic.List{Orionsoft.PrismSharp.Tokenizing.Token}
+  commentId: T:System.Collections.Generic.List{Orionsoft.PrismSharp.Tokenizing.Token}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Token>
+  nameWithType: List<Token>
+  fullName: System.Collections.Generic.List<Orionsoft.PrismSharp.Tokenizing.Token>
+  nameWithType.vb: List(Of Token)
+  fullName.vb: System.Collections.Generic.List(Of Orionsoft.PrismSharp.Tokenizing.Token)
+  name.vb: List(Of Token)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Orionsoft.PrismSharp.Tokenizing.Token
+    name: Token
+    nameWithType: Token
+    fullName: Orionsoft.PrismSharp.Tokenizing.Token
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Pos*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Pos
+  name: Pos
+  nameWithType: Token.Pos
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Pos
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+  name: AbsolutePos
+  nameWithType: Token.AbsolutePos
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.AbsolutePos
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.Aliases*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+  name: Aliases
+  nameWithType: Token.Aliases
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.Aliases
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Orionsoft.PrismSharp.Tokenizing.Token.ToString*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.Token.ToString
+  name: ToString
+  nameWithType: Token.ToString
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token.ToString

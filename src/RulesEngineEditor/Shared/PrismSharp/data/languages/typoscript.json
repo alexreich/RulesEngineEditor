@@ -1,0 +1,65 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/(^|[^\\\\])\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:= \\t]|(?:^|[^= \\t])[ \\t]+)\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\"'])#[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "function": [
+    {
+      "pattern": "r:/<INCLUDE_TYPOSCRIPT:\\s*source\\s*=\\s*(?:\"[^\"\\r\\n]*\"|'[^'\\r\\n]*')\\s*>/",
+      "inside": {
+        "string": {
+          "pattern": "r:/\"[^\"\\r\\n]*\"|'[^'\\r\\n]*'/",
+          "inside": {
+            "keyword": "r:/\\b(?:ACT|ACTIFSUB|CARRAY|CASE|CLEARGIF|COA|COA_INT|CONSTANTS|CONTENT|CUR|EDITPANEL|EFFECT|EXT|FILE|FLUIDTEMPLATE|FORM|FRAME|FRAMESET|GIFBUILDER|GMENU|GMENU_FOLDOUT|GMENU_LAYERS|GP|HMENU|HRULER|HTML|IENV|IFSUB|IMAGE|IMGMENU|IMGMENUITEM|IMGTEXT|IMG_RESOURCE|INCLUDE_TYPOSCRIPT|JSMENU|JSMENUITEM|LLL|LOAD_REGISTER|NO|PAGE|RECORDS|RESTORE_REGISTER|TEMPLATE|TEXT|TMENU|TMENUITEM|TMENU_LAYERS|USER|USER_INT|_GIFBUILDER|global|globalString|globalVar)\\b/"
+          }
+        },
+        "keyword": {
+          "pattern": "r:/INCLUDE_TYPOSCRIPT/"
+        }
+      }
+    },
+    {
+      "pattern": "r:/@import\\s*(?:\"[^\"\\r\\n]*\"|'[^'\\r\\n]*')/",
+      "inside": {
+        "string": "r:/\"[^\"\\r\\n]*\"|'[^'\\r\\n]*'/"
+      }
+    }
+  ],
+  "string": {
+    "pattern": "r:/^([^=]*=[< ]?)(?:(?!\\]\\n)[^\\r\\n])*/",
+    "lookbehind": true,
+    "inside": {
+      "function": "r:/\\{\\$[^\\r\\n]*\\}/",
+      "keyword": "r:/\\b(?:ACT|ACTIFSUB|CARRAY|CASE|CLEARGIF|COA|COA_INT|CONSTANTS|CONTENT|CUR|EDITPANEL|EFFECT|EXT|FILE|FLUIDTEMPLATE|FORM|FRAME|FRAMESET|GIFBUILDER|GMENU|GMENU_FOLDOUT|GMENU_LAYERS|GP|HMENU|HRULER|HTML|IENV|IFSUB|IMAGE|IMGMENU|IMGMENUITEM|IMGTEXT|IMG_RESOURCE|INCLUDE_TYPOSCRIPT|JSMENU|JSMENUITEM|LLL|LOAD_REGISTER|NO|PAGE|RECORDS|RESTORE_REGISTER|TEMPLATE|TEXT|TMENU|TMENUITEM|TMENU_LAYERS|USER|USER_INT|_GIFBUILDER|global|globalString|globalVar)\\b/",
+      "number": "r:/^\\d+(?:(?=\\r$)|$)/",
+      "punctuation": "r:/[,|:]/"
+    }
+  },
+  "keyword": "r:/\\b(?:ACT|ACTIFSUB|CARRAY|CASE|CLEARGIF|COA|COA_INT|CONSTANTS|CONTENT|CUR|EDITPANEL|EFFECT|EXT|FILE|FLUIDTEMPLATE|FORM|FRAME|FRAMESET|GIFBUILDER|GMENU|GMENU_FOLDOUT|GMENU_LAYERS|GP|HMENU|HRULER|HTML|IENV|IFSUB|IMAGE|IMGMENU|IMGMENUITEM|IMGTEXT|IMG_RESOURCE|INCLUDE_TYPOSCRIPT|JSMENU|JSMENUITEM|LLL|LOAD_REGISTER|NO|PAGE|RECORDS|RESTORE_REGISTER|TEMPLATE|TEXT|TMENU|TMENUITEM|TMENU_LAYERS|USER|USER_INT|_GIFBUILDER|global|globalString|globalVar)\\b/",
+  "number": {
+    "pattern": "r:/\\b\\d+\\s*[.{=]/",
+    "inside": {
+      "operator": "r:/[.{=]/"
+    }
+  },
+  "tag": {
+    "pattern": "r:/\\.?[-\\w\\\\]+\\.?/",
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "punctuation": "r:/[{}[\\];(),.:|]/",
+  "operator": "r:/[<>]=?|[!=]=?=?|--?|\\+\\+?|&&?|\\|\\|?|[?*/~^%]/"
+}

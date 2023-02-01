@@ -1,0 +1,32 @@
+{
+  "comment": [
+    "r:/;[^\\r\\n]*/",
+    {
+      "pattern": "r:/(^[\\t ]*)#(?:comments-start|cs)[\\s\\S]*?^[ \\t]*#(?:ce|comments-end)/m",
+      "lookbehind": true
+    }
+  ],
+  "url": {
+    "pattern": "r:/(^[\\t ]*#include\\s+)(?:<[^\\r\\n>]+>|\"[^\\r\\n\"]+\")/m",
+    "lookbehind": true
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\1\\1|(?!\\1)[^\\r\\n])*\\1/",
+    "greedy": true,
+    "inside": {
+      "variable": "r:/([%$@])\\w+\\1/"
+    }
+  },
+  "directive": {
+    "pattern": "r:/(^[\\t ]*)#\\w+/m",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "function": "r:/\\b\\w+(?=\\()/",
+  "variable": "r:/[$@]\\w+/",
+  "keyword": "r:/\\b(?:Case|Const|Continue(?:Case|Loop)|Default|Dim|Do|Else(?:If)?|End(?:Func|If|Select|Switch|With)|Enum|Exit(?:Loop)?|For|Func|Global|If|In|Local|Next|Null|ReDim|Select|Static|Step|Switch|Then|To|Until|Volatile|WEnd|While|With)\\b/i",
+  "number": "r:/\\b(?:0x[\\da-f]+|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+  "boolean": "r:/\\b(?:False|True)\\b/i",
+  "operator": "r:/<[=>]?|[-+*\\/=&>]=?|[?^]|\\b(?:And|Not|Or)\\b/i",
+  "punctuation": "r:/[\\[\\]().,:]/"
+}

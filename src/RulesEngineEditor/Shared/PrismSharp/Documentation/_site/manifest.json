@@ -1,0 +1,368 @@
+{
+  "homepages": [],
+  "source_base_path": "d:/Projects/PrismSharpStandard/PrismSharp/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.Abstract.AbstractHighlighter-1.html",
+          "hash": "+PdU/4oEsNmAsVFIiTsAR2LbEdIRuYSqy5xyLIld78Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.Abstract.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.Abstract.html",
+          "hash": "MmhqjcCP1yGn0AkyeI9hhbPVh291zP+Zqvj+8QnwVB8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.Html.HtmlHighlighter.html",
+          "hash": "9rfu2G8HEdlEUigxqzxKBdoD+tXgq1QDU2tCEtuHwhg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.Html.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.Html.html",
+          "hash": "vf32xLyaPuYNfRkGVXhGwlLfrkrNlQXYbmiayxDJtFo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.IHighlighter-1.html",
+          "hash": "rkFkJoSjYdWhAJdq8+I6jwdn5g8Vlo9GFw7wiLo5Aww="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.Rtf.RtfHighlighter.html",
+          "hash": "k0yU8rakQJQNSBUGgMACp+FcPIxgQNwhzPdbd+z3eG0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.Rtf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.Rtf.html",
+          "hash": "uhnF/Y8MJj3NTphCbkTFGsq/HvxASWx8Tz7dImV+J1k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Highlighters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Highlighters.html",
+          "hash": "UGca0gfSlIhGND2VWnjDTNcoqk+T4UFfXcs60LcDRdA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Themes.RgbaColor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Themes.RgbaColor.html",
+          "hash": "byYC0AxKhFvlXXwRIneHEZ4LDHTthCsz5nitcx6VOG4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Themes.Theme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Themes.Theme.html",
+          "hash": "PrZnRDrsnS0J6b0vZqoxWXj/4EEEoozsk7G9pizTEn4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Themes.ThemeNames.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Themes.ThemeNames.html",
+          "hash": "I72q4F91uoIOAQ3XOnkIZjkYlQZg8fgnM6SFKClV3O4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Themes.ThemeStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Themes.ThemeStyle.html",
+          "hash": "YIlHO9/xxIJa7Fk8I71jm2Hdyve0QuWujhz/e4WRQBA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Themes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Themes.html",
+          "hash": "LQwA7epSFTgm+MR7r60dltfCVB4spPc1ripupKv3Ju4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.html",
+          "hash": "WOKTgN+wVCuTzZeEVjUJdlrmDOkPBNiTDUJDPfaBovA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Tokenizing.Token.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Tokenizing.Token.html",
+          "hash": "TyM4jV5wd2u0JZebrGOVm+aE4VNBM7bFhFNytlzenEY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Tokenizing.Tokenizer.html",
+          "hash": "lQI9JJzQWsL1U5asKGbDiOaabukNOLT++V00FEtGU2U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Tokenizing.TokenizerException.html",
+          "hash": "mtkE4PGSd7m5gSS1lSBkBB9VGXyr8IBhjPIYzL9iyTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Orionsoft.PrismSharp.Tokenizing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Orionsoft.PrismSharp.Tokenizing.html",
+          "hash": "iDgzjY2oMMuzdRccrTTMK2dcFds7gHhUiU+dhUGyA3k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "E5DVV0BJIBEhcw3q1ivYtMZO2K+FGla37SygqfVrBEU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "3YaZuMMw6d2380WWR3at6M8yUcq1UFdulhmuaO9OrCA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/codeEditor.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/codeEditor.html",
+          "hash": "nwB8IjIcvQsS7JgN/t9ituNC6mtlmXY9Fu4DnINXsPo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/customHighlighter.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/customHighlighter.html",
+          "hash": "wXnBlBrI5U1Km9ENq4lE+pR+7flEk5c/L5Kmf0noFg4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "O61wNc74j1Cgf2WfLaRJ6rzhQ/Q1j47L2rrEIxhdbKI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "IFt5KAGtGzwdpRhvMK2F/GdzVwJdv9fXFXkIXVCeD5g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "Uh0zQeJfaqBlUZdectL2+vzbdIBkrY0+UwLCZ2jCsV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "qlX9wmiuRC39NYjXlIfBsnk8ta7BV+1C4rTDYE+OSBc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 5,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 18,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

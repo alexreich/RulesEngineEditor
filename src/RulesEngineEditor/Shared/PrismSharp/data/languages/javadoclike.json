@@ -1,0 +1,11 @@
+{
+  "parameter": {
+    "pattern": "r:/(^[\\t ]*(?:\\/{3}|\\*|\\/\\*\\*)\\s*@(?:arg|arguments|param)\\s+)\\w+/m",
+    "lookbehind": true
+  },
+  "keyword": {
+    "pattern": "r:/(^[\\t ]*(?:\\/{3}|\\*|\\/\\*\\*)\\s*|\\{)@[a-z][a-zA-Z-]+\\b/m",
+    "lookbehind": true
+  },
+  "punctuation": "r:/[{}]/"
+}

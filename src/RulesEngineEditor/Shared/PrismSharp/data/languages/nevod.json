@@ -1,0 +1,125 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*|(?:\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$)))/",
+  "string": {
+    "pattern": "r:/(?:\"(?:\"\"|[^\"])*\"(?!\")|'(?:''|[^'])*'(?!'))!?\\*?/",
+    "greedy": true,
+    "inside": {
+      "string-attrs": "r:/!(?:(?=\\r$)|$)|!\\*(?:(?=\\r$)|$)|\\*(?:(?=\\r$)|$)/"
+    }
+  },
+  "namespace": {
+    "pattern": "r:/(@namespace\\s+)[a-zA-Z0-9\\-.]+(?=\\s*\\{)/",
+    "lookbehind": true
+  },
+  "pattern": {
+    "pattern": "r:/(@pattern\\s+)?#?[a-zA-Z0-9\\-.]+(?:\\s*\\(\\s*(?:~\\s*)?[a-zA-Z0-9\\-.]+\\s*(?:,\\s*(?:~\\s*)?[a-zA-Z0-9\\-.]*)*\\))?(?=\\s*=)/",
+    "lookbehind": true,
+    "inside": {
+      "pattern-name": {
+        "pattern": "r:/^#?[a-zA-Z0-9\\-.]+/",
+        "alias": "s:class-name"
+      },
+      "fields": {
+        "pattern": "r:/\\([^\\r\\n]*\\)/",
+        "inside": {
+          "field-name": {
+            "pattern": "r:/[a-zA-Z0-9\\-.]+/",
+            "alias": "s:variable"
+          },
+          "punctuation": "r:/[,()]/",
+          "operator": {
+            "pattern": "r:/~/",
+            "alias": "s:field-hidden-mark"
+          }
+        }
+      }
+    }
+  },
+  "search": {
+    "pattern": "r:/(@search\\s+|#)[a-zA-Z0-9\\-.]+(?:\\.\\*)?(?=\\s*;)/",
+    "alias": "s:function",
+    "lookbehind": true
+  },
+  "keyword": "r:/@(?:having|inside|namespace|outside|pattern|require|search|where)\\b/",
+  "standard-pattern": {
+    "pattern": "r:/\\b(?:Alpha|AlphaNum|Any|Blank|End|LineBreak|Num|NumAlpha|Punct|Space|Start|Symbol|Word|WordBreak)\\b(?:\\([a-zA-Z0-9\\-.,\\s+]*\\))?/",
+    "inside": {
+      "standard-pattern-name": {
+        "pattern": "r:/^[a-zA-Z0-9\\-.]+/",
+        "alias": "s:builtin"
+      },
+      "quantifier": {
+        "pattern": "r:/\\b\\d+(?:\\s*\\+|\\s*-\\s*\\d+)?(?!\\w)/",
+        "alias": "s:number"
+      },
+      "standard-pattern-attr": {
+        "pattern": "r:/[a-zA-Z0-9\\-.]+/",
+        "alias": "s:builtin"
+      },
+      "punctuation": "r:/[,()]/"
+    }
+  },
+  "quantifier": {
+    "pattern": "r:/\\b\\d+(?:\\s*\\+|\\s*-\\s*\\d+)?(?!\\w)/",
+    "alias": "s:number"
+  },
+  "operator": [
+    {
+      "pattern": "r:/=/",
+      "alias": "s:pattern-def"
+    },
+    {
+      "pattern": "r:/&/",
+      "alias": "s:conjunction"
+    },
+    {
+      "pattern": "r:/~/",
+      "alias": "s:exception"
+    },
+    {
+      "pattern": "r:/\\?/",
+      "alias": "s:optionality"
+    },
+    {
+      "pattern": "r:/[[\\]]/",
+      "alias": "s:repetition"
+    },
+    {
+      "pattern": "r:/[{}]/",
+      "alias": "s:variation"
+    },
+    {
+      "pattern": "r:/[+_]/",
+      "alias": "s:sequence"
+    },
+    {
+      "pattern": "r:/\\.{2,3}/",
+      "alias": "s:span"
+    }
+  ],
+  "field-capture": [
+    {
+      "pattern": "r:/([a-zA-Z0-9\\-.]+\\s*\\()\\s*[a-zA-Z0-9\\-.]+\\s*:\\s*[a-zA-Z0-9\\-.]+(?:\\s*,\\s*[a-zA-Z0-9\\-.]+\\s*:\\s*[a-zA-Z0-9\\-.]+)*(?=\\s*\\))/",
+      "lookbehind": true,
+      "inside": {
+        "field-name": {
+          "pattern": "r:/[a-zA-Z0-9\\-.]+/",
+          "alias": "s:variable"
+        },
+        "colon": "r:/:/"
+      }
+    },
+    {
+      "pattern": "r:/[a-zA-Z0-9\\-.]+\\s*:/",
+      "inside": {
+        "field-name": {
+          "pattern": "r:/[a-zA-Z0-9\\-.]+/",
+          "alias": "s:variable"
+        },
+        "colon": "r:/:/"
+      }
+    }
+  ],
+  "punctuation": "r:/[:;,()]/",
+  "name": "r:/[a-zA-Z0-9\\-.]+/"
+}

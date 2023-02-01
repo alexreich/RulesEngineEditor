@@ -1,0 +1,35 @@
+{
+  "comment": {
+    "pattern": "r:/(^[ \\f\\t\\v]*)[#;][^\\n\\r]*/m",
+    "lookbehind": true
+  },
+  "header": {
+    "pattern": "r:/(^[ \\f\\t\\v]*)\\[[^\\n\\r\\]]*\\]?/m",
+    "lookbehind": true,
+    "inside": {
+      "section-name": {
+        "pattern": "r:/(^\\[[ \\f\\t\\v]*)[^ \\f\\t\\v\\]]+(?:[ \\f\\t\\v]+[^ \\f\\t\\v\\]]+)*/",
+        "lookbehind": true,
+        "alias": "s:selector"
+      },
+      "punctuation": "r:/\\[|\\]/"
+    }
+  },
+  "key": {
+    "pattern": "r:/(^[ \\f\\t\\v]*)[^ \\f\\n\\r\\t\\v=]+(?:[ \\f\\t\\v]+[^ \\f\\n\\r\\t\\v=]+)*(?=[ \\f\\t\\v]*=)/m",
+    "lookbehind": true,
+    "alias": "s:attr-name"
+  },
+  "value": {
+    "pattern": "r:/(=[ \\f\\t\\v]*)[^ \\f\\n\\r\\t\\v]+(?:[ \\f\\t\\v]+[^ \\f\\n\\r\\t\\v]+)*/",
+    "lookbehind": true,
+    "alias": "s:attr-value",
+    "inside": {
+      "inner-value": {
+        "pattern": "r:/^(\"|')[^\\r\\n]+(?=\\1(?:(?=\\r$)|$))/",
+        "lookbehind": true
+      }
+    }
+  },
+  "punctuation": "r:/=/"
+}

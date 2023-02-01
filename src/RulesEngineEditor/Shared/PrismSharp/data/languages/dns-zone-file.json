@@ -1,0 +1,29 @@
+{
+  "comment": "r:/;[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/\"(?:\\\\[^\\r\\n]|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "variable": [
+    {
+      "pattern": "r:/(^\\$ORIGIN[ \\t]+)\\S+/m",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|\\s)@(?=\\s|(?:(?=\\r$)|$))/",
+      "lookbehind": true
+    }
+  ],
+  "keyword": "r:/^\\$(?:INCLUDE|ORIGIN|TTL)(?=\\s|(?:(?=\\r$)|$))/m",
+  "class": {
+    "pattern": "r:/(^|\\s)(?:CH|CS|HS|IN)(?=\\s|(?:(?=\\r$)|$))/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "type": {
+    "pattern": "r:/(^|\\s)(?:A|A6|AAAA|AFSDB|APL|ATMA|CAA|CDNSKEY|CDS|CERT|CNAME|DHCID|DLV|DNAME|DNSKEY|DS|EID|GID|GPOS|HINFO|HIP|IPSECKEY|ISDN|KEY|KX|LOC|MAILA|MAILB|MB|MD|MF|MG|MINFO|MR|MX|NAPTR|NB|NBSTAT|NIMLOC|NINFO|NS|NSAP|NSAP-PTR|NSEC|NSEC3|NSEC3PARAM|NULL|NXT|OPENPGPKEY|PTR|PX|RKEY|RP|RRSIG|RT|SIG|SINK|SMIMEA|SOA|SPF|SRV|SSHFP|TA|TKEY|TLSA|TSIG|TXT|UID|UINFO|UNSPEC|URI|WKS|X25)(?=\\s|(?:(?=\\r$)|$))/",
+    "lookbehind": true,
+    "alias": "s:keyword"
+  },
+  "punctuation": "r:/[()]/"
+}

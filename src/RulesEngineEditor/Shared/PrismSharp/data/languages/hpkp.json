@@ -1,0 +1,8 @@
+{
+  "directive": {
+    "pattern": "r:/\\b(?:includeSubDomains|max-age|pin-sha256|preload|report-to|report-uri|strict)(?=[\\s;=]|(?:(?=\\r$)|$))/i",
+    "alias": "s:property"
+  },
+  "operator": "r:/=/",
+  "punctuation": "r:/;/"
+}

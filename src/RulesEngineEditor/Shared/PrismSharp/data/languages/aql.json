@@ -1,0 +1,48 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*|\\/\\*[\\s\\S]*?\\*\\//",
+  "property": {
+    "pattern": "r:/([{,]\\s*)(?:(?!\\d)\\w+|([\"'´`])(?:(?!\\2)[^\\\\\\r\\n]|\\\\[^\\r\\n])*\\2)(?=\\s*:)/",
+    "lookbehind": true,
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:(?!\\1)[^\\\\\\r\\n]|\\\\[^\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "identifier": {
+    "pattern": "r:/([´`])(?:(?!\\1)[^\\\\\\r\\n]|\\\\[^\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "variable": "r:/@@?\\w+/",
+  "keyword": [
+    {
+      "pattern": "r:/(\\bWITH\\s+)COUNT(?=\\s+INTO\\b)/i",
+      "lookbehind": true
+    },
+    "r:/\\b(?:AGGREGATE|ALL|AND|ANY|ASC|COLLECT|DESC|DISTINCT|FILTER|FOR|GRAPH|IN|INBOUND|INSERT|INTO|K_PATHS|K_SHORTEST_PATHS|LET|LIKE|LIMIT|NONE|NOT|NULL|OR|OUTBOUND|REMOVE|REPLACE|RETURN|SHORTEST_PATH|SORT|UPDATE|UPSERT|WINDOW|WITH)\\b/i",
+    {
+      "pattern": "r:/(^|[^\\w.[])(?:KEEP|PRUNE|SEARCH|TO)\\b/i",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^\\w.[])(?:CURRENT|NEW|OLD)\\b/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/\\bOPTIONS(?=\\s*\\{)/i"
+    }
+  ],
+  "function": "r:/\\b(?!\\d)\\w+(?=\\s*\\()/",
+  "boolean": "r:/\\b(?:false|true)\\b/i",
+  "range": {
+    "pattern": "r:/\\.\\./",
+    "alias": "s:operator"
+  },
+  "number": [
+    "r:/\\b0b[01]+/i",
+    "r:/\\b0x[0-9a-f]+/i",
+    "r:/(?:\\B\\.\\d+|\\b(?:0|[1-9]\\d*)(?:\\.\\d+)?)(?:e[+-]?\\d+)?/i"
+  ],
+  "operator": "r:/\\*{2,}|[=!]~|[!=<>]=?|&&|\\|\\||[-+*/%]/",
+  "punctuation": "r:/::|[?.:,;()[\\]{}]/"
+}

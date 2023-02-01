@@ -1,0 +1,57 @@
+{
+  "comment": "r:/\\/\\/[^\\r\\n]*/",
+  "interpolation-string": {
+    "pattern": "r:/\\$\"(?:\\\\[^\\r\\n]|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|[^\\s\\S])*\\}))*\\}))*\\}))*\\})|[^\\\\\"{])*\"/",
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\\\\\)*)(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|(?:\\{(?:[^\"{}]|(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")|[^\\s\\S])*\\}))*\\}))*\\}))*\\})/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^\\{|\\}(?:(?=\\r$)|$)/",
+          "expression": {
+            "pattern": "r:/[\\s\\S]+/",
+            "alias": "s:language-qsharp",
+            "inside": "s:[Circular ~]"
+          }
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "string": [
+    {
+      "pattern": "r:/(^|[^$\\\\])(?:\"(?:\\\\[^\\r\\n]|[^\\\\\"])*\")/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "class-name": [
+    {
+      "pattern": "r:/(\\b(?:as|open)\\s+)(?:(?:\\b[A-Za-z_]\\w*\\b)(?:\\s*\\.\\s*(?:\\b[A-Za-z_]\\w*\\b))*)(?=\\s*(?:;|as\\b))/",
+      "lookbehind": true,
+      "inside": {
+        "keyword": "r:/\\b(?:Adj|BigInt|Bool|Ctl|Double|false|Int|One|Pauli|PauliI|PauliX|PauliY|PauliZ|Qubit|Range|Result|String|true|Unit|Zero|Adjoint|adjoint|apply|as|auto|body|borrow|borrowing|Controlled|controlled|distribute|elif|else|fail|fixup|for|function|if|in|internal|intrinsic|invert|is|let|mutable|namespace|new|newtype|open|operation|repeat|return|self|set|until|use|using|while|within)\\b/",
+        "punctuation": "r:/[<>()?,.:[\\]]/"
+      }
+    },
+    {
+      "pattern": "r:/(\\bnamespace\\s+)(?:(?:\\b[A-Za-z_]\\w*\\b)(?:\\s*\\.\\s*(?:\\b[A-Za-z_]\\w*\\b))*)(?=\\s*\\{)/",
+      "lookbehind": true,
+      "inside": {
+        "keyword": "r:/\\b(?:Adj|BigInt|Bool|Ctl|Double|false|Int|One|Pauli|PauliI|PauliX|PauliY|PauliZ|Qubit|Range|Result|String|true|Unit|Zero|Adjoint|adjoint|apply|as|auto|body|borrow|borrowing|Controlled|controlled|distribute|elif|else|fail|fixup|for|function|if|in|internal|intrinsic|invert|is|let|mutable|namespace|new|newtype|open|operation|repeat|return|self|set|until|use|using|while|within)\\b/",
+        "punctuation": "r:/[<>()?,.:[\\]]/"
+      }
+    }
+  ],
+  "keyword": "r:/\\b(?:Adj|BigInt|Bool|Ctl|Double|false|Int|One|Pauli|PauliI|PauliX|PauliY|PauliZ|Qubit|Range|Result|String|true|Unit|Zero|Adjoint|adjoint|apply|as|auto|body|borrow|borrowing|Controlled|controlled|distribute|elif|else|fail|fixup|for|function|if|in|internal|intrinsic|invert|is|let|mutable|namespace|new|newtype|open|operation|repeat|return|self|set|until|use|using|while|within)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "function": "r:/\\b\\w+(?=\\()/",
+  "range": {
+    "pattern": "r:/\\.\\./",
+    "alias": "s:operator"
+  },
+  "number": "r:/(?:\\b0(?:x[\\da-f]+|b[01]+|o[0-7]+)|(?:\\B\\.\\d+|\\b\\d+(?:\\.\\d*)?)(?:e[-+]?\\d+)?)l?\\b/i",
+  "operator": "r:/\\band=|\\bor=|\\band\\b|\\bnot\\b|\\bor\\b|<[-=]|[-=]>|>>>=?|<<<=?|\\^\\^\\^=?|\\|\\|\\|=?|&&&=?|w\\/=?|~~~|[*\\/+\\-^=!%]=?/",
+  "punctuation": "r:/::|[{}[\\];(),.:]/"
+}

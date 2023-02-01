@@ -1,0 +1,68 @@
+{
+  "comment": [
+    {
+      "pattern": "r:/\\/\\*(?:[^*/]|\\*(?!\\/)|\\/(?!\\*)|\\/\\*(?:[^*/]|\\*(?!\\/)|\\/(?!\\*)|\\/\\*(?:[^*/]|\\*(?!\\/)|\\/(?!\\*))*\\*\\/)*\\*\\/)*\\*\\//",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/(^|[^\\\\:])\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "triple-quoted-string": {
+    "pattern": "r:/\"\"\"[\\s\\S]*?\"\"\"/",
+    "greedy": true,
+    "alias": "s:string"
+  },
+  "string-literal": {
+    "pattern": "r:/(^|[^\\\\\"])\"(?:[^\\\\\"%]|\\\\[\\s\\S]|%(?!\\()|%\\((?:[^()]|\\((?:[^()]|\\([^)]*\\))*\\))*\\))*\"/",
+    "lookbehind": true,
+    "greedy": true,
+    "inside": {
+      "interpolation": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)%\\((?:[^()]|\\((?:[^()]|\\([^)]*\\))*\\))*\\)/",
+        "lookbehind": true,
+        "inside": {
+          "expression": {
+            "pattern": "r:/^(%\\()[\\s\\S]+(?=\\)(?:(?=\\r$)|$))/",
+            "lookbehind": true,
+            "inside": "s:[Circular ~]"
+          },
+          "interpolation-punctuation": {
+            "pattern": "r:/^%\\(|\\)(?:(?=\\r$)|$)/",
+            "alias": "s:punctuation"
+          }
+        }
+      },
+      "string": "r:/[\\s\\S]+/"
+    }
+  },
+  "hashbang": {
+    "pattern": "r:/^#!\\/[^\\r\\n]+/",
+    "greedy": true,
+    "alias": "s:comment"
+  },
+  "attribute": {
+    "pattern": "r:/#!?[ \\t\\u3000]*\\w+/",
+    "alias": "s:keyword"
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\bclass\\s+)\\w+/",
+      "lookbehind": true
+    },
+    "r:/\\b[A-Z][a-z\\d_]*\\b/"
+  ],
+  "constant": "r:/\\b[A-Z][A-Z\\d_]*\\b/",
+  "null": {
+    "pattern": "r:/\\bnull\\b/",
+    "alias": "s:keyword"
+  },
+  "keyword": "r:/\\b(?:as|break|class|construct|continue|else|for|foreign|if|import|in|is|return|static|super|this|var|while)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": "r:/\\b(?:0x[\\da-f]+|\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)\\b/i",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*[({])/i",
+  "operator": "r:/<<|>>|[=!<>]=?|&&|\\|\\||[-+*/%~^&|?:]|\\.{2,3}/",
+  "punctuation": "r:/[\\[\\](){}.,;]/"
+}

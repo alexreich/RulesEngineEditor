@@ -1,0 +1,29 @@
+{
+  "comment": {
+    "pattern": "r:/(^|[^\\\\])#(?:\\\\(?:\\r\\n|[\\s\\S])|[^\\\\\\r\\n])*/",
+    "lookbehind": true
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "builtin-target": {
+    "pattern": "r:/\\.[A-Z][^:#=\\s]+(?=\\s*:(?!=))/",
+    "alias": "s:builtin"
+  },
+  "target": {
+    "pattern": "r:/^(?:[^:=\\s]|[ \\t]+(?![\\s:]))+(?=\\s*:(?!=))/m",
+    "alias": "s:symbol",
+    "inside": {
+      "variable": "r:/\\$+(?:(?!\\$)[^(){}:#=\\s]+|(?=[({]))/"
+    }
+  },
+  "variable": "r:/\\$+(?:(?!\\$)[^(){}:#=\\s]+|\\([@*%<^+?][DF]\\)|(?=[({]))/",
+  "keyword": "r:/-include\\b|\\b(?:define|else|endef|endif|export|ifn?def|ifn?eq|include|override|private|sinclude|undefine|unexport|vpath)\\b/",
+  "function": {
+    "pattern": "r:/(\\()(?:abspath|addsuffix|and|basename|call|dir|error|eval|file|filter(?:-out)?|findstring|firstword|flavor|foreach|guile|if|info|join|lastword|load|notdir|or|origin|patsubst|realpath|shell|sort|strip|subst|suffix|value|warning|wildcard|word(?:list|s)?)(?=[ \\t])/",
+    "lookbehind": true
+  },
+  "operator": "r:/(?:::|[?:+!])?=|[|@]/",
+  "punctuation": "r:/[:;(){}]/"
+}

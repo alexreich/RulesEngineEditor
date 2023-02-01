@@ -1,0 +1,38 @@
+{
+  "comment": {
+    "pattern": "r:/\\bc [^\\r\\n]*/i",
+    "greedy": true
+  },
+  "string": {
+    "pattern": "r:/\"[^\"\\r\\n]*\"|'[^'\\r\\n]*'/",
+    "greedy": true
+  },
+  "virtual-key": {
+    "pattern": "r:/\\[\\s*(?:(?:ALT|CAPS|CTRL|LALT|LCTRL|NCAPS|RALT|RCTRL|SHIFT)\\s+)*(?:[TKU]_[\\w?]+|[A-E]\\d\\d?|\"[^\"\\r\\n]*\"|'[^'\\r\\n]*')\\s*\\]/i",
+    "greedy": true,
+    "alias": "s:function"
+  },
+  "header-keyword": {
+    "pattern": "r:/&\\w+/",
+    "alias": "s:bold"
+  },
+  "header-statement": {
+    "pattern": "r:/\\b(?:bitmap|bitmaps|caps always off|caps on only|copyright|hotkey|language|layout|message|name|shift frees caps|version)\\b/i",
+    "alias": "s:bold"
+  },
+  "rule-keyword": {
+    "pattern": "r:/\\b(?:any|baselayout|beep|call|context|deadkey|dk|if|index|layer|notany|nul|outs|platform|reset|return|save|set|store|use)\\b/i",
+    "alias": "s:keyword"
+  },
+  "structural-keyword": {
+    "pattern": "r:/\\b(?:ansi|begin|group|match|nomatch|unicode|using keys)\\b/i",
+    "alias": "s:keyword"
+  },
+  "compile-target": {
+    "pattern": "r:/\\$(?:keyman|keymanonly|keymanweb|kmfl|weaver):/i",
+    "alias": "s:property"
+  },
+  "number": "r:/\\b(?:U\\+[\\dA-F]+|d\\d+|x[\\da-f]+|\\d+)\\b/i",
+  "operator": "r:/[+>\\\\$]|\\.\\./",
+  "punctuation": "r:/[()=,]/"
+}

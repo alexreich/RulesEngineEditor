@@ -1,0 +1,78 @@
+{
+  "comment": "r:/\\(\\*[\\s\\S]+?\\*\\)|\\/\\/[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/([\"'`])(?:\\\\[\\s\\S]|(?!\\1)[^\\\\])*\\1|\\^[a-z]/i",
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\btype\\s+\\w+\\s+is\\s+)(?:\\b\\w+(?:\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))?|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))/i",
+      "lookbehind": true,
+      "inside": {
+        "comment": "r:/\\(\\*[\\s\\S]+?\\*\\)|\\/\\/[^\\r\\n]*/",
+        "keyword": {
+          "pattern": "r:/(^|[^&])\\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\\b/i",
+          "lookbehind": true
+        },
+        "builtin": {
+          "pattern": "r:/(^|[^&])\\b(?:bool|int|list|map|nat|record|string|unit)\\b/i",
+          "lookbehind": true
+        },
+        "operator": "r:/->|=\\/=|\\.\\.|\\*\\*|:=|<[<=>]?|>[>=]?|[+\\-*\\/]=?|[@^=|]|\\b(?:and|mod|or)\\b/",
+        "punctuation": "r:/\\(\\.|\\.\\)|[()\\[\\]:;,.{}]/"
+      }
+    },
+    {
+      "pattern": "r:/(?:\\b\\w+(?:\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))?|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))(?=\\s+is\\b)/i",
+      "inside": {
+        "comment": "r:/\\(\\*[\\s\\S]+?\\*\\)|\\/\\/[^\\r\\n]*/",
+        "keyword": {
+          "pattern": "r:/(^|[^&])\\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\\b/i",
+          "lookbehind": true
+        },
+        "builtin": {
+          "pattern": "r:/(^|[^&])\\b(?:bool|int|list|map|nat|record|string|unit)\\b/i",
+          "lookbehind": true
+        },
+        "operator": "r:/->|=\\/=|\\.\\.|\\*\\*|:=|<[<=>]?|>[>=]?|[+\\-*\\/]=?|[@^=|]|\\b(?:and|mod|or)\\b/",
+        "punctuation": "r:/\\(\\.|\\.\\)|[()\\[\\]:;,.{}]/"
+      }
+    },
+    {
+      "pattern": "r:/(:\\s*)(?:\\b\\w+(?:\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))?|\\((?:[^()]|\\((?:[^()]|\\([^()]*\\))*\\))*\\))/",
+      "lookbehind": true,
+      "inside": {
+        "comment": "r:/\\(\\*[\\s\\S]+?\\*\\)|\\/\\/[^\\r\\n]*/",
+        "keyword": {
+          "pattern": "r:/(^|[^&])\\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\\b/i",
+          "lookbehind": true
+        },
+        "builtin": {
+          "pattern": "r:/(^|[^&])\\b(?:bool|int|list|map|nat|record|string|unit)\\b/i",
+          "lookbehind": true
+        },
+        "operator": "r:/->|=\\/=|\\.\\.|\\*\\*|:=|<[<=>]?|>[>=]?|[+\\-*\\/]=?|[@^=|]|\\b(?:and|mod|or)\\b/",
+        "punctuation": "r:/\\(\\.|\\.\\)|[()\\[\\]:;,.{}]/"
+      }
+    }
+  ],
+  "keyword": {
+    "pattern": "r:/(^|[^&])\\b(?:begin|block|case|const|else|end|fail|for|from|function|if|is|nil|of|remove|return|skip|then|type|var|while|with)\\b/i",
+    "lookbehind": true
+  },
+  "boolean": {
+    "pattern": "r:/(^|[^&])\\b(?:False|True)\\b/i",
+    "lookbehind": true
+  },
+  "builtin": {
+    "pattern": "r:/(^|[^&])\\b(?:bool|int|list|map|nat|record|string|unit)\\b/i",
+    "lookbehind": true
+  },
+  "function": "r:/\\b\\w+(?=\\s*\\()/",
+  "number": [
+    "r:/%[01]+|&[0-7]+|\\$[a-f\\d]+/i",
+    "r:/\\b\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?(?:mtz|n)?/i"
+  ],
+  "operator": "r:/->|=\\/=|\\.\\.|\\*\\*|:=|<[<=>]?|>[>=]?|[+\\-*\\/]=?|[@^=|]|\\b(?:and|mod|or)\\b/",
+  "punctuation": "r:/\\(\\.|\\.\\)|[()\\[\\]:;,.{}]/"
+}

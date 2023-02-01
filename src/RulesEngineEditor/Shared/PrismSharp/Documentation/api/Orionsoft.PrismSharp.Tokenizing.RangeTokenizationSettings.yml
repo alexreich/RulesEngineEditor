@@ -1,0 +1,837 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  id: RangeTokenizationSettings
+  parent: Orionsoft.PrismSharp.Tokenizing
+  children:
+  - Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  - Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  - Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  - Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  - Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  langs:
+  - csharp
+  - vb
+  name: RangeTokenizationSettings
+  nameWithType: RangeTokenizationSettings
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  type: Class
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/RangeTokenizationSettings.cs
+    id: RangeTokenizationSettings
+    path: ../Tokenizing/RangeTokenizationSettings.cs
+    startLine: 14
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nSettings describing how to tokenize a range of code, to avoid things like incorrectly tokenizing parts of a long preceding comment or string as a code, etc\n"
+  example: []
+  syntax:
+    content: public class RangeTokenizationSettings
+    content.vb: Public Class RangeTokenizationSettings
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  id: SafePoints
+  parent: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  langs:
+  - csharp
+  - vb
+  name: SafePoints
+  nameWithType: RangeTokenizationSettings.SafePoints
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/RangeTokenizationSettings.cs
+    id: SafePoints
+    path: ../Tokenizing/RangeTokenizationSettings.cs
+    startLine: 19
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nArray of relatively safe points to start/end tokenization. Typically a new line\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("safePoints")]
+
+      public List<string> SafePoints { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: >-
+      <JsonProperty("safePoints")>
+
+      Public Property SafePoints As List(Of String)
+  overload: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: safePoints
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  id: SafePointAdjusterName
+  parent: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  langs:
+  - csharp
+  - vb
+  name: SafePointAdjusterName
+  nameWithType: RangeTokenizationSettings.SafePointAdjusterName
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/RangeTokenizationSettings.cs
+    id: SafePointAdjusterName
+    path: ../Tokenizing/RangeTokenizationSettings.cs
+    startLine: 25
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nA custom method name to find a safe point to start. For c-like languages it is &quot;clike&quot; and is automatically used\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("safePointAdjusterName")]
+
+      public string SafePointAdjusterName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty("safePointAdjusterName")>
+
+      Public Property SafePointAdjusterName As String
+  overload: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: safePointAdjusterName
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  id: PreRange
+  parent: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  langs:
+  - csharp
+  - vb
+  name: PreRange
+  nameWithType: RangeTokenizationSettings.PreRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/RangeTokenizationSettings.cs
+    id: PreRange
+    path: ../Tokenizing/RangeTokenizationSettings.cs
+    startLine: 31
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nTokenization can start x characters before the actual range, to provide a safety pillow\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("preRange")]
+
+      public int PreRange { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty("preRange")>
+
+      Public Property PreRange As Integer
+  overload: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: preRange
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  id: PostRange
+  parent: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  langs:
+  - csharp
+  - vb
+  name: PostRange
+  nameWithType: RangeTokenizationSettings.PostRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/RangeTokenizationSettings.cs
+    id: PostRange
+    path: ../Tokenizing/RangeTokenizationSettings.cs
+    startLine: 37
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nTokenization can end x characters after the actual range, to provide a safety pillow\n"
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("postRange")]
+
+      public int PostRange { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty("postRange")>
+
+      Public Property PostRange As Integer
+  overload: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: postRange
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  commentId: P:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  id: SafePointAdjuster
+  parent: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings
+  langs:
+  - csharp
+  - vb
+  name: SafePointAdjuster
+  nameWithType: RangeTokenizationSettings.SafePointAdjuster
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  type: Property
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Tokenizing/RangeTokenizationSettings.cs
+    id: SafePointAdjuster
+    path: ../Tokenizing/RangeTokenizationSettings.cs
+    startLine: 43
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Tokenizing
+  summary: "\nA method delegate provided to find a safe point to start.\n"
+  example: []
+  syntax:
+    content: public Func<string, int, int> SafePointAdjuster { get; set; }
+    parameters: []
+    return:
+      type: System.Func{System.String,System.Int32,System.Int32}
+    content.vb: Public Property SafePointAdjuster As Func(Of String, Integer, Integer)
+  overload: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object)
+  nameWithType: Object.Equals(Object)
+  fullName: System.Object.Equals(System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: Equals(Object, Object)
+  nameWithType: Object.Equals(Object, Object)
+  fullName: System.Object.Equals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    nameWithType: Object.Equals
+    fullName: System.Object.Equals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: Object.GetHashCode()
+  fullName: System.Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    nameWithType: Object.GetHashCode
+    fullName: System.Object.GetHashCode
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  name: GetType()
+  nameWithType: Object.GetType()
+  fullName: System.Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    nameWithType: Object.GetType
+    fullName: System.Object.GetType
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  name: MemberwiseClone()
+  nameWithType: Object.MemberwiseClone()
+  fullName: System.Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    nameWithType: Object.MemberwiseClone
+    fullName: System.Object.MemberwiseClone
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  name: ReferenceEquals(Object, Object)
+  nameWithType: Object.ReferenceEquals(Object, Object)
+  fullName: System.Object.ReferenceEquals(System.Object, System.Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    nameWithType: Object.ReferenceEquals
+    fullName: System.Object.ReferenceEquals
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+  name: SafePoints
+  nameWithType: RangeTokenizationSettings.SafePoints
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePoints
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<String>
+  nameWithType: List<String>
+  fullName: System.Collections.Generic.List<System.String>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of System.String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+  name: SafePointAdjusterName
+  nameWithType: RangeTokenizationSettings.SafePointAdjusterName
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjusterName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+  name: PreRange
+  nameWithType: RangeTokenizationSettings.PreRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PreRange
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+  name: PostRange
+  nameWithType: RangeTokenizationSettings.PostRange
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.PostRange
+- uid: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster*
+  commentId: Overload:Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+  name: SafePointAdjuster
+  nameWithType: RangeTokenizationSettings.SafePointAdjuster
+  fullName: Orionsoft.PrismSharp.Tokenizing.RangeTokenizationSettings.SafePointAdjuster
+- uid: System.Func{System.String,System.Int32,System.Int32}
+  commentId: T:System.Func{System.String,System.Int32,System.Int32}
+  parent: System
+  definition: System.Func`3
+  name: Func<String, Int32, Int32>
+  nameWithType: Func<String, Int32, Int32>
+  fullName: System.Func<System.String, System.Int32, System.Int32>
+  nameWithType.vb: Func(Of String, Int32, Int32)
+  fullName.vb: System.Func(Of System.String, System.Int32, System.Int32)
+  name.vb: Func(Of String, Int32, Int32)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Func`3
+  commentId: T:System.Func`3
+  isExternal: true
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: System.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: System.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Func`3
+    name: Func
+    nameWithType: Func
+    fullName: System.Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )

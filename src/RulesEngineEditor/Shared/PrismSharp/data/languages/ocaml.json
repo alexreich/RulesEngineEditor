@@ -1,0 +1,49 @@
+{
+  "comment": {
+    "pattern": "r:/\\(\\*[\\s\\S]*?\\*\\)/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:[^\\\\\\r\\n']|\\\\(?:[^\\r\\n]|[ox]?[0-9a-f]{1,3}))'/i",
+    "greedy": true
+  },
+  "string": [
+    {
+      "pattern": "r:/\"(?:\\\\(?:[\\s\\S]|\\r\\n)|[^\\\\\\r\\n\"])*\"/",
+      "greedy": true
+    },
+    {
+      "pattern": "r:/\\{([a-z_]*)\\|[\\s\\S]*?\\|\\1\\}/",
+      "greedy": true
+    }
+  ],
+  "number": [
+    "r:/\\b(?:0b[01][01_]*|0o[0-7][0-7_]*)\\b/i",
+    "r:/\\b0x[a-f0-9][a-f0-9_]*(?:\\.[a-f0-9_]*)?(?:p[+-]?\\d[\\d_]*)?(?!\\w)/i",
+    "r:/\\b\\d[\\d_]*(?:\\.[\\d_]*)?(?:e[+-]?\\d[\\d_]*)?(?!\\w)/i"
+  ],
+  "directive": {
+    "pattern": "r:/\\B#\\w+/",
+    "alias": "s:property"
+  },
+  "label": {
+    "pattern": "r:/\\B~\\w+/",
+    "alias": "s:property"
+  },
+  "type-variable": {
+    "pattern": "r:/\\B'\\w+/",
+    "alias": "s:function"
+  },
+  "variant": {
+    "pattern": "r:/`\\w+/",
+    "alias": "s:symbol"
+  },
+  "keyword": "r:/\\b(?:as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|match|method|module|mutable|new|nonrec|object|of|open|private|rec|sig|struct|then|to|try|type|val|value|virtual|when|where|while|with)\\b/",
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "operator-like-punctuation": {
+    "pattern": "r:/\\[[<>|]|[>|]\\]|\\{<|>\\}/",
+    "alias": "s:punctuation"
+  },
+  "operator": "r:/\\.[.~]|:[=>]|[=<>@^|&+\\-*\\/$%!?~][!$%&*+\\-.\\/:<=>?@^|~]*|\\b(?:and|asr|land|lor|lsl|lsr|lxor|mod|or)\\b/",
+  "punctuation": "r:/;;|::|[(){}\\[\\].,:;#]|\\b_\\b/"
+}

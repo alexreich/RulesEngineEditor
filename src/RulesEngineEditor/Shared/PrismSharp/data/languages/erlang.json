@@ -1,0 +1,40 @@
+{
+  "comment": "r:/%[^\\r\\n]+/",
+  "string": {
+    "pattern": "r:/\"(?:\\\\[^\\r\\n]|[^\\\\\"\\r\\n])*\"/",
+    "greedy": true
+  },
+  "quoted-function": {
+    "pattern": "r:/'(?:\\\\[^\\r\\n]|[^\\\\'\\r\\n])+'(?=\\()/",
+    "alias": "s:function"
+  },
+  "quoted-atom": {
+    "pattern": "r:/'(?:\\\\[^\\r\\n]|[^\\\\'\\r\\n])+'/",
+    "alias": "s:atom"
+  },
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "keyword": "r:/\\b(?:after|case|catch|end|fun|if|of|receive|try|when)\\b/",
+  "number": [
+    "r:/\\$\\\\?[^\\r\\n]/",
+    "r:/\\b\\d+#[a-z0-9]+/i",
+    "r:/(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:e[+-]?\\d+)?/i"
+  ],
+  "function": "r:/\\b[a-z][\\w@]*(?=\\()/",
+  "variable": {
+    "pattern": "r:/(^|[^@])(?:\\b|\\?)[A-Z_][\\w@]*/",
+    "lookbehind": true
+  },
+  "operator": [
+    "r:/[=\\/<>:]=|=[:\\/]=|\\+\\+?|--?|[=*\\/!]|\\b(?:and|andalso|band|bnot|bor|bsl|bsr|bxor|div|not|or|orelse|rem|xor)\\b/",
+    {
+      "pattern": "r:/(^|[^<])<(?!<)/",
+      "lookbehind": true
+    },
+    {
+      "pattern": "r:/(^|[^>])>(?!>)/",
+      "lookbehind": true
+    }
+  ],
+  "atom": "r:/\\b[a-z][\\w@]*/",
+  "punctuation": "r:/[()[\\]{}:;,.#|]|<<|>>/"
+}

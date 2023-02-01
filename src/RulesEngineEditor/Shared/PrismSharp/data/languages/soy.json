@@ -1,0 +1,61 @@
+{
+  "comment": [
+    "r:/\\/\\*[\\s\\S]*?\\*\\//",
+    {
+      "pattern": "r:/(\\s)\\/\\/[^\\r\\n]*/",
+      "lookbehind": true,
+      "greedy": true
+    }
+  ],
+  "command-arg": {
+    "pattern": "r:/(\\{+\\/?\\s*(?:alias|call|delcall|delpackage|deltemplate|namespace|template)\\s+)\\.?[\\w.]+/",
+    "lookbehind": true,
+    "alias": "s:string",
+    "inside": {
+      "punctuation": "r:/\\./"
+    }
+  },
+  "parameter": {
+    "pattern": "r:/(\\{+\\/?\\s*@?param\\??\\s+)\\.?[\\w.]+/",
+    "lookbehind": true,
+    "alias": "s:variable"
+  },
+  "keyword": [
+    {
+      "pattern": "r:/(\\{+\\/?[^\\S\\r\\n]*)(?:\\\\[nrt]|alias|call|case|css|default|delcall|delpackage|deltemplate|else(?:if)?|fallbackmsg|for(?:each)?|if(?:empty)?|lb|let|literal|msg|namespace|nil|@?param\\??|rb|sp|switch|template|xid)/",
+      "lookbehind": true
+    },
+    "r:/\\b(?:any|as|attributes|bool|css|float|html|in|int|js|list|map|null|number|string|uri)\\b/"
+  ],
+  "delimiter": {
+    "pattern": "r:/^\\{+\\/?|\\/?\\}+(?:(?=\\r$)|$)/",
+    "alias": "s:punctuation"
+  },
+  "property": "r:/\\w+(?==)/",
+  "variable": {
+    "pattern": "r:/\\$[^\\W\\d]\\w*(?:\\??(?:\\.\\w+|\\[[^\\]]+\\]))*/",
+    "inside": {
+      "string": {
+        "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+        "greedy": true
+      },
+      "number": "r:/\\b\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b|\\b0x[\\dA-F]+\\b/",
+      "punctuation": "r:/[\\[\\].?]/"
+    }
+  },
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\(?:\\r\\n|[\\s\\S])|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "function": [
+    "r:/\\w+(?=\\()/",
+    {
+      "pattern": "r:/(\\|[^\\S\\r\\n]*)\\w+/",
+      "lookbehind": true
+    }
+  ],
+  "boolean": "r:/\\b(?:false|true)\\b/",
+  "number": "r:/\\b\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b|\\b0x[\\dA-F]+\\b/",
+  "operator": "r:/\\?:?|<=?|>=?|==?|!=|[+*/%-]|\\b(?:and|not|or)\\b/",
+  "punctuation": "r:/[{}()\\[\\]|.,:]/"
+}

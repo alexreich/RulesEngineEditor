@@ -1,0 +1,79 @@
+{
+  "comment": {
+    "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+    "greedy": true
+  },
+  "char": {
+    "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+    "greedy": true
+  },
+  "macro": {
+    "pattern": "r:/(^[\\t ]*)#\\s*[a-z](?:[^\\r\\n\\\\/]|\\/(?!\\*)|\\/\\*(?:[^*]|\\*(?!\\/))*\\*\\/|\\\\(?:\\r\\n|[\\s\\S]))*/im",
+    "lookbehind": true,
+    "greedy": true,
+    "alias": "s:property",
+    "inside": {
+      "string": [
+        {
+          "pattern": "r:/^(#\\s*include\\s*)<[^>]+>/",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+          "greedy": true
+        }
+      ],
+      "char": {
+        "pattern": "r:/'(?:\\\\(?:\\r\\n|[\\s\\S])|[^'\\\\\\r\\n]){0,32}'/",
+        "greedy": true
+      },
+      "comment": {
+        "pattern": "r:/\\/\\/(?:[^\\r\\n\\\\]|\\\\(?:\\r\\n?|\\n|(?![\\r\\n])))*|\\/\\*[\\s\\S]*?(?:\\*\\/|(?:(?=\\r$)|$))/",
+        "greedy": true
+      },
+      "macro-name": [
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?!\\()/i",
+          "lookbehind": true
+        },
+        {
+          "pattern": "r:/(^#\\s*define\\s+)\\w+\\b(?=\\()/i",
+          "lookbehind": true,
+          "alias": "s:function"
+        }
+      ],
+      "directive": {
+        "pattern": "r:/^(#\\s*)[a-z]+/",
+        "lookbehind": true,
+        "alias": "s:keyword"
+      },
+      "directive-hash": "r:/^#/",
+      "punctuation": "r:/##|\\\\(?=[\\r\\n])/",
+      "expression": {
+        "pattern": "r:/\\S[\\s\\S]*/",
+        "inside": "s:[Circular ~]"
+      }
+    }
+  },
+  "string": {
+    "pattern": "r:/\"(?:\\\\(?:\\r\\n|[\\s\\S])|[^\"\\\\\\r\\n])*\"/",
+    "greedy": true
+  },
+  "class-name": [
+    {
+      "pattern": "r:/(\\b(?:enum|struct)\\s+(?:__attribute__\\s*\\(\\([\\s\\S]*?\\)\\)\\s*)?)\\w+|\\b[a-z]\\w*_t\\b/",
+      "lookbehind": true
+    },
+    "r:/\\b(?:AppendStructuredBuffer|BlendState|Buffer|ByteAddressBuffer|CompileShader|ComputeShader|ConsumeStructuredBuffer|DepthStencilState|DepthStencilView|DomainShader|GeometryShader|Hullshader|InputPatch|LineStream|OutputPatch|PixelShader|PointStream|RWBuffer|RWByteAddressBuffer|RWStructuredBuffer|RWTexture(?:1D|1DArray|2D|2DArray|3D)|RasterizerState|RenderTargetView|SamplerComparisonState|SamplerState|StructuredBuffer|Texture(?:1D|1DArray|2D|2DArray|2DMS|2DMSArray|3D|Cube|CubeArray)|TriangleStream|VertexShader)\\b/"
+  ],
+  "keyword": [
+    "r:/\\b(?:asm|asm_fragment|auto|break|case|catch|cbuffer|centroid|char|class|column_major|compile|compile_fragment|const|const_cast|continue|default|delete|discard|do|dynamic_cast|else|enum|explicit|export|extern|for|friend|fxgroup|goto|groupshared|if|in|inline|inout|interface|line|lineadj|linear|long|matrix|mutable|namespace|new|nointerpolation|noperspective|operator|out|packoffset|pass|pixelfragment|point|precise|private|protected|public|register|reinterpret_cast|return|row_major|sample|sampler|shared|short|signed|sizeof|snorm|stateblock|stateblock_state|static|static_cast|string|struct|switch|tbuffer|technique|technique10|technique11|template|texture|this|throw|triangle|triangleadj|try|typedef|typename|uniform|union|unorm|unsigned|using|vector|vertexfragment|virtual|void|volatile|while)\\b/",
+    "r:/\\b(?:bool|double|dword|float|half|int|min(?:10float|12int|16(?:float|int|uint))|uint)(?:[1-4](?:x[1-4])?)?\\b/"
+  ],
+  "constant": "r:/\\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\\b/",
+  "function": "r:/\\b[a-z_]\\w*(?=\\s*\\()/i",
+  "number": "r:/(?:(?:\\b\\d+(?:\\.\\d*)?|\\B\\.\\d+)(?:[eE][+-]?\\d+)?|\\b0x[\\da-fA-F]+)[fFhHlLuU]?\\b/",
+  "operator": "r:/>>=?|<<=?|->|([-+&|:])\\1|[?:~]|[-+*/%&|^!=<>]=?/",
+  "punctuation": "r:/[{}[\\];(),.:]/",
+  "boolean": "r:/\\b(?:false|true)\\b/"
+}

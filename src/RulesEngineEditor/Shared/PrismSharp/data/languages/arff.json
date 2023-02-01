@@ -1,0 +1,10 @@
+{
+  "comment": "r:/%[^\\r\\n]*/",
+  "string": {
+    "pattern": "r:/([\"'])(?:\\\\[^\\r\\n]|(?!\\1)[^\\\\\\r\\n])*\\1/",
+    "greedy": true
+  },
+  "keyword": "r:/@(?:attribute|data|end|relation)\\b/i",
+  "number": "r:/\\b\\d+(?:\\.\\d+)?\\b/",
+  "punctuation": "r:/[{},]/"
+}

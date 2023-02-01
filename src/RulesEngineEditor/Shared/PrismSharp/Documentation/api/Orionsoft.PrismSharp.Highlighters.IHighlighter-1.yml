@@ -1,0 +1,268 @@
+### YamlMime:ManagedReference
+items:
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  commentId: T:Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  id: IHighlighter`1
+  parent: Orionsoft.PrismSharp.Highlighters
+  children:
+  - Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  - Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(System.String,System.String)
+  - Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  - Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  langs:
+  - csharp
+  - vb
+  name: IHighlighter<TResult>
+  nameWithType: IHighlighter<TResult>
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>
+  type: Interface
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/IHighlighter.cs
+    id: IHighlighter
+    path: ../Highlighters/IHighlighter.cs
+    startLine: 13
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters
+  summary: "\nInterface used by all highlighters\n"
+  example: []
+  syntax:
+    content: public interface IHighlighter<out TResult>
+    typeParameters:
+    - id: TResult
+      description: type of the result of highlighting, e.g. string
+    content.vb: Public Interface IHighlighter(Of Out TResult)
+  nameWithType.vb: IHighlighter(Of TResult)
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult)
+  name.vb: IHighlighter(Of TResult)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(System.String,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(System.String,System.String)
+  id: Highlight(System.String,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  langs:
+  - csharp
+  - vb
+  name: Highlight(String, String)
+  nameWithType: IHighlighter<TResult>.Highlight(String, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.Highlight(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/IHighlighter.cs
+    id: Highlight
+    path: ../Highlighters/IHighlighter.cs
+    startLine: 21
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters
+  summary: "\nTokenizes and highlights a block of code\n"
+  example: []
+  syntax:
+    content: TResult Highlight(string code, string language)
+    parameters:
+    - id: code
+      type: System.String
+      description: source code to highlight
+    - id: language
+      type: System.String
+      description: name of programming language
+    return:
+      type: '{TResult}'
+      description: ''
+    content.vb: Function Highlight(code As String, language As String) As TResult
+  overload: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight*
+  nameWithType.vb: IHighlighter(Of TResult).Highlight(String, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).Highlight(System.String, System.String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  id: Highlight(Orionsoft.PrismSharp.Tokenizing.Token,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  langs:
+  - csharp
+  - vb
+  name: Highlight(Token, String)
+  nameWithType: IHighlighter<TResult>.Highlight(Token, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/IHighlighter.cs
+    id: Highlight
+    path: ../Highlighters/IHighlighter.cs
+    startLine: 30
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters
+  summary: "\nHighlights a block of already tokenized code\n"
+  example: []
+  syntax:
+    content: TResult Highlight(Token tokenizedCode, string language)
+    parameters:
+    - id: tokenizedCode
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+      description: ''
+    - id: language
+      type: System.String
+      description: name of programming language
+    return:
+      type: '{TResult}'
+      description: ''
+    content.vb: Function Highlight(tokenizedCode As Token, language As String) As TResult
+  overload: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight*
+  nameWithType.vb: IHighlighter(Of TResult).Highlight(Token, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).Highlight(Orionsoft.PrismSharp.Tokenizing.Token, System.String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  id: HighlightRange(System.String,System.Int32,System.Int32,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  langs:
+  - csharp
+  - vb
+  name: HighlightRange(String, Int32, Int32, String)
+  nameWithType: IHighlighter<TResult>.HighlightRange(String, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.HighlightRange(System.String, System.Int32, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/IHighlighter.cs
+    id: HighlightRange
+    path: ../Highlighters/IHighlighter.cs
+    startLine: 40
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters
+  summary: "\nTokenizes and highlights a part of the code\n"
+  example: []
+  syntax:
+    content: TResult HighlightRange(string code, int start, int length, string language)
+    parameters:
+    - id: code
+      type: System.String
+      description: source code to highlight
+    - id: start
+      type: System.Int32
+      description: offset in characters from the beginning of the source code
+    - id: length
+      type: System.Int32
+      description: length of the block to be higlighted in characters
+    - id: language
+      type: System.String
+      description: name of programming language
+    return:
+      type: '{TResult}'
+      description: ''
+    content.vb: Function HighlightRange(code As String, start As Integer, length As Integer, language As String) As TResult
+  overload: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange*
+  nameWithType.vb: IHighlighter(Of TResult).HighlightRange(String, Int32, Int32, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).HighlightRange(System.String, System.Int32, System.Int32, System.String)
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  commentId: M:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  id: HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token,System.Int32,System.Int32,System.String)
+  parent: Orionsoft.PrismSharp.Highlighters.IHighlighter`1
+  langs:
+  - csharp
+  - vb
+  name: HighlightRange(Token, Int32, Int32, String)
+  nameWithType: IHighlighter<TResult>.HighlightRange(Token, Int32, Int32, String)
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+  type: Method
+  source:
+    remote:
+      path: d:/Projects/PrismSharpStandard/PrismSharp/Highlighters/IHighlighter.cs
+    id: HighlightRange
+    path: ../Highlighters/IHighlighter.cs
+    startLine: 49
+  assemblies:
+  - PrismSharp
+  namespace: Orionsoft.PrismSharp.Highlighters
+  summary: "\nHighlights a part of already tokenized code\n"
+  example: []
+  syntax:
+    content: TResult HighlightRange(Token tokenizedCode, int start, int length, string language)
+    parameters:
+    - id: tokenizedCode
+      type: Orionsoft.PrismSharp.Tokenizing.Token
+      description: ''
+    - id: start
+      type: System.Int32
+      description: offset in characters from the beginning of the source code
+    - id: length
+      type: System.Int32
+      description: length of the block to be higlighted in characters
+    - id: language
+      type: System.String
+      description: name of programming language
+    return:
+      type: '{TResult}'
+    content.vb: Function HighlightRange(tokenizedCode As Token, start As Integer, length As Integer, language As String) As TResult
+  overload: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange*
+  nameWithType.vb: IHighlighter(Of TResult).HighlightRange(Token, Int32, Int32, String)
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).HighlightRange(Orionsoft.PrismSharp.Tokenizing.Token, System.Int32, System.Int32, System.String)
+references:
+- uid: Orionsoft.PrismSharp.Highlighters
+  commentId: N:Orionsoft.PrismSharp.Highlighters
+  name: Orionsoft.PrismSharp.Highlighters
+  nameWithType: Orionsoft.PrismSharp.Highlighters
+  fullName: Orionsoft.PrismSharp.Highlighters
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.Highlight
+  name: Highlight
+  nameWithType: IHighlighter<TResult>.Highlight
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.Highlight
+  nameWithType.vb: IHighlighter(Of TResult).Highlight
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).Highlight
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: '{TResult}'
+  commentId: '!:TResult'
+  definition: TResult
+  name: TResult
+  nameWithType: TResult
+  fullName: TResult
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: TResult
+  name: TResult
+  nameWithType: TResult
+  fullName: TResult
+- uid: Orionsoft.PrismSharp.Tokenizing.Token
+  commentId: T:Orionsoft.PrismSharp.Tokenizing.Token
+  parent: Orionsoft.PrismSharp.Tokenizing
+  name: Token
+  nameWithType: Token
+  fullName: Orionsoft.PrismSharp.Tokenizing.Token
+- uid: Orionsoft.PrismSharp.Tokenizing
+  commentId: N:Orionsoft.PrismSharp.Tokenizing
+  name: Orionsoft.PrismSharp.Tokenizing
+  nameWithType: Orionsoft.PrismSharp.Tokenizing
+  fullName: Orionsoft.PrismSharp.Tokenizing
+- uid: Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange*
+  commentId: Overload:Orionsoft.PrismSharp.Highlighters.IHighlighter`1.HighlightRange
+  name: HighlightRange
+  nameWithType: IHighlighter<TResult>.HighlightRange
+  fullName: Orionsoft.PrismSharp.Highlighters.IHighlighter<TResult>.HighlightRange
+  nameWithType.vb: IHighlighter(Of TResult).HighlightRange
+  fullName.vb: Orionsoft.PrismSharp.Highlighters.IHighlighter(Of TResult).HighlightRange
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32

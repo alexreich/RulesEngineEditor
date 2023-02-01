@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PrismSharp Library </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PrismSharp Library ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="prismsharp-library">PrismSharp Library</h1>
+
+<p>PrismSharp is a syntax highlighting library based on an excellent javascript library <a href="https://prismjs.com/">PrismJS</a>, fully written in C#. It currently supports over 270 programming languages and has 44 built in visual themes, also supporting custom themes.</p>
+<h1 id="main-components">Main Components</h1>
+<ul>
+<li><p><strong>Tokenizer</strong> - engine converting a source code to a tree of tokens - pairs of code fragments and their meanings, e.g. <code>foreach - keyword</code></p>
+</li>
+<li><p><strong>Abstract Highlighter</strong> - an abstract base class making it easy to <a href="articles/customHighlighter.html">implement a custom highlighter</a> creating virtually any output format</p>
+</li>
+<li><p><strong>HTML Highlighter</strong> - a highlighter creating output in html format (HTML <code>span</code>s or a single <code>pre</code> block). A PrismJS CSS theme must be included in the html document to render the output correctly</p>
+</li>
+<li><p><strong>RTF Highlighter</strong> - a highlighter creating output in RTF format. Can be used in GUI components like RichBox. See <a href="articles/codeEditor.html">Implementing code editor</a></p>
+</li>
+</ul>
+<p>The tokenizer and the highlighters support tokenizing (highlighting) of the entire code or just a range of it, when high performance is needed.</p>
+<h1 id="basic-usage">Basic Usage</h1>
+<h2 id="html-highlighting">HTMl highlighting</h2>
+<pre><code class="lang-csharp">            var code = &quot;Console.WriteLine(\&quot;Hello, World!\&quot;); // demo&quot;;
+            var beginning = &quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=\&quot;UTF-8\&quot;&gt;&quot; +
+                &quot;&lt;link href=\&quot;https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css\&quot; rel=\&quot;stylesheet\&quot;/&lt;/head&gt;&lt;body&gt;&quot;;
+            var ending  = &quot;&lt;/body&gt;&lt;/html&gt;&quot;;
+
+            var highlighter = new HtmlHighlighter();
+            highlighter.WrapByPre = true;
+            var res = highlighter.Highlight(code, &quot;csharp&quot;);
+
+            File.WriteAllText(&quot;output.html&quot;, beginning + res + ending);
+
+</code></pre>
+<h2 id="rtf-highlighting">RTF highlighting</h2>
+<pre><code class="lang-csharp"> var code = &quot;Console.WriteLine(\&quot;Hello, World!\&quot;); // demo&quot;;
+
+            var highlighter = new RtfHighlighter(ThemeNames.Vs);
+            highlighter.Font = &quot;Consolas&quot;;
+            var res = highlighter.Highlight(code, &quot;csharp&quot;);
+
+            File.WriteAllText(&quot;output.rtf&quot;, res);
+</code></pre>
+<h1 id="installation">Installation</h1>
+<p>The library is available via Nuget</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

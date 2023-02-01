@@ -1,0 +1,257 @@
+{
+  "settings": {
+    "pattern": "r:/^ ?\\*{3}[ \\t]*Settings[ \\t]*\\*{3}(?:[^\\r\\n]|[\\r\\n](?!\\*{3}))*/im",
+    "alias": "s:section",
+    "inside": {
+      "section-header": {
+        "pattern": "r:/^ ?\\*{3}[^\\r\\n]+?\\*{3}/",
+        "alias": "s:keyword"
+      },
+      "documentation": {
+        "pattern": "r:/([\\r\\n] ?Documentation(?: {2}|\\t)[ \\t]*)(?![ \\t]|#)(?:[^\\r\\n]|(?:\\r\\n?|\\n)[ \\t]*\\.{3})+/",
+        "lookbehind": true,
+        "alias": "s:string"
+      },
+      "property": {
+        "pattern": "r:/([\\r\\n] ?)(?!\\.{3}|#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true
+      },
+      "tag": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)\\[[-\\w]+\\]/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\[|\\]/"
+        }
+      },
+      "variable": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+        }
+      },
+      "comment": {
+        "pattern": "r:/(^[ \\t]*| {2}|\\t)#[^\\r\\n]*/m",
+        "lookbehind": true,
+        "greedy": true
+      }
+    }
+  },
+  "variables": {
+    "pattern": "r:/^ ?\\*{3}[ \\t]*Variables[ \\t]*\\*{3}(?:[^\\r\\n]|[\\r\\n](?!\\*{3}))*/im",
+    "alias": "s:section",
+    "inside": {
+      "section-header": {
+        "pattern": "r:/^ ?\\*{3}[^\\r\\n]+?\\*{3}/",
+        "alias": "s:keyword"
+      },
+      "tag": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)\\[[-\\w]+\\]/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\[|\\]/"
+        }
+      },
+      "variable": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+        }
+      },
+      "comment": {
+        "pattern": "r:/(^[ \\t]*| {2}|\\t)#[^\\r\\n]*/m",
+        "lookbehind": true,
+        "greedy": true
+      }
+    }
+  },
+  "test-cases": {
+    "pattern": "r:/^ ?\\*{3}[ \\t]*Test Cases[ \\t]*\\*{3}(?:[^\\r\\n]|[\\r\\n](?!\\*{3}))*/im",
+    "alias": "s:section",
+    "inside": {
+      "section-header": {
+        "pattern": "r:/^ ?\\*{3}[^\\r\\n]+?\\*{3}/",
+        "alias": "s:keyword"
+      },
+      "test-name": {
+        "pattern": "r:/([\\r\\n] ?)(?!#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true,
+        "alias": "s:function",
+        "inside": {
+          "variable": {
+            "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+            "lookbehind": true,
+            "inside": {
+              "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+            }
+          }
+        }
+      },
+      "documentation": {
+        "pattern": "r:/(\\[Documentation\\](?: {2}|\\t)[ \\t]*)(?![ \\t]|#)(?:[^\\r\\n]|(?:\\r\\n?|\\n)[ \\t]*\\.{3})+/",
+        "lookbehind": true,
+        "alias": "s:string"
+      },
+      "property": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)(?!\\[|\\.{3}|#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true,
+        "inside": {
+          "variable": {
+            "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+            "lookbehind": true,
+            "inside": {
+              "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+            }
+          }
+        }
+      },
+      "tag": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)\\[[-\\w]+\\]/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\[|\\]/"
+        }
+      },
+      "variable": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+        }
+      },
+      "comment": {
+        "pattern": "r:/(^[ \\t]*| {2}|\\t)#[^\\r\\n]*/m",
+        "lookbehind": true,
+        "greedy": true
+      }
+    }
+  },
+  "keywords": {
+    "pattern": "r:/^ ?\\*{3}[ \\t]*Keywords[ \\t]*\\*{3}(?:[^\\r\\n]|[\\r\\n](?!\\*{3}))*/im",
+    "alias": "s:section",
+    "inside": {
+      "section-header": {
+        "pattern": "r:/^ ?\\*{3}[^\\r\\n]+?\\*{3}/",
+        "alias": "s:keyword"
+      },
+      "keyword-name": {
+        "pattern": "r:/([\\r\\n] ?)(?!#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true,
+        "alias": "s:function",
+        "inside": {
+          "variable": {
+            "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+            "lookbehind": true,
+            "inside": {
+              "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+            }
+          }
+        }
+      },
+      "documentation": {
+        "pattern": "r:/(\\[Documentation\\](?: {2}|\\t)[ \\t]*)(?![ \\t]|#)(?:[^\\r\\n]|(?:\\r\\n?|\\n)[ \\t]*\\.{3})+/",
+        "lookbehind": true,
+        "alias": "s:string"
+      },
+      "property": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)(?!\\[|\\.{3}|#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true,
+        "inside": {
+          "variable": {
+            "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+            "lookbehind": true,
+            "inside": {
+              "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+            }
+          }
+        }
+      },
+      "tag": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)\\[[-\\w]+\\]/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\[|\\]/"
+        }
+      },
+      "variable": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+        }
+      },
+      "comment": {
+        "pattern": "r:/(^[ \\t]*| {2}|\\t)#[^\\r\\n]*/m",
+        "lookbehind": true,
+        "greedy": true
+      }
+    }
+  },
+  "tasks": {
+    "pattern": "r:/^ ?\\*{3}[ \\t]*Tasks[ \\t]*\\*{3}(?:[^\\r\\n]|[\\r\\n](?!\\*{3}))*/im",
+    "alias": "s:section",
+    "inside": {
+      "section-header": {
+        "pattern": "r:/^ ?\\*{3}[^\\r\\n]+?\\*{3}/",
+        "alias": "s:keyword"
+      },
+      "task-name": {
+        "pattern": "r:/([\\r\\n] ?)(?!#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true,
+        "alias": "s:function",
+        "inside": {
+          "variable": {
+            "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+            "lookbehind": true,
+            "inside": {
+              "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+            }
+          }
+        }
+      },
+      "documentation": {
+        "pattern": "r:/(\\[Documentation\\](?: {2}|\\t)[ \\t]*)(?![ \\t]|#)(?:[^\\r\\n]|(?:\\r\\n?|\\n)[ \\t]*\\.{3})+/",
+        "lookbehind": true,
+        "alias": "s:string"
+      },
+      "property": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)(?!\\[|\\.{3}|#)(?:\\S(?:[ \\t]\\S)*)+/",
+        "lookbehind": true,
+        "inside": {
+          "variable": {
+            "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+            "lookbehind": true,
+            "inside": {
+              "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+            }
+          }
+        }
+      },
+      "tag": {
+        "pattern": "r:/([\\r\\n](?: {2}|\\t)[ \\t]*)\\[[-\\w]+\\]/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/\\[|\\]/"
+        }
+      },
+      "variable": {
+        "pattern": "r:/((?:^|[^\\\\])(?:\\\\{2})*)[$@&%]\\{(?:[^{}\\r\\n]|\\{[^{}\\r\\n]*\\})*\\}/",
+        "lookbehind": true,
+        "inside": {
+          "punctuation": "r:/^[$@&%]\\{|\\}(?:(?=\\r$)|$)/"
+        }
+      },
+      "comment": {
+        "pattern": "r:/(^[ \\t]*| {2}|\\t)#[^\\r\\n]*/m",
+        "lookbehind": true,
+        "greedy": true
+      }
+    }
+  },
+  "comment": {
+    "pattern": "r:/(^[ \\t]*| {2}|\\t)#[^\\r\\n]*/m",
+    "lookbehind": true,
+    "greedy": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "comment": {
+    "pattern": "r:/\\{[^}]*\\}/"
+  },
+  "string": {
+    "pattern": "r:/\"[^\"]*\"/",
+    "greedy": true
+  },
+  "character-code": {
+    "pattern": "r:/'(?:[^\\r]|\\r\\n?)/",
+    "alias": "s:number"
+  },
+  "assembler-code": {
+    "pattern": "r:/\\d+`/",
+    "alias": "s:important"
+  },
+  "number": "r:/\\d+/",
+  "operator": "r:/[-!#$%&'*+,./:;=>?@\\\\^_`|~ßø]/",
+  "punctuation": "r:/\\[|\\]/",
+  "variable": "r:/[a-z]/",
+  "non-standard": {
+    "pattern": "r:/[()<BDO®]/",
+    "alias": "s:bold"
+  }
+}
