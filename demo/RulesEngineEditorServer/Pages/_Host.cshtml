@@ -22,6 +22,47 @@
 
     <link href="_content/RulesEngineEditor/css/reeditor.css" rel="stylesheet" />
     <link href="_content/RulesEngineEditor/css/dragdrop.css" rel="stylesheet" />
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>*@
+    <script src="_content/RulesEngineEditor/js/highlight.min.js"></script>
+    <script src="_content/RulesEngineEditor/js/csharp.min.js"></script>
+    @*
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    *@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/css.min.js"></script>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"></script>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism.min.css">
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-csharp.min.js"></script>
+
+    <script>
+
+
+    
+        
+
+        //hljs.configure({
+        //    ignoreUnescapedHTML: true,
+        //    throwUnescapedHTML: false
+        //});
+        hljs.highlightAll();</script>
+    <script>
+        window.highlightSnippet = function () {
+            hljs.highlightAll();
+            document.querySelectorAll('span code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+    </script>
 </head>
 <body>
     <component type="typeof(App)" render-mode="ServerPrerendered" />

@@ -428,8 +428,8 @@ namespace RulesEngineEditor.Pages
         }
         private async Task PrintWorkflowAsync()
         {
-            var html = await JSRuntime.InvokeAsync<string>("myJsFunctions.getHtml");
-            await PrintingService.Print(html, printType:PrintType.RawHtml);
+            //var html = await JSRuntime.InvokeAsync<string>("myJsFunctions.getHtml");
+            await PrintingService.Print("sp_grid_main", printType:PrintType.Html);
         }
     }
 }

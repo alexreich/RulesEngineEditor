@@ -2,11 +2,34 @@
     // Copyright (c) Alex Reich.
     // Licensed under the CC BY 4.0 License.
 *@
+@*@using Highlight;
+@using Highlight.Engines;*@
+@using Orionsoft.PrismSharp.Highlighters.Html;
 @using RulesEngine.Models
 @using RulesEngineEditor.Models
 @using System.Text.Json
 @using System.Text.Json.Serialization
+@using System.Text.RegularExpressions;
+@using System.Text;
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
+
+@*<pre>
+<code class="language-csharp">
+    public class PersonModel
+{
+    public int Id { get; set; }
+    [Display(Name="First Name")]
+    public string Name { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    [BlazinHeaderFormat("{0:C}")]
+    public int Salary { get; set; }
+    [BlazinHeaderIgnore]
+    public string ThisColumnWontEvenShowUp { get; set; }
+}
+
+</code></pre>*@
+      
 
 
 <sp_grid_rules>
@@ -46,11 +69,24 @@
             <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+           @* <CodeSnippet>@((MarkupString)(UnescapeCodes(rule.Expression)))</CodeSnippet>*@
+                @((MarkupString)(Highlighter(rule.Expression)))
+            @*<code class="language-csharp">@((MarkupString)(UnescapeCodes(rule.Expression)))</code>*@
+
+                    @*
+            @((MarkupString)(rule.Expression == null ? "" : highlighter.Highlight("C#", rule.Expression)))
+            *@
+        @*</pre>*@
+                @*
+                    @((MarkupString)(rule.Expression == null ? "" : highlighter.Highlight("C#", "static main {" + rule.Expression + " } ")))
+                    *@
+            @*</pre>*@
+
+            @*<InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />*@
         </div>
-        <div>
+       @* <div>
             <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-        </div>
+        </div>*@
         <div>
             <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
         </div>
@@ -74,6 +110,51 @@
 @code {
     [Parameter]
     public RuleData rule { get; set; }
+
+    //private HtmlEngine highLighterEngine = new HtmlEngine();
+    //private Highlighter highlighter;
+
+    public static string Highlighter(string text)
+    {
+        if (text == null) return "";
+        var highlighter = new HtmlHighlighter
+            {
+                WrapByPre = false,
+            };
+        return highlighter.Highlight(text, "csharp");
+    }
+
+    public static string UnescapeCodes(string src)
+    {
+        if (src == null) return null;
+        var rx = new Regex("\\\\([0-9A-Fa-f]+)");
+        var res = new StringBuilder();
+        var pos = 0;
+        foreach (Match m in rx.Matches(src))
+        {
+            res.Append(src.Substring(pos, m.Index - pos));
+            pos = m.Index + m.Length;
+            res.Append((char)Convert.ToInt32(m.Groups[1].ToString(), 16));
+        }
+        res.Append(src.Substring(pos));
+        return Splitstring(res.ToString(), 8000);
+    }
+
+    public static string Splitstring(string txt, int n = 120, string AddBefore = "", string AddAfterExtra = "")
+    {
+        //Spit each string into a n-line length list of strings
+        var Lines = Enumerable.Range(0, txt.Length / n).Select(i => txt.Substring(i * n, n)).ToList();
+
+        //Check if there are any characters left after split, if so add the rest
+        if (txt.Length > ((txt.Length / n) * n))
+            Lines.Add(txt.Substring((txt.Length / n) * n));
+
+        //Create return text, with extras
+        string txtReturn = "";
+        foreach (string Line in Lines)
+            txtReturn += AddBefore + Line + AddAfterExtra + Environment.NewLine;
+        return txtReturn;
+    }
 
     string _actions;
     public string Actions
@@ -144,6 +225,9 @@
     {
         EditContext = new EditContext(rule);
         EditContext.OnFieldChanged += EditContext_OnFieldChanged;
+
+        //highLighterEngine.UseCss = false;
+        //highlighter = new Highlighter(highLighterEngine);
 
         base.OnInitialized();
     }

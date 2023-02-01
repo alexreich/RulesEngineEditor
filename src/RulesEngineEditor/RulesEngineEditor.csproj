@@ -48,4 +48,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\PrismSharp\PrismSharp\PrismSharp.csproj" />
+  </ItemGroup>
+
 </Project>
