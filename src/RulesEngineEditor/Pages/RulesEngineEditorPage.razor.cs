@@ -16,7 +16,6 @@ using System.Dynamic;
 using RulesEngine.Models;
 using RulesEngineEditor.Services;
 using Omu.ValueInjecter;
-using Append.Blazor.Printing;
 using Microsoft.JSInterop;
 
 namespace RulesEngineEditor.Pages
@@ -31,9 +30,6 @@ namespace RulesEngineEditor.Pages
 
         [Parameter]
         public Workflow[] Workflows { get; set; }
-
-        [Inject]
-        public IPrintingService PrintingService { get; set; }
 
         [Inject]
         IJSRuntime JSRuntime { get; set; }
@@ -431,13 +427,6 @@ namespace RulesEngineEditor.Pages
             DownloadInputAttributes = new Dictionary<string, object>();
             DownloadInputAttributes.Add("href", "data:text/plain;charset=utf-8," + JsonNormalizer.Normalize(InputJSON));
             DownloadInputAttributes.Add("download", "RulesEngineInputs.json");
-        }
-        private async Task PrintWorkflowAsync()
-        {
-            //var html = await JSRuntime.InvokeAsync<string>("myJsFunctions.getHtml");
-
-            //await JSRuntime.InvokeVoidAsync(@"tableToExcel('tblExport', 'W3C Example Table')");
-            await PrintingService.Print("sp_grid_main", printType:PrintType.Html);
         }
     }
 }
