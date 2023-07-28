@@ -91,7 +91,7 @@
         {
             CustomTypes = new Type[] { typeof(FooEnum) }
         };
-        re = new RulesEngine.RulesEngine(settings);
+        re = new RulesEngine.RulesEngine(new string[0], settings);
 
         db = DbFactory.CreateDbContext();
         db.Database.EnsureCreated();

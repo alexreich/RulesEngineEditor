@@ -32,7 +32,7 @@
         {
             CustomTypes = new Type[] { typeof(FooEnum) }
         };
-        re = new RulesEngine.RulesEngine(settings);
+        re = new RulesEngine.RulesEngine(new string[0], settings);
 
 #if BasicDemo
 List<Workflow> Workflow = new List<Workflow>();

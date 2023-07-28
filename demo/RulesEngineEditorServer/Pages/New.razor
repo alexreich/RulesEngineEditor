@@ -28,7 +28,7 @@
         {
             CustomTypes = new Type[] { typeof(FooEnum) }
         };
-        re = new RulesEngine.RulesEngine(settings);
+        re = new RulesEngine.RulesEngine(null, settings);
 
         Workflows = new List<Workflow>().ToArray();
     }

@@ -38,7 +38,7 @@ private WorkflowRules[] Workflows { get { return _workflows; } set { _workflows 
         {
             CustomTypes = new Type[] { typeof(FooEnum) }
         };
-        re = new RulesEngine.RulesEngine(settings);
+        re = new RulesEngine.RulesEngine(new string[0], settings);
 
 #if BasicDemo
 List<WorkflowRules> workFlowRules = new List<WorkflowRules>();
