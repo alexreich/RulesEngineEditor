@@ -16,7 +16,7 @@
             <InputTextArea title="Expression" rows="5" form="Expression" class="form-control" @bind-Value="@scopedParam.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <button @onclick="@(e => ScopedParamDelete.InvokeAsync(scopedParam))" class="btn btn-secondary m-1">
+            <button title="Delete Scoped Param" @onclick="@(e => ScopedParamDelete.InvokeAsync(scopedParam))" class="btn btn-secondary m-1">
                 <span class="oi oi-trash"></span>
             </button>
         </div>

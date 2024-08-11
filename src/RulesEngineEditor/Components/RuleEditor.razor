@@ -8,30 +8,21 @@
 @using System.Text.Json.Serialization
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
-
-<sp_grid_rules>
-    <div>Rule Name</div>
-    <div>Operator</div>
-    <div>Success Event</div>
-    <div>Error Message</div>
-    <div>Expression</div>
-    <div>Actions</div>
-    <div>Enabled</div>
-    <div>Delete</div>
-</sp_grid_rules>
 <EditForm EditContext="@EditContext">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <sp_grid_rules>
         <div>
-            <InputText class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <label for="RuleName">Rule Name</label>
+            <InputText id="RuleName" class="form-control" @bind-Value="@rule.RuleName" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             @if (@rule.ExceptionMessage != "")
             {
                 <blockquote class="reeditor_blockquote @RuleStyle(rule)">@rule.ExceptionMessage</blockquote>
             }
         </div>
         <div>
-            <InputSelect ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control" ValueChanged="((string value) => OnValueChanged(value))">
+            <label for="Operator">Operator</label>
+            <InputSelect id="Operator" ValueExpression="@(()=>rule.Operator)" Value="@rule.Operator" class="form-control" ValueChanged="((string value) => OnValueChanged(value))">
                 <option value="null"></option>
                 <option value="And">And</option>
                 <option value="AndAlso">AndAlso</option>
@@ -40,22 +31,28 @@
             </InputSelect>
         </div>
         <div>
-            <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <label for="SuccessEvent">Success Event</label>
+            <InputTextArea id="SuccessEvent" rows="5" class="form-control jsonTextArea" @bind-Value="@rule.SuccessEvent" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <label for="ErrorMessage">Error Message</label>
+            <InputTextArea id="ErrorMessage" rows="5" class="form-control jsonTextArea" @bind-Value="@rule.ErrorMessage" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <label for="Expression">Expression</label>
+            <InputTextArea id="Expression" rows="5" class="form-control" @bind-Value="@rule.Expression" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputTextArea rows="5" form="Expression" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+            <label for="Actions">Actions</label>
+            <InputTextArea id="Actions" rows="5" class="form-control" @bind-Value="@Actions" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
         <div>
-            <InputCheckbox @bind-Value="@rule.Enabled" class="form-control" />
+            <label for="Enabled">Enabled</label>
+            <InputCheckbox id="Enabled" @bind-Value="@rule.Enabled" class="form-control" />
         </div>
         <div>
-            <button @onclick="@(e => RuleDelete.InvokeAsync(rule))" class="btn btn-secondary">
+            <label for="DeleteRule">Delete Rule</label>
+            <button id="DeleteRule" title="Delete Rule" @onclick="@(e => RuleDelete.InvokeAsync(rule))" class="btn btn-secondary">
                 <span class="oi oi-trash"></span>
             </button>
         </div>

@@ -55,7 +55,7 @@ namespace RulesEngineEditor.Pages
         [Parameter]
         public EventCallback<RulesEngine.RulesEngine> OnRulesEngineInitialize { get; set; }
 
-        bool WorkflowJSONHidden = false;
+        bool WorkflowJSONVisible = true;
 
         string workflowJSONErrors;
         string _workflowJSON;
