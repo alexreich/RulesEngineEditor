@@ -45,6 +45,15 @@ rules > *:not(sp_grid_rules) {
     grid-gap: 5px;
 }
 
+.sp_grid_main_fullscreen {
+    grid-column: auto;
+    display: inline-grid;
+    grid-template-columns: 100%;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    grid-gap: 5px;
+}
+
 .rules {
     padding: 5px;
     border: 2px;

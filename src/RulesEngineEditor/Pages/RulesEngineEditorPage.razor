@@ -73,11 +73,13 @@
     }
     <button class="reeditor_button @IsPressed(sort_wf, "button_depressed")" @onclick="(() => sort_wf = !sort_wf)">Arrange</button>
     <span>&nbsp;</span>
+    <button class="reeditor_button @IsPressed(WorkflowJSONHidden, "button_depressed")" @onclick="(() => WorkflowJSONHidden = !WorkflowJSONHidden)">Fullscreen</button>
+    <span>&nbsp;</span>
 </div>
 
 @if (WorkflowService.Workflows.Count > 0)
 {
-    <div class="sp_grid_main" hidden="@(!ShowWorkflows)">
+    <div class=@(WorkflowJSONHidden ? "sp_grid_main_fullscreen" : "sp_grid_main") hidden="@(!ShowWorkflows)">
         <div>
             @if (sort_wf)
             {
@@ -115,7 +117,7 @@
                 }
             }
         </div>
-        <div>
+        <div hidden="@WorkflowJSONHidden">
             <span class="JSONErrors">@workflowJSONErrors</span>
             <textarea @bind="WorkflowsJSON" class="jsonTextArea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         </div>
