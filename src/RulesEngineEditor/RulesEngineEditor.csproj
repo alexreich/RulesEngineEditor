@@ -22,10 +22,10 @@
     <SupportedPlatform Include="browser" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="blazor-dragdrop" Version="2.3.0" />
-    <PackageReference Include="RulesEngine" Version="5.0.1" />
+    <PackageReference Include="blazor-dragdrop" Version="2.6.1" />
+    <PackageReference Include="RulesEngine" Version="5.0.3" />
     <PackageReference Include="ValueInjecter" Version="3.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.7" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\content\RulesEngineEditor.png">
