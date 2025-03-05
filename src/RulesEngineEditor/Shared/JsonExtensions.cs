@@ -62,6 +62,21 @@ namespace RulesEngineEditor.Shared
                 using JsonDocument documentV = JsonDocument.ParseValue(ref reader);
                 return ReadObject(documentV.RootElement);
             }
+
+            if (reader.TokenType == JsonTokenType.StartArray)
+            {
+                var arrayItems = new List<dynamic>();
+                reader.Read();
+
+                while (reader.TokenType != JsonTokenType.EndArray)
+                {
+                    arrayItems.Add(Read(ref reader, typeToConvert, options));
+                    reader.Read();
+                }
+
+                return arrayItems;
+            }
+            
             // Use JsonElement as fallback.
             // Newtonsoft uses JArray or JObject.
             JsonDocument document = JsonDocument.ParseValue(ref reader);
