@@ -4,6 +4,7 @@
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<BlazorCacheBootResources>false</BlazorCacheBootResources>
 		<GenerateJsonSerializerAttribute>true</GenerateJsonSerializerAttribute>
+		<WasmEnableAOT>true</WasmEnableAOT>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\RulesEngineEditor\RulesEngineEditor.csproj" />
