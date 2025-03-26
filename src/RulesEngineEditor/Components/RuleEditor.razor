@@ -6,6 +6,7 @@
 @using RulesEngineEditor.Models
 @using System.Text.Json
 @using System.Text.Json.Serialization
+@using System.Text.Json.Serialization.Metadata
 @inject RulesEngineEditor.Services.WorkflowService WorkflowService
 
 
@@ -95,7 +96,8 @@
             //RulesEngine.Models.RuleActions
             var actions = JsonSerializer.Deserialize<dynamic>(value, new JsonSerializerOptions
                 {
-                    Converters = { new DynamicJsonConverter() }
+                    Converters = { new DynamicJsonConverter() },
+                    TypeInfoResolver = new DefaultJsonTypeInfoResolver()
                 });
 
             RuleActions newActions = new RuleActions();
