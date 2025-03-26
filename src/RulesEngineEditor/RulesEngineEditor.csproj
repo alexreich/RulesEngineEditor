@@ -17,6 +17,7 @@
     <AssemblyVersion>1.4.1.0</AssemblyVersion>
     <FileVersion>1.4.1.0</FileVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+	<PublishAot>true</PublishAot>
   </PropertyGroup>
   <ItemGroup>
     <SupportedPlatform Include="browser" />
