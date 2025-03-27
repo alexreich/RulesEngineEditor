@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "RulesEngineEditorWebAssembly",
   "resources": {
-    "hash": "sha256-EhPq+W3d60hP07RJCahvAVzSr/urybWWdRwpbcG2eG8=",
+    "hash": "sha256-RdefKZ46ilwrIBpveB7pUaFBimLgtdq9rn9Co3Vgxck=",
     "jsModuleNative": {
       "dotnet.native.8.0.14.ao03vwswak.js": "sha256-DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k="
     },
@@ -40,8 +40,8 @@
       "Omu.ValueInjecter.wasm": "sha256-lBuBmG1qUMFathsj5asgOUNCeL26tEVcnW9Nez46U+Q=",
       "Plk.Blazor.DragDrop.wasm": "sha256-8Hqzjte5Ytx0uLlqrfmEPEZu3EmgvFOT+GDiG2vITQE=",
       "RulesEngine.wasm": "sha256-4oPU3x7uCewYP5fhyhUH0UAVx7B5EftfbDzvSbaYI9Y=",
-      "RulesEngineEditor.wasm": "sha256-ayLCzzjjDh3WmiXp/6ujA3YnSv2ccedDcN9IqmLRA68=",
-      "RulesEngineEditorWebAssembly.wasm": "sha256-QZif+6YGvxnuaX12OFdB4H2sr2Q4mUJzAR6DqyQfZO4=",
+      "RulesEngineEditor.wasm": "sha256-kB14mraK4KacQspmo2e2YE6sRrkDybMZt4XHnNDTSwo=",
+      "RulesEngineEditorWebAssembly.wasm": "sha256-IzkTzulA9J/IfuVXXe8Wnkem5TMlpmtiHkXGSGIrg/g=",
       "System.Collections.Concurrent.wasm": "sha256-0UfHUSg5XvP/Pyx/g3IFuw+09kCGV7+6MFfbpY+uRes=",
       "System.Collections.Immutable.wasm": "sha256-cSAkneq9QVveTawHTLn08e1Q99SfZsBDf7DzcMd7ohY=",
       "System.Collections.NonGeneric.wasm": "sha256-9MBJu7zygrx0wG9rbh4lU9Vq9bU4LUVDV+abDnn5RCs=",
