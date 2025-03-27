@@ -6,6 +6,7 @@ using RulesEngineEditor.Models;
 [JsonSerializable(typeof(Workflow))]
 [JsonSerializable(typeof(Rule))]
 [JsonSerializable(typeof(WorkflowData))]
+[JsonSerializable(typeof(RuleActions))]  // <-- Added for RuleActions
 public partial class RulesEngineJsonSourceContext : JsonSerializerContext
 {
 }

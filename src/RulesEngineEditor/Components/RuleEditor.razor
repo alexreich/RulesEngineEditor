@@ -81,15 +81,7 @@
     {
         get
         {
-            return JsonNormalizer.Normalize(JsonSerializer.Serialize(rule.Actions, new JsonSerializerOptions
-                {
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                    IncludeFields = true,
-                    WriteIndented = true,
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                    PropertyNameCaseInsensitive = true,
-                    Converters = { new JsonStringEnumConverter() }
-                }));
+            return GetSerializedActions();
         }
         set
         {
@@ -113,6 +105,12 @@
             }
             rule.Actions = newActions;
         }
+    }
+
+    private string GetSerializedActions()
+    {
+        // Serialize using the precompiled, source-generated options.
+        return JsonSerializer.Serialize(rule.Actions, RulesEngineJsonSourceContext.Default.RuleActions);
     }
 
     [Parameter]
