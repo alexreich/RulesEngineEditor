@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
@@ -13,6 +14,7 @@ namespace RulesEngineEditor.Shared
     [JsonSerializable(typeof(Workflow[]))]
     [JsonSerializable(typeof(RuleData))]
     [JsonSerializable(typeof(RuleActions))]
+    [JsonSerializable(typeof(List<WorkflowData>))] // Added for WorkflowData list
     public partial class RulesEngineJsonSourceContext : JsonSerializerContext
     {
         // Removed manually implemented members.

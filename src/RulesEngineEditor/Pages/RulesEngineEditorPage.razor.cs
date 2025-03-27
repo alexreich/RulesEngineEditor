@@ -231,7 +231,7 @@ namespace RulesEngineEditor.Pages
 
         if (inputJSONErrors == "")
         {
-            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
+            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, RulesEngineJsonSourceContext.Default.Options));
         }
     }
 
@@ -327,7 +327,7 @@ namespace RulesEngineEditor.Pages
     private void DownloadWorkflows()
     {
         workflowJSONErrors = "";
-        var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, jsonOptions);
+        var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, RulesEngineJsonSourceContext.Default.Options);
         if (jsonString == "[]")
         {
             return;
