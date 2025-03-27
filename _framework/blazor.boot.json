@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "RulesEngineEditorWebAssembly",
   "resources": {
-    "hash": "sha256-dDD+Lu4dqzaBk1CQEOdRNdmchoh9qtiKuMcee7zmZd4=",
+    "hash": "sha256-EhPq+W3d60hP07RJCahvAVzSr/urybWWdRwpbcG2eG8=",
     "jsModuleNative": {
       "dotnet.native.8.0.14.ao03vwswak.js": "sha256-DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k="
     },
@@ -40,8 +40,8 @@
       "Omu.ValueInjecter.wasm": "sha256-lBuBmG1qUMFathsj5asgOUNCeL26tEVcnW9Nez46U+Q=",
       "Plk.Blazor.DragDrop.wasm": "sha256-8Hqzjte5Ytx0uLlqrfmEPEZu3EmgvFOT+GDiG2vITQE=",
       "RulesEngine.wasm": "sha256-4oPU3x7uCewYP5fhyhUH0UAVx7B5EftfbDzvSbaYI9Y=",
-      "RulesEngineEditor.wasm": "sha256-F3NMjlfdaDTNGWhFVdz3z/u6lDT0xAu5lkHJT6MKJVY=",
-      "RulesEngineEditorWebAssembly.wasm": "sha256-j9V0dQ8fQP/YEu1DLqNlGl6qjhXepZQ2ScF7aeUN1Wc=",
+      "RulesEngineEditor.wasm": "sha256-ayLCzzjjDh3WmiXp/6ujA3YnSv2ccedDcN9IqmLRA68=",
+      "RulesEngineEditorWebAssembly.wasm": "sha256-QZif+6YGvxnuaX12OFdB4H2sr2Q4mUJzAR6DqyQfZO4=",
       "System.Collections.Concurrent.wasm": "sha256-0UfHUSg5XvP/Pyx/g3IFuw+09kCGV7+6MFfbpY+uRes=",
       "System.Collections.Immutable.wasm": "sha256-cSAkneq9QVveTawHTLn08e1Q99SfZsBDf7DzcMd7ohY=",
       "System.Collections.NonGeneric.wasm": "sha256-9MBJu7zygrx0wG9rbh4lU9Vq9bU4LUVDV+abDnn5RCs=",
@@ -86,7 +86,7 @@
       "System.Security.Cryptography.wasm": "sha256-nzzAvIgGDD8QP9jt8jzNvuq6edC+N5juDIK1LWkNIXs=",
       "System.Text.Encoding.Extensions.wasm": "sha256-P4Q8FPqQfNDbDtvHAj2IwLgQQhPQh3u3BcwhBV9WYW4=",
       "System.Text.Encodings.Web.wasm": "sha256-eymwk7FpmqPuaAqMJhHFyEBs+kIw5pdiiDvDA9qWoik=",
-      "System.Text.Json.wasm": "sha256-fYJ2TTM8DDLv3iiGW/k12lnd2U3BNYJlsKTQrp/KjSw=",
+      "System.Text.Json.wasm": "sha256-3zjz6NTcxgNHWEdGcJEuK600gkvoDEHyWmx4zSGOaF0=",
       "System.Text.RegularExpressions.wasm": "sha256-tO3ghV63oVSyPEGTSx1WnXtFuOMdVAZSJ0994hdffx8=",
       "System.Threading.wasm": "sha256-HzPPsgV5A3RXso5MPC+9wPq0s2pFCpEgU1fBV0FvXfE=",
       "System.wasm": "sha256-qXepM8Oop8I1OsLVR8x7a8Xd7MHwoLhvdhz+zcTgtkU=",
