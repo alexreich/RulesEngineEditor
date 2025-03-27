@@ -94,9 +94,9 @@
         set
         {
             var actions = JsonSerializer.Deserialize<dynamic>(value, new JsonSerializerOptions
-                {
-                    Converters = { new DynamicJsonConverter() }
-                });
+            {
+                Converters = { new DynamicJsonConverter() }
+            });
 
             RuleActions newActions = new RuleActions();
             if ((actions as IDictionary<string, object>).ContainsKey("OnSuccess"))

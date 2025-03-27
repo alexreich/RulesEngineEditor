@@ -11,6 +11,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using RulesEngineEditor.Services;
+using System.Text.Json;
+using RulesEngineEditor.Shared;
 
 namespace RulesEngineEditorWebAssembly
 {
@@ -24,6 +26,11 @@ namespace RulesEngineEditorWebAssembly
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             builder.Services.AddRulesEngineEditor();
+
+            builder.Services.AddScoped<JsonSerializerOptions>(sp =>
+            {
+                return RulesEngineJsonSourceContext.Default.Options;
+            });
 
             await builder.Build().RunAsync();
         }

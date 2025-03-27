@@ -5,6 +5,7 @@
 		<BlazorCacheBootResources>false</BlazorCacheBootResources>
 		<GenerateJsonSerializerAttribute>true</GenerateJsonSerializerAttribute>
 		<WasmEnableAOT>true</WasmEnableAOT>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\RulesEngineEditor\RulesEngineEditor.csproj" />
