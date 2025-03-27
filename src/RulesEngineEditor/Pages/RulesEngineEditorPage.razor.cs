@@ -97,7 +97,9 @@ namespace RulesEngineEditor.Pages
     {
         if (Workflows != default && string.IsNullOrEmpty(WorkflowsJSON))
         {
-            var newJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(Workflows, jsonOptions));
+            var newJSON = JsonNormalizer.Normalize(
+                JsonSerializer.Serialize(Workflows, RulesEngineJsonSourceContext.Default.WorkflowArray)
+            );
 
             if (newJSON != WorkflowsJSON)
             {
@@ -242,7 +244,10 @@ namespace RulesEngineEditor.Pages
         {
             //TODO Reverted to Newtonsoft - roll forward to System.Text.Json when it's fully supported (Github Pages PWA fails without Newtonsoft)
             //var Workflows = Newtonsoft.Json.JsonConvert.DeserializeObject<Workflow[]>(WorkflowJSON);
-            var Workflows = JsonSerializer.Deserialize<Workflow[]>(WorkflowsJSON, jsonOptions);
+            var Workflows = JsonSerializer.Deserialize(
+                WorkflowsJSON, 
+                RulesEngineJsonSourceContext.Default.WorkflowArray
+            );
             if (WorkflowService.RuleParameters.Length == 0) return;
 
             _rulesEngine.ClearWorkflows();
@@ -305,7 +310,10 @@ namespace RulesEngineEditor.Pages
         workflowJSONErrors = "";
         try
         {
-            var workflows = JsonSerializer.Deserialize<List<WorkflowData>>(WorkflowsJSON, jsonOptions);
+            var workflows = JsonSerializer.Deserialize(
+                WorkflowsJSON, 
+                RulesEngineJsonSourceContext.Default.ListWorkflowData
+            );
 
             if (!WorkflowService.Workflows.Any())
             {
@@ -327,7 +335,10 @@ namespace RulesEngineEditor.Pages
     private void DownloadWorkflows()
     {
         workflowJSONErrors = "";
-        var jsonString = JsonSerializer.Serialize(WorkflowService.Workflows, RulesEngineJsonSourceContext.Default.Options);
+        var jsonString = JsonSerializer.Serialize(
+            WorkflowService.Workflows, 
+            RulesEngineJsonSourceContext.Default.ListWorkflowData
+        );
         if (jsonString == "[]")
         {
             return;
@@ -337,7 +348,9 @@ namespace RulesEngineEditor.Pages
         try
         {
             //ensure no serialzable errors in JSON before enabling download
-            var re = new RulesEngine.RulesEngine(JsonSerializer.Deserialize<List<Workflow>>(WorkflowsJSON, jsonOptions).ToArray());
+            var re = new RulesEngine.RulesEngine(
+                JsonSerializer.Deserialize(WorkflowsJSON, RulesEngineJsonSourceContext.Default.WorkflowArray)
+            );
 
             DownloadAttributes = new Dictionary<string, object>();
             DownloadAttributes.Add("href", "data:text/plain;charset=utf-8," + WorkflowsJSON);
