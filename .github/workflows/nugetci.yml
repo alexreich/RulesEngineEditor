@@ -23,7 +23,7 @@ jobs:
               run: dotnet build RulesEngineEditor.sln --configuration Release
 
             - name: dotnet pack
-              run: dotnet pack RulesEngineEditor.sln -c Release --no-build --include-source --include-symbols
+              run: dotnet pack RulesEngineEditor.sln -c Release --no-build --include-source --include-symbols -o nupkg
 
             - name: setup nuget
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -36,6 +36,6 @@ jobs:
             - name: Publish NuGet
               uses: brandedoutcast/publish-nuget@v2
               with:
-                PROJECT_FILE_PATH: src/RulesEngineEditor/RulesEngineEditor.csproj # Relative to repository root
-                NUGET_KEY: ${{ secrets.NUGET_API_KEY }} 
+                PROJECT_FILE_PATH: src/RulesEngineEditor/RulesEngineEditor.csproj
+                NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
                 PACKAGE_NAME: RulesEngineEditor
