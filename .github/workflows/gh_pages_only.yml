@@ -1,39 +1,41 @@
-name: Deploy to GitHub Pages - Legacy
-# Run workflow on every push to the gh_pages_only branch (workarounds for WASM issues with Newtonsoft, etc. - maybe .NET5 isolated)
+name: Deploy to GitHub Pages
+
 on:
   push:
-    branches: [ main, gh_pages_only ]
+    branches: [ main ]
+
 jobs:
   deploy-to-github-pages:
-    # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
-     # uses GitHub's checkout action to checkout code from the gh_pages_only branch
-    - uses: actions/checkout@v2
-      with:
-        ref: gh_pages_only
-    
-     # sets up .NET Core SDK 3.1
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.*
-        
-     # publishes Blazor project to the release-folder
-    - name: Publish .NET Core Project
-      run: dotnet publish demo/RulesEngineEditorWebAssembly/RulesEngineEditorWebAssembly.csproj -c Release -o release --nologo
-      
-    # changes the base-tag in index.html from '/' to 'BlazorGitHubPagesDemo' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to RulesEngineEditor
-      run: sed -i 's/<base href="\/" \/>/<base href="\/RulesEngineEditor\/" \/>/g' release/wwwroot/index.html
-      
-    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
-      
-    - name: Commit wwwroot to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: release/wwwroot
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x     # or 9.0.x to match your TFM
+
+      - name: Publish Blazor WASM
+        run: dotnet publish demo/RulesEngineEditorWebAssembly/RulesEngineEditorWebAssembly.csproj \
+               -c Release -o release --nologo \
+               /p:NullabilityInfoContextSupport=true
+
+      - name: Fix base href in index.html
+        run: sed -i 's|<base href="/" />|<base href="/RulesEngineEditor/" />|g' release/wwwroot/index.html
+
+      - name: Add .nojekyll
+        run: touch release/wwwroot/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: release/wwwroot
