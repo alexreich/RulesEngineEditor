@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "RulesEngineEditorWebAssembly",
   "resources": {
-    "hash": "sha256-qJf/3G+goGAqIts8NtRtOaiCbt5XNzzE7h/s5w9koaM=",
+    "hash": "sha256-1Mrp3o668LtSTi/Y1fGZgI/VWhqSZ3slLP29P6dXGJE=",
     "jsModuleNative": {
       "dotnet.native.8.0.22.te9w5f1aae.js": "sha256-vtotCeXt2UD6oc459laJT32vBgigZ+eLoUmdeFkvYDk="
     },
@@ -40,8 +40,8 @@
       "Omu.ValueInjecter.wasm": "sha256-lBuBmG1qUMFathsj5asgOUNCeL26tEVcnW9Nez46U+Q=",
       "Plk.Blazor.DragDrop.wasm": "sha256-8Hqzjte5Ytx0uLlqrfmEPEZu3EmgvFOT+GDiG2vITQE=",
       "RulesEngine.wasm": "sha256-4oPU3x7uCewYP5fhyhUH0UAVx7B5EftfbDzvSbaYI9Y=",
-      "RulesEngineEditor.wasm": "sha256-sLrzGpIOLMoIX3DLoHjOd8SQ8u5aoDZ++G4ypKf+6uw=",
-      "RulesEngineEditorWebAssembly.wasm": "sha256-r15i1w2uXu0AvRJd7RQxukafxgQlbU7ZwOKLULjgfOc=",
+      "RulesEngineEditor.wasm": "sha256-qxw/HC/uCDycAHsxdWPl0BmtdWt9m012qdCwIbZpYFI=",
+      "RulesEngineEditorWebAssembly.wasm": "sha256-E42aChiR0rsaYoQoPchPCxi07yxM7LGFCCtBcrD1bek=",
       "System.Collections.Concurrent.wasm": "sha256-fJfKZAkK9obxTN80YaReN0sRtcVTd9FGw5R8crosGDc=",
       "System.Collections.Immutable.wasm": "sha256-KBKSuvoVEgUspVcVsiof/xbFWE7scRCLDDokUrJHf0k=",
       "System.Collections.NonGeneric.wasm": "sha256-khjHbRenhSwpIUM/TE28MQdgCbqOw89lpmhOLYHOE+I=",
@@ -86,7 +86,7 @@
       "System.Security.Cryptography.wasm": "sha256-FKkoVZSy2mvKcckiHTgnCyHTrUw/jc90dBkabIRAPcE=",
       "System.Text.Encoding.Extensions.wasm": "sha256-1VvXzOdnOdm4qpeEFIFZujygmgHimMa/J+jXSrPDh9E=",
       "System.Text.Encodings.Web.wasm": "sha256-eymwk7FpmqPuaAqMJhHFyEBs+kIw5pdiiDvDA9qWoik=",
-      "System.Text.Json.wasm": "sha256-3zjz6NTcxgNHWEdGcJEuK600gkvoDEHyWmx4zSGOaF0=",
+      "System.Text.Json.wasm": "sha256-3k8PW8NgmCWuMw9j15y4XIwGTDgi9biarpiXSIVVX2k=",
       "System.Text.RegularExpressions.wasm": "sha256-pCI/KvWlpBx3h2+mqeqTlpf2N7v2m97y/Yw2jA3d1dE=",
       "System.Threading.wasm": "sha256-4iLHJN47DYhMAJV+s2Y+M/kUkenVt1ePaEWLUF7YMMg=",
       "System.wasm": "sha256-uJzurp5WTA1BFzcBNmsx4UDwvPdWxmnd8l6hUJlCudk=",
