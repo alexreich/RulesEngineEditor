@@ -20,6 +20,7 @@ namespace RulesEngineEditorWebAssembly
     {
         public static async Task Main(string[] args)
         {
+            AppContext.SetSwitch("System.Reflection.NullabilityInfoContext.IsSupported", true);
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
