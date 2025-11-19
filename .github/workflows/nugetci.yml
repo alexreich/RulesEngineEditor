@@ -25,17 +25,11 @@ jobs:
             - name: dotnet pack
               run: dotnet pack RulesEngineEditor.sln -c Release --no-build --include-source --include-symbols -o nupkg
 
-            - name: setup nuget
+            - name: Publish NuGet packages
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-              uses: NuGet/setup-nuget@v1.0.6
               env:
-                  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-              with:
-                  nuget-version: latest
-
-            - name: Publish NuGet
-              uses: brandedoutcast/publish-nuget@v2
-              with:
-                PROJECT_FILE_PATH: src/RulesEngineEditor/RulesEngineEditor.csproj
-                NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
-                PACKAGE_NAME: RulesEngineEditor
+                NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+              run: |
+                echo "Packing results:"
+                ls -la nupkg || true
+                dotnet nuget push "nupkg/*.nupkg" -s https://api.nuget.org/v3/index.json -k $NUGET_API_KEY --skip-duplicate
