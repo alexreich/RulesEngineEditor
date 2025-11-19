@@ -204,7 +204,12 @@ namespace RulesEngineEditor.Pages
 
     private void UpdateInputs()
     {
-        var serializationOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
+        var serializationOptions = new JsonSerializerOptions { 
+            Converters = { new JsonStringEnumConverter() },
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
 
         inputJSONErrors = "";
         List<InputRuleParameterDictionary> newInputs = new List<InputRuleParameterDictionary>();
@@ -230,7 +235,7 @@ namespace RulesEngineEditor.Pages
 
         if (inputJSONErrors == "")
         {
-            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
+            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, serializationOptions));
         }
     }
 
