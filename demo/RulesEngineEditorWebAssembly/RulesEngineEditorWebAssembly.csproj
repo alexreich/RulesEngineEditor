@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<NullabilityInfoContextSupport>true</NullabilityInfoContextSupport>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<BlazorCacheBootResources>false</BlazorCacheBootResources>
 		<GenerateJsonSerializerAttribute>true</GenerateJsonSerializerAttribute>
