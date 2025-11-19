@@ -80,12 +80,9 @@ namespace RulesEngineEditor.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            jsonOptions = new JsonSerializerOptions {
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            jsonOptions = new JsonSerializerOptions(RulesEngineJsonSourceContext.Default.Options) {
                 IncludeFields = true,
-                WriteIndented = true,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                PropertyNameCaseInsensitive = true,
                 Converters = { new JsonStringEnumConverter() }
             };
 
