@@ -29,7 +29,7 @@ namespace RulesEngineEditorWebAssembly
 
             builder.Services.AddScoped<JsonSerializerOptions>(sp =>
             {
-                return RulesEngineJsonSourceContext.Default.Options;
+                return RulesEngineEditor.Shared.RulesEngineJsonSourceContext.Default.Options;
             });
 
             await builder.Build().RunAsync();

@@ -29,7 +29,8 @@ jobs:
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               env:
                 NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+              shell: pwsh
               run: |
                 echo "Packing results:"
-                ls -la nupkg || true
-                dotnet nuget push "nupkg/*.nupkg" -s https://api.nuget.org/v3/index.json -k $NUGET_API_KEY --skip-duplicate
+                Get-ChildItem -Recurse nupkg | Format-List -Property FullName,Length
+                dotnet nuget push "nupkg/*.nupkg" -s https://api.nuget.org/v3/index.json -k $env:NUGET_API_KEY --skip-duplicate

@@ -13,9 +13,9 @@
     <PackageReleaseNotes>https://github.com/alexreich/RulesEngineEditor/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageIcon>RulesEngineEditor.png</PackageIcon>
     <PackageIconUrl />
-    <Version>1.4.4</Version>
-    <AssemblyVersion>1.4.4.0</AssemblyVersion>
-    <FileVersion>1.4.4.0</FileVersion>
+    <Version>1.4.5</Version>
+    <AssemblyVersion>1.4.5.0</AssemblyVersion>
+    <FileVersion>1.4.5.0</FileVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
