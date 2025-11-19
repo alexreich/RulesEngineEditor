@@ -233,7 +233,7 @@ namespace RulesEngineEditor.Pages
 
         if (inputJSONErrors == "")
         {
-            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, RulesEngineJsonSourceContext.Default.Options));
+            InputJSON = JsonNormalizer.Normalize(JsonSerializer.Serialize(newInputs, jsonOptions));
         }
     }
 
