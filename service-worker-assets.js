@@ -21,19 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.22.8z9nttn2rz.js"
     },
     {
-      "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
-      "url": "_framework\/icudt_CJK.dat"
+      "hash": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4=",
+      "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-8fItetYY8kQ0ww6oxwTLiT3oXlBwHKumbeP2pRF4yTc=",
-      "url": "_framework\/icudt_EFIGS.dat"
-    },
-    {
-      "hash": "sha256-L7sV7NEYP37\/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs=",
-      "url": "_framework\/icudt_no_CJK.dat"
-    },
-    {
-      "hash": "sha256-AW4Uo2jCIiqpiNznixwA6dJ43bI1BPXr0htesPDImr0=",
+      "hash": "sha256-xEt5zivdsWVnlPA5Pi+sHfZe+zH2fBqugtsulwzkOmM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -77,12 +69,20 @@
       "url": "_framework\/Microsoft.Extensions.Configuration.wasm"
     },
     {
-      "hash": "sha256-\/TevEaAYrJh0\/Vb7T1Q7SSpFJvBO2aDPQwCASNfthXA=",
+      "hash": "sha256-LxIz5y880oqpaV7HSqPv\/t1w2FNm+\/FwsVaOJgQzLcs=",
       "url": "_framework\/Microsoft.Extensions.DependencyInjection.Abstractions.wasm"
     },
     {
       "hash": "sha256-Xe24PwAN6JN13IUUAL\/QczZo\/Kq145UkdicWPijCplE=",
       "url": "_framework\/Microsoft.Extensions.DependencyInjection.wasm"
+    },
+    {
+      "hash": "sha256-G4BcOykLiC+IRjm8DA7CpNTl54MtAAd3KSEF0ypWgXE=",
+      "url": "_framework\/Microsoft.Extensions.Localization.Abstractions.wasm"
+    },
+    {
+      "hash": "sha256-WY8wzDYpbOl8wspMlvRknbN\/lqHg9753iaOQ7V6946A=",
+      "url": "_framework\/Microsoft.Extensions.Localization.wasm"
     },
     {
       "hash": "sha256-\/i2NzR8FBqoibJ9gLjv8L916iFEBZyeqY4RfrTG+4Bo=",
@@ -93,7 +93,7 @@
       "url": "_framework\/Microsoft.Extensions.Logging.wasm"
     },
     {
-      "hash": "sha256-U7sdOcB7sUOVxwcAgIzWjl8JLkcugvpyoqtqAjBzAK0=",
+      "hash": "sha256-\/6COTtxUZqiwjroyilPdlFUpRi3bttbXgiffDxOvnbc=",
       "url": "_framework\/Microsoft.Extensions.Options.wasm"
     },
     {
@@ -129,11 +129,11 @@
       "url": "_framework\/RulesEngine.wasm"
     },
     {
-      "hash": "sha256-2\/qTTJy6UbeVicr2YFxh9yqtOmm7ZFeyx1\/EvoeD56s=",
+      "hash": "sha256-ALpMvGYIRuzmhQGkD5n2fBU+wZGHbCbEM8nR6uGdGuo=",
       "url": "_framework\/RulesEngineEditor.wasm"
     },
     {
-      "hash": "sha256-07o\/A+bQWPRz7KecGFkuJ3fvQ+jBg1Ha367Xym0rZkc=",
+      "hash": "sha256-HtF1+GMQ3uIWDiPH3PZAXMmnjiJdthWhPkl1MCdxNOQ=",
       "url": "_framework\/RulesEngineEditorWebAssembly.wasm"
     },
     {
@@ -241,7 +241,7 @@
       "url": "_framework\/System.ObjectModel.wasm"
     },
     {
-      "hash": "sha256-bNi\/jMwvkK0inBxl3sII6G71PDZTQeOV3V5dQLVafRs=",
+      "hash": "sha256-ee07jj+tDG0M0hohbmGPxXrTaD4wvZWQMqJuFprTNnE=",
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
@@ -297,7 +297,7 @@
       "url": "_framework\/System.Runtime.Serialization.Primitives.wasm"
     },
     {
-      "hash": "sha256-MmNN\/Up5gcXTJQ1H4Brfj+dOzw1yOyleNrEK\/tBn0po=",
+      "hash": "sha256-B9hXaZhKN8ZAfpHpxvsbGM0ZgLnikh4NygB8okEGYqc=",
       "url": "_framework\/System.Runtime.wasm"
     },
     {
@@ -339,6 +339,10 @@
     {
       "hash": "sha256-yVgP+FfcRnt8G50kD3QiKtyjsriuGJ4wFPTTNsvTNVE=",
       "url": "_framework\/System.Xml.XDocument.wasm"
+    },
+    {
+      "hash": "sha256-zwqVbB6G+m9Z94s6ONhJZgVCt4K3q5FmyfjABi09xSg=",
+      "url": "_framework\/zh-CN\/RulesEngineEditor.resources.wasm"
     },
     {
       "hash": "sha256-LJokq3W3qV3nnH9JSYhd5w566nlKekHoKXesAneYpmU=",
@@ -405,6 +409,10 @@
       "url": "css\/open-iconic\/README.md"
     },
     {
+      "hash": "sha256-t9wIOI8X2jWLtP4bkOlmhbU+g+OTHsjGvTelI8SIx1Y=",
+      "url": "culture.js"
+    },
+    {
       "hash": "sha256-gwVBU4eY3Zvlp5AvCi3XAQe2ne9RxfbiqYE+QS7JcTw=",
       "url": "favicon.ico"
     },
@@ -413,7 +421,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-2NKSkwqnQ3N9ZPe87mJRkjKUZ0QMvAgbGsj+iU53GDo=",
+      "hash": "sha256-2PU7WBU0YkPLAnp124XC4xrdot\/h\/8ippiNR\/NX6T3E=",
       "url": "index.html"
     },
     {
@@ -437,9 +445,13 @@
       "url": "_content\/RulesEngineEditor\/css\/dragdrop.css"
     },
     {
-      "hash": "sha256-Ot9ULA8mlBSZd4YEuph5HaFlzfqONZz7kk1Av8Hu5rM=",
+      "hash": "sha256-k8zFDLjyRf3ev\/\/CdNRO\/9cMxX3ovqt5tXGgglM7gJo=",
       "url": "_content\/RulesEngineEditor\/css\/reeditor.css"
+    },
+    {
+      "hash": "sha256-Auv28KS5j0IVy1PYKx8pypKAQ+X2RtrM\/C2P\/x6YS9o=",
+      "url": "_content\/RulesEngineEditor\/fonts\/consolas\/README.txt"
     }
   ],
-  "version": "RTa49s2F"
+  "version": "sDLoFUtD"
 };
