@@ -25,7 +25,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-xEt5zivdsWVnlPA5Pi+sHfZe+zH2fBqugtsulwzkOmM=",
+      "hash": "sha256-qM4+qxTqWTHTla3SOw8It7ZhN9l67kX850swk8db7Vs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -129,11 +129,11 @@
       "url": "_framework\/RulesEngine.wasm"
     },
     {
-      "hash": "sha256-ALpMvGYIRuzmhQGkD5n2fBU+wZGHbCbEM8nR6uGdGuo=",
+      "hash": "sha256-FcFvz\/zZZ\/SZrQSWGiDmk9OU3rxXVWXAwSJ3H8\/V+mQ=",
       "url": "_framework\/RulesEngineEditor.wasm"
     },
     {
-      "hash": "sha256-HtF1+GMQ3uIWDiPH3PZAXMmnjiJdthWhPkl1MCdxNOQ=",
+      "hash": "sha256-3a9tPnFIlzGwOG0NV5pEJcGdoqJGoffLyskmmrT\/A4U=",
       "url": "_framework\/RulesEngineEditorWebAssembly.wasm"
     },
     {
@@ -341,7 +341,7 @@
       "url": "_framework\/System.Xml.XDocument.wasm"
     },
     {
-      "hash": "sha256-zwqVbB6G+m9Z94s6ONhJZgVCt4K3q5FmyfjABi09xSg=",
+      "hash": "sha256-ePk87yU7qU3FoTVpg0zbG7YMjnix+SpZV+Kp7rwjie4=",
       "url": "_framework\/zh-CN\/RulesEngineEditor.resources.wasm"
     },
     {
@@ -453,5 +453,5 @@
       "url": "_content\/RulesEngineEditor\/fonts\/consolas\/README.txt"
     }
   ],
-  "version": "sDLoFUtD"
+  "version": "ql4gbxk4"
 };
